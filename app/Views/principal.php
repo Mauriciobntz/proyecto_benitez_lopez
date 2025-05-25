@@ -64,7 +64,7 @@ sitio.
 
 
     <!--Cards de Categorias-->
-    <div class="container-fluid mb-3">
+    <div class="container mb-3">
     <h3 class="text-center my-4">Categorías Favoritas</h3>
 
     <div class="row g-3 justify-content-center">

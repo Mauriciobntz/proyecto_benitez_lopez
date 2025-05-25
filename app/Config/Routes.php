@@ -7,6 +7,7 @@ use CodeIgniter\Router\RouteCollection;
  */
 $routes->get('/', 'Home::index');
 
+// Rutas públicas
 $routes->get('principal', 'Home::index');
 $routes->get('somos', 'Home::somos');
 $routes->get('productos', 'Home::productos');
@@ -19,6 +20,15 @@ $routes->get('contacto', 'Home::contacto');
 $routes->get('producto', 'Home::producto');
 $routes->get('comercializacion', 'Home::comercializacion');
 $routes->get('consultas', 'Home::consultas');
-$routes->get('login', 'Home::login');
-$routes->get('sign', 'Home::sign');
 $routes->get('terminos', 'Home::terminos');
+
+
+// Rutas de autenticación
+$routes->get('login', 'UsuarioController::showLoginForm');
+$routes->post('login', 'UsuarioController::processLogin');
+$routes->get('logout', 'UsuarioController::logout');
+
+// Rutas de registro
+$routes->get('sign', 'UsuarioController::showRegisterForm');
+$routes->post('sign', 'UsuarioController::processRegistration');
+
