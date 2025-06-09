@@ -21,51 +21,91 @@ sitio.
         </div>
     </div>
 
-    <!--Cards de Ingresos-->
-    <div class="container-fluid mb-3">
-    <h3 class="text-center my-4">Nuevos Ingresos</h3>
 
-    <div class="d-flex justify-content-center flex-wrap">
-
-        <div class="card shadow rounded-4 overflow-hidden mx-1 my-2 d-flex flex-column  hover-shadow" style="width: 20rem; height: 450px; border: none;">
-        <video src="assets/img/video/GalaxyA56.mp4" class="card-img-top flex-grow-0" autoplay loop muted playsinline style="height: 300px; object-fit: cover;"></video>
-        <div class="card-body text-center bg-light d-flex flex-column justify-content-center">
-            <h5 class="card-title m-2">Samsung</h5>
-            <p class="card-text text-muted">Galaxy A56</p>
-        </div>
-        </div>
-
-        <div class="card shadow rounded-4 overflow-hidden mx-1 my-2 d-flex flex-column  hover-shadow" style="width: 20rem; height: 450px; border: none;">
-        <video src="assets/img/video/iphone16.mp4" class="card-img-top flex-grow-0" autoplay loop muted playsinline style="height: 300px; object-fit: cover;"></video>
-        <div class="card-body text-center bg-light d-flex flex-column justify-content-center">
-            <h5 class="card-title m-2">iPhone</h5>
-            <p class="card-text text-muted">16</p>
-        </div>
-        </div>
-
-        <div class="card shadow rounded-4 overflow-hidden mx-1 my-2 d-flex flex-column  hover-shadow" style="width: 20rem; height: 450px; border: none;">
-        <video src="assets/img/video/zenbook-s16.mp4" class="card-img-top flex-grow-0" autoplay loop muted playsinline style="height: 300px; object-fit: cover;"></video>
-        <div class="card-body text-center bg-light d-flex flex-column justify-content-center">
-            <h5 class="card-title m-2">Asus</h5>
-            <p class="card-text text-muted">Zenbook S16</p>
-        </div>
-        </div>
-
-        <div class="card shadow rounded-4 overflow-hidden mx-1 my-2 d-flex flex-column  hover-shadow" style="width: 20rem; height: 450px; border: none;">
-        <video src="assets/img/video/auriculares.mp4" class="card-img-top flex-grow-0" autoplay loop muted playsinline style="height: 300px; object-fit: cover;"></video>
-        <div class="card-body text-center bg-light d-flex flex-column justify-content-center">
-            <h5 class="card-title m-2">Sony</h5>
-            <p class="card-text text-muted">Noise Cancelling</p>
-        </div>
-        </div>
-
+<!-- Cards de Ingresos Mejoradas -->
+<div class="new-arrivals py-5 bg-light">
+  <div class="container">
+    <div class="section-header text-center mb-5">
+      <h2 class="fw-bold mb-3">NUEVOS INGRESOS</h2>
     </div>
+
+    <div class="row g-4 justify-content-center">
+      <!-- Card 1 -->
+      <div class="col-lg-3 col-md-6">
+        <div class="card h-100 border-0 shadow-sm rounded-3 overflow-hidden transition-all hover-shadow">
+          <div class="product-media position-relative">
+            <video class="w-100" autoplay loop muted playsinline style="height: 300px; object-fit: cover;">
+              <source src="assets/img/video/GalaxyA56.mp4" type="video/mp4">
+            </video>
+            <div class="product-badge bg-danger text-white position-absolute top-0 end-0 m-3 px-2 py-1 rounded-pill small">Nuevo</div>
+          </div>
+          <div class="card-body text-center pt-4 pb-3">
+            <h5 class="card-title fw-semibold mb-1">Samsung Galaxy A56</h5>
+            <p class="text-muted small mb-3">Pantalla Super AMOLED de 6.5"</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="col-lg-3 col-md-6">
+        <div class="card h-100 border-0 shadow-sm rounded-3 overflow-hidden transition-all hover-shadow">
+          <div class="product-media position-relative">
+            <video class="w-100" autoplay loop muted playsinline style="height: 300px; object-fit: cover;">
+              <source src="assets/img/video/iphone16.mp4" type="video/mp4">
+            </video>
+            <div class="product-badge bg-danger text-white position-absolute top-0 end-0 m-3 px-2 py-1 rounded-pill small">Nuevo</div>
+          </div>
+          <div class="card-body text-center pt-4 pb-3">
+            <h5 class="card-title fw-semibold mb-1">iPhone 16 Pro</h5>
+            <p class="text-muted small mb-3">Chip A18 Pro, 256GB</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="col-lg-3 col-md-6">
+        <div class="card h-100 border-0 shadow-sm rounded-3 overflow-hidden transition-all hover-shadow">
+          <div class="product-media position-relative">
+            <video class="w-100" autoplay loop muted playsinline style="height: 300px; object-fit: cover;">
+              <source src="assets/img/video/zenbook-s16.mp4" type="video/mp4">
+            </video>
+            <div class="product-badge bg-danger text-white position-absolute top-0 end-0 m-3 px-2 py-1 rounded-pill small">Nuevo</div>
+          </div>
+          <div class="card-body text-center pt-4 pb-3">
+            <h5 class="card-title fw-semibold mb-1">Asus Zenbook S16</h5>
+            <p class="text-muted small mb-3">Intel Core i9, 32GB RAM</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="col-lg-3 col-md-6">
+        <div class="card h-100 border-0 shadow-sm rounded-3 overflow-hidden transition-all hover-shadow">
+          <div class="product-media position-relative">
+            <video class="w-100" autoplay loop muted playsinline style="height: 300px; object-fit: cover;">
+              <source src="assets/img/video/auriculares.mp4" type="video/mp4">
+            </video>
+            <div class="product-badge bg-danger text-white position-absolute top-0 end-0 m-3 px-2 py-1 rounded-pill small">Nuevo</div>
+          </div>
+          <div class="card-body text-center pt-4 pb-3">
+            <h5 class="card-title fw-semibold mb-1">Sony WH-1000XM5</h5>
+            <p class="text-muted small mb-3">Cancelación de ruido líder</p>
+          </div>
+        </div>
+      </div>
     </div>
+
+
+  </div>
+</div>
+
+
+
 
 
     <!--Cards de Categorias-->
     <div class="container mb-3">
-    <h3 class="text-center my-4">Categorías Favoritas</h3>
+    <h3 class="section-header fw-bold text-center my-4">CATEGORIAS</h3>
 
     <div class="row g-3 justify-content-center">
 
@@ -107,6 +147,9 @@ sitio.
 
     </div>
     </div>
+
+
+
 
 
 

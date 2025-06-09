@@ -34,6 +34,9 @@ class Filters extends BaseFilters
         'forcehttps'    => ForceHTTPS::class,
         'pagecache'     => PageCache::class,
         'performance'   => PerformanceMetrics::class,
+        // nuevos filtros:
+        'auth'          => \App\Filters\AuthFilter::class,
+        'admin'         => \App\Filters\AdminFilter::class,
     ];
 
     /**
@@ -103,5 +106,23 @@ class Filters extends BaseFilters
      *
      * @var array<string, array<string, list<string>>>
      */
-    public array $filters = [];
+    // cambie esto
+    public array $filters = [
+        'auth' => [
+            'before' => [
+                'productos/*/resena',
+                'perfil/*',
+                'carrito/*'
+            ]
+        ],
+        'admin' => [
+            'before' => [
+                'productos/agregar',
+                'productos/guardar',
+                'productos/editar/*',
+                'productos/actualizar/*',
+                'productos/eliminar/*'
+            ]
+        ]
+    ];
 }

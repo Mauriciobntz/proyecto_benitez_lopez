@@ -22,7 +22,7 @@ class Home extends BaseController
     public function contacto(): string
     {
         $data['titulo']='Contacto';
-        return view('header', $data).view('navbar').view('contacto').view('footer');
+        return view('header', $data).view('navbar').view('admin/productos/agregar').view('footer');
     }
     public function producto(): string
     {
@@ -79,4 +79,16 @@ class Home extends BaseController
         $data['titulo']='Terminos de uso';
         return view('header', $data).view('navbar').view('terminos_usos').view('footer');
     }
+    //borrar
+    public function panel(): string
+    {
+        $data['titulo']='Panel';
+        return view('header', $data).view('navbar').view('admin/panel').view('footer');
+    }
+    public function denegado(): string
+    {
+        $data['titulo']='Panel';
+        return view('header', $data).view('navbar').view('alertas/acceso_denegado').view('footer');
+    }
 }
+

@@ -1,4 +1,5 @@
-<?php namespace App\Models;
+<?php
+namespace App\Models;
 
 use CodeIgniter\Model;
 
@@ -6,12 +7,21 @@ class PersonaModel extends Model
 {
     protected $table = 'personas';
     protected $primaryKey = 'id_persona';
-    protected $allowedFields = ['usuario_id', 'nombre', 'apellido', 'telefono'];
-    
-    protected $validationRules = [
-        'usuario_id' => 'required|integer',
-        'nombre' => 'required|max_length[100]',
-        'apellido' => 'required|max_length[100]',
-        'telefono' => 'required|max_length[20]'
+    protected $allowedFields = [
+        'usuario_id', 'tipo_documento', 'documento', 'nombre', 'apellido',
+        'fecha_nacimiento', 'genero', 'telefono', 'telefono_alternativo'
     ];
+    protected $useTimestamps = true;
+    protected $createdField = 'fecha_creacion';
+    protected $updatedField = 'fecha_actualizacion';
+
+    public function getPersonaByUsuario($usuario_id)
+    {
+        return $this->where('usuario_id', $usuario_id)->first();
+    }
+
+    public function actualizarDatosPersonales($usuario_id, $data)
+    {
+        return $this->where('usuario_id', $usuario_id)->update($this->primaryKey, $data);
+    }
 }

@@ -72,7 +72,7 @@
 </div>
 <!--Fin cinta de Marcas-->
 
-
+<!-- Footer -->
 <footer class="bg-dark mt-5">
   <div class="container-fluid d-flex justify-content-center align-items-center" style="padding: 20px 50px;">
     <div class="row w-100 justify-content-center g-4">
@@ -88,16 +88,16 @@
       <div class="col-6 col-lg-2 text-white">
         <h6 class="text-uppercase fw-bold mb-4">Productos</h6>
         <p>
-          <a href="<?php echo base_url('celulares'); ?>" class="text-reset text-white text-decoration-none">Celulares</a>
+          <a href="http://localhost/proyecto_benitez_lopez/celulares" class="text-reset text-decoration-none">Celulares</a>
         </p>
         <p>
-          <a href="<?php echo base_url('auriculares'); ?>" class="text-reset text-white text-decoration-none">Auriculares</a>
+          <a href="http://localhost/proyecto_benitez_lopez/auriculares" class="text-reset text-decoration-none">Auriculares</a>
         </p>
         <p>
-          <a href="<?php echo base_url('notebooks'); ?>" class="text-reset text-white text-decoration-none">Notebooks</a>
+          <a href="http://localhost/proyecto_benitez_lopez/notebooks" class="text-reset text-decoration-none">Notebooks</a>
         </p>
         <p>
-          <a href="<?php echo base_url('tablets'); ?>" class="text-reset text-white text-decoration-none">Tablets</a>
+          <a href="http://localhost/proyecto_benitez_lopez/tablets" class="text-reset text-decoration-none">Tablets</a>
         </p>
       </div>
 
@@ -105,16 +105,16 @@
       <div class="col-6 col-lg-2 text-white">
         <h6 class="text-uppercase fw-bold mb-4">Menú</h6>
         <p>
-          <a href="<?php echo base_url('principal'); ?>" class="text-reset text-white text-decoration-none">Inicio</a>
+          <a href="http://localhost/proyecto_benitez_lopez/principal" class="text-reset text-decoration-none">Inicio</a>
         </p>
         <p>
-          <a href="<?php echo base_url('productos'); ?>" class="text-reset text-white text-decoration-none">Productos</a>
+          <a href="http://localhost/proyecto_benitez_lopez/productos" class="text-reset text-decoration-none">Productos</a>
         </p>
         <p>
-          <a href="<?php echo base_url('contacto'); ?>" class="text-reset text-white text-decoration-none">Contacto</a>
+          <a href="http://localhost/proyecto_benitez_lopez/contacto" class="text-reset text-decoration-none">Contacto</a>
         </p>
         <p>
-          <a href="<?php echo base_url('terminos'); ?>" class="text-reset text-white text-decoration-none">Términos de Uso</a>
+          <a href="http://localhost/proyecto_benitez_lopez/terminos" class="text-reset text-decoration-none">Términos de Uso</a>
         </p>
       </div>
 
@@ -131,16 +131,16 @@
       <div class="col-12 col-lg-2 text-white">
         <h6 class="text-uppercase fw-bold mb-4">Redes Sociales</h6>
         <div class="d-flex flex-column">
-          <a href="https://facebook.com/tupagina" class="text-reset text-white text-decoration-none mb-2" target="_blank">
+          <a href="https://facebook.com/tupagina" class="text-reset text-decoration-none mb-2" target="_blank">
             <i class="fab fa-facebook-f me-2"></i> Facebook
           </a>
-          <a href="https://instagram.com/tupagina" class="text-reset text-white text-decoration-none mb-2" target="_blank">
+          <a href="https://instagram.com/tupagina" class="text-reset text-decoration-none mb-2" target="_blank">
             <i class="fab fa-instagram me-2"></i> Instagram
           </a>
-          <a href="https://twitter.com/tupagina" class="text-reset text-white text-decoration-none mb-2" target="_blank">
+          <a href="https://twitter.com/tupagina" class="text-reset text-decoration-none mb-2" target="_blank">
             <i class="fab fa-twitter me-2"></i> Twitter
           </a>
-          <a href="https://wa.me/tunumerowhatsapp" class="text-reset text-white text-decoration-none" target="_blank">
+          <a href="https://wa.me/tunumerowhatsapp" class="text-reset text-decoration-none" target="_blank">
             <i class="fab fa-whatsapp me-2"></i> WhatsApp
           </a>
         </div>
@@ -150,23 +150,15 @@
 
   <!-- Copyright -->
   <div class="text-center text-white p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-    © <?php echo date('Y'); ?> Copyright:
-    <a class="text-white text-decoration-none" href="<?php echo base_url(); ?>">Follow.com.ar</a>
+    © 2025 Copyright:
+    <a class="text-white text-decoration-none" href="http://localhost/proyecto_benitez_lopez/">Follow.com.ar</a>
   </div>
 </footer>
 
-<!-- Scripts necesarios para los íconos -->
-<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-<script src="<?php echo base_url('assets/js/mi-script.js'); ?>"></script>
-<script src="<?php echo base_url('assets/js/bootstrap.bundle.min.js'); ?>"></script>
-
-
-
-
-
-<script src="<?php echo base_url('assets/js/mi-script.js'); ?>"></script>
-
-<script src="<?php echo base_url('assets/js/bootstrap.bundle.min.js'); ?>"></script>
+<!-- Scripts -->
+<script src="http://localhost/proyecto_benitez_lopez/assets/js/bootstrap.bundle.min.js"></script>
+<script src="http://localhost/proyecto_benitez_lopez/assets/js/mi-script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </body>
 </html>

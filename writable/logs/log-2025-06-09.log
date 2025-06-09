@@ -1,0 +1,436 @@
+CRITICAL - 2025-06-09 04:23:46 --> ErrorException: Undefined variable $producto
+[Method: GET, Route: contacto]
+in APPPATH\Views\admin\productos\crear.php on line 203.
+ 1 APPPATH\Views\admin\productos\crear.php(203): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $producto', 'C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Views\\admin\\productos\\crear.php', 203)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Views\\admin\\productos\\crear.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('admin/productos/crear', [], true)
+ 5 APPPATH\Controllers\Home.php(25): view('admin/productos/crear')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->contacto()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-09 04:27:39 --> ErrorException: Undefined variable $producto
+[Method: GET, Route: contacto]
+in APPPATH\Views\admin\productos\crear.php on line 202.
+ 1 APPPATH\Views\admin\productos\crear.php(202): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $producto', 'C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Views\\admin\\productos\\crear.php', 202)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Views\\admin\\productos\\crear.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('admin/productos/crear', [], true)
+ 5 APPPATH\Controllers\Home.php(25): view('admin/productos/crear')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->contacto()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-09 04:28:37 --> ErrorException: Undefined variable $producto
+[Method: GET, Route: contacto]
+in APPPATH\Views\admin\productos\crear.php on line 14.
+ 1 APPPATH\Views\admin\productos\crear.php(14): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $producto', 'C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Views\\admin\\productos\\crear.php', 14)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Views\\admin\\productos\\crear.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('admin/productos/crear', [], true)
+ 5 APPPATH\Controllers\Home.php(25): view('admin/productos/crear')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->contacto()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-09 04:28:38 --> ErrorException: Undefined variable $producto
+[Method: GET, Route: contacto]
+in APPPATH\Views\admin\productos\crear.php on line 14.
+ 1 APPPATH\Views\admin\productos\crear.php(14): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $producto', 'C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Views\\admin\\productos\\crear.php', 14)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Views\\admin\\productos\\crear.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('admin/productos/crear', [], true)
+ 5 APPPATH\Controllers\Home.php(25): view('admin/productos/crear')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->contacto()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-09 04:28:39 --> ErrorException: Undefined variable $producto
+[Method: GET, Route: contacto]
+in APPPATH\Views\admin\productos\crear.php on line 14.
+ 1 APPPATH\Views\admin\productos\crear.php(14): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $producto', 'C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Views\\admin\\productos\\crear.php', 14)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Views\\admin\\productos\\crear.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('admin/productos/crear', [], true)
+ 5 APPPATH\Controllers\Home.php(25): view('admin/productos/crear')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->contacto()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-09 04:28:39 --> ErrorException: Undefined variable $producto
+[Method: GET, Route: contacto]
+in APPPATH\Views\admin\productos\crear.php on line 14.
+ 1 APPPATH\Views\admin\productos\crear.php(14): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $producto', 'C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Views\\admin\\productos\\crear.php', 14)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Views\\admin\\productos\\crear.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('admin/productos/crear', [], true)
+ 5 APPPATH\Controllers\Home.php(25): view('admin/productos/crear')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->contacto()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-09 15:41:34 --> ErrorException: Undefined variable $categorias
+[Method: GET, Route: contacto]
+in APPPATH\Views\admin\productos\crear.php on line 136.
+ 1 APPPATH\Views\admin\productos\crear.php(136): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $categorias', 'C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Views\\admin\\productos\\crear.php', 136)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Views\\admin\\productos\\crear.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('admin/productos/crear', [], true)
+ 5 APPPATH\Controllers\Home.php(25): view('admin/productos/crear')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->contacto()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-09 16:16:12 --> TypeError: CodeIgniter\Router\RouteCollection::processArrayCallableSyntax(): Return value must be of type string, array returned
+[Method: GET, Route: productos/crear]
+in SYSTEMPATH\Router\RouteCollection.php on line 1606.
+ 1 SYSTEMPATH\Router\RouteCollection.php(1457): CodeIgniter\Router\RouteCollection->processArrayCallableSyntax('productos/crear', [...])
+ 2 SYSTEMPATH\Router\RouteCollection.php(1052): CodeIgniter\Router\RouteCollection->create('GET', 'productos/crear', [...], null)
+ 3 APPPATH\Config\Routes.php(51): CodeIgniter\Router\RouteCollection->get('productos/crear', [...])
+ 4 SYSTEMPATH\Router\RouteCollection.php(339): require('C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Config\\Routes.php')
+ 5 SYSTEMPATH\CodeIgniter.php(821): CodeIgniter\Router\RouteCollection->loadRoutes()
+ 6 SYSTEMPATH\CodeIgniter.php(455): CodeIgniter\CodeIgniter->tryToRouteIt(null)
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-09 16:16:13 --> TypeError: CodeIgniter\Router\RouteCollection::processArrayCallableSyntax(): Return value must be of type string, array returned
+[Method: GET, Route: productos/crear]
+in SYSTEMPATH\Router\RouteCollection.php on line 1606.
+ 1 SYSTEMPATH\Router\RouteCollection.php(1457): CodeIgniter\Router\RouteCollection->processArrayCallableSyntax('productos/crear', [...])
+ 2 SYSTEMPATH\Router\RouteCollection.php(1052): CodeIgniter\Router\RouteCollection->create('GET', 'productos/crear', [...], null)
+ 3 APPPATH\Config\Routes.php(51): CodeIgniter\Router\RouteCollection->get('productos/crear', [...])
+ 4 SYSTEMPATH\Router\RouteCollection.php(339): require('C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Config\\Routes.php')
+ 5 SYSTEMPATH\CodeIgniter.php(821): CodeIgniter\Router\RouteCollection->loadRoutes()
+ 6 SYSTEMPATH\CodeIgniter.php(455): CodeIgniter\CodeIgniter->tryToRouteIt(null)
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-09 16:16:14 --> TypeError: CodeIgniter\Router\RouteCollection::processArrayCallableSyntax(): Return value must be of type string, array returned
+[Method: GET, Route: productos/crear]
+in SYSTEMPATH\Router\RouteCollection.php on line 1606.
+ 1 SYSTEMPATH\Router\RouteCollection.php(1457): CodeIgniter\Router\RouteCollection->processArrayCallableSyntax('productos/crear', [...])
+ 2 SYSTEMPATH\Router\RouteCollection.php(1052): CodeIgniter\Router\RouteCollection->create('GET', 'productos/crear', [...], null)
+ 3 APPPATH\Config\Routes.php(51): CodeIgniter\Router\RouteCollection->get('productos/crear', [...])
+ 4 SYSTEMPATH\Router\RouteCollection.php(339): require('C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Config\\Routes.php')
+ 5 SYSTEMPATH\CodeIgniter.php(821): CodeIgniter\Router\RouteCollection->loadRoutes()
+ 6 SYSTEMPATH\CodeIgniter.php(455): CodeIgniter\CodeIgniter->tryToRouteIt(null)
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-09 16:16:15 --> TypeError: CodeIgniter\Router\RouteCollection::processArrayCallableSyntax(): Return value must be of type string, array returned
+[Method: GET, Route: productos/crear]
+in SYSTEMPATH\Router\RouteCollection.php on line 1606.
+ 1 SYSTEMPATH\Router\RouteCollection.php(1457): CodeIgniter\Router\RouteCollection->processArrayCallableSyntax('productos/crear', [...])
+ 2 SYSTEMPATH\Router\RouteCollection.php(1052): CodeIgniter\Router\RouteCollection->create('GET', 'productos/crear', [...], null)
+ 3 APPPATH\Config\Routes.php(51): CodeIgniter\Router\RouteCollection->get('productos/crear', [...])
+ 4 SYSTEMPATH\Router\RouteCollection.php(339): require('C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Config\\Routes.php')
+ 5 SYSTEMPATH\CodeIgniter.php(821): CodeIgniter\Router\RouteCollection->loadRoutes()
+ 6 SYSTEMPATH\CodeIgniter.php(455): CodeIgniter\CodeIgniter->tryToRouteIt(null)
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-09 16:16:15 --> TypeError: CodeIgniter\Router\RouteCollection::processArrayCallableSyntax(): Return value must be of type string, array returned
+[Method: GET, Route: productos/crear]
+in SYSTEMPATH\Router\RouteCollection.php on line 1606.
+ 1 SYSTEMPATH\Router\RouteCollection.php(1457): CodeIgniter\Router\RouteCollection->processArrayCallableSyntax('productos/crear', [...])
+ 2 SYSTEMPATH\Router\RouteCollection.php(1052): CodeIgniter\Router\RouteCollection->create('GET', 'productos/crear', [...], null)
+ 3 APPPATH\Config\Routes.php(51): CodeIgniter\Router\RouteCollection->get('productos/crear', [...])
+ 4 SYSTEMPATH\Router\RouteCollection.php(339): require('C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Config\\Routes.php')
+ 5 SYSTEMPATH\CodeIgniter.php(821): CodeIgniter\Router\RouteCollection->loadRoutes()
+ 6 SYSTEMPATH\CodeIgniter.php(455): CodeIgniter\CodeIgniter->tryToRouteIt(null)
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-09 16:16:15 --> TypeError: CodeIgniter\Router\RouteCollection::processArrayCallableSyntax(): Return value must be of type string, array returned
+[Method: GET, Route: productos/crear]
+in SYSTEMPATH\Router\RouteCollection.php on line 1606.
+ 1 SYSTEMPATH\Router\RouteCollection.php(1457): CodeIgniter\Router\RouteCollection->processArrayCallableSyntax('productos/crear', [...])
+ 2 SYSTEMPATH\Router\RouteCollection.php(1052): CodeIgniter\Router\RouteCollection->create('GET', 'productos/crear', [...], null)
+ 3 APPPATH\Config\Routes.php(51): CodeIgniter\Router\RouteCollection->get('productos/crear', [...])
+ 4 SYSTEMPATH\Router\RouteCollection.php(339): require('C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Config\\Routes.php')
+ 5 SYSTEMPATH\CodeIgniter.php(821): CodeIgniter\Router\RouteCollection->loadRoutes()
+ 6 SYSTEMPATH\CodeIgniter.php(455): CodeIgniter\CodeIgniter->tryToRouteIt(null)
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-09 16:16:15 --> TypeError: CodeIgniter\Router\RouteCollection::processArrayCallableSyntax(): Return value must be of type string, array returned
+[Method: GET, Route: productos/crear]
+in SYSTEMPATH\Router\RouteCollection.php on line 1606.
+ 1 SYSTEMPATH\Router\RouteCollection.php(1457): CodeIgniter\Router\RouteCollection->processArrayCallableSyntax('productos/crear', [...])
+ 2 SYSTEMPATH\Router\RouteCollection.php(1052): CodeIgniter\Router\RouteCollection->create('GET', 'productos/crear', [...], null)
+ 3 APPPATH\Config\Routes.php(51): CodeIgniter\Router\RouteCollection->get('productos/crear', [...])
+ 4 SYSTEMPATH\Router\RouteCollection.php(339): require('C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Config\\Routes.php')
+ 5 SYSTEMPATH\CodeIgniter.php(821): CodeIgniter\Router\RouteCollection->loadRoutes()
+ 6 SYSTEMPATH\CodeIgniter.php(455): CodeIgniter\CodeIgniter->tryToRouteIt(null)
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-09 16:16:15 --> TypeError: CodeIgniter\Router\RouteCollection::processArrayCallableSyntax(): Return value must be of type string, array returned
+[Method: GET, Route: productos/crear]
+in SYSTEMPATH\Router\RouteCollection.php on line 1606.
+ 1 SYSTEMPATH\Router\RouteCollection.php(1457): CodeIgniter\Router\RouteCollection->processArrayCallableSyntax('productos/crear', [...])
+ 2 SYSTEMPATH\Router\RouteCollection.php(1052): CodeIgniter\Router\RouteCollection->create('GET', 'productos/crear', [...], null)
+ 3 APPPATH\Config\Routes.php(51): CodeIgniter\Router\RouteCollection->get('productos/crear', [...])
+ 4 SYSTEMPATH\Router\RouteCollection.php(339): require('C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Config\\Routes.php')
+ 5 SYSTEMPATH\CodeIgniter.php(821): CodeIgniter\Router\RouteCollection->loadRoutes()
+ 6 SYSTEMPATH\CodeIgniter.php(455): CodeIgniter\CodeIgniter->tryToRouteIt(null)
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-09 16:16:15 --> TypeError: CodeIgniter\Router\RouteCollection::processArrayCallableSyntax(): Return value must be of type string, array returned
+[Method: GET, Route: productos/crear]
+in SYSTEMPATH\Router\RouteCollection.php on line 1606.
+ 1 SYSTEMPATH\Router\RouteCollection.php(1457): CodeIgniter\Router\RouteCollection->processArrayCallableSyntax('productos/crear', [...])
+ 2 SYSTEMPATH\Router\RouteCollection.php(1052): CodeIgniter\Router\RouteCollection->create('GET', 'productos/crear', [...], null)
+ 3 APPPATH\Config\Routes.php(51): CodeIgniter\Router\RouteCollection->get('productos/crear', [...])
+ 4 SYSTEMPATH\Router\RouteCollection.php(339): require('C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Config\\Routes.php')
+ 5 SYSTEMPATH\CodeIgniter.php(821): CodeIgniter\Router\RouteCollection->loadRoutes()
+ 6 SYSTEMPATH\CodeIgniter.php(455): CodeIgniter\CodeIgniter->tryToRouteIt(null)
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-09 16:16:16 --> TypeError: CodeIgniter\Router\RouteCollection::processArrayCallableSyntax(): Return value must be of type string, array returned
+[Method: GET, Route: productos/crear]
+in SYSTEMPATH\Router\RouteCollection.php on line 1606.
+ 1 SYSTEMPATH\Router\RouteCollection.php(1457): CodeIgniter\Router\RouteCollection->processArrayCallableSyntax('productos/crear', [...])
+ 2 SYSTEMPATH\Router\RouteCollection.php(1052): CodeIgniter\Router\RouteCollection->create('GET', 'productos/crear', [...], null)
+ 3 APPPATH\Config\Routes.php(51): CodeIgniter\Router\RouteCollection->get('productos/crear', [...])
+ 4 SYSTEMPATH\Router\RouteCollection.php(339): require('C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Config\\Routes.php')
+ 5 SYSTEMPATH\CodeIgniter.php(821): CodeIgniter\Router\RouteCollection->loadRoutes()
+ 6 SYSTEMPATH\CodeIgniter.php(455): CodeIgniter\CodeIgniter->tryToRouteIt(null)
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-09 16:16:16 --> TypeError: CodeIgniter\Router\RouteCollection::processArrayCallableSyntax(): Return value must be of type string, array returned
+[Method: GET, Route: productos/crear]
+in SYSTEMPATH\Router\RouteCollection.php on line 1606.
+ 1 SYSTEMPATH\Router\RouteCollection.php(1457): CodeIgniter\Router\RouteCollection->processArrayCallableSyntax('productos/crear', [...])
+ 2 SYSTEMPATH\Router\RouteCollection.php(1052): CodeIgniter\Router\RouteCollection->create('GET', 'productos/crear', [...], null)
+ 3 APPPATH\Config\Routes.php(51): CodeIgniter\Router\RouteCollection->get('productos/crear', [...])
+ 4 SYSTEMPATH\Router\RouteCollection.php(339): require('C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Config\\Routes.php')
+ 5 SYSTEMPATH\CodeIgniter.php(821): CodeIgniter\Router\RouteCollection->loadRoutes()
+ 6 SYSTEMPATH\CodeIgniter.php(455): CodeIgniter\CodeIgniter->tryToRouteIt(null)
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-09 16:16:16 --> TypeError: CodeIgniter\Router\RouteCollection::processArrayCallableSyntax(): Return value must be of type string, array returned
+[Method: GET, Route: productos/crear]
+in SYSTEMPATH\Router\RouteCollection.php on line 1606.
+ 1 SYSTEMPATH\Router\RouteCollection.php(1457): CodeIgniter\Router\RouteCollection->processArrayCallableSyntax('productos/crear', [...])
+ 2 SYSTEMPATH\Router\RouteCollection.php(1052): CodeIgniter\Router\RouteCollection->create('GET', 'productos/crear', [...], null)
+ 3 APPPATH\Config\Routes.php(51): CodeIgniter\Router\RouteCollection->get('productos/crear', [...])
+ 4 SYSTEMPATH\Router\RouteCollection.php(339): require('C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Config\\Routes.php')
+ 5 SYSTEMPATH\CodeIgniter.php(821): CodeIgniter\Router\RouteCollection->loadRoutes()
+ 6 SYSTEMPATH\CodeIgniter.php(455): CodeIgniter\CodeIgniter->tryToRouteIt(null)
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-09 16:16:16 --> TypeError: CodeIgniter\Router\RouteCollection::processArrayCallableSyntax(): Return value must be of type string, array returned
+[Method: GET, Route: productos/crear]
+in SYSTEMPATH\Router\RouteCollection.php on line 1606.
+ 1 SYSTEMPATH\Router\RouteCollection.php(1457): CodeIgniter\Router\RouteCollection->processArrayCallableSyntax('productos/crear', [...])
+ 2 SYSTEMPATH\Router\RouteCollection.php(1052): CodeIgniter\Router\RouteCollection->create('GET', 'productos/crear', [...], null)
+ 3 APPPATH\Config\Routes.php(51): CodeIgniter\Router\RouteCollection->get('productos/crear', [...])
+ 4 SYSTEMPATH\Router\RouteCollection.php(339): require('C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Config\\Routes.php')
+ 5 SYSTEMPATH\CodeIgniter.php(821): CodeIgniter\Router\RouteCollection->loadRoutes()
+ 6 SYSTEMPATH\CodeIgniter.php(455): CodeIgniter\CodeIgniter->tryToRouteIt(null)
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-09 16:16:17 --> TypeError: CodeIgniter\Router\RouteCollection::processArrayCallableSyntax(): Return value must be of type string, array returned
+[Method: GET, Route: productos/crear]
+in SYSTEMPATH\Router\RouteCollection.php on line 1606.
+ 1 SYSTEMPATH\Router\RouteCollection.php(1457): CodeIgniter\Router\RouteCollection->processArrayCallableSyntax('productos/crear', [...])
+ 2 SYSTEMPATH\Router\RouteCollection.php(1052): CodeIgniter\Router\RouteCollection->create('GET', 'productos/crear', [...], null)
+ 3 APPPATH\Config\Routes.php(51): CodeIgniter\Router\RouteCollection->get('productos/crear', [...])
+ 4 SYSTEMPATH\Router\RouteCollection.php(339): require('C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Config\\Routes.php')
+ 5 SYSTEMPATH\CodeIgniter.php(821): CodeIgniter\Router\RouteCollection->loadRoutes()
+ 6 SYSTEMPATH\CodeIgniter.php(455): CodeIgniter\CodeIgniter->tryToRouteIt(null)
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-09 16:16:17 --> TypeError: CodeIgniter\Router\RouteCollection::processArrayCallableSyntax(): Return value must be of type string, array returned
+[Method: GET, Route: productos/crear]
+in SYSTEMPATH\Router\RouteCollection.php on line 1606.
+ 1 SYSTEMPATH\Router\RouteCollection.php(1457): CodeIgniter\Router\RouteCollection->processArrayCallableSyntax('productos/crear', [...])
+ 2 SYSTEMPATH\Router\RouteCollection.php(1052): CodeIgniter\Router\RouteCollection->create('GET', 'productos/crear', [...], null)
+ 3 APPPATH\Config\Routes.php(51): CodeIgniter\Router\RouteCollection->get('productos/crear', [...])
+ 4 SYSTEMPATH\Router\RouteCollection.php(339): require('C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Config\\Routes.php')
+ 5 SYSTEMPATH\CodeIgniter.php(821): CodeIgniter\Router\RouteCollection->loadRoutes()
+ 6 SYSTEMPATH\CodeIgniter.php(455): CodeIgniter\CodeIgniter->tryToRouteIt(null)
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-09 16:16:18 --> TypeError: CodeIgniter\Router\RouteCollection::processArrayCallableSyntax(): Return value must be of type string, array returned
+[Method: GET, Route: productos/crear]
+in SYSTEMPATH\Router\RouteCollection.php on line 1606.
+ 1 SYSTEMPATH\Router\RouteCollection.php(1457): CodeIgniter\Router\RouteCollection->processArrayCallableSyntax('productos/crear', [...])
+ 2 SYSTEMPATH\Router\RouteCollection.php(1052): CodeIgniter\Router\RouteCollection->create('GET', 'productos/crear', [...], null)
+ 3 APPPATH\Config\Routes.php(51): CodeIgniter\Router\RouteCollection->get('productos/crear', [...])
+ 4 SYSTEMPATH\Router\RouteCollection.php(339): require('C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Config\\Routes.php')
+ 5 SYSTEMPATH\CodeIgniter.php(821): CodeIgniter\Router\RouteCollection->loadRoutes()
+ 6 SYSTEMPATH\CodeIgniter.php(455): CodeIgniter\CodeIgniter->tryToRouteIt(null)
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-09 16:17:10 --> TypeError: CodeIgniter\Router\RouteCollection::processArrayCallableSyntax(): Return value must be of type string, array returned
+[Method: GET, Route: productos/crear]
+in SYSTEMPATH\Router\RouteCollection.php on line 1606.
+ 1 SYSTEMPATH\Router\RouteCollection.php(1457): CodeIgniter\Router\RouteCollection->processArrayCallableSyntax('productos/crear', [...])
+ 2 SYSTEMPATH\Router\RouteCollection.php(1052): CodeIgniter\Router\RouteCollection->create('GET', 'productos/crear', [...], null)
+ 3 APPPATH\Config\Routes.php(51): CodeIgniter\Router\RouteCollection->get('productos/crear', [...])
+ 4 SYSTEMPATH\Router\RouteCollection.php(339): require('C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Config\\Routes.php')
+ 5 SYSTEMPATH\CodeIgniter.php(821): CodeIgniter\Router\RouteCollection->loadRoutes()
+ 6 SYSTEMPATH\CodeIgniter.php(455): CodeIgniter\CodeIgniter->tryToRouteIt(null)
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-09 16:17:11 --> TypeError: CodeIgniter\Router\RouteCollection::processArrayCallableSyntax(): Return value must be of type string, array returned
+[Method: GET, Route: productos/crear]
+in SYSTEMPATH\Router\RouteCollection.php on line 1606.
+ 1 SYSTEMPATH\Router\RouteCollection.php(1457): CodeIgniter\Router\RouteCollection->processArrayCallableSyntax('productos/crear', [...])
+ 2 SYSTEMPATH\Router\RouteCollection.php(1052): CodeIgniter\Router\RouteCollection->create('GET', 'productos/crear', [...], null)
+ 3 APPPATH\Config\Routes.php(51): CodeIgniter\Router\RouteCollection->get('productos/crear', [...])
+ 4 SYSTEMPATH\Router\RouteCollection.php(339): require('C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Config\\Routes.php')
+ 5 SYSTEMPATH\CodeIgniter.php(821): CodeIgniter\Router\RouteCollection->loadRoutes()
+ 6 SYSTEMPATH\CodeIgniter.php(455): CodeIgniter\CodeIgniter->tryToRouteIt(null)
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-09 16:17:12 --> TypeError: CodeIgniter\Router\RouteCollection::processArrayCallableSyntax(): Return value must be of type string, array returned
+[Method: GET, Route: productos/crear]
+in SYSTEMPATH\Router\RouteCollection.php on line 1606.
+ 1 SYSTEMPATH\Router\RouteCollection.php(1457): CodeIgniter\Router\RouteCollection->processArrayCallableSyntax('productos/crear', [...])
+ 2 SYSTEMPATH\Router\RouteCollection.php(1052): CodeIgniter\Router\RouteCollection->create('GET', 'productos/crear', [...], null)
+ 3 APPPATH\Config\Routes.php(51): CodeIgniter\Router\RouteCollection->get('productos/crear', [...])
+ 4 SYSTEMPATH\Router\RouteCollection.php(339): require('C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Config\\Routes.php')
+ 5 SYSTEMPATH\CodeIgniter.php(821): CodeIgniter\Router\RouteCollection->loadRoutes()
+ 6 SYSTEMPATH\CodeIgniter.php(455): CodeIgniter\CodeIgniter->tryToRouteIt(null)
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-09 16:18:14 --> TypeError: CodeIgniter\Router\RouteCollection::processArrayCallableSyntax(): Return value must be of type string, array returned
+[Method: GET, Route: productos/crear]
+in SYSTEMPATH\Router\RouteCollection.php on line 1606.
+ 1 SYSTEMPATH\Router\RouteCollection.php(1457): CodeIgniter\Router\RouteCollection->processArrayCallableSyntax('productos/crear', [...])
+ 2 SYSTEMPATH\Router\RouteCollection.php(1052): CodeIgniter\Router\RouteCollection->create('GET', 'productos/crear', [...], null)
+ 3 APPPATH\Config\Routes.php(51): CodeIgniter\Router\RouteCollection->get('productos/crear', [...])
+ 4 SYSTEMPATH\Router\RouteCollection.php(339): require('C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Config\\Routes.php')
+ 5 SYSTEMPATH\CodeIgniter.php(821): CodeIgniter\Router\RouteCollection->loadRoutes()
+ 6 SYSTEMPATH\CodeIgniter.php(455): CodeIgniter\CodeIgniter->tryToRouteIt(null)
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-09 16:18:15 --> TypeError: CodeIgniter\Router\RouteCollection::processArrayCallableSyntax(): Return value must be of type string, array returned
+[Method: GET, Route: productos/crear]
+in SYSTEMPATH\Router\RouteCollection.php on line 1606.
+ 1 SYSTEMPATH\Router\RouteCollection.php(1457): CodeIgniter\Router\RouteCollection->processArrayCallableSyntax('productos/crear', [...])
+ 2 SYSTEMPATH\Router\RouteCollection.php(1052): CodeIgniter\Router\RouteCollection->create('GET', 'productos/crear', [...], null)
+ 3 APPPATH\Config\Routes.php(51): CodeIgniter\Router\RouteCollection->get('productos/crear', [...])
+ 4 SYSTEMPATH\Router\RouteCollection.php(339): require('C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Config\\Routes.php')
+ 5 SYSTEMPATH\CodeIgniter.php(821): CodeIgniter\Router\RouteCollection->loadRoutes()
+ 6 SYSTEMPATH\CodeIgniter.php(455): CodeIgniter\CodeIgniter->tryToRouteIt(null)
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-09 16:18:15 --> TypeError: CodeIgniter\Router\RouteCollection::processArrayCallableSyntax(): Return value must be of type string, array returned
+[Method: GET, Route: productos/crear]
+in SYSTEMPATH\Router\RouteCollection.php on line 1606.
+ 1 SYSTEMPATH\Router\RouteCollection.php(1457): CodeIgniter\Router\RouteCollection->processArrayCallableSyntax('productos/crear', [...])
+ 2 SYSTEMPATH\Router\RouteCollection.php(1052): CodeIgniter\Router\RouteCollection->create('GET', 'productos/crear', [...], null)
+ 3 APPPATH\Config\Routes.php(51): CodeIgniter\Router\RouteCollection->get('productos/crear', [...])
+ 4 SYSTEMPATH\Router\RouteCollection.php(339): require('C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Config\\Routes.php')
+ 5 SYSTEMPATH\CodeIgniter.php(821): CodeIgniter\Router\RouteCollection->loadRoutes()
+ 6 SYSTEMPATH\CodeIgniter.php(455): CodeIgniter\CodeIgniter->tryToRouteIt(null)
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-09 16:18:15 --> TypeError: CodeIgniter\Router\RouteCollection::processArrayCallableSyntax(): Return value must be of type string, array returned
+[Method: GET, Route: productos/crear]
+in SYSTEMPATH\Router\RouteCollection.php on line 1606.
+ 1 SYSTEMPATH\Router\RouteCollection.php(1457): CodeIgniter\Router\RouteCollection->processArrayCallableSyntax('productos/crear', [...])
+ 2 SYSTEMPATH\Router\RouteCollection.php(1052): CodeIgniter\Router\RouteCollection->create('GET', 'productos/crear', [...], null)
+ 3 APPPATH\Config\Routes.php(51): CodeIgniter\Router\RouteCollection->get('productos/crear', [...])
+ 4 SYSTEMPATH\Router\RouteCollection.php(339): require('C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Config\\Routes.php')
+ 5 SYSTEMPATH\CodeIgniter.php(821): CodeIgniter\Router\RouteCollection->loadRoutes()
+ 6 SYSTEMPATH\CodeIgniter.php(455): CodeIgniter\CodeIgniter->tryToRouteIt(null)
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-09 16:18:20 --> TypeError: CodeIgniter\Router\RouteCollection::processArrayCallableSyntax(): Return value must be of type string, array returned
+[Method: GET, Route: productos/crear]
+in SYSTEMPATH\Router\RouteCollection.php on line 1606.
+ 1 SYSTEMPATH\Router\RouteCollection.php(1457): CodeIgniter\Router\RouteCollection->processArrayCallableSyntax('productos/crear', [...])
+ 2 SYSTEMPATH\Router\RouteCollection.php(1052): CodeIgniter\Router\RouteCollection->create('GET', 'productos/crear', [...], null)
+ 3 APPPATH\Config\Routes.php(51): CodeIgniter\Router\RouteCollection->get('productos/crear', [...])
+ 4 SYSTEMPATH\Router\RouteCollection.php(339): require('C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Config\\Routes.php')
+ 5 SYSTEMPATH\CodeIgniter.php(821): CodeIgniter\Router\RouteCollection->loadRoutes()
+ 6 SYSTEMPATH\CodeIgniter.php(455): CodeIgniter\CodeIgniter->tryToRouteIt(null)
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-09 16:19:54 --> TypeError: CodeIgniter\Router\RouteCollection::processArrayCallableSyntax(): Return value must be of type string, array returned
+[Method: GET, Route: productos/crear]
+in SYSTEMPATH\Router\RouteCollection.php on line 1606.
+ 1 SYSTEMPATH\Router\RouteCollection.php(1457): CodeIgniter\Router\RouteCollection->processArrayCallableSyntax('productos/crear', [...])
+ 2 SYSTEMPATH\Router\RouteCollection.php(1052): CodeIgniter\Router\RouteCollection->create('GET', 'productos/crear', [...], null)
+ 3 APPPATH\Config\Routes.php(51): CodeIgniter\Router\RouteCollection->get('productos/crear', [...])
+ 4 SYSTEMPATH\Router\RouteCollection.php(339): require('C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Config\\Routes.php')
+ 5 SYSTEMPATH\CodeIgniter.php(821): CodeIgniter\Router\RouteCollection->loadRoutes()
+ 6 SYSTEMPATH\CodeIgniter.php(455): CodeIgniter\CodeIgniter->tryToRouteIt(null)
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-09 16:19:59 --> TypeError: CodeIgniter\Router\RouteCollection::processArrayCallableSyntax(): Return value must be of type string, array returned
+[Method: GET, Route: productos/crear]
+in SYSTEMPATH\Router\RouteCollection.php on line 1606.
+ 1 SYSTEMPATH\Router\RouteCollection.php(1457): CodeIgniter\Router\RouteCollection->processArrayCallableSyntax('productos/crear', [...])
+ 2 SYSTEMPATH\Router\RouteCollection.php(1052): CodeIgniter\Router\RouteCollection->create('GET', 'productos/crear', [...], null)
+ 3 APPPATH\Config\Routes.php(51): CodeIgniter\Router\RouteCollection->get('productos/crear', [...])
+ 4 SYSTEMPATH\Router\RouteCollection.php(339): require('C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Config\\Routes.php')
+ 5 SYSTEMPATH\CodeIgniter.php(821): CodeIgniter\Router\RouteCollection->loadRoutes()
+ 6 SYSTEMPATH\CodeIgniter.php(455): CodeIgniter\CodeIgniter->tryToRouteIt(null)
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
