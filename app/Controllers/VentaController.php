@@ -3,155 +3,198 @@ namespace App\Controllers;
 
 use App\Models\VentaModel;
 use App\Models\VentaItemModel;
-use App\Models\CarritoModel;
-use App\Models\CarritoItemModel;
-use App\Models\ProductoModel;
+use App\Models\UsuarioModel;
+use App\Models\DireccionModel;
 use App\Models\PagoModel;
 use App\Models\FacturaModel;
-use App\Models\DireccionModel;
+use App\Models\ProductoModel;
+use App\Models\HistoricoVentaModel;
 
 class VentaController extends BaseController
 {
     protected $ventaModel;
     protected $ventaItemModel;
-    protected $carritoModel;
-    protected $carritoItemModel;
-    protected $productoModel;
+    protected $usuarioModel;
+    protected $direccionModel;
     protected $pagoModel;
     protected $facturaModel;
-    protected $direccionModel;
+    protected $productoModel;
+    protected $historicoVentaModel;
 
     public function __construct()
     {
         $this->ventaModel = new VentaModel();
         $this->ventaItemModel = new VentaItemModel();
-        $this->carritoModel = new CarritoModel();
-        $this->carritoItemModel = new CarritoItemModel();
-        $this->productoModel = new ProductoModel();
+        $this->usuarioModel = new UsuarioModel();
+        $this->direccionModel = new DireccionModel();
         $this->pagoModel = new PagoModel();
         $this->facturaModel = new FacturaModel();
-        $this->direccionModel = new DireccionModel();
+        $this->productoModel = new ProductoModel();
+        $this->historicoVentaModel = new HistoricoVentaModel();
     }
 
-    public function misCompras()
-    {
-        $usuario_id = session()->get('id_usuario');
-        $ventas = $this->ventaModel->getVentasByUsuario($usuario_id);
+public function listar()
+{
+    // Verificar si el usuario es administrador
+    if (session()->get('rol') !== 'admin') {
+        return redirect()->to('/')->with('error', 'No tienes permisos para realizar esta acción');
+    }
+
+    // Filtros
+    $filtros = [
+        'id' => $this->request->getGet('id'),
+        'estado' => $this->request->getGet('estado'),
+        'desde' => $this->request->getGet('desde'),
+        'hasta' => $this->request->getGet('hasta')
+    ];
+
+    // Obtener todas las ventas sin paginación
+    $ventas = $this->ventaModel->getVentasConFiltros($filtros);
+
+    // Obtener información de clientes
+    foreach ($ventas as &$venta) {
+        $usuario = $this->usuarioModel->find($venta['usuario_id']);
+        $persona = $this->usuarioModel->getPersona($venta['usuario_id']);
         
+        $venta['nombre_cliente'] = $persona ? $persona['nombre'] . ' ' . $persona['apellido'] : $usuario['username'];
+        $venta['metodo_pago'] = $this->pagoModel->where('venta_id', $venta['id_venta'])->first()['metodo_pago'] ?? null;
+    }
+
+    $data = [
+        'titulo' => 'Gestión de Ventas',
+        'ventas' => $ventas,
+        'request' => $this->request // Pasar el request a la vista
+    ];
+
+    return view('header', $data) . view('navbar') . view('admin/ventas/listar', $data) . view('footer');
+}
+
+    public function detalle($venta_id)
+    {
+        if (session()->get('rol') !== 'admin') {
+            return redirect()->to('denegado')->with('error', 'No tienes permisos para realizar esta acción');
+        }
+
+        $venta = $this->ventaModel->find($venta_id);
+        if (!$venta) {
+            return redirect()->to('admin/ventas/listar')->with('error', 'Venta no encontrada');
+        }
+
+        // Obtener items de la venta con información de productos
+        $items = $this->ventaItemModel->select('venta_items.*, productos.nombre, productos.marca, productos.imagen_url')
+                                     ->join('productos', 'productos.id_producto = venta_items.producto_id')
+                                     ->where('venta_id', $venta_id)
+                                     ->findAll();
+
+        // Obtener dirección de envío
+        $direccion = $this->direccionModel->find($venta['direccion_id']) ?? [];
+
+        // Obtener información del cliente
+        $usuario = $this->usuarioModel->find($venta['usuario_id']);
+        $persona = $this->usuarioModel->getPersona($venta['usuario_id']);
+        
+        if ($persona) {
+            $direccion['nombre'] = $persona['nombre'] . ' ' . $persona['apellido'];
+            $direccion['telefono'] = $persona['telefono'];
+        } else {
+            $direccion['nombre'] = $usuario['username'];
+            $direccion['telefono'] = 'N/A';
+        }
+
+        // Obtener método de pago
+        $pago = $this->pagoModel->where('venta_id', $venta_id)->first();
+        $venta['metodo_pago'] = $pago['metodo_pago'] ?? null;
+
+        // Obtener historial de estados
+        $historial = $this->historicoVentaModel->where('venta_id', $venta_id)
+                                             ->orderBy('fecha', 'ASC')
+                                             ->findAll();
+
         $data = [
-            'titulo' => 'Mis Compras',
-            'ventas' => $ventas
+            'titulo' => 'Detalle de Venta #' . $venta_id,
+            'venta' => $venta,
+            'items' => $items,
+            'direccion' => $direccion,
+            'historial' => $historial
         ];
 
-        return view('header', $data) . view('navbar') . view('mis_compras') . view('footer');
+        return view('header', $data) . view('navbar') . view('admin/ventas/detalle_venta', $data) . view('footer');
     }
 
-    public function checkout()
+    public function actualizarEstado($venta_id)
     {
-        $usuario_id = session()->get('id_usuario');
-        $carrito = $this->carritoModel->getCarritoByUsuario($usuario_id);
-        
-        if (!$carrito) {
-            return redirect()->to('carrito')->with('error', 'No hay productos en tu carrito');
+        if (session()->get('rol') !== 'admin') {
+            return redirect()->to('/')->with('error', 'No tienes permisos para realizar esta acción');
         }
 
-        $items = $this->carritoItemModel->getItemsByCarrito($carrito['id_carrito']);
-        if (empty($items)) {
-            return redirect()->to('carrito')->with('error', 'No hay productos en tu carrito');
+        $venta = $this->ventaModel->find($venta_id);
+        if (!$venta) {
+            return redirect()->to('admin/ventas/listar')->with('error', 'Venta no encontrada');
         }
 
-        // Verificar stock
-        foreach ($items as $item) {
-            $producto = $this->productoModel->find($item['producto_id']);
-            if ($producto['stock'] < $item['cantidad']) {
-                return redirect()->to('carrito')->with('error', 'No hay suficiente stock para ' . $producto['nombre']);
+        $nuevoEstado = $this->request->getPost('nuevo_estado');
+        if (!$nuevoEstado) {
+            return redirect()->back()->with('error', 'Debes seleccionar un estado válido');
+        }
+
+        // Registrar cambio en el historial
+        $this->historicoVentaModel->insert([
+            'venta_id' => $venta_id,
+            'estado_anterior' => $venta['estado'],
+            'estado_nuevo' => $nuevoEstado,
+            'accion' => 'Estado cambiado a ' . $nuevoEstado,
+            'usuario_id' => session()->get('id_usuario')
+        ]);
+
+        // Actualizar estado de la venta
+        $this->ventaModel->update($venta_id, ['estado' => $nuevoEstado]);
+
+        // Si se cancela la venta, devolver stock
+        if ($nuevoEstado == 'cancelado') {
+            $items = $this->ventaItemModel->where('venta_id', $venta_id)->findAll();
+            foreach ($items as $item) {
+                $this->productoModel->incrementarStock($item['producto_id'], $item['cantidad']);
             }
         }
 
-        $direcciones = $this->direccionModel->getDireccionesByUsuario($usuario_id);
-        $total = $this->calcularTotalCarrito($carrito['id_carrito']);
-
-        $data = [
-            'titulo' => 'Finalizar Compra',
-            'items' => $items,
-            'direcciones' => $direcciones,
-            'total' => $total
-        ];
-
-        return view('header', $data) . view('navbar') . view('checkout') . view('footer');
+        return redirect()->back()->with('message', 'Estado actualizado correctamente');
     }
 
-    public function procesarCompra()
+    public function generarFactura($venta_id)
     {
-        $usuario_id = session()->get('id_usuario');
-        $carrito = $this->carritoModel->getCarritoByUsuario($usuario_id);
-        
-        if (!$carrito) {
-            return redirect()->to('carrito')->with('error', 'No hay productos en tu carrito');
+        if (session()->get('rol') !== 'admin') {
+            return redirect()->to('/')->with('error', 'No tienes permisos para realizar esta acción');
         }
 
-        $items = $this->carritoItemModel->getItemsByCarrito($carrito['id_carrito']);
-        if (empty($items)) {
-            return redirect()->to('carrito')->with('error', 'No hay productos en tu carrito');
+        $venta = $this->ventaModel->find($venta_id);
+        if (!$venta) {
+            return redirect()->to('admin/ventas/listar')->with('error', 'Venta no encontrada');
         }
 
-        // Validar dirección
-        $direccion_id = $this->request->getPost('direccion_id');
-        $direccion = $this->direccionModel->find($direccion_id);
-        
-        if (!$direccion || $direccion['usuario_id'] != $usuario_id) {
-            return redirect()->back()->with('error', 'Debes seleccionar una dirección válida');
-        }
-
-        // Calcular total
-        $total = $this->calcularTotalCarrito($carrito['id_carrito']);
-
-        // Crear venta
-        $venta_id = $this->ventaModel->crearVenta($usuario_id, $direccion_id, $total);
-
-        // Agregar items a la venta
-        foreach ($items as $item) {
-            $producto = $this->productoModel->find($item['producto_id']);
-            $this->ventaItemModel->agregarItem(
-                $venta_id,
-                $item['producto_id'],
-                $item['cantidad'],
-                $producto['precio']
-            );
+        // Verificar si ya existe una factura
+        $factura = $this->facturaModel->where('venta_id', $venta_id)->first();
+        if (!$factura) {
+            // Obtener información del cliente
+            $usuario = $this->usuarioModel->find($venta['usuario_id']);
+            $persona = $this->usuarioModel->getPersona($venta['usuario_id']);
             
-            // Actualizar stock
-            $this->productoModel->actualizarStock($item['producto_id'], $item['cantidad']);
+            $datosFiscales = $persona 
+                ? "{$persona['tipo_documento']}: {$persona['documento']}, Nombre: {$persona['nombre']} {$persona['apellido']}"
+                : "Cliente: {$usuario['username']}";
+
+            // Generar factura (simulado)
+            $facturaData = [
+                'venta_id' => $venta_id,
+                'datos_fiscales' => $datosFiscales,
+                'pdf_url' => "facturas/factura-{$venta_id}.pdf"
+            ];
+            
+            $this->facturaModel->insert($facturaData);
+            $factura = $this->facturaModel->where('venta_id', $venta_id)->first();
         }
 
-        // Registrar pago (simulado)
-        $metodo_pago = $this->request->getPost('metodo_pago');
-        $this->pagoModel->registrarPago($venta_id, $total, $metodo_pago);
-
-        // Generar factura (simulado)
-        $datos_fiscales = "Nombre: " . session()->get('username') . ", Email: " . session()->get('email');
-        $pdf_url = "https://ejemplo.com/facturas/factura-" . str_pad($venta_id, 5, '0', STR_PAD_LEFT) . ".pdf";
-        $this->facturaModel->generarFactura($venta_id, $datos_fiscales, $pdf_url);
-
-        // Vaciar carrito
-        $this->carritoItemModel->vaciarCarrito($carrito['id_carrito']);
-        $this->carritoModel->delete($carrito['id_carrito']);
-
-        // Actualizar estado de la venta
-        $this->ventaModel->actualizarEstado($venta_id, 'pagado');
-
-        return redirect()->to('mis-compras')->with('message', 'Compra realizada con éxito');
-    }
-
-    private function calcularTotalCarrito($carrito_id)
-    {
-        $items = $this->carritoItemModel->getItemsByCarrito($carrito_id);
-        $total = 0;
-
-        foreach ($items as $item) {
-            $producto = $this->productoModel->find($item['producto_id']);
-            $total += $producto['precio'] * $item['cantidad'];
-        }
-
-        return $total;
+        // Aquí iría la lógica para generar el PDF real
+        // Por ahora redirigimos a la URL simulada
+        return redirect()->to($factura['pdf_url']);
     }
 }

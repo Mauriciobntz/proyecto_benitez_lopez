@@ -17,7 +17,7 @@
         </div>
     <?php endif; ?>
 
-    <form action="<?= base_url('productos/guardar') ?>" method="post" enctype="multipart/form-data">
+    <form action="<?= base_url('admin/productos/guardar') ?>" method="post" enctype="multipart/form-data">
         <?= csrf_field() ?>
         
         <div class="row">
@@ -27,12 +27,24 @@
                     <div class="card-body">
                         <div class="mb-3">
                             <label for="nombre" class="form-label">Nombre del Producto</label>
-                            <input type="text" class="form-control" id="nombre" name="nombre" value="<?= old('nombre') ?>" required>
+                            <input type="text" class="form-control <?= (session()->has('validation') && session()->get('validation')->hasError('nombre')) ? 'is-invalid' : '' ?>" 
+                                   id="nombre" name="nombre" value="<?= old('nombre') ?>" required>
+                            <?php if (session()->has('validation') && session()->get('validation')->hasError('nombre')): ?>
+                                <div class="invalid-feedback">
+                                    <?= session()->get('validation')->getError('nombre') ?>
+                                </div>
+                            <?php endif; ?>
                         </div>
 
                         <div class="mb-3">
                             <label for="descripcion" class="form-label">Descripción</label>
-                            <textarea class="form-control" id="descripcion" name="descripcion" rows="3" required><?= old('descripcion') ?></textarea>
+                            <textarea class="form-control <?= (session()->has('validation') && session()->get('validation')->hasError('descripcion')) ? 'is-invalid' : '' ?>" 
+                                      id="descripcion" name="descripcion" rows="3" required><?= old('descripcion') ?></textarea>
+                            <?php if (session()->has('validation') && session()->get('validation')->hasError('descripcion')): ?>
+                                <div class="invalid-feedback">
+                                    <?= session()->get('validation')->getError('descripcion') ?>
+                                </div>
+                            <?php endif; ?>
                         </div>
 
                         <div class="row">
@@ -52,19 +64,51 @@
                     <div class="card-header">Especificaciones</div>
                     <div class="card-body">
                         <div id="especificaciones-container">
-                            <div class="row mb-2 especificacion-item">
-                                <div class="col-md-5">
-                                    <input type="text" class="form-control" name="especificaciones_key[]" placeholder="Nombre especificación" value="<?= old('especificaciones_key.0') ?>">
+                            <?php 
+                            $oldKeys = old('especificaciones_key') ?? [];
+                            $oldValues = old('especificaciones_value') ?? [];
+                            
+                            if (!empty($oldKeys)) {
+                                foreach ($oldKeys as $index => $key) {
+                                    $value = $oldValues[$index] ?? '';
+                                    ?>
+                                    <div class="row mb-2 especificacion-item">
+                                        <div class="col-md-5">
+                                            <input type="text" class="form-control" name="especificaciones_key[]" 
+                                                   placeholder="Nombre especificación" value="<?= htmlspecialchars($key) ?>">
+                                        </div>
+                                        <div class="col-md-5">
+                                            <input type="text" class="form-control" name="especificaciones_value[]" 
+                                                   placeholder="Valor" value="<?= htmlspecialchars($value) ?>">
+                                        </div>
+                                        <div class="col-md-2">
+                                            <button type="button" class="btn btn-danger btn-sm remove-especificacion">
+                                                <i class="bi bi-trash"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <?php
+                                }
+                            } else {
+                                ?>
+                                <div class="row mb-2 especificacion-item">
+                                    <div class="col-md-5">
+                                        <input type="text" class="form-control" name="especificaciones_key[]" 
+                                               placeholder="Nombre especificación">
+                                    </div>
+                                    <div class="col-md-5">
+                                        <input type="text" class="form-control" name="especificaciones_value[]" 
+                                               placeholder="Valor">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <button type="button" class="btn btn-danger btn-sm remove-especificacion">
+                                            <i class="bi bi-trash"></i>
+                                        </button>
+                                    </div>
                                 </div>
-                                <div class="col-md-5">
-                                    <input type="text" class="form-control" name="especificaciones_value[]" placeholder="Valor" value="<?= old('especificaciones_value.0') ?>">
-                                </div>
-                                <div class="col-md-2">
-                                    <button type="button" class="btn btn-danger btn-sm remove-especificacion">
-                                        <i class="bi bi-trash"></i>
-                                    </button>
-                                </div>
-                            </div>
+                                <?php
+                            }
+                            ?>
                         </div>
                         <button type="button" id="add-especificacion" class="btn btn-secondary btn-sm mt-2">
                             <i class="bi bi-plus"></i> Agregar Especificación
@@ -79,17 +123,40 @@
                     <div class="card-body">
                         <div class="mb-3">
                             <label for="precio" class="form-label">Precio (€)</label>
-                            <input type="number" step="0.01" class="form-control" id="precio" name="precio" value="<?= old('precio', '0') ?>" required>
+                            <input type="number" step="0.01" 
+                                   class="form-control <?= (session()->has('validation') && session()->get('validation')->hasError('precio')) ? 'is-invalid' : '' ?>" 
+                                   id="precio" name="precio" 
+                                   value="<?= old('precio', '0') ?>" required>
+                            <?php if (session()->has('validation') && session()->get('validation')->hasError('precio')): ?>
+                                <div class="invalid-feedback">
+                                    <?= session()->get('validation')->getError('precio') ?>
+                                </div>
+                            <?php endif; ?>
                         </div>
 
                         <div class="mb-3">
                             <label for="stock" class="form-label">Stock Disponible</label>
-                            <input type="number" class="form-control" id="stock" name="stock" value="<?= old('stock', '0') ?>" required>
+                            <input type="number" 
+                                   class="form-control <?= (session()->has('validation') && session()->get('validation')->hasError('stock')) ? 'is-invalid' : '' ?>" 
+                                   id="stock" name="stock" 
+                                   value="<?= old('stock', '0') ?>" required>
+                            <?php if (session()->has('validation') && session()->get('validation')->hasError('stock')): ?>
+                                <div class="invalid-feedback">
+                                    <?= session()->get('validation')->getError('stock') ?>
+                                </div>
+                            <?php endif; ?>
                         </div>
 
                         <div class="mb-3">
                             <label for="garantia_meses" class="form-label">Garantía (meses)</label>
-                            <input type="number" class="form-control" id="garantia_meses" name="garantia_meses" value="<?= old('garantia_meses', '12') ?>">
+                            <input type="number" class="form-control <?= (session()->has('validation') && session()->get('validation')->hasError('garantia_meses')) ? 'is-invalid' : '' ?>" 
+                                   id="garantia_meses" name="garantia_meses" 
+                                   value="<?= old('garantia_meses', '12') ?>">
+                            <?php if (session()->has('validation') && session()->get('validation')->hasError('garantia_meses')): ?>
+                                <div class="invalid-feedback">
+                                    <?= session()->get('validation')->getError('garantia_meses') ?>
+                                </div>
+                            <?php endif; ?>
                         </div>
                     </div>
                 </div>
@@ -99,22 +166,21 @@
                     <div class="card-body">
                         <div class="mb-3">
                             <label for="categoria_id" class="form-label">Categoría</label>
-                            <select class="form-select" id="categoria_id" name="categoria_id">
+                            <select class="form-select <?= (session()->has('validation') && session()->get('validation')->hasError('categoria_id')) ? 'is-invalid' : '' ?>" 
+                                    id="categoria_id" name="categoria_id" required>
                                 <option value="">Seleccione una categoría</option>
-                                <option value="1" <?= old('categoria_id') == '1' ? 'selected' : '' ?>>Electrónicos</option>
-                                <option value="2" <?= old('categoria_id') == '2' ? 'selected' : '' ?>>Hogar</option>
-                                <option value="3" <?= old('categoria_id') == '3' ? 'selected' : '' ?>>Ropa</option>
-                                <option value="4" <?= old('categoria_id') == '4' ? 'selected' : '' ?>>Deportes</option>
-                                <option value="5" <?= old('categoria_id') == '5' ? 'selected' : '' ?>>Juguetes</option>
+                                <?php foreach ($categorias as $categoria): ?>
+                                    <option value="<?= $categoria['id_categoria'] ?>" 
+                                        <?= old('categoria_id') == $categoria['id_categoria'] ? 'selected' : '' ?>>
+                                        <?= $categoria['nombre'] ?>
+                                    </option>
+                                <?php endforeach; ?>
                             </select>
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="activo" class="form-label">Estado</label>
-                            <select class="form-select" id="activo" name="activo">
-                                <option value="1" <?= old('activo', '1') == '1' ? 'selected' : '' ?>>Activo</option>
-                                <option value="0" <?= old('activo') == '0' ? 'selected' : '' ?>>Inactivo</option>
-                            </select>
+                            <?php if (session()->has('validation') && session()->get('validation')->hasError('categoria_id')): ?>
+                                <div class="invalid-feedback">
+                                    <?= session()->get('validation')->getError('categoria_id') ?>
+                                </div>
+                            <?php endif; ?>
                         </div>
                     </div>
                 </div>
@@ -126,9 +192,15 @@
                             <img id="preview-img" src="#" alt="Vista previa" class="img-fluid mb-2">
                         </div>
                         <div class="mb-3">
-                            <label for="imagen" class="form-label">Nueva Imagen</label>
-                            <input type="file" class="form-control" id="imagen" name="imagen" accept="image/*">
+                            <label for="imagen" class="form-label">Imagen del Producto</label>
+                            <input type="file" class="form-control <?= (session()->has('validation') && session()->get('validation')->hasError('imagen')) ? 'is-invalid' : '' ?>" 
+                                   id="imagen" name="imagen" accept="image/*">
                             <small class="text-muted">Formatos: JPG, PNG, GIF. Máx. 2MB</small>
+                            <?php if (session()->has('validation') && session()->get('validation')->hasError('imagen')): ?>
+                                <div class="invalid-feedback">
+                                    <?= session()->get('validation')->getError('imagen') ?>
+                                </div>
+                            <?php endif; ?>
                         </div>
                     </div>
                 </div>
@@ -136,7 +208,7 @@
         </div>
 
         <div class="d-flex justify-content-between">
-            <a href="<?= base_url('productos') ?>" class="btn btn-secondary">Cancelar</a>
+            <a href="<?= base_url('admin/productos/listar') ?>" class="btn btn-secondary">Cancelar</a>
             <button type="submit" class="btn btn-dark">
                 <i class="bi bi-save"></i> Guardar Producto
             </button>

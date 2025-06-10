@@ -22,7 +22,7 @@ class Home extends BaseController
     public function contacto(): string
     {
         $data['titulo']='Contacto';
-        return view('header', $data).view('navbar').view('admin/productos/agregar').view('footer');
+        return view('header', $data).view('navbar').view('contacto').view('footer');
     }
     public function producto(): string
     {

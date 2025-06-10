@@ -12,4 +12,11 @@ class UsuarioModel extends Model
     protected $createdField = 'fecha_registro';
     protected $updatedField = ''; // No usamos campo de actualización
 
+    //borrar
+    public function getPersona($usuario_id)
+    {
+        $db = \Config\Database::connect();
+        $builder = $db->table('personas');
+        return $builder->where('usuario_id', $usuario_id)->get()->getRowArray();
+    }
 }

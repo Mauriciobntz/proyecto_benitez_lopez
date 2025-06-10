@@ -106,6 +106,7 @@ class Filters extends BaseFilters
      *
      * @var array<string, array<string, list<string>>>
      */
+
     // cambie esto
     public array $filters = [
         'auth' => [
@@ -117,11 +118,23 @@ class Filters extends BaseFilters
         ],
         'admin' => [
             'before' => [
-                'productos/agregar',
-                'productos/guardar',
-                'productos/editar/*',
-                'productos/actualizar/*',
-                'productos/eliminar/*'
+                'admin/productos/listar',
+                'admin/productos/crear',
+                'admin/productos/guardar',
+                'admin/productos/editar/*',
+                'admin/productos/actualizar/*',
+                //Categorías
+                'admin/categorias/listar',
+                'admin/categorias/crear',
+                'admin/categorias/guardar',
+                'admin/categorias/editar/*',
+                'admin/categorias/actualizar/*',
+                'admin/categorias/eliminar/*',
+                //Ventas
+                'admin/ventas/listar',
+                'admin/ventas/detalle/*',
+                'admin/ventas/actualizar-estado/*',
+                'admin/ventas/factura/*',
             ]
         ]
     ];

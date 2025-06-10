@@ -6,20 +6,11 @@
                 <div id="productGallery" class="carousel slide" data-bs-ride="carousel">
                     <div class="carousel-inner ratio ratio-1x1">
                         <div class="carousel-item active">
-                            <img src="https://metasportscspvmsdiag.blob.core.windows.net/azdiagextnresults/catalog/product/cache/9286ff1d9737d1c21559f7da6b69729b/vans/footwear/VN000CT8CHA-1.jpg" 
+                            <img src="<?= base_url($producto['imagen_url'] ?? 'assets/img/no-image.jpg') ?>" 
                                  class="d-block w-100 object-fit-contain" 
-                                 alt="Zapatilla Vans Old Skool - Vista frontal">
+                                 alt="<?= esc($producto['nombre']) ?>">
                         </div>
-                        <div class="carousel-item">
-                            <img src="https://metasportscspvmsdiag.blob.core.windows.net/azdiagextnresults/catalog/product/cache/9286ff1d9737d1c21559f7da6b69729b/vans/footwear/VN000CT8CHA-2.jpg" 
-                                 class="d-block w-100 object-fit-contain" 
-                                 alt="Zapatilla Vans Old Skool - Vista lateral">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="https://metasportscspvmsdiag.blob.core.windows.net/azdiagextnresults/catalog/product/cache/9286ff1d9737d1c21559f7da6b69729b/vans/footwear/VN000CT8CHA-3.jpg" 
-                                 class="d-block w-100 object-fit-contain" 
-                                 alt="Zapatilla Vans Old Skool - Vista superior">
-                        </div>
+                        <!-- Puedes agregar más imágenes del producto si están disponibles -->
                     </div>
                     <button class="carousel-control-prev" type="button" data-bs-target="#productGallery" data-bs-slide="prev">
                         <span class="carousel-control-prev-icon bg-dark rounded-circle p-3" aria-hidden="true"></span>
@@ -30,22 +21,6 @@
                         <span class="visually-hidden">Siguiente</span>
                     </button>
                 </div>
-                
-                <!-- Miniaturas -->
-                <div class="d-flex justify-content-center mt-3 gap-2">
-                    <img src="https://metasportscspvmsdiag.blob.core.windows.net/azdiagextnresults/catalog/product/cache/9286ff1d9737d1c21559f7da6b69729b/vans/footwear/VN000CT8CHA-1.jpg" 
-                         class="img-thumbnail cursor-pointer" style="width: 80px; height: 80px; object-fit: cover;" 
-                         onclick="document.getElementById('productGallery').carousel(0)" 
-                         alt="Miniatura 1">
-                    <img src="https://metasportscspvmsdiag.blob.core.windows.net/azdiagextnresults/catalog/product/cache/9286ff1d9737d1c21559f7da6b69729b/vans/footwear/VN000CT8CHA-2.jpg" 
-                         class="img-thumbnail cursor-pointer" style="width: 80px; height: 80px; object-fit: cover;" 
-                         onclick="document.getElementById('productGallery').carousel(1)" 
-                         alt="Miniatura 2">
-                    <img src="https://metasportscspvmsdiag.blob.core.windows.net/azdiagextnresults/catalog/product/cache/9286ff1d9737d1c21559f7da6b69729b/vans/footwear/VN000CT8CHA-3.jpg" 
-                         class="img-thumbnail cursor-pointer" style="width: 80px; height: 80px; object-fit: cover;" 
-                         onclick="document.getElementById('productGallery').carousel(2)" 
-                         alt="Miniatura 3">
-                </div>
             </div>
         </div>
 
@@ -55,92 +30,66 @@
                 <div class="card-body p-4">
                     <!-- Encabezado -->
                     <div class="border-bottom pb-3 mb-3">
-                        <h1 class="h3 fw-bold mb-2">Vans Old Skool™ Classic - Caña Baja</h1>
+                        <h1 class="h3 fw-bold mb-2"><?= esc($producto['nombre']) ?></h1>
                         <div class="d-flex align-items-center mb-2">
                             <div class="text-warning me-2">
-                                ★★★★★
+                                <?= str_repeat('★', round($promedio)) . str_repeat('☆', 5 - round($promedio)) ?>
                             </div>
-                            <small class="text-muted">(45 reseñas)</small>
+                            <small class="text-muted">(<?= $totalResenas ?> reseñas)</small>
                         </div>
                         <div class="d-flex align-items-baseline">
-                            <span class="text-success fw-bold fs-4">$1500.00</span>
-                            <small class="text-decoration-line-through text-muted ms-2">$2000</small>
-                            <span class="badge bg-danger ms-2">25% OFF</span>
+                            <span class="text-success fw-bold fs-4">$<?= number_format($producto['precio'], 2) ?></span>
+                        </div>
+                        <div class="mt-2">
+                            <span class="badge bg-info"><?= esc($categoria['nombre'] ?? 'Sin categoría') ?></span>
+                            <?php if ($producto['stock'] > 0): ?>
+                                <span class="badge bg-success ms-2">Disponible</span>
+                            <?php else: ?>
+                                <span class="badge bg-danger ms-2">Sin stock</span>
+                            <?php endif; ?>
                         </div>
                     </div>
 
-                    <!-- Opciones de pago -->
+                    <!-- Stock y marca -->
                     <div class="mb-4">
-                        <h6 class="fw-bold mb-2">Opciones de pago:</h6>
-                        <div class="d-flex flex-wrap gap-2 mb-2">
-                            <span class="badge bg-light text-dark border">12 cuotas sin interés</span>
-                            <span class="badge bg-light text-dark border">10% OFF efectivo</span>
-                            <span class="badge bg-light text-dark border">Transferencia</span>
-                        </div>
-                        <small class="text-muted">Ver métodos de pago</small>
-                    </div>
-
-                    <!-- Tallas -->
-                    <div class="mb-4">
-                        <h6 class="fw-bold mb-2">Tallas disponibles:</h6>
-                        <div class="d-flex flex-wrap gap-2">
-                            <button type="button" class="btn btn-outline-dark btn-sm rounded-pill">36</button>
-                            <button type="button" class="btn btn-outline-dark btn-sm rounded-pill">37</button>
-                            <button type="button" class="btn btn-outline-dark btn-sm rounded-pill active">38</button>
-                            <button type="button" class="btn btn-outline-dark btn-sm rounded-pill">39</button>
-                            <button type="button" class="btn btn-outline-dark btn-sm rounded-pill">40</button>
-                            <button type="button" class="btn btn-outline-dark btn-sm rounded-pill">41</button>
-                            <button type="button" class="btn btn-outline-dark btn-sm rounded-pill">42</button>
-                        </div>
-                        <small class="text-muted">Guía de tallas</small>
-                    </div>
-
-                    <!-- Colores -->
-                    <div class="mb-4">
-                        <h6 class="fw-bold mb-2">Colores disponibles:</h6>
-                        <div class="d-flex gap-2">
-                            <button type="button" class="btn btn-dark rounded-circle p-3 active"></button>
-                            <button type="button" class="btn btn-secondary rounded-circle p-3"></button>
-                            <button type="button" class="btn btn-danger rounded-circle p-3"></button>
-                            <button type="button" class="btn btn-primary rounded-circle p-3"></button>
-                        </div>
-                    </div>
-
-                    <!-- Envío -->
-                    <div class="mb-4">
-                        <h6 class="fw-bold mb-2">Envío:</h6>
-                        <div class="input-group mb-2">
-                            <input type="text" class="form-control" placeholder="Código postal" aria-label="Código postal">
-                            <button class="btn btn-outline-secondary" type="button">Calcular</button>
-                        </div>
-                        <div class="d-flex align-items-center text-success">
-                            <i class="bi bi-truck me-2"></i>
-                            <small>Envío gratis a todo el país</small>
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <h6 class="fw-bold mb-1">Marca:</h6>
+                                <p><?= esc($producto['marca'] ?? 'No especificada') ?></p>
+                            </div>
+                            <div>
+                                <h6 class="fw-bold mb-1">Stock:</h6>
+                                <p><?= $producto['stock'] ?> unidades</p>
+                            </div>
+                            <div>
+                                <h6 class="fw-bold mb-1">Modelo:</h6>
+                                <p><?= esc($producto['modelo'] ?? 'No especificado') ?></p>
+                            </div>
                         </div>
                     </div>
 
                     <!-- Botones de acción -->
                     <div class="d-grid gap-3">
-                        <button class="btn btn-dark rounded-pill py-2 fw-bold">COMPRAR AHORA</button>
-                        <button class="btn btn-outline-dark rounded-pill py-2">
-                            <i class="bi bi-cart-plus me-2"></i> AÑADIR AL CARRITO
-                        </button>
+                        <?php if ($producto['stock'] > 0): ?>
+                            <button class="btn btn-dark rounded-pill py-2 fw-bold">COMPRAR AHORA</button>
+                            <button class="btn btn-outline-dark rounded-pill py-2">
+                                <i class="bi bi-cart-plus me-2"></i> AÑADIR AL CARRITO
+                            </button>
+                        <?php else: ?>
+                            <button class="btn btn-secondary rounded-pill py-2 fw-bold" disabled>PRODUCTO AGOTADO</button>
+                        <?php endif; ?>
                     </div>
 
                     <!-- Garantías -->
                     <div class="mt-3 pt-3 border-top">
                         <div class="row text-center">
-                            <div class="col-4">
+                            <div class="col-6">
                                 <i class="bi bi-shield-check fs-5 text-primary"></i>
-                                <p class="mb-0 small">Garantía</p>
+                                <p class="mb-0 small">Garantía de <?= $producto['garantia_meses'] ?> meses</p>
                             </div>
-                            <div class="col-4">
-                                <i class="bi bi-arrow-left-right fs-5 text-primary"></i>
-                                <p class="mb-0 small">Devoluciones</p>
-                            </div>
-                            <div class="col-4">
+                            <div class="col-6">
                                 <i class="bi bi-headset fs-5 text-primary"></i>
-                                <p class="mb-0 small">Soporte 24/7</p>
+                                <p class="mb-0 small">Soporte técnico</p>
                             </div>
                         </div>
                     </div>
@@ -153,48 +102,84 @@
             <div class="card border-0 shadow-sm">
                 <div class="card-body p-4">
                     <h2 class="h4 fw-bold mb-3">Descripción del producto</h2>
-                    <p class="lead">Las icónicas <strong>Vans Old Skool™</strong> son el calzado definitivo para quienes buscan estilo y comodidad en su vida diaria. Con su diseño clásico y detalles modernos, estas zapatillas se han convertido en un referente de la cultura urbana.</p>
+                    <p class="lead"><?= esc($producto['descripcion']) ?></p>
                     
-                    <h3 class="h5 fw-bold mt-4">Características principales:</h3>
-                    <ul class="list-unstyled">
-                        <li class="mb-2"><i class="bi bi-check-circle-fill text-primary me-2"></i> <strong>Material premium:</strong> Combinación de gamuza resistente y lona duradera</li>
-                        <li class="mb-2"><i class="bi bi-check-circle-fill text-primary me-2"></i> <strong>Sidestripe™ icónico:</strong> El detalle lateral que las hace reconocibles al instante</li>
-                        <li class="mb-2"><i class="bi bi-check-circle-fill text-primary me-2"></i> <strong>Suela Waffle:</strong> Diseño exclusivo para máxima tracción y durabilidad</li>
-                        <li class="mb-2"><i class="bi bi-check-circle-fill text-primary me-2"></i> <strong>Plantilla UltraCush:</strong> Amortiguación mejorada para mayor comodidad</li>
-                        <li class="mb-2"><i class="bi bi-check-circle-fill text-primary me-2"></i> <strong>Cuello acolchado:</strong> Soporte y confort alrededor del tobillo</li>
-                    </ul>
+                    <?php if (!empty($especificaciones)): ?>
+                        <h3 class="h5 fw-bold mt-4">Especificaciones técnicas:</h3>
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <tbody>
+                                    <?php foreach ($especificaciones as $key => $value): ?>
+                                        <tr>
+                                            <th scope="row" class="w-25"><?= esc($key) ?></th>
+                                            <td><?= esc($value) ?></td>
+                                        </tr>
+                                    <?php endforeach; ?>
+                                    <?php if ($producto['peso_kg']): ?>
+                                        <tr>
+                                            <th scope="row">Peso</th>
+                                            <td><?= $producto['peso_kg'] ?> kg</td>
+                                        </tr>
+                                    <?php endif; ?>
+                                    <?php if ($producto['dimensiones']): ?>
+                                        <tr>
+                                            <th scope="row">Dimensiones</th>
+                                            <td><?= esc($producto['dimensiones']) ?></td>
+                                        </tr>
+                                    <?php endif; ?>
+                                </tbody>
+                            </table>
+                        </div>
+                    <?php endif; ?>
                     
-                    <h3 class="h5 fw-bold mt-4">Especificaciones técnicas:</h3>
-                    <div class="table-responsive">
-                        <table class="table table-bordered">
-                            <tbody>
-                                <tr>
-                                    <th scope="row" class="w-25">Material exterior</th>
-                                    <td>Gamuza y lona</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">Material interior</th>
-                                    <td>Textil</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">Suela</th>
-                                    <td>Goma Waffle</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">Tipo de cierre</th>
-                                    <td>Cordones</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">Origen</th>
-                                    <td>Vietnam</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                    <!-- Reseñas -->
+                    <h3 class="h5 fw-bold mt-4">Reseñas de clientes</h3>
+                    <?php if (!empty($resenas)): ?>
+                        <div class="row">
+                            <?php foreach ($resenas as $resena): ?>
+                                <div class="col-md-6 mb-3">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="d-flex justify-content-between mb-2">
+                                                <div class="text-warning">
+                                                    <?= str_repeat('★', $resena['calificacion']) . str_repeat('☆', 5 - $resena['calificacion']) ?>
+                                                </div>
+                                                <small class="text-muted"><?= date('d/m/Y', strtotime($resena['fecha'])) ?></small>
+                                            </div>
+                                            <p class="mb-0"><?= esc($resena['comentario']) ?></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php endforeach; ?>
+                        </div>
+                    <?php else: ?>
+                        <p class="text-muted">Aún no hay reseñas para este producto.</p>
+                    <?php endif; ?>
                     
-                    <div class="alert alert-info mt-4">
-                        <i class="bi bi-info-circle-fill me-2"></i> <strong>Nota:</strong> Las imágenes pueden variar ligeramente del producto real debido a la configuración de tu monitor. Recomendamos lavar a mano para mantener la calidad de los materiales.
-                    </div>
+                    <!-- Formulario de reseña -->
+                    <?php if (session()->get('id_usuario') && !$yaReseno): ?>
+                        <div class="mt-4 pt-3 border-top">
+                            <h4 class="h5 fw-bold mb-3">Deja tu reseña</h4>
+                            <form action="<?= base_url('productos/' . $producto['id_producto'] . '/resena') ?>" method="post">
+                                <div class="mb-3">
+                                    <label class="form-label">Calificación</label>
+                                    <select name="calificacion" class="form-select" required>
+                                        <option value="">Selecciona una calificación</option>
+                                        <option value="5">Excelente (5 estrellas)</option>
+                                        <option value="4">Muy bueno (4 estrellas)</option>
+                                        <option value="3">Bueno (3 estrellas)</option>
+                                        <option value="2">Regular (2 estrellas)</option>
+                                        <option value="1">Malo (1 estrella)</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Comentario (opcional)</label>
+                                    <textarea name="comentario" class="form-control" rows="3" maxlength="500"></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Enviar reseña</button>
+                            </form>
+                        </div>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>

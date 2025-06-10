@@ -17,4 +17,16 @@ class CategoriaModel extends Model
                    ->groupBy('categorias.id_categoria')
                    ->findAll();
     }
+
+    public function getCategoriasParaSelect()
+    {
+        $categorias = $this->orderBy('nombre', 'ASC')->findAll();
+        $options = ['' => 'Seleccione una categoría'];
+        
+        foreach ($categorias as $categoria) {
+            $options[$categoria['id_categoria']] = $categoria['nombre'];
+        }
+        
+        return $options;
+    }
 }

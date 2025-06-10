@@ -35,19 +35,19 @@
         </li>
         
         <li class="nav-item">
-          <a class="nav-link text-white" href="<?= base_url('productos/crear') ?>">
+          <a class="nav-link text-white" href="<?= base_url('admin/productos/listar') ?>">
             <i class="bi bi-box me-1"></i> Productos
           </a>
         </li>
         
         <li class="nav-item">
-          <a class="nav-link text-white" href="<?= base_url('') ?>">
+          <a class="nav-link text-white" href="<?= base_url('admin/categorias/listar') ?>">
             <i class="bi bi-card-list me-1"></i> Categorías
           </a>
         </li>
         
         <li class="nav-item">
-          <a class="nav-link text-white" href="<?= base_url('admin/ventas') ?>">
+          <a class="nav-link text-white" href="<?= base_url('admin/ventas/listar') ?>">
             <i class="bi bi-bag-check me-1"></i> Ventas
           </a>
         </li>
