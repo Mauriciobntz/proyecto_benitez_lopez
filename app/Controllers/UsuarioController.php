@@ -329,38 +329,5 @@ public function actualizarUsuario($usuario_id)
         return view('header', $data) . view('navbar') . view('usuario/perfil') . view('footer');
     }
 
-    // Actualizar perfil del usuario actual
- 
 
-public function eliminarUsuario($usuario_id)
-{
-    if (session()->get('rol') !== 'admin') {
-        return $this->response->setJSON(['success' => false, 'message' => 'No tienes permisos para esta acción']);
-    }
-
-    if ($this->request->isAJAX()) {
-        $db = \Config\Database::connect();
-        $db->transStart();
-
-        try {
-            // Eliminar persona asociada
-            $db->table('personas')->where('usuario_id', $usuario_id)->delete();
-            
-            // Eliminar usuario
-            $this->usuarioModel->delete($usuario_id);
-            
-            $db->transComplete();
-
-            if ($db->transStatus() === false) {
-                return $this->response->setJSON(['success' => false, 'message' => 'Error al eliminar el usuario']);
-            }
-
-            return $this->response->setJSON(['success' => true, 'message' => 'Usuario eliminado correctamente']);
-        } catch (\Exception $e) {
-            return $this->response->setJSON(['success' => false, 'message' => 'Error: ' . $e->getMessage()]);
-        }
-    }
-
-    return $this->response->setJSON(['success' => false, 'message' => 'Método no permitido']);
-}
 }

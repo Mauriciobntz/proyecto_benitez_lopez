@@ -77,7 +77,6 @@ $routes->group('admin', ['filter' => 'admin'], function($routes) {
     $routes->get('usuarios/listar', [UsuarioController::class, 'listarUsuarios']);
     $routes->get('usuarios/editar/(:num)', [UsuarioController::class, 'editarUsuario']);
     $routes->post('usuarios/actualizar/(:num)', [UsuarioController::class, 'actualizarUsuario']);
-    $routes->get('usuarios/eliminar/(:num)', [UsuarioController::class, 'eliminarUsuario']);
     $routes->get('usuarios/agregar', [UsuarioController::class, 'agregarUsuario']);
     $routes->post('usuarios/guardar', [UsuarioController::class, 'guardarUsuario']);
     $routes->get('usuarios/perfil/(:num)', [UsuarioController::class, 'perfilUsuario']);

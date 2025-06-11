@@ -67,7 +67,7 @@
                 </div>
             </div>
 
-            <form id="status-form">
+            <form id="status-form" action="<?= base_url('admin/consultas/actualizar-estado/'. $consulta['id_consulta']) ?>" method="post">
                 <?= csrf_field() ?>
                 <div class="row">
                     <div class="col-md-8">
@@ -87,7 +87,7 @@
     </div>
 
     <div class="d-flex justify-content-end">
-        <a href="<?= base_url('admin/consultas') ?>" class="btn btn-secondary">Volver al listado</a>
+        <a href="<?= base_url('admin/consultas/listar') ?>" class="btn btn-secondary">Volver al listado</a>
     </div>
 </div>
 
@@ -105,18 +105,21 @@ document.addEventListener('DOMContentLoaded', function() {
             method: 'POST',
             headers: {
                 'X-Requested-With': 'XMLHttpRequest',
-                'Content-Type': 'application/json',
+                'Content-Type': 'application/x-www-form-urlencoded',
                 'X-CSRF-TOKEN': '<?= csrf_hash() ?>'
             },
-            body: JSON.stringify({
-                estado: document.getElementById('estado-consulta').value
-            })
+            body: new URLSearchParams(formData)
         })
-        .then(response => response.json())
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
         .then(data => {
             if (data.success) {
                 // Actualizar el badge de estado
-                const badge = document.querySelector('.card-header + .card-body .badge');
+                const badge = document.querySelector('.d-flex.justify-content-between.align-items-center.mb-4 .badge');
                 badge.className = 'badge ' + data.badge_class;
                 badge.textContent = data.estado;
                 

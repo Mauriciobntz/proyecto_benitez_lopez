@@ -90,4 +90,11 @@ class ProductoModel extends Model
         }
         return false;
     }
+
+    public function incrementarStock($producto_id, $cantidad)
+    {
+        return $this->where('id_producto', $producto_id)
+                    ->set('stock', 'stock + ' . (int)$cantidad, false)
+                    ->update();
+    }
 }

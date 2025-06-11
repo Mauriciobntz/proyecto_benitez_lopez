@@ -71,13 +71,10 @@
                                 </td>
                                 <td><?= date('d/m/Y', strtotime($usuario['fecha_registro'])) ?></td>
                                 <td>
-                                    <div class="btn-group btn-group-sm">
+                                    <div class="btn-group btn-group-sm px-3">
                                         <a href="<?= base_url('admin/usuarios/editar/' . $usuario['id_usuario']) ?>" class="btn btn-outline-primary">
                                             <i class="bi bi-pencil"></i>
                                         </a>
-                                        <button class="btn btn-outline-danger delete-user" data-id="<?= $usuario['id_usuario'] ?>">
-                                            <i class="bi bi-trash"></i>
-                                        </button>
                                     </div>
                                 </td>
                             </tr>
@@ -104,36 +101,6 @@ document.addEventListener('DOMContentLoaded', function() {
         if (dateFrom) params.set('desde', dateFrom);
         
         window.location.href = '<?= base_url('admin/usuarios/listar') ?>?' + params.toString();
-    });
-
-    // Eliminar usuario
-    document.querySelectorAll('.delete-user').forEach(btn => {
-        btn.addEventListener('click', function() {
-            const userId = this.getAttribute('data-id');
-            
-            if (confirm('¿Estás seguro de eliminar este usuario? Esta acción no se puede deshacer.')) {
-                fetch(`<?= base_url('admin/usuarios/eliminar/') ?>${userId}`, {
-                    method: 'POST',
-                    headers: {
-                        'X-Requested-With': 'XMLHttpRequest',
-                        'Content-Type': 'application/json',
-                        'X-CSRF-TOKEN': '<?= csrf_hash() ?>'
-                    }
-                })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.success) {
-                        window.location.reload();
-                    } else {
-                        alert(data.message || 'Error al eliminar el usuario');
-                    }
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    alert('Error al conectar con el servidor');
-                });
-            }
-        });
     });
 });
 </script>

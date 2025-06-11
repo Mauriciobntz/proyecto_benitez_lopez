@@ -158,7 +158,7 @@ class VentaController extends BaseController
             }
         }
 
-        return redirect()->back()->with('message', 'Estado actualizado correctamente');
+        return redirect()->to('admin/ventas/listar')->with('message', 'Estado actualizado correctamente');
     }
 
     public function generarFactura($venta_id)

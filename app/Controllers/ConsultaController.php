@@ -65,34 +65,39 @@ class ConsultaController extends BaseController
         return view('header', $data) . view('navbar') . view('admin/consultas/detalle', $data) . view('footer');
     }
 
-    // Actualizar estado de consulta (AJAX)
+    // Actualizar estado de consulta (versión simplificada)
     public function actualizarEstado($id_consulta)
     {
         if (session()->get('rol') !== 'admin') {
-            return $this->failForbidden('No tienes permisos para esta acción');
+            return redirect()->to('denegado')->with('error', 'No tienes permisos para realizar esta acción');
         }
 
-        $validation = \Config\Services::validation();
-        $validation->setRules([
-            'estado' => 'required|in_list[Sin Leer,Leida,En proceso,Resuelta]'
+        $consulta = $this->consultaModel->find($id_consulta);
+        if (!$consulta) {
+            return redirect()->to('admin/consultas/listar')->with('error', 'Consulta no encontrada');
+        }
+
+        $nuevoEstado = $this->request->getPost('estado');
+        if (!$nuevoEstado) {
+            return redirect()->back()->with('error', 'Debes seleccionar un estado válido');
+        }
+
+        // Actualizar estado de la consulta
+        $this->consultaModel->update($id_consulta, [
+            'estado' => $nuevoEstado,
+            'fecha_actualizacion' => date('Y-m-d H:i:s')
         ]);
 
-        if (!$validation->withRequest($this->request)->run()) {
-            return $this->failValidationErrors($validation->getErrors());
-        }
-
-        $estado = $this->request->getPost('estado');
-
-        if ($this->consultaModel->actualizarEstado($id_consulta, $estado)) {
+        if ($this->request->isAJAX()) {
             return $this->respond([
                 'success' => true, 
                 'message' => 'Estado actualizado correctamente',
-                'estado' => $estado,
-                'badge_class' => $this->getBadgeClass($estado)
+                'estado' => $nuevoEstado,
+                'badge_class' => $this->getBadgeClass($nuevoEstado)
             ]);
         }
 
-        return $this->fail('Error al actualizar el estado');
+        return redirect()->back()->with('message', 'Estado actualizado correctamente');
     }
 
     protected function getBadgeClass($estado)
