@@ -40,7 +40,7 @@ public function detalle($producto_id)
     }
 
     $categoria = $this->categoriaModel->find($producto['categoria_id']);
-    $resenas = $this->resenaModel->getResenasProducto($producto_id);
+    $resenas = $this->resenaModel->getResenasByProducto($producto_id);
     $promedio = $this->resenaModel->getPromedioCalificacion($producto_id);
 
     // Procesar especificaciones si existen
