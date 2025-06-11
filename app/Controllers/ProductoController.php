@@ -394,17 +394,35 @@ public function detalle($producto_id)
 
     public function buscar()
     {
-        $termino = $this->request->getGet('question');
-        $productos = $this->productoModel->buscarProductos($termino);
-        
+        $termino = $this->request->getGet('q');
+
+        if ($termino === null || trim($termino) === '') {
+            return redirect()->to(base_url('productos'))->with('error', 'Por favor ingresá un término de búsqueda.');
+        }
+
+        $filtros = [
+            'orden' => $this->request->getGet('orden'),
+            'categoria_id' => $this->request->getGet('categoria'),
+            'stock_disponible' => $this->request->getGet('stock'),
+            'precio_min' => $this->request->getGet('precio_min'),
+            'precio_max' => $this->request->getGet('precio_max')
+        ];
+
+        $productos = $this->productoModel->buscarProductos($termino, $filtros);
+
         $data = [
             'titulo' => 'Resultados de búsqueda: ' . $termino,
             'productos' => $productos,
-            'termino' => $termino
+            'termino' => $termino,
+            'categorias' => $this->categoriaModel->findAll()
         ];
 
-        return view('header', $data) . view('navbar') . view('busqueda') . view('footer');
+        return view('header', $data)
+            . view('navbar')
+            . view('busqueda')
+            . view('footer');
     }
+
 
     public function agregarResena($producto_id)
     {

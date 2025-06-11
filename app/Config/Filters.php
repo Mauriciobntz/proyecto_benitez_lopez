@@ -135,6 +135,12 @@ class Filters extends BaseFilters
                 'admin/ventas/detalle/*',
                 'admin/ventas/actualizar-estado/*',
                 'admin/ventas/factura/*',
+                //Consultas
+                'admin/consultas/listar',
+                'admin/consultas/detalle/*',
+                //Usuarios
+                'admin/usuarios/listar',
+                'admin/usuarios/editar/*',
             ]
         ]
     ];

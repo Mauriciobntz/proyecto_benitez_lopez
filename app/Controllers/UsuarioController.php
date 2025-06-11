@@ -4,6 +4,8 @@ namespace App\Controllers;
 
 use App\Models\UsuarioModel;
 use CodeIgniter\Config\Services;
+use App\Controllers\BaseController;
+use App\Models\ConsultaModel;
 
 class UsuarioController extends BaseController
 {
@@ -48,6 +50,11 @@ class UsuarioController extends BaseController
         $password = $request->getPost('password');
 
         $usuario = $this->usuarioModel->where('email', $email)->first();
+
+        $consultaModel = new \App\Models\ConsultaModel();
+        $consultas_sin_leer = $consultaModel->contarSinLeer();
+        $session->set('consultas_sin_leer', $consultas_sin_leer);
+
         
         if ($usuario && password_verify($password, $usuario['password_hash'])) {
             $data = [

@@ -1,0 +1,140 @@
+<div class="container-fluid mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>Gestión de Usuarios</h2>
+        <div>
+            <a href="<?= base_url('admin/usuarios/agregar') ?>" class="btn btn-primary">
+                <i class="bi bi-plus-circle"></i> Nuevo Usuario
+            </a>
+        </div>
+    </div>
+
+    <?php if (session()->has('message')): ?>
+        <div class="alert alert-success">
+            <?= session('message') ?>
+        </div>
+    <?php endif; ?>
+
+    <?php if (session()->has('error')): ?>
+        <div class="alert alert-danger">
+            <?= session('error') ?>
+        </div>
+    <?php endif; ?>
+
+    <div class="card mb-4">
+        <div class="card-header">
+            <div class="row">
+                <div class="col-md-4">
+                    <input type="text" class="form-control" id="search-term" placeholder="Buscar por nombre, email..." value="<?= service('request')->getGet('q') ?>">
+                </div>
+                <div class="col-md-3">
+                    <select class="form-select" id="filter-role">
+                        <option value="">Todos los roles</option>
+                        <option value="admin" <?= service('request')->getGet('rol') == 'admin' ? 'selected' : '' ?>>Administrador</option>
+                        <option value="cliente" <?= service('request')->getGet('rol') == 'cliente' ? 'selected' : '' ?>>Cliente</option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <input type="date" class="form-control" id="filter-date-from" value="<?= service('request')->getGet('desde') ?>">
+                </div>
+                <div class="col-md-2">
+                    <button class="btn btn-outline-secondary w-100" id="apply-filters">Filtrar</button>
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Email</th>
+                            <th>Usuario</th>
+                            <th>Rol</th>
+                            <th>Registro</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($usuarios as $usuario): ?>
+                            <tr>
+                                <td><?= $usuario['id_usuario'] ?></td>
+                                <td>
+                                    <?= $usuario['nombre'] ?? 'N/A' ?> <?= $usuario['apellido'] ?? '' ?>
+                                </td>
+                                <td><?= $usuario['email'] ?></td>
+                                <td><?= $usuario['username'] ?? 'N/A' ?></td>
+                                <td>
+                                    <span class="badge <?= $usuario['rol'] == 'admin' ? 'bg-primary' : 'bg-secondary' ?>">
+                                        <?= ucfirst($usuario['rol']) ?>
+                                    </span>
+                                </td>
+                                <td><?= date('d/m/Y', strtotime($usuario['fecha_registro'])) ?></td>
+                                <td>
+                                    <div class="btn-group btn-group-sm">
+                                        <a href="<?= base_url('admin/usuarios/editar/' . $usuario['id_usuario']) ?>" class="btn btn-outline-primary">
+                                            <i class="bi bi-pencil"></i>
+                                        </a>
+                                        <button class="btn btn-outline-danger delete-user" data-id="<?= $usuario['id_usuario'] ?>">
+                                            <i class="bi bi-trash"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+                <?= $pager->links() ?>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Aplicar filtros
+    document.getElementById('apply-filters').addEventListener('click', function() {
+        const params = new URLSearchParams();
+        
+        const term = document.getElementById('search-term').value;
+        const role = document.getElementById('filter-role').value;
+        const dateFrom = document.getElementById('filter-date-from').value;
+        
+        if (term) params.set('q', term);
+        if (role) params.set('rol', role);
+        if (dateFrom) params.set('desde', dateFrom);
+        
+        window.location.href = '<?= base_url('admin/usuarios') ?>?' + params.toString();
+    });
+
+    // Eliminar usuario
+    document.querySelectorAll('.delete-user').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const userId = this.getAttribute('data-id');
+            
+            if (confirm('¿Estás seguro de eliminar este usuario? Esta acción no se puede deshacer.')) {
+                fetch(`<?= base_url('admin/usuarios/eliminar/') ?>${userId}`, {
+                    method: 'POST',
+                    headers: {
+                        'X-Requested-With': 'XMLHttpRequest',
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': '<?= csrf_hash() ?>'
+                    }
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        window.location.reload();
+                    } else {
+                        alert(data.message || 'Error al eliminar el usuario');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Error al conectar con el servidor');
+                });
+            }
+        });
+    });
+});
+</script>

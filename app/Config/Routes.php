@@ -6,6 +6,7 @@ use App\Controllers\Home;
 use App\Controllers\UsuarioController;
 use App\Controllers\CategoriaController;
 use App\Controllers\VentaController;
+use App\Controllers\ConsultaController;
 
 /**
  * @var RouteCollection $routes
@@ -15,9 +16,7 @@ $routes->get('/', 'Home::index');
 // Rutas públicas
 $routes->get('principal', 'Home::index');
 $routes->get('somos', 'Home::somos');
-$routes->get('contacto', 'Home::contacto');
 $routes->get('comercializacion', 'Home::comercializacion');
-$routes->get('consultas', 'Home::consultas');
 $routes->get('terminos', 'Home::terminos');
 //borrar
 $routes->get('panel', 'Home::panel');
@@ -42,6 +41,9 @@ $routes->get('productos/destacados', [ProductoController::class, 'listarDestacad
 $routes->get('productos/categoria/(:num)', [ProductoController::class, 'productosPorCategoria']);
 $routes->get('productos/buscar', [ProductoController::class, 'buscar']);
 $routes->get('productos/(:num)', [ProductoController::class, 'detalle']);
+// revisar
+$routes->get('contacto', 'ConsultaController::formularioContacto');
+$routes->post('contacto/procesar', 'ConsultaController::procesarConsulta');
 
 // Rutas protegidas (requieren autenticación)
 $routes->post('productos/(:num)/resena', [ProductoController::class, 'agregarResena'], ['filter' => 'auth']);
@@ -69,5 +71,22 @@ $routes->group('admin', ['filter' => 'admin'], function($routes) {
     $routes->get('ventas/detalle/(:num)', [VentaController::class, 'detalle']);
     $routes->post('ventas/actualizar-estado/(:num)', [VentaController::class, 'actualizarEstado']);
     $routes->get('ventas/factura/(:num)', [VentaController::class, 'generarFactura']);
+
+    // Usuarios
+    $routes->get('usuarios', [UsuarioController::class, 'listarUsuarios']);
+    $routes->get('usuarios/editar/(:num)', [UsuarioController::class, 'editarUsuario']);
+
+    // Consultas
+    $routes->get('consultas/listar', [ConsultaController::class, 'listarConsultas']);
+    $routes->get('consultas/detalle/(:num)', [ConsultaController::class, 'detalleConsulta']);
+    $routes->post('consultas/actualizar-estado/(:num)', [ConsultaController::class, 'actualizarEstado']);
+});
+
+
+
+
+$routes->group('usuario', ['filter' => 'auth'], function($routes) {
+    $routes->get('mi-perfil', [UsuarioController::class, 'miPerfil']);
+    $routes->post('actualizar-perfil', [UsuarioController::class, 'actualizarPerfil']);
 });
 

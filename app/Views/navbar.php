@@ -98,10 +98,10 @@
       </button>
 
       <div class="collapse navbar-collapse justify-content-end" id="navbarSearch">
-        <form class="d-flex" role="search">
-          <input class="form-control me-2 rounded-pill" type="search" placeholder="Buscar">
-          <button class="btn btn-light me-2 rounded-pill" type="submit">Buscar</button>
-        </form>
+          <form class="d-flex" role="search" action="<?= base_url('productos/buscar') ?>" method="get">
+            <input class="form-control me-2 rounded-pill" type="search" name="q" placeholder="Buscar">
+            <button class="btn btn-light me-2 rounded-pill" type="submit">Buscar</button>
+          </form>
       </div>
     <?php endif; ?>
 
@@ -113,11 +113,18 @@
           <i class="fas fa-shopping-cart"></i>
         </button>
       <?php else: ?>
-        <!-- Notificaciones solo para admin -->
-        <a class="btn btn-light rounded-pill position-relative me-2" href="<?= base_url('admin/consultas') ?>">
-          <i class="bi bi-bell"></i>
-          <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">3</span>
-        </a>
+          <!-- Notificaciones solo para admin -->
+
+          <?php $consultas_sin_leer = session()->get('consultas_sin_leer') ?? 0; ?>
+
+          <a class="btn btn-light rounded-pill position-relative me-2" href="<?= base_url('admin/consultas/listar') ?>">
+            <i class="bi bi-bell"></i>
+            <?php if ($consultas_sin_leer > 0): ?>
+              <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                <?= $consultas_sin_leer ?>
+              </span>
+            <?php endif; ?>
+          </a>
       <?php endif; ?>
       
       <?php if (session('logged_in')): ?>

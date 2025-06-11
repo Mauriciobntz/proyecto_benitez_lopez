@@ -29,13 +29,56 @@ class ProductoModel extends Model
         return $this->where(['categoria_id' => $categoria_id, 'activo' => 1])->findAll();
     }
 
-    public function buscarProductos($termino)
+    public function buscarProductos($termino, $filtros = [])
     {
-        return $this->like('nombre', $termino)
-                   ->orLike('descripcion', $termino)
-                   ->orLike('marca', $termino)
-                   ->where('activo', 1)
-                   ->findAll();
+        $builder = $this->where('activo', 1);
+        
+        // Búsqueda en múltiples campos
+        $builder->groupStart()
+                ->like('nombre', $termino)
+                ->orLike('descripcion', $termino)
+                ->orLike('marca', $termino)
+                ->orLike('modelo', $termino)
+                ->orLike('especificaciones', $termino)
+                ->groupEnd();
+        
+        // Aplicar filtros
+        if (!empty($filtros['categoria_id'])) {
+            $builder->where('categoria_id', $filtros['categoria_id']);
+        }
+        
+        if (!empty($filtros['stock_disponible'])) {
+            $builder->where('stock >', 0);
+        }
+        
+        if (!empty($filtros['precio_min'])) {
+            $builder->where('precio >=', $filtros['precio_min']);
+        }
+        
+        if (!empty($filtros['precio_max'])) {
+            $builder->where('precio <=', $filtros['precio_max']);
+        }
+        
+        // Ordenación
+        $orden = 'fecha_alta DESC'; // Orden por defecto (más relevantes)
+        if (!empty($filtros['orden'])) {
+            switch($filtros['orden']) {
+                case 'menor_precio':
+                    $orden = 'precio ASC';
+                    break;
+                case 'mayor_precio':
+                    $orden = 'precio DESC';
+                    break;
+                case 'a_z':
+                    $orden = 'nombre ASC';
+                    break;
+                case 'z_a':
+                    $orden = 'nombre DESC';
+                    break;
+            }
+        }
+        
+        return $builder->orderBy($orden)->findAll();
     }
 
     public function actualizarStock($producto_id, $cantidad)

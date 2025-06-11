@@ -3446,3 +3446,1566 @@ in APPPATH\Views\admin\ventas\listar.php on line 67.
  9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
 10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
 11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2025-06-10 14:12:44 --> mysqli_sql_exception: Table 'bd_benitez_lopez.reseñas' doesn't exist in C:\xampp\htdocs\proyecto_benitez_lopez\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp\htdocs\proyecto_benitez_lopez\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\xampp\htdocs\proyecto_benitez_lopez\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\xampp\htdocs\proyecto_benitez_lopez\system\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\xampp\htdocs\proyecto_benitez_lopez\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\proyecto_benitez_lopez\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\proyecto_benitez_lopez\system\BaseModel.php(675): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\xampp\htdocs\proyecto_benitez_lopez\app\Models\ResenaModel.php(19): CodeIgniter\BaseModel->findAll()
+#7 C:\xampp\htdocs\proyecto_benitez_lopez\app\Controllers\ProductoController.php(43): App\Models\ResenaModel->getResenasProducto('3')
+#8 C:\xampp\htdocs\proyecto_benitez_lopez\system\CodeIgniter.php(933): App\Controllers\ProductoController->detalle('3')
+#9 C:\xampp\htdocs\proyecto_benitez_lopez\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductoController))
+#10 C:\xampp\htdocs\proyecto_benitez_lopez\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\xampp\htdocs\proyecto_benitez_lopez\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#12 C:\xampp\htdocs\proyecto_benitez_lopez\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#13 C:\xampp\htdocs\proyecto_benitez_lopez\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#14 {main}
+CRITICAL - 2025-06-10 14:12:44 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'bd_benitez_lopez.reseñas' doesn't exist
+[Method: GET, Route: productos/3]
+in SYSTEMPATH\Database\BaseConnection.php on line 692.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `reseñas`
+WHERE `producto_id` = :producto_id:
+ORDER BY `fecha` DESC', [...], false)
+ 2 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(675): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Models\ResenaModel.php(19): CodeIgniter\BaseModel->findAll()
+ 5 APPPATH\Controllers\ProductoController.php(43): App\Models\ResenaModel->getResenasProducto('3')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ProductoController->detalle('3')
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductoController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-10 14:12:44 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'bd_benitez_lopez.reseñas' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `reseñas`
+WHERE `producto_id` = \'3\'
+ORDER BY `fecha` DESC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `reseñas`
+WHERE `producto_id` = \'3\'
+ORDER BY `fecha` DESC')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `reseñas`
+WHERE `producto_id` = :producto_id:
+ORDER BY `fecha` DESC', [...], false)
+ 4 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(675): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Models\ResenaModel.php(19): CodeIgniter\BaseModel->findAll()
+ 7 APPPATH\Controllers\ProductoController.php(43): App\Models\ResenaModel->getResenasProducto('3')
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ProductoController->detalle('3')
+ 9 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductoController))
+10 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-10 14:12:44 --> [Caused by] mysqli_sql_exception: Table 'bd_benitez_lopez.reseñas' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('SELECT *
+FROM `reseñas`
+WHERE `producto_id` = \'3\'
+ORDER BY `fecha` DESC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `reseñas`
+WHERE `producto_id` = \'3\'
+ORDER BY `fecha` DESC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `reseñas`
+WHERE `producto_id` = \'3\'
+ORDER BY `fecha` DESC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `reseñas`
+WHERE `producto_id` = :producto_id:
+ORDER BY `fecha` DESC', [...], false)
+ 5 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(675): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Models\ResenaModel.php(19): CodeIgniter\BaseModel->findAll()
+ 8 APPPATH\Controllers\ProductoController.php(43): App\Models\ResenaModel->getResenasProducto('3')
+ 9 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ProductoController->detalle('3')
+10 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductoController))
+11 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2025-06-10 14:15:29 --> mysqli_sql_exception: Table 'bd_benitez_lopez.reseñas' doesn't exist in C:\xampp\htdocs\proyecto_benitez_lopez\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp\htdocs\proyecto_benitez_lopez\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\xampp\htdocs\proyecto_benitez_lopez\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\xampp\htdocs\proyecto_benitez_lopez\system\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\xampp\htdocs\proyecto_benitez_lopez\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\proyecto_benitez_lopez\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\proyecto_benitez_lopez\system\BaseModel.php(675): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\xampp\htdocs\proyecto_benitez_lopez\app\Models\ResenaModel.php(19): CodeIgniter\BaseModel->findAll()
+#7 C:\xampp\htdocs\proyecto_benitez_lopez\app\Controllers\ProductoController.php(43): App\Models\ResenaModel->getResenasProducto('2')
+#8 C:\xampp\htdocs\proyecto_benitez_lopez\system\CodeIgniter.php(933): App\Controllers\ProductoController->detalle('2')
+#9 C:\xampp\htdocs\proyecto_benitez_lopez\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductoController))
+#10 C:\xampp\htdocs\proyecto_benitez_lopez\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\xampp\htdocs\proyecto_benitez_lopez\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#12 C:\xampp\htdocs\proyecto_benitez_lopez\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#13 C:\xampp\htdocs\proyecto_benitez_lopez\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#14 {main}
+CRITICAL - 2025-06-10 14:15:29 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'bd_benitez_lopez.reseñas' doesn't exist
+[Method: GET, Route: productos/2]
+in SYSTEMPATH\Database\BaseConnection.php on line 692.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `reseñas`
+WHERE `producto_id` = :producto_id:
+ORDER BY `fecha` DESC', [...], false)
+ 2 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(675): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Models\ResenaModel.php(19): CodeIgniter\BaseModel->findAll()
+ 5 APPPATH\Controllers\ProductoController.php(43): App\Models\ResenaModel->getResenasProducto('2')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ProductoController->detalle('2')
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductoController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-10 14:15:29 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'bd_benitez_lopez.reseñas' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `reseñas`
+WHERE `producto_id` = \'2\'
+ORDER BY `fecha` DESC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `reseñas`
+WHERE `producto_id` = \'2\'
+ORDER BY `fecha` DESC')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `reseñas`
+WHERE `producto_id` = :producto_id:
+ORDER BY `fecha` DESC', [...], false)
+ 4 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(675): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Models\ResenaModel.php(19): CodeIgniter\BaseModel->findAll()
+ 7 APPPATH\Controllers\ProductoController.php(43): App\Models\ResenaModel->getResenasProducto('2')
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ProductoController->detalle('2')
+ 9 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductoController))
+10 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-10 14:15:29 --> [Caused by] mysqli_sql_exception: Table 'bd_benitez_lopez.reseñas' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('SELECT *
+FROM `reseñas`
+WHERE `producto_id` = \'2\'
+ORDER BY `fecha` DESC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `reseñas`
+WHERE `producto_id` = \'2\'
+ORDER BY `fecha` DESC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `reseñas`
+WHERE `producto_id` = \'2\'
+ORDER BY `fecha` DESC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `reseñas`
+WHERE `producto_id` = :producto_id:
+ORDER BY `fecha` DESC', [...], false)
+ 5 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(675): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Models\ResenaModel.php(19): CodeIgniter\BaseModel->findAll()
+ 8 APPPATH\Controllers\ProductoController.php(43): App\Models\ResenaModel->getResenasProducto('2')
+ 9 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ProductoController->detalle('2')
+10 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductoController))
+11 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-10 15:50:15 --> ErrorException: Undefined variable $producto
+[Method: GET, Route: admin/ventas/detalle/4]
+in APPPATH\Views\admin\ventas\detalle_venta.php on line 35.
+ 1 APPPATH\Views\admin\ventas\detalle_venta.php(35): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $producto', 'C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Views\\admin\\ventas\\detalle_venta.php', 35)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Views\\admin\\ventas\\detalle_venta.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('admin/ventas/detalle_venta', [], true)
+ 5 APPPATH\Controllers\VentaController.php(121): view('admin/ventas/detalle_venta', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\VentaController->detalle('4')
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VentaController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-10 15:50:15 --> ErrorException: Undefined variable $producto
+[Method: GET, Route: admin/ventas/detalle/4]
+in APPPATH\Views\admin\ventas\detalle_venta.php on line 35.
+ 1 APPPATH\Views\admin\ventas\detalle_venta.php(35): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $producto', 'C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Views\\admin\\ventas\\detalle_venta.php', 35)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Views\\admin\\ventas\\detalle_venta.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('admin/ventas/detalle_venta', [], true)
+ 5 APPPATH\Controllers\VentaController.php(121): view('admin/ventas/detalle_venta', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\VentaController->detalle('4')
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VentaController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2025-06-10 19:53:33 --> mysqli_sql_exception: Table 'bd_benitez_lopez.reseñas' doesn't exist in C:\xampp\htdocs\proyecto_benitez_lopez\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp\htdocs\proyecto_benitez_lopez\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\xampp\htdocs\proyecto_benitez_lopez\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\xampp\htdocs\proyecto_benitez_lopez\system\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\xampp\htdocs\proyecto_benitez_lopez\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\proyecto_benitez_lopez\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\proyecto_benitez_lopez\system\BaseModel.php(675): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\xampp\htdocs\proyecto_benitez_lopez\app\Models\ResenaModel.php(19): CodeIgniter\BaseModel->findAll()
+#7 C:\xampp\htdocs\proyecto_benitez_lopez\app\Controllers\ProductoController.php(43): App\Models\ResenaModel->getResenasProducto('12')
+#8 C:\xampp\htdocs\proyecto_benitez_lopez\system\CodeIgniter.php(933): App\Controllers\ProductoController->detalle('12')
+#9 C:\xampp\htdocs\proyecto_benitez_lopez\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductoController))
+#10 C:\xampp\htdocs\proyecto_benitez_lopez\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\xampp\htdocs\proyecto_benitez_lopez\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#12 C:\xampp\htdocs\proyecto_benitez_lopez\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#13 C:\xampp\htdocs\proyecto_benitez_lopez\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#14 {main}
+CRITICAL - 2025-06-10 19:53:33 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'bd_benitez_lopez.reseñas' doesn't exist
+[Method: GET, Route: productos/12]
+in SYSTEMPATH\Database\BaseConnection.php on line 692.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `reseñas`
+WHERE `producto_id` = :producto_id:
+ORDER BY `fecha` DESC', [...], false)
+ 2 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(675): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Models\ResenaModel.php(19): CodeIgniter\BaseModel->findAll()
+ 5 APPPATH\Controllers\ProductoController.php(43): App\Models\ResenaModel->getResenasProducto('12')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ProductoController->detalle('12')
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductoController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-10 19:53:33 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'bd_benitez_lopez.reseñas' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `reseñas`
+WHERE `producto_id` = \'12\'
+ORDER BY `fecha` DESC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `reseñas`
+WHERE `producto_id` = \'12\'
+ORDER BY `fecha` DESC')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `reseñas`
+WHERE `producto_id` = :producto_id:
+ORDER BY `fecha` DESC', [...], false)
+ 4 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(675): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Models\ResenaModel.php(19): CodeIgniter\BaseModel->findAll()
+ 7 APPPATH\Controllers\ProductoController.php(43): App\Models\ResenaModel->getResenasProducto('12')
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ProductoController->detalle('12')
+ 9 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductoController))
+10 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-10 19:53:33 --> [Caused by] mysqli_sql_exception: Table 'bd_benitez_lopez.reseñas' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('SELECT *
+FROM `reseñas`
+WHERE `producto_id` = \'12\'
+ORDER BY `fecha` DESC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `reseñas`
+WHERE `producto_id` = \'12\'
+ORDER BY `fecha` DESC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `reseñas`
+WHERE `producto_id` = \'12\'
+ORDER BY `fecha` DESC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `reseñas`
+WHERE `producto_id` = :producto_id:
+ORDER BY `fecha` DESC', [...], false)
+ 5 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(675): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Models\ResenaModel.php(19): CodeIgniter\BaseModel->findAll()
+ 8 APPPATH\Controllers\ProductoController.php(43): App\Models\ResenaModel->getResenasProducto('12')
+ 9 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ProductoController->detalle('12')
+10 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductoController))
+11 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2025-06-10 19:53:37 --> mysqli_sql_exception: Table 'bd_benitez_lopez.reseñas' doesn't exist in C:\xampp\htdocs\proyecto_benitez_lopez\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp\htdocs\proyecto_benitez_lopez\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\xampp\htdocs\proyecto_benitez_lopez\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\xampp\htdocs\proyecto_benitez_lopez\system\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\xampp\htdocs\proyecto_benitez_lopez\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\proyecto_benitez_lopez\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\proyecto_benitez_lopez\system\BaseModel.php(675): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\xampp\htdocs\proyecto_benitez_lopez\app\Models\ResenaModel.php(19): CodeIgniter\BaseModel->findAll()
+#7 C:\xampp\htdocs\proyecto_benitez_lopez\app\Controllers\ProductoController.php(43): App\Models\ResenaModel->getResenasProducto('12')
+#8 C:\xampp\htdocs\proyecto_benitez_lopez\system\CodeIgniter.php(933): App\Controllers\ProductoController->detalle('12')
+#9 C:\xampp\htdocs\proyecto_benitez_lopez\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductoController))
+#10 C:\xampp\htdocs\proyecto_benitez_lopez\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\xampp\htdocs\proyecto_benitez_lopez\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#12 C:\xampp\htdocs\proyecto_benitez_lopez\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#13 C:\xampp\htdocs\proyecto_benitez_lopez\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#14 {main}
+CRITICAL - 2025-06-10 19:53:37 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'bd_benitez_lopez.reseñas' doesn't exist
+[Method: GET, Route: productos/12]
+in SYSTEMPATH\Database\BaseConnection.php on line 692.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `reseñas`
+WHERE `producto_id` = :producto_id:
+ORDER BY `fecha` DESC', [...], false)
+ 2 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(675): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Models\ResenaModel.php(19): CodeIgniter\BaseModel->findAll()
+ 5 APPPATH\Controllers\ProductoController.php(43): App\Models\ResenaModel->getResenasProducto('12')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ProductoController->detalle('12')
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductoController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-10 19:53:37 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'bd_benitez_lopez.reseñas' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `reseñas`
+WHERE `producto_id` = \'12\'
+ORDER BY `fecha` DESC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `reseñas`
+WHERE `producto_id` = \'12\'
+ORDER BY `fecha` DESC')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `reseñas`
+WHERE `producto_id` = :producto_id:
+ORDER BY `fecha` DESC', [...], false)
+ 4 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(675): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Models\ResenaModel.php(19): CodeIgniter\BaseModel->findAll()
+ 7 APPPATH\Controllers\ProductoController.php(43): App\Models\ResenaModel->getResenasProducto('12')
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ProductoController->detalle('12')
+ 9 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductoController))
+10 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-10 19:53:37 --> [Caused by] mysqli_sql_exception: Table 'bd_benitez_lopez.reseñas' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('SELECT *
+FROM `reseñas`
+WHERE `producto_id` = \'12\'
+ORDER BY `fecha` DESC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `reseñas`
+WHERE `producto_id` = \'12\'
+ORDER BY `fecha` DESC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `reseñas`
+WHERE `producto_id` = \'12\'
+ORDER BY `fecha` DESC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `reseñas`
+WHERE `producto_id` = :producto_id:
+ORDER BY `fecha` DESC', [...], false)
+ 5 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(675): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Models\ResenaModel.php(19): CodeIgniter\BaseModel->findAll()
+ 8 APPPATH\Controllers\ProductoController.php(43): App\Models\ResenaModel->getResenasProducto('12')
+ 9 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ProductoController->detalle('12')
+10 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductoController))
+11 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-10 20:51:32 --> ParseError: syntax error, unexpected single-quoted string "admin/usuarios", expecting "]"
+[Method: GET, Route: contacto]
+in APPPATH\Config\Filters.php on line 142.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(295): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Config\\Filters.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(271): CodeIgniter\Autoloader\Autoloader->loadInNamespace('Config\\Filters')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('Config\\Filters')
+ 4 SYSTEMPATH\Config\Factories.php(297): class_exists('Config\\Filters')
+ 5 SYSTEMPATH\Config\Factories.php(216): CodeIgniter\Config\Factories::locateClass([...], 'Config\\Filters')
+ 6 SYSTEMPATH\Config\Factories.php(159): CodeIgniter\Config\Factories::getDefinedInstance([...], 'Config\\Filters', [])
+ 7 SYSTEMPATH\Config\Factories.php(188): CodeIgniter\Config\Factories::__callStatic('config', [])
+ 8 SYSTEMPATH\Common.php(210): CodeIgniter\Config\Factories::get('config', 'Config\\Filters')
+ 9 SYSTEMPATH\Config\Services.php(295): config('Config\\Filters')
+10 SYSTEMPATH\Config\BaseService.php(312): CodeIgniter\Config\Services::filters(null, false)
+11 SYSTEMPATH\Config\BaseService.php(251): CodeIgniter\Config\BaseService::__callStatic('filters', [...])
+12 SYSTEMPATH\Config\Services.php(292): CodeIgniter\Config\BaseService::getSharedInstance('filters', null)
+13 SYSTEMPATH\Config\BaseService.php(321): CodeIgniter\Config\Services::filters()
+14 SYSTEMPATH\CodeIgniter.php(345): CodeIgniter\Config\BaseService::__callStatic('filters', [])
+15 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+16 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+17 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-10 20:52:42 --> ParseError: syntax error, unexpected single-quoted string "admin/usuarios", expecting "]"
+[Method: GET, Route: productos/crear]
+in APPPATH\Config\Filters.php on line 142.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(295): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Config\\Filters.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(271): CodeIgniter\Autoloader\Autoloader->loadInNamespace('Config\\Filters')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('Config\\Filters')
+ 4 SYSTEMPATH\Config\Factories.php(297): class_exists('Config\\Filters')
+ 5 SYSTEMPATH\Config\Factories.php(216): CodeIgniter\Config\Factories::locateClass([...], 'Config\\Filters')
+ 6 SYSTEMPATH\Config\Factories.php(159): CodeIgniter\Config\Factories::getDefinedInstance([...], 'Config\\Filters', [])
+ 7 SYSTEMPATH\Config\Factories.php(188): CodeIgniter\Config\Factories::__callStatic('config', [])
+ 8 SYSTEMPATH\Common.php(210): CodeIgniter\Config\Factories::get('config', 'Config\\Filters')
+ 9 SYSTEMPATH\Config\Services.php(295): config('Config\\Filters')
+10 SYSTEMPATH\Config\BaseService.php(312): CodeIgniter\Config\Services::filters(null, false)
+11 SYSTEMPATH\Config\BaseService.php(251): CodeIgniter\Config\BaseService::__callStatic('filters', [...])
+12 SYSTEMPATH\Config\Services.php(292): CodeIgniter\Config\BaseService::getSharedInstance('filters', null)
+13 SYSTEMPATH\Config\BaseService.php(321): CodeIgniter\Config\Services::filters()
+14 SYSTEMPATH\CodeIgniter.php(345): CodeIgniter\Config\BaseService::__callStatic('filters', [])
+15 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+16 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+17 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-10 20:52:46 --> ParseError: syntax error, unexpected single-quoted string "admin/usuarios", expecting "]"
+[Method: GET, Route: /]
+in APPPATH\Config\Filters.php on line 142.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(295): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Config\\Filters.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(271): CodeIgniter\Autoloader\Autoloader->loadInNamespace('Config\\Filters')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('Config\\Filters')
+ 4 SYSTEMPATH\Config\Factories.php(297): class_exists('Config\\Filters')
+ 5 SYSTEMPATH\Config\Factories.php(216): CodeIgniter\Config\Factories::locateClass([...], 'Config\\Filters')
+ 6 SYSTEMPATH\Config\Factories.php(159): CodeIgniter\Config\Factories::getDefinedInstance([...], 'Config\\Filters', [])
+ 7 SYSTEMPATH\Config\Factories.php(188): CodeIgniter\Config\Factories::__callStatic('config', [])
+ 8 SYSTEMPATH\Common.php(210): CodeIgniter\Config\Factories::get('config', 'Config\\Filters')
+ 9 SYSTEMPATH\Config\Services.php(295): config('Config\\Filters')
+10 SYSTEMPATH\Config\BaseService.php(312): CodeIgniter\Config\Services::filters(null, false)
+11 SYSTEMPATH\Config\BaseService.php(251): CodeIgniter\Config\BaseService::__callStatic('filters', [...])
+12 SYSTEMPATH\Config\Services.php(292): CodeIgniter\Config\BaseService::getSharedInstance('filters', null)
+13 SYSTEMPATH\Config\BaseService.php(321): CodeIgniter\Config\Services::filters()
+14 SYSTEMPATH\CodeIgniter.php(345): CodeIgniter\Config\BaseService::__callStatic('filters', [])
+15 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+16 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+17 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-10 20:53:00 --> ParseError: syntax error, unexpected single-quoted string "admin/usuarios", expecting "]"
+[Method: GET, Route: /]
+in APPPATH\Config\Filters.php on line 142.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(295): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Config\\Filters.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(271): CodeIgniter\Autoloader\Autoloader->loadInNamespace('Config\\Filters')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('Config\\Filters')
+ 4 SYSTEMPATH\Config\Factories.php(297): class_exists('Config\\Filters')
+ 5 SYSTEMPATH\Config\Factories.php(216): CodeIgniter\Config\Factories::locateClass([...], 'Config\\Filters')
+ 6 SYSTEMPATH\Config\Factories.php(159): CodeIgniter\Config\Factories::getDefinedInstance([...], 'Config\\Filters', [])
+ 7 SYSTEMPATH\Config\Factories.php(188): CodeIgniter\Config\Factories::__callStatic('config', [])
+ 8 SYSTEMPATH\Common.php(210): CodeIgniter\Config\Factories::get('config', 'Config\\Filters')
+ 9 SYSTEMPATH\Config\Services.php(295): config('Config\\Filters')
+10 SYSTEMPATH\Config\BaseService.php(312): CodeIgniter\Config\Services::filters(null, false)
+11 SYSTEMPATH\Config\BaseService.php(251): CodeIgniter\Config\BaseService::__callStatic('filters', [...])
+12 SYSTEMPATH\Config\Services.php(292): CodeIgniter\Config\BaseService::getSharedInstance('filters', null)
+13 SYSTEMPATH\Config\BaseService.php(321): CodeIgniter\Config\Services::filters()
+14 SYSTEMPATH\CodeIgniter.php(345): CodeIgniter\Config\BaseService::__callStatic('filters', [])
+15 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+16 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+17 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-10 20:53:01 --> ParseError: syntax error, unexpected single-quoted string "admin/usuarios", expecting "]"
+[Method: GET, Route: /]
+in APPPATH\Config\Filters.php on line 142.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(295): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Config\\Filters.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(271): CodeIgniter\Autoloader\Autoloader->loadInNamespace('Config\\Filters')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('Config\\Filters')
+ 4 SYSTEMPATH\Config\Factories.php(297): class_exists('Config\\Filters')
+ 5 SYSTEMPATH\Config\Factories.php(216): CodeIgniter\Config\Factories::locateClass([...], 'Config\\Filters')
+ 6 SYSTEMPATH\Config\Factories.php(159): CodeIgniter\Config\Factories::getDefinedInstance([...], 'Config\\Filters', [])
+ 7 SYSTEMPATH\Config\Factories.php(188): CodeIgniter\Config\Factories::__callStatic('config', [])
+ 8 SYSTEMPATH\Common.php(210): CodeIgniter\Config\Factories::get('config', 'Config\\Filters')
+ 9 SYSTEMPATH\Config\Services.php(295): config('Config\\Filters')
+10 SYSTEMPATH\Config\BaseService.php(312): CodeIgniter\Config\Services::filters(null, false)
+11 SYSTEMPATH\Config\BaseService.php(251): CodeIgniter\Config\BaseService::__callStatic('filters', [...])
+12 SYSTEMPATH\Config\Services.php(292): CodeIgniter\Config\BaseService::getSharedInstance('filters', null)
+13 SYSTEMPATH\Config\BaseService.php(321): CodeIgniter\Config\Services::filters()
+14 SYSTEMPATH\CodeIgniter.php(345): CodeIgniter\Config\BaseService::__callStatic('filters', [])
+15 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+16 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+17 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-10 20:53:02 --> ParseError: syntax error, unexpected single-quoted string "admin/usuarios", expecting "]"
+[Method: GET, Route: /]
+in APPPATH\Config\Filters.php on line 142.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(295): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Config\\Filters.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(271): CodeIgniter\Autoloader\Autoloader->loadInNamespace('Config\\Filters')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('Config\\Filters')
+ 4 SYSTEMPATH\Config\Factories.php(297): class_exists('Config\\Filters')
+ 5 SYSTEMPATH\Config\Factories.php(216): CodeIgniter\Config\Factories::locateClass([...], 'Config\\Filters')
+ 6 SYSTEMPATH\Config\Factories.php(159): CodeIgniter\Config\Factories::getDefinedInstance([...], 'Config\\Filters', [])
+ 7 SYSTEMPATH\Config\Factories.php(188): CodeIgniter\Config\Factories::__callStatic('config', [])
+ 8 SYSTEMPATH\Common.php(210): CodeIgniter\Config\Factories::get('config', 'Config\\Filters')
+ 9 SYSTEMPATH\Config\Services.php(295): config('Config\\Filters')
+10 SYSTEMPATH\Config\BaseService.php(312): CodeIgniter\Config\Services::filters(null, false)
+11 SYSTEMPATH\Config\BaseService.php(251): CodeIgniter\Config\BaseService::__callStatic('filters', [...])
+12 SYSTEMPATH\Config\Services.php(292): CodeIgniter\Config\BaseService::getSharedInstance('filters', null)
+13 SYSTEMPATH\Config\BaseService.php(321): CodeIgniter\Config\Services::filters()
+14 SYSTEMPATH\CodeIgniter.php(345): CodeIgniter\Config\BaseService::__callStatic('filters', [])
+15 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+16 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+17 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-10 21:00:45 --> ParseError: syntax error, unexpected token ";"
+[Method: GET, Route: contacto]
+in APPPATH\Views\contacto.php on line 37.
+ 1 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 2 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('contacto', [], true)
+ 3 APPPATH\Controllers\ConsultaController.php(101): view('contacto')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ConsultaController->formularioContacto()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConsultaController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-10 21:01:12 --> ParseError: syntax error, unexpected token ";"
+[Method: GET, Route: contacto]
+in APPPATH\Views\contacto.php on line 37.
+ 1 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 2 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('contacto', [], true)
+ 3 APPPATH\Controllers\ConsultaController.php(101): view('contacto')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ConsultaController->formularioContacto()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConsultaController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-10 21:01:13 --> ParseError: syntax error, unexpected token ";"
+[Method: GET, Route: contacto]
+in APPPATH\Views\contacto.php on line 37.
+ 1 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 2 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('contacto', [], true)
+ 3 APPPATH\Controllers\ConsultaController.php(101): view('contacto')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ConsultaController->formularioContacto()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConsultaController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-10 21:01:13 --> ParseError: syntax error, unexpected token ";"
+[Method: GET, Route: contacto]
+in APPPATH\Views\contacto.php on line 37.
+ 1 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 2 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('contacto', [], true)
+ 3 APPPATH\Controllers\ConsultaController.php(101): view('contacto')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ConsultaController->formularioContacto()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConsultaController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-10 21:01:13 --> ParseError: syntax error, unexpected token ";"
+[Method: GET, Route: contacto]
+in APPPATH\Views\contacto.php on line 37.
+ 1 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 2 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('contacto', [], true)
+ 3 APPPATH\Controllers\ConsultaController.php(101): view('contacto')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ConsultaController->formularioContacto()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConsultaController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-10 21:01:13 --> ParseError: syntax error, unexpected token ";"
+[Method: GET, Route: contacto]
+in APPPATH\Views\contacto.php on line 37.
+ 1 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 2 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('contacto', [], true)
+ 3 APPPATH\Controllers\ConsultaController.php(101): view('contacto')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ConsultaController->formularioContacto()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConsultaController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-10 21:01:14 --> ParseError: syntax error, unexpected token ";"
+[Method: GET, Route: contacto]
+in APPPATH\Views\contacto.php on line 37.
+ 1 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 2 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('contacto', [], true)
+ 3 APPPATH\Controllers\ConsultaController.php(101): view('contacto')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ConsultaController->formularioContacto()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConsultaController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-10 21:01:14 --> ParseError: syntax error, unexpected token ";"
+[Method: GET, Route: contacto]
+in APPPATH\Views\contacto.php on line 37.
+ 1 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 2 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('contacto', [], true)
+ 3 APPPATH\Controllers\ConsultaController.php(101): view('contacto')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ConsultaController->formularioContacto()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConsultaController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-10 21:01:14 --> ParseError: syntax error, unexpected token ";"
+[Method: GET, Route: contacto]
+in APPPATH\Views\contacto.php on line 37.
+ 1 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 2 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('contacto', [], true)
+ 3 APPPATH\Controllers\ConsultaController.php(101): view('contacto')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ConsultaController->formularioContacto()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConsultaController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-10 21:01:14 --> ParseError: syntax error, unexpected token ";"
+[Method: GET, Route: contacto]
+in APPPATH\Views\contacto.php on line 37.
+ 1 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 2 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('contacto', [], true)
+ 3 APPPATH\Controllers\ConsultaController.php(101): view('contacto')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ConsultaController->formularioContacto()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConsultaController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-10 21:01:14 --> ParseError: syntax error, unexpected token ";"
+[Method: GET, Route: contacto]
+in APPPATH\Views\contacto.php on line 37.
+ 1 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 2 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('contacto', [], true)
+ 3 APPPATH\Controllers\ConsultaController.php(101): view('contacto')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ConsultaController->formularioContacto()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConsultaController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-10 21:01:15 --> ParseError: syntax error, unexpected token ";"
+[Method: GET, Route: contacto]
+in APPPATH\Views\contacto.php on line 37.
+ 1 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 2 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('contacto', [], true)
+ 3 APPPATH\Controllers\ConsultaController.php(101): view('contacto')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ConsultaController->formularioContacto()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConsultaController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-10 21:01:15 --> ParseError: syntax error, unexpected token ";"
+[Method: GET, Route: contacto]
+in APPPATH\Views\contacto.php on line 37.
+ 1 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 2 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('contacto', [], true)
+ 3 APPPATH\Controllers\ConsultaController.php(101): view('contacto')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ConsultaController->formularioContacto()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConsultaController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-10 21:01:15 --> ParseError: syntax error, unexpected token ";"
+[Method: GET, Route: contacto]
+in APPPATH\Views\contacto.php on line 37.
+ 1 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 2 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('contacto', [], true)
+ 3 APPPATH\Controllers\ConsultaController.php(101): view('contacto')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ConsultaController->formularioContacto()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConsultaController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-10 21:01:15 --> ParseError: syntax error, unexpected token ";"
+[Method: GET, Route: contacto]
+in APPPATH\Views\contacto.php on line 37.
+ 1 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 2 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('contacto', [], true)
+ 3 APPPATH\Controllers\ConsultaController.php(101): view('contacto')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ConsultaController->formularioContacto()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConsultaController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-10 21:01:15 --> ParseError: syntax error, unexpected token ";"
+[Method: GET, Route: contacto]
+in APPPATH\Views\contacto.php on line 37.
+ 1 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 2 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('contacto', [], true)
+ 3 APPPATH\Controllers\ConsultaController.php(101): view('contacto')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ConsultaController->formularioContacto()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConsultaController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-10 21:01:16 --> ParseError: syntax error, unexpected token ";"
+[Method: GET, Route: contacto]
+in APPPATH\Views\contacto.php on line 37.
+ 1 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 2 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('contacto', [], true)
+ 3 APPPATH\Controllers\ConsultaController.php(101): view('contacto')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ConsultaController->formularioContacto()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConsultaController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-10 21:01:16 --> ParseError: syntax error, unexpected token ";"
+[Method: GET, Route: contacto]
+in APPPATH\Views\contacto.php on line 37.
+ 1 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 2 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('contacto', [], true)
+ 3 APPPATH\Controllers\ConsultaController.php(101): view('contacto')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ConsultaController->formularioContacto()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConsultaController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-10 21:01:16 --> ParseError: syntax error, unexpected token ";"
+[Method: GET, Route: contacto]
+in APPPATH\Views\contacto.php on line 37.
+ 1 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 2 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('contacto', [], true)
+ 3 APPPATH\Controllers\ConsultaController.php(101): view('contacto')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ConsultaController->formularioContacto()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConsultaController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-10 21:01:16 --> ParseError: syntax error, unexpected token ";"
+[Method: GET, Route: contacto]
+in APPPATH\Views\contacto.php on line 37.
+ 1 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 2 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('contacto', [], true)
+ 3 APPPATH\Controllers\ConsultaController.php(101): view('contacto')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ConsultaController->formularioContacto()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConsultaController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-10 21:01:16 --> ParseError: syntax error, unexpected token ";"
+[Method: GET, Route: contacto]
+in APPPATH\Views\contacto.php on line 37.
+ 1 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 2 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('contacto', [], true)
+ 3 APPPATH\Controllers\ConsultaController.php(101): view('contacto')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ConsultaController->formularioContacto()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConsultaController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-10 21:01:17 --> ParseError: syntax error, unexpected token ";"
+[Method: GET, Route: contacto]
+in APPPATH\Views\contacto.php on line 37.
+ 1 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 2 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('contacto', [], true)
+ 3 APPPATH\Controllers\ConsultaController.php(101): view('contacto')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ConsultaController->formularioContacto()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConsultaController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-10 21:01:17 --> ParseError: syntax error, unexpected token ";"
+[Method: GET, Route: contacto]
+in APPPATH\Views\contacto.php on line 37.
+ 1 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 2 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('contacto', [], true)
+ 3 APPPATH\Controllers\ConsultaController.php(101): view('contacto')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ConsultaController->formularioContacto()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConsultaController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-10 21:01:17 --> ParseError: syntax error, unexpected token ";"
+[Method: GET, Route: contacto]
+in APPPATH\Views\contacto.php on line 37.
+ 1 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 2 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('contacto', [], true)
+ 3 APPPATH\Controllers\ConsultaController.php(101): view('contacto')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ConsultaController->formularioContacto()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConsultaController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-10 21:01:17 --> ParseError: syntax error, unexpected token ";"
+[Method: GET, Route: contacto]
+in APPPATH\Views\contacto.php on line 37.
+ 1 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 2 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('contacto', [], true)
+ 3 APPPATH\Controllers\ConsultaController.php(101): view('contacto')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ConsultaController->formularioContacto()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConsultaController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-10 21:01:17 --> ParseError: syntax error, unexpected token ";"
+[Method: GET, Route: contacto]
+in APPPATH\Views\contacto.php on line 37.
+ 1 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 2 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('contacto', [], true)
+ 3 APPPATH\Controllers\ConsultaController.php(101): view('contacto')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ConsultaController->formularioContacto()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConsultaController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-10 21:01:17 --> ParseError: syntax error, unexpected token ";"
+[Method: GET, Route: contacto]
+in APPPATH\Views\contacto.php on line 37.
+ 1 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 2 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('contacto', [], true)
+ 3 APPPATH\Controllers\ConsultaController.php(101): view('contacto')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ConsultaController->formularioContacto()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConsultaController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-10 21:02:41 --> ParseError: syntax error, unexpected token ";"
+[Method: GET, Route: contacto]
+in APPPATH\Views\contacto.php on line 37.
+ 1 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 2 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('contacto', [], true)
+ 3 APPPATH\Controllers\ConsultaController.php(101): view('contacto')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ConsultaController->formularioContacto()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConsultaController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-10 21:03:11 --> ParseError: syntax error, unexpected token ";"
+[Method: GET, Route: contacto]
+in APPPATH\Views\contacto.php on line 37.
+ 1 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 2 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('contacto', [], true)
+ 3 APPPATH\Controllers\ConsultaController.php(101): view('contacto')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ConsultaController->formularioContacto()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConsultaController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-10 21:03:12 --> ParseError: syntax error, unexpected token ";"
+[Method: GET, Route: contacto]
+in APPPATH\Views\contacto.php on line 37.
+ 1 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 2 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('contacto', [], true)
+ 3 APPPATH\Controllers\ConsultaController.php(101): view('contacto')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ConsultaController->formularioContacto()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConsultaController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-10 21:03:12 --> ParseError: syntax error, unexpected token ";"
+[Method: GET, Route: contacto]
+in APPPATH\Views\contacto.php on line 37.
+ 1 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 2 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('contacto', [], true)
+ 3 APPPATH\Controllers\ConsultaController.php(101): view('contacto')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ConsultaController->formularioContacto()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConsultaController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-10 21:03:12 --> ParseError: syntax error, unexpected token ";"
+[Method: GET, Route: contacto]
+in APPPATH\Views\contacto.php on line 37.
+ 1 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 2 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('contacto', [], true)
+ 3 APPPATH\Controllers\ConsultaController.php(101): view('contacto')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ConsultaController->formularioContacto()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConsultaController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-10 21:03:12 --> ParseError: syntax error, unexpected token ";"
+[Method: GET, Route: contacto]
+in APPPATH\Views\contacto.php on line 37.
+ 1 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 2 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('contacto', [], true)
+ 3 APPPATH\Controllers\ConsultaController.php(101): view('contacto')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ConsultaController->formularioContacto()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConsultaController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-10 21:03:12 --> ParseError: syntax error, unexpected token ";"
+[Method: GET, Route: contacto]
+in APPPATH\Views\contacto.php on line 37.
+ 1 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 2 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('contacto', [], true)
+ 3 APPPATH\Controllers\ConsultaController.php(101): view('contacto')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ConsultaController->formularioContacto()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConsultaController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-10 21:03:12 --> ParseError: syntax error, unexpected token ";"
+[Method: GET, Route: contacto]
+in APPPATH\Views\contacto.php on line 37.
+ 1 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 2 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('contacto', [], true)
+ 3 APPPATH\Controllers\ConsultaController.php(101): view('contacto')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ConsultaController->formularioContacto()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConsultaController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-10 21:03:13 --> ParseError: syntax error, unexpected token ";"
+[Method: GET, Route: contacto]
+in APPPATH\Views\contacto.php on line 37.
+ 1 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 2 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('contacto', [], true)
+ 3 APPPATH\Controllers\ConsultaController.php(101): view('contacto')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ConsultaController->formularioContacto()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConsultaController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-10 21:03:15 --> ParseError: syntax error, unexpected token ";"
+[Method: GET, Route: contacto]
+in APPPATH\Views\contacto.php on line 37.
+ 1 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 2 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('contacto', [], true)
+ 3 APPPATH\Controllers\ConsultaController.php(101): view('contacto')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ConsultaController->formularioContacto()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConsultaController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-10 21:05:02 --> ParseError: syntax error, unexpected token ";"
+[Method: GET, Route: contacto]
+in APPPATH\Views\contacto.php on line 37.
+ 1 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 2 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('contacto', [], true)
+ 3 APPPATH\Controllers\ConsultaController.php(101): view('contacto')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ConsultaController->formularioContacto()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConsultaController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-10 21:11:13 --> ErrorException: Trait "App\Controllers\ResponseTrait" not found
+[Method: GET, Route: contacto]
+in APPPATH\Controllers\ConsultaController.php on line 6.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2025-06-10 21:29:38 --> ErrorException: Trait "App\Controllers\ResponseTrait" not found
+[Method: GET, Route: contacto]
+in APPPATH\Controllers\ConsultaController.php on line 6.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2025-06-10 21:38:17 --> ErrorException: Trait "App\Controllers\ResponseTrait" not found
+[Method: GET, Route: contacto]
+in APPPATH\Controllers\ConsultaController.php on line 6.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2025-06-10 21:38:18 --> ErrorException: Trait "App\Controllers\ResponseTrait" not found
+[Method: GET, Route: contacto]
+in APPPATH\Controllers\ConsultaController.php on line 6.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2025-06-10 21:38:18 --> ErrorException: Trait "App\Controllers\ResponseTrait" not found
+[Method: GET, Route: contacto]
+in APPPATH\Controllers\ConsultaController.php on line 6.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2025-06-10 21:38:18 --> ErrorException: Trait "App\Controllers\ResponseTrait" not found
+[Method: GET, Route: contacto]
+in APPPATH\Controllers\ConsultaController.php on line 6.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2025-06-10 21:38:18 --> ErrorException: Trait "App\Controllers\ResponseTrait" not found
+[Method: GET, Route: contacto]
+in APPPATH\Controllers\ConsultaController.php on line 6.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2025-06-10 21:38:19 --> ErrorException: Trait "App\Controllers\ResponseTrait" not found
+[Method: GET, Route: contacto]
+in APPPATH\Controllers\ConsultaController.php on line 6.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2025-06-10 21:38:19 --> ErrorException: Trait "App\Controllers\ResponseTrait" not found
+[Method: GET, Route: contacto]
+in APPPATH\Controllers\ConsultaController.php on line 6.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2025-06-10 21:39:14 --> ErrorException: Trait "App\Controllers\ResponseTrait" not found
+[Method: GET, Route: contacto]
+in APPPATH\Controllers\ConsultaController.php on line 6.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2025-06-10 21:39:15 --> ErrorException: Trait "App\Controllers\ResponseTrait" not found
+[Method: GET, Route: contacto]
+in APPPATH\Controllers\ConsultaController.php on line 6.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2025-06-10 21:39:15 --> ErrorException: Trait "App\Controllers\ResponseTrait" not found
+[Method: GET, Route: contacto]
+in APPPATH\Controllers\ConsultaController.php on line 6.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2025-06-10 21:39:15 --> ErrorException: Trait "App\Controllers\ResponseTrait" not found
+[Method: GET, Route: contacto]
+in APPPATH\Controllers\ConsultaController.php on line 6.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2025-06-10 21:39:15 --> ErrorException: Trait "App\Controllers\ResponseTrait" not found
+[Method: GET, Route: contacto]
+in APPPATH\Controllers\ConsultaController.php on line 6.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2025-06-10 21:39:17 --> ErrorException: Trait "App\Controllers\ResponseTrait" not found
+[Method: GET, Route: contacto]
+in APPPATH\Controllers\ConsultaController.php on line 6.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2025-06-10 21:39:17 --> ErrorException: Trait "App\Controllers\ResponseTrait" not found
+[Method: GET, Route: contacto]
+in APPPATH\Controllers\ConsultaController.php on line 6.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2025-06-10 21:39:17 --> ErrorException: Trait "App\Controllers\ResponseTrait" not found
+[Method: GET, Route: contacto]
+in APPPATH\Controllers\ConsultaController.php on line 6.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2025-06-10 21:39:17 --> ErrorException: Trait "App\Controllers\ResponseTrait" not found
+[Method: GET, Route: contacto]
+in APPPATH\Controllers\ConsultaController.php on line 6.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2025-06-10 21:39:18 --> ErrorException: Trait "App\Controllers\ResponseTrait" not found
+[Method: GET, Route: contacto]
+in APPPATH\Controllers\ConsultaController.php on line 6.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2025-06-10 22:38:47 --> ErrorException: Undefined array key ""
+[Method: GET, Route: admin/consultas]
+in APPPATH\Views\admin\consultas\listar.php on line 88.
+ 1 APPPATH\Views\admin\consultas\listar.php(88): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key ""', 'C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Views\\admin\\consultas\\listar.php', 88)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Views\\admin\\consultas\\listar.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('admin/consultas/listar', [], true)
+ 5 APPPATH\Controllers\ConsultaController.php(45): view('admin/consultas/listar')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ConsultaController->listarConsultas()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConsultaController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-10 22:38:54 --> ErrorException: Undefined array key ""
+[Method: GET, Route: admin/consultas]
+in APPPATH\Views\admin\consultas\listar.php on line 88.
+ 1 APPPATH\Views\admin\consultas\listar.php(88): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key ""', 'C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Views\\admin\\consultas\\listar.php', 88)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Views\\admin\\consultas\\listar.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('admin/consultas/listar', [], true)
+ 5 APPPATH\Controllers\ConsultaController.php(45): view('admin/consultas/listar')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ConsultaController->listarConsultas()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConsultaController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-10 22:38:57 --> ErrorException: Undefined array key ""
+[Method: GET, Route: admin/consultas/detalle/1]
+in APPPATH\Views\admin\consultas\detalle.php on line 10.
+ 1 APPPATH\Views\admin\consultas\detalle.php(10): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key ""', 'C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Views\\admin\\consultas\\detalle.php', 10)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Views\\admin\\consultas\\detalle.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('admin/consultas/detalle', [], true)
+ 5 APPPATH\Controllers\ConsultaController.php(66): view('admin/consultas/detalle')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ConsultaController->detalleConsulta('1')
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConsultaController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-10 22:38:58 --> ErrorException: Undefined array key ""
+[Method: GET, Route: admin/consultas]
+in APPPATH\Views\admin\consultas\listar.php on line 88.
+ 1 APPPATH\Views\admin\consultas\listar.php(88): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key ""', 'C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Views\\admin\\consultas\\listar.php', 88)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Views\\admin\\consultas\\listar.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('admin/consultas/listar', [], true)
+ 5 APPPATH\Controllers\ConsultaController.php(45): view('admin/consultas/listar')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ConsultaController->listarConsultas()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConsultaController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-10 22:39:07 --> ErrorException: Undefined array key ""
+[Method: GET, Route: admin/consultas]
+in APPPATH\Views\admin\consultas\listar.php on line 88.
+ 1 APPPATH\Views\admin\consultas\listar.php(88): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key ""', 'C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Views\\admin\\consultas\\listar.php', 88)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Views\\admin\\consultas\\listar.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('admin/consultas/listar', [], true)
+ 5 APPPATH\Controllers\ConsultaController.php(45): view('admin/consultas/listar')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ConsultaController->listarConsultas()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConsultaController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-10 22:39:43 --> ErrorException: Undefined array key ""
+[Method: GET, Route: admin/consultas]
+in APPPATH\Views\admin\consultas\listar.php on line 88.
+ 1 APPPATH\Views\admin\consultas\listar.php(88): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key ""', 'C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Views\\admin\\consultas\\listar.php', 88)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Views\\admin\\consultas\\listar.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('admin/consultas/listar', [], true)
+ 5 APPPATH\Controllers\ConsultaController.php(45): view('admin/consultas/listar')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ConsultaController->listarConsultas()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConsultaController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-10 22:39:55 --> ErrorException: Undefined array key ""
+[Method: GET, Route: admin/consultas]
+in APPPATH\Views\admin\consultas\listar.php on line 88.
+ 1 APPPATH\Views\admin\consultas\listar.php(88): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key ""', 'C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Views\\admin\\consultas\\listar.php', 88)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Views\\admin\\consultas\\listar.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('admin/consultas/listar', [], true)
+ 5 APPPATH\Controllers\ConsultaController.php(45): view('admin/consultas/listar')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ConsultaController->listarConsultas()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConsultaController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-10 22:40:08 --> ErrorException: Undefined array key ""
+[Method: GET, Route: admin/consultas/detalle/1]
+in APPPATH\Views\admin\consultas\detalle.php on line 10.
+ 1 APPPATH\Views\admin\consultas\detalle.php(10): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key ""', 'C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Views\\admin\\consultas\\detalle.php', 10)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Views\\admin\\consultas\\detalle.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('admin/consultas/detalle', [], true)
+ 5 APPPATH\Controllers\ConsultaController.php(66): view('admin/consultas/detalle')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ConsultaController->detalleConsulta('1')
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConsultaController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-10 22:40:24 --> ErrorException: Undefined array key ""
+[Method: GET, Route: admin/consultas]
+in APPPATH\Views\admin\consultas\listar.php on line 88.
+ 1 APPPATH\Views\admin\consultas\listar.php(88): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key ""', 'C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Views\\admin\\consultas\\listar.php', 88)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Views\\admin\\consultas\\listar.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('admin/consultas/listar', [], true)
+ 5 APPPATH\Controllers\ConsultaController.php(45): view('admin/consultas/listar')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ConsultaController->listarConsultas()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConsultaController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-10 23:04:40 --> ErrorException: Undefined array key "usuario_asignado"
+[Method: GET, Route: admin/consultas]
+in APPPATH\Views\admin\consultas\listar.php on line 92.
+ 1 APPPATH\Views\admin\consultas\listar.php(92): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "usuario_asignado"', 'C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Views\\admin\\consultas\\listar.php', 92)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Views\\admin\\consultas\\listar.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('admin/consultas/listar', [], true)
+ 5 APPPATH\Controllers\ConsultaController.php(45): view('admin/consultas/listar')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ConsultaController->listarConsultas()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConsultaController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-10 23:04:42 --> ErrorException: Undefined array key "usuario_asignado"
+[Method: GET, Route: admin/consultas]
+in APPPATH\Views\admin\consultas\listar.php on line 92.
+ 1 APPPATH\Views\admin\consultas\listar.php(92): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "usuario_asignado"', 'C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Views\\admin\\consultas\\listar.php', 92)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Views\\admin\\consultas\\listar.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('admin/consultas/listar', [], true)
+ 5 APPPATH\Controllers\ConsultaController.php(45): view('admin/consultas/listar')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ConsultaController->listarConsultas()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConsultaController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-10 23:04:49 --> ErrorException: Undefined array key "usuario_asignado"
+[Method: GET, Route: admin/consultas]
+in APPPATH\Views\admin\consultas\listar.php on line 92.
+ 1 APPPATH\Views\admin\consultas\listar.php(92): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "usuario_asignado"', 'C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Views\\admin\\consultas\\listar.php', 92)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Views\\admin\\consultas\\listar.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('admin/consultas/listar', [], true)
+ 5 APPPATH\Controllers\ConsultaController.php(45): view('admin/consultas/listar')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ConsultaController->listarConsultas()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConsultaController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-10 23:04:54 --> ErrorException: Undefined array key "usuario_asignado"
+[Method: GET, Route: admin/consultas/detalle/2]
+in APPPATH\Views\admin\consultas\detalle.php on line 72.
+ 1 APPPATH\Views\admin\consultas\detalle.php(72): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "usuario_asignado"', 'C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Views\\admin\\consultas\\detalle.php', 72)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Views\\admin\\consultas\\detalle.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('admin/consultas/detalle', [], true)
+ 5 APPPATH\Controllers\ConsultaController.php(66): view('admin/consultas/detalle')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ConsultaController->detalleConsulta('2')
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConsultaController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-10 23:05:01 --> ErrorException: Undefined array key "usuario_asignado"
+[Method: GET, Route: admin/consultas/detalle/3]
+in APPPATH\Views\admin\consultas\detalle.php on line 72.
+ 1 APPPATH\Views\admin\consultas\detalle.php(72): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "usuario_asignado"', 'C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Views\\admin\\consultas\\detalle.php', 72)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Views\\admin\\consultas\\detalle.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('admin/consultas/detalle', [], true)
+ 5 APPPATH\Controllers\ConsultaController.php(66): view('admin/consultas/detalle')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ConsultaController->detalleConsulta('3')
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConsultaController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-10 23:05:05 --> ErrorException: Undefined array key "usuario_asignado"
+[Method: GET, Route: admin/consultas/detalle/4]
+in APPPATH\Views\admin\consultas\detalle.php on line 72.
+ 1 APPPATH\Views\admin\consultas\detalle.php(72): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "usuario_asignado"', 'C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Views\\admin\\consultas\\detalle.php', 72)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Views\\admin\\consultas\\detalle.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('admin/consultas/detalle', [], true)
+ 5 APPPATH\Controllers\ConsultaController.php(66): view('admin/consultas/detalle')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ConsultaController->detalleConsulta('4')
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConsultaController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-10 23:18:07 --> ErrorException: Undefined array key "usuario_asignado"
+[Method: GET, Route: admin/consultas/listar]
+in APPPATH\Views\admin\consultas\listar.php on line 92.
+ 1 APPPATH\Views\admin\consultas\listar.php(92): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "usuario_asignado"', 'C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Views\\admin\\consultas\\listar.php', 92)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Views\\admin\\consultas\\listar.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('admin/consultas/listar', [], true)
+ 5 APPPATH\Controllers\ConsultaController.php(45): view('admin/consultas/listar')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ConsultaController->listarConsultas()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConsultaController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-10 23:18:28 --> ErrorException: Undefined array key "usuario_asignado"
+[Method: GET, Route: admin/consultas/listar]
+in APPPATH\Views\admin\consultas\listar.php on line 92.
+ 1 APPPATH\Views\admin\consultas\listar.php(92): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "usuario_asignado"', 'C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Views\\admin\\consultas\\listar.php', 92)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Views\\admin\\consultas\\listar.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('admin/consultas/listar', [], true)
+ 5 APPPATH\Controllers\ConsultaController.php(45): view('admin/consultas/listar')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ConsultaController->listarConsultas()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConsultaController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-10 23:29:36 --> ErrorException: Undefined array key "usuario_asignado"
+[Method: GET, Route: admin/consultas/listar]
+in APPPATH\Views\admin\consultas\listar.php on line 92.
+ 1 APPPATH\Views\admin\consultas\listar.php(92): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "usuario_asignado"', 'C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Views\\admin\\consultas\\listar.php', 92)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Views\\admin\\consultas\\listar.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('admin/consultas/listar', [], true)
+ 5 APPPATH\Controllers\ConsultaController.php(45): view('admin/consultas/listar')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ConsultaController->listarConsultas()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConsultaController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-10 23:35:06 --> TypeError: CodeIgniter\Router\RouteCollection::get(): Argument #3 ($options) must be of type ?array, string given, called in C:\xampp\htdocs\proyecto_benitez_lopez\app\Config\Routes.php on line 76
+[Method: GET, Route: /]
+in SYSTEMPATH\Router\RouteCollection.php on line 1050.
+ 1 APPPATH\Config\Routes.php(76): CodeIgniter\Router\RouteCollection->get('usuarios', [...], 'listarUsuarios')
+ 2 SYSTEMPATH\Router\RouteCollection.php(799): CodeIgniter\Router\RouteCollection->{closure}(Object(CodeIgniter\Router\RouteCollection))
+ 3 APPPATH\Config\Routes.php(54): CodeIgniter\Router\RouteCollection->group('admin', [...], Object(Closure))
+ 4 SYSTEMPATH\Router\RouteCollection.php(339): require('C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Config\\Routes.php')
+ 5 SYSTEMPATH\CodeIgniter.php(821): CodeIgniter\Router\RouteCollection->loadRoutes()
+ 6 SYSTEMPATH\CodeIgniter.php(455): CodeIgniter\CodeIgniter->tryToRouteIt(null)
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-10 23:35:36 --> TypeError: CodeIgniter\Router\RouteCollection::get(): Argument #3 ($options) must be of type ?array, string given, called in C:\xampp\htdocs\proyecto_benitez_lopez\app\Config\Routes.php on line 76
+[Method: GET, Route: /]
+in SYSTEMPATH\Router\RouteCollection.php on line 1050.
+ 1 APPPATH\Config\Routes.php(76): CodeIgniter\Router\RouteCollection->get('usuarios', [...], 'listarUsuarios')
+ 2 SYSTEMPATH\Router\RouteCollection.php(799): CodeIgniter\Router\RouteCollection->{closure}(Object(CodeIgniter\Router\RouteCollection))
+ 3 APPPATH\Config\Routes.php(54): CodeIgniter\Router\RouteCollection->group('admin', [...], Object(Closure))
+ 4 SYSTEMPATH\Router\RouteCollection.php(339): require('C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Config\\Routes.php')
+ 5 SYSTEMPATH\CodeIgniter.php(821): CodeIgniter\Router\RouteCollection->loadRoutes()
+ 6 SYSTEMPATH\CodeIgniter.php(455): CodeIgniter\CodeIgniter->tryToRouteIt(null)
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-10 23:35:37 --> TypeError: CodeIgniter\Router\RouteCollection::get(): Argument #3 ($options) must be of type ?array, string given, called in C:\xampp\htdocs\proyecto_benitez_lopez\app\Config\Routes.php on line 76
+[Method: GET, Route: /]
+in SYSTEMPATH\Router\RouteCollection.php on line 1050.
+ 1 APPPATH\Config\Routes.php(76): CodeIgniter\Router\RouteCollection->get('usuarios', [...], 'listarUsuarios')
+ 2 SYSTEMPATH\Router\RouteCollection.php(799): CodeIgniter\Router\RouteCollection->{closure}(Object(CodeIgniter\Router\RouteCollection))
+ 3 APPPATH\Config\Routes.php(54): CodeIgniter\Router\RouteCollection->group('admin', [...], Object(Closure))
+ 4 SYSTEMPATH\Router\RouteCollection.php(339): require('C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Config\\Routes.php')
+ 5 SYSTEMPATH\CodeIgniter.php(821): CodeIgniter\Router\RouteCollection->loadRoutes()
+ 6 SYSTEMPATH\CodeIgniter.php(455): CodeIgniter\CodeIgniter->tryToRouteIt(null)
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-10 23:36:30 --> ErrorException: Undefined array key "usuario_asignado"
+[Method: GET, Route: admin/consultas/listar]
+in APPPATH\Views\admin\consultas\listar.php on line 92.
+ 1 APPPATH\Views\admin\consultas\listar.php(92): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "usuario_asignado"', 'C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Views\\admin\\consultas\\listar.php', 92)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Views\\admin\\consultas\\listar.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('admin/consultas/listar', [], true)
+ 5 APPPATH\Controllers\ConsultaController.php(45): view('admin/consultas/listar')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ConsultaController->listarConsultas()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConsultaController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-10 23:36:39 --> ErrorException: Undefined array key "direccion_id"
+[Method: GET, Route: admin/ventas/detalle/5]
+in APPPATH\Controllers\VentaController.php on line 90.
+ 1 APPPATH\Controllers\VentaController.php(90): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "direccion_id"', 'C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Controllers\\VentaController.php', 90)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\VentaController->detalle('5')
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VentaController))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-10 23:37:02 --> ErrorException: Undefined array key "usuario_asignado"
+[Method: GET, Route: admin/consultas/listar]
+in APPPATH\Views\admin\consultas\listar.php on line 92.
+ 1 APPPATH\Views\admin\consultas\listar.php(92): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "usuario_asignado"', 'C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Views\\admin\\consultas\\listar.php', 92)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Views\\admin\\consultas\\listar.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('admin/consultas/listar', [], true)
+ 5 APPPATH\Controllers\ConsultaController.php(45): view('admin/consultas/listar')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ConsultaController->listarConsultas()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConsultaController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-10 23:37:28 --> ErrorException: Undefined array key "usuario_asignado"
+[Method: GET, Route: admin/consultas/detalle/2]
+in APPPATH\Views\admin\consultas\detalle.php on line 72.
+ 1 APPPATH\Views\admin\consultas\detalle.php(72): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "usuario_asignado"', 'C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Views\\admin\\consultas\\detalle.php', 72)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Views\\admin\\consultas\\detalle.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('admin/consultas/detalle', [], true)
+ 5 APPPATH\Controllers\ConsultaController.php(66): view('admin/consultas/detalle')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ConsultaController->detalleConsulta('2')
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConsultaController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-10 23:37:31 --> ErrorException: Undefined array key ""
+[Method: GET, Route: admin/consultas/detalle/1]
+in APPPATH\Views\admin\consultas\detalle.php on line 10.
+ 1 APPPATH\Views\admin\consultas\detalle.php(10): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key ""', 'C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Views\\admin\\consultas\\detalle.php', 10)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Views\\admin\\consultas\\detalle.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('admin/consultas/detalle', [], true)
+ 5 APPPATH\Controllers\ConsultaController.php(66): view('admin/consultas/detalle')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ConsultaController->detalleConsulta('1')
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConsultaController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-10 23:47:07 --> ErrorException: Undefined array key "usuario_asignado"
+[Method: GET, Route: admin/consultas/listar]
+in APPPATH\Views\admin\consultas\listar.php on line 92.
+ 1 APPPATH\Views\admin\consultas\listar.php(92): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "usuario_asignado"', 'C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Views\\admin\\consultas\\listar.php', 92)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Views\\admin\\consultas\\listar.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('admin/consultas/listar', [], true)
+ 5 APPPATH\Controllers\ConsultaController.php(45): view('admin/consultas/listar')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ConsultaController->listarConsultas()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConsultaController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-10 23:47:09 --> ErrorException: Undefined array key "usuario_asignado"
+[Method: GET, Route: admin/consultas/listar]
+in APPPATH\Views\admin\consultas\listar.php on line 92.
+ 1 APPPATH\Views\admin\consultas\listar.php(92): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "usuario_asignado"', 'C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Views\\admin\\consultas\\listar.php', 92)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Views\\admin\\consultas\\listar.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('admin/consultas/listar', [], true)
+ 5 APPPATH\Controllers\ConsultaController.php(45): view('admin/consultas/listar')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ConsultaController->listarConsultas()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConsultaController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-10 23:47:10 --> ErrorException: Undefined array key "usuario_asignado"
+[Method: GET, Route: admin/consultas/listar]
+in APPPATH\Views\admin\consultas\listar.php on line 92.
+ 1 APPPATH\Views\admin\consultas\listar.php(92): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "usuario_asignado"', 'C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Views\\admin\\consultas\\listar.php', 92)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Views\\admin\\consultas\\listar.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('admin/consultas/listar', [], true)
+ 5 APPPATH\Controllers\ConsultaController.php(45): view('admin/consultas/listar')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ConsultaController->listarConsultas()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConsultaController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-10 23:47:10 --> ErrorException: Undefined array key "usuario_asignado"
+[Method: GET, Route: admin/consultas/listar]
+in APPPATH\Views\admin\consultas\listar.php on line 92.
+ 1 APPPATH\Views\admin\consultas\listar.php(92): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "usuario_asignado"', 'C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Views\\admin\\consultas\\listar.php', 92)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Views\\admin\\consultas\\listar.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('admin/consultas/listar', [], true)
+ 5 APPPATH\Controllers\ConsultaController.php(45): view('admin/consultas/listar')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ConsultaController->listarConsultas()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConsultaController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-10 23:47:10 --> ErrorException: Undefined array key "usuario_asignado"
+[Method: GET, Route: admin/consultas/listar]
+in APPPATH\Views\admin\consultas\listar.php on line 92.
+ 1 APPPATH\Views\admin\consultas\listar.php(92): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "usuario_asignado"', 'C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Views\\admin\\consultas\\listar.php', 92)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Views\\admin\\consultas\\listar.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('admin/consultas/listar', [], true)
+ 5 APPPATH\Controllers\ConsultaController.php(45): view('admin/consultas/listar')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ConsultaController->listarConsultas()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConsultaController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-10 23:47:10 --> ErrorException: Undefined array key "usuario_asignado"
+[Method: GET, Route: admin/consultas/listar]
+in APPPATH\Views\admin\consultas\listar.php on line 92.
+ 1 APPPATH\Views\admin\consultas\listar.php(92): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "usuario_asignado"', 'C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Views\\admin\\consultas\\listar.php', 92)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Views\\admin\\consultas\\listar.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('admin/consultas/listar', [], true)
+ 5 APPPATH\Controllers\ConsultaController.php(45): view('admin/consultas/listar')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ConsultaController->listarConsultas()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConsultaController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-10 23:47:11 --> ErrorException: Undefined array key "usuario_asignado"
+[Method: GET, Route: admin/consultas/listar]
+in APPPATH\Views\admin\consultas\listar.php on line 92.
+ 1 APPPATH\Views\admin\consultas\listar.php(92): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "usuario_asignado"', 'C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Views\\admin\\consultas\\listar.php', 92)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Views\\admin\\consultas\\listar.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('admin/consultas/listar', [], true)
+ 5 APPPATH\Controllers\ConsultaController.php(45): view('admin/consultas/listar')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ConsultaController->listarConsultas()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConsultaController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-10 23:47:11 --> ErrorException: Undefined array key "usuario_asignado"
+[Method: GET, Route: admin/consultas/listar]
+in APPPATH\Views\admin\consultas\listar.php on line 92.
+ 1 APPPATH\Views\admin\consultas\listar.php(92): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "usuario_asignado"', 'C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Views\\admin\\consultas\\listar.php', 92)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Views\\admin\\consultas\\listar.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('admin/consultas/listar', [], true)
+ 5 APPPATH\Controllers\ConsultaController.php(45): view('admin/consultas/listar')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ConsultaController->listarConsultas()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConsultaController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-10 23:47:11 --> ErrorException: Undefined array key "usuario_asignado"
+[Method: GET, Route: admin/consultas/listar]
+in APPPATH\Views\admin\consultas\listar.php on line 92.
+ 1 APPPATH\Views\admin\consultas\listar.php(92): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "usuario_asignado"', 'C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Views\\admin\\consultas\\listar.php', 92)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Views\\admin\\consultas\\listar.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('admin/consultas/listar', [], true)
+ 5 APPPATH\Controllers\ConsultaController.php(45): view('admin/consultas/listar')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ConsultaController->listarConsultas()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConsultaController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-10 23:47:11 --> ErrorException: Undefined array key "usuario_asignado"
+[Method: GET, Route: admin/consultas/listar]
+in APPPATH\Views\admin\consultas\listar.php on line 92.
+ 1 APPPATH\Views\admin\consultas\listar.php(92): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "usuario_asignado"', 'C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Views\\admin\\consultas\\listar.php', 92)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Views\\admin\\consultas\\listar.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('admin/consultas/listar', [], true)
+ 5 APPPATH\Controllers\ConsultaController.php(45): view('admin/consultas/listar')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ConsultaController->listarConsultas()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConsultaController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-10 23:56:56 --> ErrorException: Undefined array key ""
+[Method: GET, Route: admin/consultas/listar]
+in APPPATH\Views\admin\consultas\listar.php on line 87.
+ 1 APPPATH\Views\admin\consultas\listar.php(87): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key ""', 'C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Views\\admin\\consultas\\listar.php', 87)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Views\\admin\\consultas\\listar.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('admin/consultas/listar', [], true)
+ 5 APPPATH\Controllers\ConsultaController.php(45): view('admin/consultas/listar')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ConsultaController->listarConsultas()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConsultaController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-10 23:56:57 --> ErrorException: Undefined array key ""
+[Method: GET, Route: admin/consultas/listar]
+in APPPATH\Views\admin\consultas\listar.php on line 87.
+ 1 APPPATH\Views\admin\consultas\listar.php(87): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key ""', 'C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Views\\admin\\consultas\\listar.php', 87)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Views\\admin\\consultas\\listar.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('admin/consultas/listar', [], true)
+ 5 APPPATH\Controllers\ConsultaController.php(45): view('admin/consultas/listar')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ConsultaController->listarConsultas()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConsultaController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-10 23:56:57 --> ErrorException: Undefined array key ""
+[Method: GET, Route: admin/consultas/listar]
+in APPPATH\Views\admin\consultas\listar.php on line 87.
+ 1 APPPATH\Views\admin\consultas\listar.php(87): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key ""', 'C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Views\\admin\\consultas\\listar.php', 87)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Views\\admin\\consultas\\listar.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('admin/consultas/listar', [], true)
+ 5 APPPATH\Controllers\ConsultaController.php(45): view('admin/consultas/listar')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ConsultaController->listarConsultas()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConsultaController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
