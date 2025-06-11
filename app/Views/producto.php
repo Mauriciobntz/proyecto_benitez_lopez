@@ -6,7 +6,7 @@
                 <div id="productGallery" class="carousel slide" data-bs-ride="carousel">
                     <div class="carousel-inner ratio ratio-1x1">
                         <div class="carousel-item active">
-                            <img src="<?= base_url($producto['imagen_url'] ?? 'assets/img/no-image.jpg') ?>" 
+                            <img src="<?= base_url('public/uploads/productos/'.$producto['imagen_url'] ?? 'assets/img/no-image.jpg') ?>" 
                                  class="d-block w-100 object-fit-contain" 
                                  alt="<?= esc($producto['nombre']) ?>">
                         </div>

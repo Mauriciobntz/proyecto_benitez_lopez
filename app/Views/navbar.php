@@ -51,6 +51,18 @@
             <i class="bi bi-bag-check me-1"></i> Ventas
           </a>
         </li>
+
+        <li class="nav-item">
+          <a class="nav-link text-white" href="<?= base_url('admin/usuarios/listar') ?>">
+            <i class="bi bi-people me-1"></i> Usuarios
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link text-white" href="<?= base_url('admin/resenas/listar') ?>">
+            <i class="bi bi-bag-check2-square me-1"></i> Reseñas
+          </a>
+        </li>
         
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle text-white" href="#" id="configDropdown" role="button" data-bs-toggle="dropdown">

@@ -141,6 +141,16 @@ class Filters extends BaseFilters
                 //Usuarios
                 'admin/usuarios/listar',
                 'admin/usuarios/editar/*',
+                'admin/usuarios/actualizar/*',
+                'admin/usuarios/eliminar/*',
+                'admin/usuarios/agregar',
+                'admin/usuarios/guardar',
+                'admin/usuarios/perfil/*',
+                // Reseñas
+                'admin/resenas/listar',
+                'admin/resenas/editar/*',
+                'admin/resenas/actualizar/*',
+                'admin/resenas/eliminar/*',
             ]
         ]
     ];

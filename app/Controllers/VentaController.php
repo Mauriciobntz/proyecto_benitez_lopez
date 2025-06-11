@@ -9,6 +9,8 @@ use App\Models\PagoModel;
 use App\Models\FacturaModel;
 use App\Models\ProductoModel;
 use App\Models\HistoricoVentaModel;
+use App\Models\DireccionEnvioModel;
+use App\Controllers\BaseController;
 
 class VentaController extends BaseController
 {
@@ -20,6 +22,7 @@ class VentaController extends BaseController
     protected $facturaModel;
     protected $productoModel;
     protected $historicoVentaModel;
+    protected $direccionEnvioModel;
 
     public function __construct()
     {
@@ -30,92 +33,90 @@ class VentaController extends BaseController
         $this->pagoModel = new PagoModel();
         $this->facturaModel = new FacturaModel();
         $this->productoModel = new ProductoModel();
+        $this->direccionEnvioModel = new DireccionEnvioModel();
         $this->historicoVentaModel = new HistoricoVentaModel();
     }
 
-public function listar()
-{
-    // Verificar si el usuario es administrador
-    if (session()->get('rol') !== 'admin') {
-        return redirect()->to('/')->with('error', 'No tienes permisos para realizar esta acción');
+    public function listar()
+    {
+        // Verificar si el usuario es administrador
+        if (session()->get('rol') !== 'admin') {
+            return redirect()->to('/')->with('error', 'No tienes permisos para realizar esta acción');
+        }
+
+        // Filtros
+        $filtros = [
+            'id' => $this->request->getGet('id'),
+            'estado' => $this->request->getGet('estado'),
+            'desde' => $this->request->getGet('desde'),
+            'hasta' => $this->request->getGet('hasta')
+        ];
+
+        // Obtener todas las ventas sin paginación
+        $ventas = $this->ventaModel->getVentasConFiltros($filtros);
+
+        // Obtener información de clientes
+        foreach ($ventas as &$venta) {
+            $usuario = $this->usuarioModel->find($venta['usuario_id']);
+            $persona = $this->usuarioModel->getPersona($venta['usuario_id']);
+            
+            $venta['nombre_cliente'] = $persona ? $persona['nombre'] . ' ' . $persona['apellido'] : $usuario['username'];
+            $venta['metodo_pago'] = $this->pagoModel->where('venta_id', $venta['id_venta'])->first()['metodo_pago'] ?? null;
+        }
+
+        $data = [
+            'titulo' => 'Gestión de Ventas',
+            'ventas' => $ventas,
+            'request' => $this->request
+        ];
+
+        return view('header', $data) . view('navbar') . view('admin/ventas/listar', $data) . view('footer');
     }
-
-    // Filtros
-    $filtros = [
-        'id' => $this->request->getGet('id'),
-        'estado' => $this->request->getGet('estado'),
-        'desde' => $this->request->getGet('desde'),
-        'hasta' => $this->request->getGet('hasta')
-    ];
-
-    // Obtener todas las ventas sin paginación
-    $ventas = $this->ventaModel->getVentasConFiltros($filtros);
-
-    // Obtener información de clientes
-    foreach ($ventas as &$venta) {
-        $usuario = $this->usuarioModel->find($venta['usuario_id']);
-        $persona = $this->usuarioModel->getPersona($venta['usuario_id']);
-        
-        $venta['nombre_cliente'] = $persona ? $persona['nombre'] . ' ' . $persona['apellido'] : $usuario['username'];
-        $venta['metodo_pago'] = $this->pagoModel->where('venta_id', $venta['id_venta'])->first()['metodo_pago'] ?? null;
-    }
-
-    $data = [
-        'titulo' => 'Gestión de Ventas',
-        'ventas' => $ventas,
-        'request' => $this->request // Pasar el request a la vista
-    ];
-
-    return view('header', $data) . view('navbar') . view('admin/ventas/listar', $data) . view('footer');
-}
 
     public function detalle($venta_id)
     {
-        if (session()->get('rol') !== 'admin') {
-            return redirect()->to('denegado')->with('error', 'No tienes permisos para realizar esta acción');
-        }
-
+        // Buscar la venta
         $venta = $this->ventaModel->find($venta_id);
+
         if (!$venta) {
-            return redirect()->to('admin/ventas/listar')->with('error', 'Venta no encontrada');
+            return redirect()->back()->with('error', 'Venta no encontrada.');
         }
 
         // Obtener items de la venta con información de productos
-        $items = $this->ventaItemModel->select('venta_items.*, productos.nombre, productos.marca, productos.imagen_url')
-                                     ->join('productos', 'productos.id_producto = venta_items.producto_id')
-                                     ->where('venta_id', $venta_id)
-                                     ->findAll();
+        $items = $this->ventaItemModel
+            ->select('venta_items.*, productos.nombre, productos.marca, productos.imagen_url')
+            ->join('productos', 'productos.id_producto = venta_items.producto_id')
+            ->where('venta_id', $venta_id)
+            ->findAll();
 
-        // Obtener dirección de envío
-        $direccion = $this->direccionModel->find($venta['direccion_id']) ?? [];
+        // Obtener dirección de envío asociada a la venta
+        $direccion = $this->direccionEnvioModel
+            ->where('venta_id', $venta_id)
+            ->first() ?? [];
 
         // Obtener información del cliente
         $usuario = $this->usuarioModel->find($venta['usuario_id']);
         $persona = $this->usuarioModel->getPersona($venta['usuario_id']);
-        
+
+        // Obtener historial de estados de la venta
+        $historial = $this->historicoVentaModel
+            ->where('venta_id', $venta_id)
+            ->orderBy('fecha', 'DESC')
+            ->findAll();
+
+        // Añadir nombre completo a la dirección si hay datos personales
         if ($persona) {
             $direccion['nombre'] = $persona['nombre'] . ' ' . $persona['apellido'];
-            $direccion['telefono'] = $persona['telefono'];
-        } else {
-            $direccion['nombre'] = $usuario['username'];
-            $direccion['telefono'] = 'N/A';
         }
 
-        // Obtener método de pago
-        $pago = $this->pagoModel->where('venta_id', $venta_id)->first();
-        $venta['metodo_pago'] = $pago['metodo_pago'] ?? null;
-
-        // Obtener historial de estados
-        $historial = $this->historicoVentaModel->where('venta_id', $venta_id)
-                                             ->orderBy('fecha', 'ASC')
-                                             ->findAll();
-
         $data = [
-            'titulo' => 'Detalle de Venta #' . $venta_id,
             'venta' => $venta,
             'items' => $items,
             'direccion' => $direccion,
-            'historial' => $historial
+            'usuario' => $usuario,
+            'persona' => $persona,
+            'historial' => $historial,
+            'titulo' => 'Detalle de Venta'
         ];
 
         return view('header', $data) . view('navbar') . view('admin/ventas/detalle_venta', $data) . view('footer');
@@ -124,7 +125,7 @@ public function listar()
     public function actualizarEstado($venta_id)
     {
         if (session()->get('rol') !== 'admin') {
-            return redirect()->to('/')->with('error', 'No tienes permisos para realizar esta acción');
+            return redirect()->to('denegado')->with('error', 'No tienes permisos para realizar esta acción');
         }
 
         $venta = $this->ventaModel->find($venta_id);

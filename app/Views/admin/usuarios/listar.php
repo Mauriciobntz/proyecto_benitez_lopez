@@ -24,17 +24,17 @@
         <div class="card-header">
             <div class="row">
                 <div class="col-md-4">
-                    <input type="text" class="form-control" id="search-term" placeholder="Buscar por nombre, email..." value="<?= service('request')->getGet('q') ?>">
+                    <input type="text" class="form-control" id="search-term" placeholder="Buscar por nombre, email..." value="<?= esc($request->getGet('q')) ?>">
                 </div>
                 <div class="col-md-3">
                     <select class="form-select" id="filter-role">
                         <option value="">Todos los roles</option>
-                        <option value="admin" <?= service('request')->getGet('rol') == 'admin' ? 'selected' : '' ?>>Administrador</option>
-                        <option value="cliente" <?= service('request')->getGet('rol') == 'cliente' ? 'selected' : '' ?>>Cliente</option>
+                        <option value="admin" <?= $request->getGet('rol') == 'admin' ? 'selected' : '' ?>>Administrador</option>
+                        <option value="cliente" <?= $request->getGet('rol') == 'cliente' ? 'selected' : '' ?>>Cliente</option>
                     </select>
                 </div>
                 <div class="col-md-3">
-                    <input type="date" class="form-control" id="filter-date-from" value="<?= service('request')->getGet('desde') ?>">
+                    <input type="date" class="form-control" id="filter-date-from" value="<?= esc($request->getGet('desde')) ?>">
                 </div>
                 <div class="col-md-2">
                     <button class="btn btn-outline-secondary w-100" id="apply-filters">Filtrar</button>
@@ -62,8 +62,8 @@
                                 <td>
                                     <?= $usuario['nombre'] ?? 'N/A' ?> <?= $usuario['apellido'] ?? '' ?>
                                 </td>
-                                <td><?= $usuario['email'] ?></td>
-                                <td><?= $usuario['username'] ?? 'N/A' ?></td>
+                                <td><?= esc($usuario['email']) ?></td>
+                                <td><?= esc($usuario['username'] ?? 'N/A') ?></td>
                                 <td>
                                     <span class="badge <?= $usuario['rol'] == 'admin' ? 'bg-primary' : 'bg-secondary' ?>">
                                         <?= ucfirst($usuario['rol']) ?>
@@ -84,7 +84,6 @@
                         <?php endforeach; ?>
                     </tbody>
                 </table>
-                <?= $pager->links() ?>
             </div>
         </div>
     </div>
@@ -104,7 +103,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (role) params.set('rol', role);
         if (dateFrom) params.set('desde', dateFrom);
         
-        window.location.href = '<?= base_url('admin/usuarios') ?>?' + params.toString();
+        window.location.href = '<?= base_url('admin/usuarios/listar') ?>?' + params.toString();
     });
 
     // Eliminar usuario

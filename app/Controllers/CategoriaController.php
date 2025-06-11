@@ -54,10 +54,11 @@ class CategoriaController extends BaseController
         
         $data = [
             'titulo' => 'Gestión de Categorías',
-            'categorias' => $categorias
+            'categorias' => $categorias,
+            'request' => $this->request // <-- Agrega esta línea
         ];
 
-        return view('header', $data) . view('navbar') . view('admin/categorias/listar') . view('footer');
+        return view('header', $data) . view('navbar') . view('admin/categorias/listar', $data) . view('footer');
     }
 
     public function agregar()

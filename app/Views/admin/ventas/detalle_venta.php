@@ -32,7 +32,7 @@
                                         <td>
                                             <div class="d-flex">
                                                 <?php if (!empty($item['imagen_url'])): ?>
-                                                    <img src="<?= base_url('public/uploads/productos/'.$producto['imagen_url']) ?>" class="img-thumbnail me-3" style="width: 60px; height: 60px;">
+                                                        <img src="<?= base_url('public/uploads/productos/'.$item['imagen_url']) ?>" class="img-thumbnail me-3" style="width: 60px; height: 60px;">
                                                 <?php else: ?>
                                                     <img src="https://via.placeholder.com/60" class="img-thumbnail me-3" style="width: 60px; height: 60px;">
                                                 <?php endif; ?>

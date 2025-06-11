@@ -69,23 +69,24 @@
                     <div class="card-header">Especificaciones</div>
                     <div class="card-body">
                         <div id="especificaciones-container">
-                            <?php 
+                            <?php
                             $especificaciones = json_decode($producto['especificaciones'] ?? '{}', true);
+                            if (!is_array($especificaciones)) {
+                                $especificaciones = [];
+                            }
                             $i = 0;
                             foreach ($especificaciones as $key => $value): ?>
                                 <div class="row mb-2 especificacion-item">
                                     <div class="col-md-5">
-                                        <input type="text" class="form-control" name="especificaciones_key[]" 
+                                        <input type="text" class="form-control" name="especificaciones_key[]"
                                                placeholder="Nombre especificación" value="<?= htmlspecialchars($key) ?>">
                                     </div>
                                     <div class="col-md-5">
-                                        <input type="text" class="form-control" name="especificaciones_value[]" 
+                                        <input type="text" class="form-control" name="especificaciones_value[]"
                                                placeholder="Valor" value="<?= htmlspecialchars($value) ?>">
                                     </div>
                                     <div class="col-md-2">
-                                        <button type="button" class="btn btn-danger btn-sm remove-especificacion">
-                                            <i class="bi bi-trash"></i>
-                                        </button>
+                                        <button type="button" class="btn btn-danger btn-remove-especificacion">Eliminar</button>
                                     </div>
                                 </div>
                             <?php $i++; endforeach; ?>
@@ -101,7 +102,7 @@
                                                placeholder="Valor">
                                     </div>
                                     <div class="col-md-2">
-                                        <button type="button" class="btn btn-danger btn-sm remove-especificacion">
+                                        <button type="button" class="btn btn-danger btn-remove-especificacion">
                                             <i class="bi bi-trash"></i>
                                         </button>
                                     </div>

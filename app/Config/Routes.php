@@ -7,6 +7,7 @@ use App\Controllers\UsuarioController;
 use App\Controllers\CategoriaController;
 use App\Controllers\VentaController;
 use App\Controllers\ConsultaController;
+use App\Controllers\ResenaController;
 
 /**
  * @var RouteCollection $routes
@@ -73,13 +74,26 @@ $routes->group('admin', ['filter' => 'admin'], function($routes) {
     $routes->get('ventas/factura/(:num)', [VentaController::class, 'generarFactura']);
 
     // Usuarios
-    $routes->get('usuarios', [UsuarioController::class, 'listarUsuarios']);
+    $routes->get('usuarios/listar', [UsuarioController::class, 'listarUsuarios']);
     $routes->get('usuarios/editar/(:num)', [UsuarioController::class, 'editarUsuario']);
+    $routes->post('usuarios/actualizar/(:num)', [UsuarioController::class, 'actualizarUsuario']);
+    $routes->get('usuarios/eliminar/(:num)', [UsuarioController::class, 'eliminarUsuario']);
+    $routes->get('usuarios/agregar', [UsuarioController::class, 'agregarUsuario']);
+    $routes->post('usuarios/guardar', [UsuarioController::class, 'guardarUsuario']);
+    $routes->get('usuarios/perfil/(:num)', [UsuarioController::class, 'perfilUsuario']);
+    
+
 
     // Consultas
     $routes->get('consultas/listar', [ConsultaController::class, 'listarConsultas']);
     $routes->get('consultas/detalle/(:num)', [ConsultaController::class, 'detalleConsulta']);
     $routes->post('consultas/actualizar-estado/(:num)', [ConsultaController::class, 'actualizarEstado']);
+
+    // Reseñas
+    $routes->get('resenas/listar', [ResenaController::class, 'listar']);
+    $routes->get('resenas/editar/(:num)', [ResenaController::class, 'editar']);
+    $routes->post('resenas/actualizar/(:num)', [ResenaController::class, 'actualizar']);
+    $routes->get('resenas/eliminar/(:num)', [ResenaController::class, 'eliminar']);
 });
 
 
@@ -88,5 +102,7 @@ $routes->group('admin', ['filter' => 'admin'], function($routes) {
 $routes->group('usuario', ['filter' => 'auth'], function($routes) {
     $routes->get('mi-perfil', [UsuarioController::class, 'miPerfil']);
     $routes->post('actualizar-perfil', [UsuarioController::class, 'actualizarPerfil']);
+    $routes->post('productos/(:num)/resena', [ProductoController::class, 'agregarResena']);
+    $routes->get('mis-resenas', [ProductoController::class, 'misResenas']);
 });
 
