@@ -123,6 +123,8 @@ class Filters extends BaseFilters
                 'admin/productos/guardar',
                 'admin/productos/editar/*',
                 'admin/productos/actualizar/*',
+                'admin/productos/eliminar/*',
+                'admin/productos/desactivar/*', 
                 //Categorías
                 'admin/categorias/listar',
                 'admin/categorias/crear',

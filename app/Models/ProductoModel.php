@@ -8,13 +8,11 @@ class ProductoModel extends Model
     protected $table = 'productos';
     protected $primaryKey = 'id_producto';
     protected $allowedFields = [
-        'nombre', 'descripcion', 'marca', 'modelo', 'precio', 'stock',
-        'imagen_url', 'categoria_id', 'especificaciones', 'garantia_meses',
-        'peso_kg', 'dimensiones', 'activo'
+        'nombre', 'descripcion', 'marca', 'modelo', 'precio', 'stock', 'categoria_id',
+        'especificaciones', 'garantia_meses', 'peso_kg', 'dimensiones', 'activo', 'imagen_url'
     ];
-    protected $useTimestamps = true;
-    protected $createdField = 'fecha_alta';
-    protected $updatedField = '';
+    
+    protected $useTimestamps = false;
 
     public function getProductosDestacados($limit = 10)
     {
@@ -31,7 +29,8 @@ class ProductoModel extends Model
 
     public function buscarProductos($termino, $filtros = [])
     {
-        $builder = $this->where('activo', 1);
+        $builder = $this->builder();
+        $builder->where('activo', 1);
         
         // Búsqueda en múltiples campos
         $builder->groupStart()
@@ -75,10 +74,17 @@ class ProductoModel extends Model
                 case 'z_a':
                     $orden = 'nombre DESC';
                     break;
+                case 'nuevos':
+                    $orden = 'fecha_alta DESC';
+                    break;
+                case 'mas_vendidos':
+                    // Aquí necesitarías una relación con la tabla de ventas
+                    $orden = 'nombre ASC'; // Temporal
+                    break;
             }
         }
         
-        return $builder->orderBy($orden)->findAll();
+        return $builder->orderBy($orden)->get()->getResultArray();
     }
 
     public function actualizarStock($producto_id, $cantidad)

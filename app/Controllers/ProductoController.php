@@ -4,18 +4,23 @@ namespace App\Controllers;
 use App\Models\ProductoModel;
 use App\Models\CategoriaModel;
 use App\Models\ResenaModel;
+use App\Models\VentaItemModel;
+use App\Controllers\BaseController;
+use CodeIgniter\HTTP\RequestInterface;
 
 class ProductoController extends BaseController
 {
     protected $productoModel;
     protected $categoriaModel;
     protected $resenaModel;
+    protected $ventaItemModel;
 
     public function __construct()
     {
         $this->productoModel = new ProductoModel();
         $this->categoriaModel = new CategoriaModel();
         $this->resenaModel = new ResenaModel();
+        $this->ventaItemModel = new VentaItemModel();
     }
 
     public function productos()
@@ -83,16 +88,44 @@ public function detalle($producto_id)
     {
         // Verificar si el usuario es administrador
         if (session()->get('rol') !== 'admin') {
-            return redirect()->to('/')->with('error', 'No tienes permisos para realizar esta acción');
+            return redirect()->to('denegado')->with('error', 'No tienes permisos para realizar esta acción');
         }
 
-        $productos = $this->productoModel->findAll();
+        // Obtener parámetros de búsqueda y filtros
+        $termino = $this->request->getGet('q');
+        $categoria_id = $this->request->getGet('categoria');
+        $estado = $this->request->getGet('estado');
+
+        // Construir consulta
+        $builder = $this->productoModel->builder();
+
+        if (!empty($termino)) {
+            $builder->groupStart()
+                    ->like('nombre', $termino)
+                    ->orLike('descripcion', $termino)
+                    ->orLike('marca', $termino)
+                    ->orLike('modelo', $termino)
+                    ->groupEnd();
+        }
+
+        if (!empty($categoria_id)) {
+            $builder->where('categoria_id', $categoria_id);
+        }
+
+        if ($estado !== null && $estado !== '') {
+            $builder->where('activo', $estado);
+        }
+
+        $productos = $builder->get()->getResultArray();
         $categorias = $this->categoriaModel->findAll();
         
         $data = [
             'titulo' => 'Gestión de Productos',
             'productos' => $productos,
-            'categorias' => $categorias
+            'categorias' => $categorias,
+            'termino' => $termino,
+            'categoria_seleccionada' => $categoria_id,
+            'estado_seleccionado' => $estado
         ];
 
         return view('header', $data) . view('navbar') . view('admin/productos/listar') . view('footer');
@@ -199,14 +232,15 @@ public function detalle($producto_id)
         $especificaciones = [];
         $keys = $request->getPost('especificaciones_key');
         $values = $request->getPost('especificaciones_value');
-        
+        // Asegurarse de que las especificaciones no estén vacías
         if ($keys && $values) {
             foreach ($keys as $index => $key) {
-                if (!empty($key)) {
-                    $especificaciones[$key] = $values[$index] ?? '';
+                if (!empty($key) && !empty($values[$index])) {
+                    $especificaciones[$key] = $values[$index];
                 }
             }
         }
+
 
         // Procesar la imagen
         $imagen = $this->request->getFile('imagen');
@@ -336,6 +370,19 @@ public function detalle($producto_id)
             $imagen->move(ROOTPATH . 'public/uploads/productos', $nombreImagen);
         }
 
+        // Procesar las especificaciones
+        $especificaciones = [];
+        $keys = $request->getPost('especificaciones_key');
+        $values = $request->getPost('especificaciones_value');
+        
+        if ($keys && $values) {
+            foreach ($keys as $index => $key) {
+                if (!empty($key) && !empty($values[$index])) {
+                    $especificaciones[$key] = $values[$index];
+                }
+            }
+        }
+
         // Preparar datos del producto
         $data = [
             'nombre' => $request->getPost('nombre'),
@@ -345,7 +392,7 @@ public function detalle($producto_id)
             'precio' => $request->getPost('precio'),
             'stock' => $request->getPost('stock'),
             'categoria_id' => $request->getPost('categoria_id'),
-            'especificaciones' => $request->getPost('especificaciones'),
+            'especificaciones' => !empty($especificaciones) ? json_encode($especificaciones) : null,
             'garantia_meses' => $request->getPost('garantia_meses'),
             'peso_kg' => $request->getPost('peso_kg'),
             'dimensiones' => $request->getPost('dimensiones'),
@@ -453,4 +500,85 @@ public function detalle($producto_id)
 
         return redirect()->back()->with('message', 'Reseña agregada correctamente');
     }
+
+    public function verificarVentas($producto_id)
+    {
+        $tieneVentas = $this->ventaItemModel->where('producto_id', $producto_id)->countAllResults() > 0;
+        return $this->response->setJSON(['tieneVentas' => $tieneVentas]);
+    }
+
+// En ProductoController.php
+public function desactivar($producto_id)
+{
+    // Verificar si el producto existe
+    $producto = $this->productoModel->find($producto_id);
+    
+    if (!$producto) {
+        return $this->response->setJSON([
+            'success' => false,
+            'message' => 'Producto no encontrado'
+        ]);
+    }
+
+    // Actualizar el estado del producto
+    $updated = $this->productoModel->update($producto_id, ['activo' => 0]);
+
+    if ($updated) {
+        return $this->response->setJSON([
+            'success' => true,
+            'message' => 'Producto desactivado correctamente'
+        ]);
+    } else {
+        return $this->response->setJSON([
+            'success' => false,
+            'message' => 'Error al desactivar el producto'
+        ]);
+    }
+}
+
+public function eliminar($id)
+{
+    // Verificar si la petición es AJAX
+    if ($this->request->isAJAX()) {
+        // Primero verificar si tiene ventas
+        $tieneVentas = $this->ventaItemModel->where('producto_id', $id)->countAllResults() > 0;
+
+        if ($tieneVentas) {
+            // Si tiene ventas, desactivar en lugar de eliminar
+            $this->productoModel->update($id, ['activo' => 0]);
+            
+            return $this->response->setJSON([
+                'success' => true,
+                'message' => 'El producto tiene ventas asociadas. Se ha desactivado en lugar de eliminar.'
+            ]);
+        } else {
+            // Si no tiene ventas, proceder con eliminación
+            $producto = $this->productoModel->find($id);
+
+            if (!$producto) {
+                return $this->response->setJSON([
+                    'success' => false,
+                    'message' => 'Producto no encontrado.'
+                ]);
+            }
+
+            // Eliminar imagen si existe
+            if (!empty($producto['imagen_url']) && file_exists(ROOTPATH . 'public/' . $producto['imagen_url'])) {
+                unlink(ROOTPATH . 'public/' . $producto['imagen_url']);
+            }
+
+            $this->productoModel->delete($id);
+
+            return $this->response->setJSON([
+                'success' => true,
+                'message' => 'Producto eliminado permanentemente.'
+            ]);
+        }
+    }
+
+    return $this->response->setStatusCode(400)->setJSON([
+        'success' => false,
+        'message' => 'Solicitud inválida.'
+    ]);
+}
 }

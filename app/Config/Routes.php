@@ -58,6 +58,9 @@ $routes->group('admin', ['filter' => 'admin'], function($routes) {
     $routes->post('productos/guardar', [ProductoController::class, 'guardarProducto']);
     $routes->get('productos/editar/(:num)', [ProductoController::class, 'editarProducto']);
     $routes->post('productos/actualizar/(:num)', [ProductoController::class, 'actualizarProducto']);
+    $routes->post('productos/verificar-ventas/(:num)', [ProductoController::class, 'verificarVentas']);
+    $routes->post('productos/desactivar/(:num)', [ProductoController::class, 'desactivar']);
+    $routes->post('productos/eliminar/(:num)', [ProductoController::class, 'eliminar']);
 
     // Rutas para categorías
     $routes->get('categorias/listar', [CategoriaController::class, 'listar']);

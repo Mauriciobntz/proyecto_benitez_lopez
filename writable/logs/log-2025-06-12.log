@@ -1,0 +1,818 @@
+DEBUG - 2025-06-12 00:52:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 00:52:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 00:53:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 00:53:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 00:53:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 00:53:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 00:53:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 00:53:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 00:54:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 00:54:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 00:56:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 00:56:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 00:56:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 00:56:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 00:56:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 00:57:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 00:57:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 00:57:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 00:57:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 00:57:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 00:57:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 00:57:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 01:26:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 01:26:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 01:26:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 01:55:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-06-12 01:55:57 --> ErrorException: Undefined property: CodeIgniter\View\View::$request
+[Method: GET, Route: admin/productos/listar]
+in APPPATH\Views\admin\productos\listar.php on line 27.
+ 1 APPPATH\Views\admin\productos\listar.php(27): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: CodeIgniter\\View\\View::$request', 'C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Views\\admin\\productos\\listar.php', 27)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Views\\admin\\productos\\listar.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('admin/productos/listar', [], true)
+ 5 APPPATH\Controllers\ProductoController.php(130): view('admin/productos/listar')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ProductoController->listar()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductoController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-06-12 01:57:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-06-12 01:57:18 --> ErrorException: Undefined property: CodeIgniter\View\View::$request
+[Method: GET, Route: admin/productos/listar]
+in APPPATH\Views\admin\productos\listar.php on line 27.
+ 1 APPPATH\Views\admin\productos\listar.php(27): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: CodeIgniter\\View\\View::$request', 'C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Views\\admin\\productos\\listar.php', 27)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Views\\admin\\productos\\listar.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('admin/productos/listar', [], true)
+ 5 APPPATH\Controllers\ProductoController.php(130): view('admin/productos/listar')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ProductoController->listar()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductoController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-06-12 01:57:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-06-12 01:57:19 --> ErrorException: Undefined property: CodeIgniter\View\View::$request
+[Method: GET, Route: admin/productos/listar]
+in APPPATH\Views\admin\productos\listar.php on line 27.
+ 1 APPPATH\Views\admin\productos\listar.php(27): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: CodeIgniter\\View\\View::$request', 'C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Views\\admin\\productos\\listar.php', 27)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Views\\admin\\productos\\listar.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('admin/productos/listar', [], true)
+ 5 APPPATH\Controllers\ProductoController.php(130): view('admin/productos/listar')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ProductoController->listar()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductoController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-06-12 01:57:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-06-12 01:57:20 --> ErrorException: Undefined property: CodeIgniter\View\View::$request
+[Method: GET, Route: admin/productos/listar]
+in APPPATH\Views\admin\productos\listar.php on line 27.
+ 1 APPPATH\Views\admin\productos\listar.php(27): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: CodeIgniter\\View\\View::$request', 'C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Views\\admin\\productos\\listar.php', 27)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Views\\admin\\productos\\listar.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('admin/productos/listar', [], true)
+ 5 APPPATH\Controllers\ProductoController.php(130): view('admin/productos/listar')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ProductoController->listar()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductoController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-06-12 01:57:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-06-12 01:57:20 --> ErrorException: Undefined property: CodeIgniter\View\View::$request
+[Method: GET, Route: admin/productos/listar]
+in APPPATH\Views\admin\productos\listar.php on line 27.
+ 1 APPPATH\Views\admin\productos\listar.php(27): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: CodeIgniter\\View\\View::$request', 'C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Views\\admin\\productos\\listar.php', 27)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Views\\admin\\productos\\listar.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('admin/productos/listar', [], true)
+ 5 APPPATH\Controllers\ProductoController.php(130): view('admin/productos/listar')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ProductoController->listar()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductoController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-06-12 01:57:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-06-12 01:57:20 --> ErrorException: Undefined property: CodeIgniter\View\View::$request
+[Method: GET, Route: admin/productos/listar]
+in APPPATH\Views\admin\productos\listar.php on line 27.
+ 1 APPPATH\Views\admin\productos\listar.php(27): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: CodeIgniter\\View\\View::$request', 'C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Views\\admin\\productos\\listar.php', 27)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Views\\admin\\productos\\listar.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('admin/productos/listar', [], true)
+ 5 APPPATH\Controllers\ProductoController.php(130): view('admin/productos/listar')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ProductoController->listar()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductoController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-06-12 01:57:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-06-12 01:57:21 --> ErrorException: Undefined property: CodeIgniter\View\View::$request
+[Method: GET, Route: admin/productos/listar]
+in APPPATH\Views\admin\productos\listar.php on line 27.
+ 1 APPPATH\Views\admin\productos\listar.php(27): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: CodeIgniter\\View\\View::$request', 'C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Views\\admin\\productos\\listar.php', 27)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Views\\admin\\productos\\listar.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('admin/productos/listar', [], true)
+ 5 APPPATH\Controllers\ProductoController.php(130): view('admin/productos/listar')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ProductoController->listar()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductoController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-06-12 02:04:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 02:09:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 02:11:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 02:11:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 02:11:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 02:18:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 02:18:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 02:18:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 02:22:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 02:22:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 02:22:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 02:22:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 02:22:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 02:23:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 02:23:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 02:23:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 02:23:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 02:23:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 02:23:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 02:25:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-06-12 02:25:57 --> ParseError: syntax error, unexpected token "/"
+[Method: GET, Route: admin/productos/eliminar/1]
+in APPPATH\Controllers\ProductoController.php on line 485.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(295): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\proyecto_benitez_lopez\\app\\Controllers\\ProductoController.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(271): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers\\ProductoController')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers\\ProductoController')
+ 4 SYSTEMPATH\CodeIgniter.php(885): class_exists('\\App\\Controllers\\ProductoController', true)
+ 5 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->startController()
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-06-12 02:26:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 02:26:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 02:26:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 02:26:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 02:26:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 02:26:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 02:26:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 02:26:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 02:26:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 02:27:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 02:27:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 02:27:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 02:27:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 02:27:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 02:27:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 02:27:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 02:27:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 02:28:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 02:28:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 02:28:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 02:28:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 02:29:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 02:29:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 02:30:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 02:30:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 02:30:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 02:30:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 02:30:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 02:30:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 02:30:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 02:30:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 02:30:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 02:30:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 02:30:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 02:30:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 02:30:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 02:32:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 02:32:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 02:32:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 02:48:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 02:48:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 02:48:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 03:09:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 03:09:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 03:09:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 03:09:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 03:09:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-06-12 03:09:23 --> ErrorException: Namespace declaration statement has to be the very first statement or after any declare call in the script
+[Method: GET, Route: admin/productos/listar]
+in APPPATH\Controllers\ProductoController.php on line 3.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+DEBUG - 2025-06-12 03:09:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-06-12 03:09:51 --> Error: Call to undefined method CodeIgniter\Database\MySQLi\Builder::findAll()
+[Method: GET, Route: admin/productos/listar]
+in APPPATH\Controllers\ProductoController.php on line 117.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ProductoController->listar()
+ 2 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductoController))
+ 3 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-06-12 03:11:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 03:11:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 03:11:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 03:11:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-06-12 03:11:40 --> Error: Call to undefined method CodeIgniter\Database\MySQLi\Builder::findAll()
+[Method: GET, Route: admin/productos/listar]
+in APPPATH\Controllers\ProductoController.php on line 117.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ProductoController->listar()
+ 2 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductoController))
+ 3 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-06-12 03:13:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-06-12 03:13:07 --> Error: Call to undefined method CodeIgniter\Database\MySQLi\Builder::findAll()
+[Method: GET, Route: admin/productos/listar]
+in APPPATH\Controllers\ProductoController.php on line 120.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ProductoController->listar()
+ 2 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductoController))
+ 3 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-06-12 03:13:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-06-12 03:13:08 --> Error: Call to undefined method CodeIgniter\Database\MySQLi\Builder::findAll()
+[Method: GET, Route: admin/productos/listar]
+in APPPATH\Controllers\ProductoController.php on line 120.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ProductoController->listar()
+ 2 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductoController))
+ 3 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-06-12 03:17:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 03:18:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 03:18:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 03:18:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 03:18:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 03:18:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 03:18:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 03:18:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 03:18:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 03:18:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 03:18:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 03:18:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 03:19:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 03:19:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 03:19:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-06-12 03:19:14 --> mysqli_sql_exception: Unknown column 'fecha_actualizacion' in 'field list' in C:\xampp\htdocs\proyecto_benitez_lopez\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp\htdocs\proyecto_benitez_lopez\system\Database\MySQLi\Connection.php(327): mysqli->query('UPDATE `product...', 0)
+#1 C:\xampp\htdocs\proyecto_benitez_lopez\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `product...')
+#2 C:\xampp\htdocs\proyecto_benitez_lopez\system\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `product...')
+#3 C:\xampp\htdocs\proyecto_benitez_lopez\system\Database\BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE `product...', Array, false)
+#4 C:\xampp\htdocs\proyecto_benitez_lopez\system\Model.php(461): CodeIgniter\Database\BaseBuilder->update()
+#5 C:\xampp\htdocs\proyecto_benitez_lopez\system\BaseModel.php(1027): CodeIgniter\Model->doUpdate(Array, Array)
+#6 C:\xampp\htdocs\proyecto_benitez_lopez\system\Model.php(863): CodeIgniter\BaseModel->update(Array, Array)
+#7 C:\xampp\htdocs\proyecto_benitez_lopez\app\Controllers\ProductoController.php(419): CodeIgniter\Model->update('4', Array)
+#8 C:\xampp\htdocs\proyecto_benitez_lopez\system\CodeIgniter.php(933): App\Controllers\ProductoController->actualizarProducto('4')
+#9 C:\xampp\htdocs\proyecto_benitez_lopez\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductoController))
+#10 C:\xampp\htdocs\proyecto_benitez_lopez\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\xampp\htdocs\proyecto_benitez_lopez\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#12 C:\xampp\htdocs\proyecto_benitez_lopez\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#13 C:\xampp\htdocs\proyecto_benitez_lopez\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#14 {main}
+CRITICAL - 2025-06-12 03:19:15 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'fecha_actualizacion' in 'field list'
+[Method: POST, Route: admin/productos/actualizar/4]
+in SYSTEMPATH\Database\BaseConnection.php on line 692.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE `productos` SET `nombre` = :nombre:, `descripcion` = :descripcion:, `marca` = :marca:, `modelo` = :modelo:, `precio` = :precio:, `stock` = :stock:, `categoria_id` = :categoria_id:, `especificaciones` = :especificaciones:, `garantia_meses` = :garantia_meses:, `peso_kg` = :peso_kg:, `dimensiones` = :dimensiones:, `activo` = :activo:, `fecha_actualizacion` = :fecha_actualizacion:
+WHERE `productos`.`id_producto` IN :productos.id_producto:', [...], false)
+ 2 SYSTEMPATH\Model.php(461): CodeIgniter\Database\BaseBuilder->update()
+ 3 SYSTEMPATH\BaseModel.php(1027): CodeIgniter\Model->doUpdate([...], [...])
+ 4 SYSTEMPATH\Model.php(863): CodeIgniter\BaseModel->update([...], [...])
+ 5 APPPATH\Controllers\ProductoController.php(419): CodeIgniter\Model->update('4', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ProductoController->actualizarProducto('4')
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductoController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-12 03:19:15 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'fecha_actualizacion' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `productos` SET `nombre` = \'Xiaomi 14T\', `descripcion` = \'512GB RAM | Color: Black\', `marca` = \'Xiaomi\', `modelo` = \'14T\', `precio` = \'750.00\', `stock` = \'30\', `categoria_id` = \'1\', `especificaciones` = \'{\\"Origen\\":\\"China\\"}\', `garantia_meses` = \'24\', `peso_kg` = NULL, `dimensiones` = NULL, `activo` = 1, `fecha_actualizacion` = \'2025-06-12 03:19:14\'
+WHERE `productos`.`id_producto` IN (\'4\')')
+ 2 SYSTEMPATH\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `productos` SET `nombre` = \'Xiaomi 14T\', `descripcion` = \'512GB RAM | Color: Black\', `marca` = \'Xiaomi\', `modelo` = \'14T\', `precio` = \'750.00\', `stock` = \'30\', `categoria_id` = \'1\', `especificaciones` = \'{\\"Origen\\":\\"China\\"}\', `garantia_meses` = \'24\', `peso_kg` = NULL, `dimensiones` = NULL, `activo` = 1, `fecha_actualizacion` = \'2025-06-12 03:19:14\'
+WHERE `productos`.`id_producto` IN (\'4\')')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE `productos` SET `nombre` = :nombre:, `descripcion` = :descripcion:, `marca` = :marca:, `modelo` = :modelo:, `precio` = :precio:, `stock` = :stock:, `categoria_id` = :categoria_id:, `especificaciones` = :especificaciones:, `garantia_meses` = :garantia_meses:, `peso_kg` = :peso_kg:, `dimensiones` = :dimensiones:, `activo` = :activo:, `fecha_actualizacion` = :fecha_actualizacion:
+WHERE `productos`.`id_producto` IN :productos.id_producto:', [...], false)
+ 4 SYSTEMPATH\Model.php(461): CodeIgniter\Database\BaseBuilder->update()
+ 5 SYSTEMPATH\BaseModel.php(1027): CodeIgniter\Model->doUpdate([...], [...])
+ 6 SYSTEMPATH\Model.php(863): CodeIgniter\BaseModel->update([...], [...])
+ 7 APPPATH\Controllers\ProductoController.php(419): CodeIgniter\Model->update('4', [...])
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ProductoController->actualizarProducto('4')
+ 9 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductoController))
+10 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-12 03:19:15 --> [Caused by] mysqli_sql_exception: Unknown column 'fecha_actualizacion' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('UPDATE `productos` SET `nombre` = \'Xiaomi 14T\', `descripcion` = \'512GB RAM | Color: Black\', `marca` = \'Xiaomi\', `modelo` = \'14T\', `precio` = \'750.00\', `stock` = \'30\', `categoria_id` = \'1\', `especificaciones` = \'{\\"Origen\\":\\"China\\"}\', `garantia_meses` = \'24\', `peso_kg` = NULL, `dimensiones` = NULL, `activo` = 1, `fecha_actualizacion` = \'2025-06-12 03:19:14\'
+WHERE `productos`.`id_producto` IN (\'4\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `productos` SET `nombre` = \'Xiaomi 14T\', `descripcion` = \'512GB RAM | Color: Black\', `marca` = \'Xiaomi\', `modelo` = \'14T\', `precio` = \'750.00\', `stock` = \'30\', `categoria_id` = \'1\', `especificaciones` = \'{\\"Origen\\":\\"China\\"}\', `garantia_meses` = \'24\', `peso_kg` = NULL, `dimensiones` = NULL, `activo` = 1, `fecha_actualizacion` = \'2025-06-12 03:19:14\'
+WHERE `productos`.`id_producto` IN (\'4\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `productos` SET `nombre` = \'Xiaomi 14T\', `descripcion` = \'512GB RAM | Color: Black\', `marca` = \'Xiaomi\', `modelo` = \'14T\', `precio` = \'750.00\', `stock` = \'30\', `categoria_id` = \'1\', `especificaciones` = \'{\\"Origen\\":\\"China\\"}\', `garantia_meses` = \'24\', `peso_kg` = NULL, `dimensiones` = NULL, `activo` = 1, `fecha_actualizacion` = \'2025-06-12 03:19:14\'
+WHERE `productos`.`id_producto` IN (\'4\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE `productos` SET `nombre` = :nombre:, `descripcion` = :descripcion:, `marca` = :marca:, `modelo` = :modelo:, `precio` = :precio:, `stock` = :stock:, `categoria_id` = :categoria_id:, `especificaciones` = :especificaciones:, `garantia_meses` = :garantia_meses:, `peso_kg` = :peso_kg:, `dimensiones` = :dimensiones:, `activo` = :activo:, `fecha_actualizacion` = :fecha_actualizacion:
+WHERE `productos`.`id_producto` IN :productos.id_producto:', [...], false)
+ 5 SYSTEMPATH\Model.php(461): CodeIgniter\Database\BaseBuilder->update()
+ 6 SYSTEMPATH\BaseModel.php(1027): CodeIgniter\Model->doUpdate([...], [...])
+ 7 SYSTEMPATH\Model.php(863): CodeIgniter\BaseModel->update([...], [...])
+ 8 APPPATH\Controllers\ProductoController.php(419): CodeIgniter\Model->update('4', [...])
+ 9 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ProductoController->actualizarProducto('4')
+10 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductoController))
+11 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-06-12 03:22:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-06-12 03:22:53 --> mysqli_sql_exception: Unknown column 'fecha_actualizacion' in 'field list' in C:\xampp\htdocs\proyecto_benitez_lopez\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp\htdocs\proyecto_benitez_lopez\system\Database\MySQLi\Connection.php(327): mysqli->query('UPDATE `product...', 0)
+#1 C:\xampp\htdocs\proyecto_benitez_lopez\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `product...')
+#2 C:\xampp\htdocs\proyecto_benitez_lopez\system\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `product...')
+#3 C:\xampp\htdocs\proyecto_benitez_lopez\system\Database\BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE `product...', Array, false)
+#4 C:\xampp\htdocs\proyecto_benitez_lopez\system\Model.php(461): CodeIgniter\Database\BaseBuilder->update()
+#5 C:\xampp\htdocs\proyecto_benitez_lopez\system\BaseModel.php(1027): CodeIgniter\Model->doUpdate(Array, Array)
+#6 C:\xampp\htdocs\proyecto_benitez_lopez\system\Model.php(863): CodeIgniter\BaseModel->update(Array, Array)
+#7 C:\xampp\htdocs\proyecto_benitez_lopez\app\Controllers\ProductoController.php(418): CodeIgniter\Model->update('4', Array)
+#8 C:\xampp\htdocs\proyecto_benitez_lopez\system\CodeIgniter.php(933): App\Controllers\ProductoController->actualizarProducto('4')
+#9 C:\xampp\htdocs\proyecto_benitez_lopez\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductoController))
+#10 C:\xampp\htdocs\proyecto_benitez_lopez\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\xampp\htdocs\proyecto_benitez_lopez\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#12 C:\xampp\htdocs\proyecto_benitez_lopez\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#13 C:\xampp\htdocs\proyecto_benitez_lopez\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#14 {main}
+CRITICAL - 2025-06-12 03:22:53 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'fecha_actualizacion' in 'field list'
+[Method: POST, Route: admin/productos/actualizar/4]
+in SYSTEMPATH\Database\BaseConnection.php on line 692.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE `productos` SET `nombre` = :nombre:, `descripcion` = :descripcion:, `marca` = :marca:, `modelo` = :modelo:, `precio` = :precio:, `stock` = :stock:, `categoria_id` = :categoria_id:, `especificaciones` = :especificaciones:, `garantia_meses` = :garantia_meses:, `peso_kg` = :peso_kg:, `dimensiones` = :dimensiones:, `activo` = :activo:, `fecha_actualizacion` = :fecha_actualizacion:
+WHERE `productos`.`id_producto` IN :productos.id_producto:', [...], false)
+ 2 SYSTEMPATH\Model.php(461): CodeIgniter\Database\BaseBuilder->update()
+ 3 SYSTEMPATH\BaseModel.php(1027): CodeIgniter\Model->doUpdate([...], [...])
+ 4 SYSTEMPATH\Model.php(863): CodeIgniter\BaseModel->update([...], [...])
+ 5 APPPATH\Controllers\ProductoController.php(418): CodeIgniter\Model->update('4', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ProductoController->actualizarProducto('4')
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductoController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-12 03:22:53 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'fecha_actualizacion' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `productos` SET `nombre` = \'Xiaomi 14T\', `descripcion` = \'512GB RAM | Color: Black\', `marca` = \'Xiaomi\', `modelo` = \'14T\', `precio` = \'750.00\', `stock` = \'30\', `categoria_id` = \'1\', `especificaciones` = \'{\\"Origen\\":\\"China\\"}\', `garantia_meses` = \'24\', `peso_kg` = NULL, `dimensiones` = NULL, `activo` = 1, `fecha_actualizacion` = \'2025-06-12 03:22:53\'
+WHERE `productos`.`id_producto` IN (\'4\')')
+ 2 SYSTEMPATH\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `productos` SET `nombre` = \'Xiaomi 14T\', `descripcion` = \'512GB RAM | Color: Black\', `marca` = \'Xiaomi\', `modelo` = \'14T\', `precio` = \'750.00\', `stock` = \'30\', `categoria_id` = \'1\', `especificaciones` = \'{\\"Origen\\":\\"China\\"}\', `garantia_meses` = \'24\', `peso_kg` = NULL, `dimensiones` = NULL, `activo` = 1, `fecha_actualizacion` = \'2025-06-12 03:22:53\'
+WHERE `productos`.`id_producto` IN (\'4\')')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE `productos` SET `nombre` = :nombre:, `descripcion` = :descripcion:, `marca` = :marca:, `modelo` = :modelo:, `precio` = :precio:, `stock` = :stock:, `categoria_id` = :categoria_id:, `especificaciones` = :especificaciones:, `garantia_meses` = :garantia_meses:, `peso_kg` = :peso_kg:, `dimensiones` = :dimensiones:, `activo` = :activo:, `fecha_actualizacion` = :fecha_actualizacion:
+WHERE `productos`.`id_producto` IN :productos.id_producto:', [...], false)
+ 4 SYSTEMPATH\Model.php(461): CodeIgniter\Database\BaseBuilder->update()
+ 5 SYSTEMPATH\BaseModel.php(1027): CodeIgniter\Model->doUpdate([...], [...])
+ 6 SYSTEMPATH\Model.php(863): CodeIgniter\BaseModel->update([...], [...])
+ 7 APPPATH\Controllers\ProductoController.php(418): CodeIgniter\Model->update('4', [...])
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ProductoController->actualizarProducto('4')
+ 9 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductoController))
+10 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-12 03:22:53 --> [Caused by] mysqli_sql_exception: Unknown column 'fecha_actualizacion' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('UPDATE `productos` SET `nombre` = \'Xiaomi 14T\', `descripcion` = \'512GB RAM | Color: Black\', `marca` = \'Xiaomi\', `modelo` = \'14T\', `precio` = \'750.00\', `stock` = \'30\', `categoria_id` = \'1\', `especificaciones` = \'{\\"Origen\\":\\"China\\"}\', `garantia_meses` = \'24\', `peso_kg` = NULL, `dimensiones` = NULL, `activo` = 1, `fecha_actualizacion` = \'2025-06-12 03:22:53\'
+WHERE `productos`.`id_producto` IN (\'4\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `productos` SET `nombre` = \'Xiaomi 14T\', `descripcion` = \'512GB RAM | Color: Black\', `marca` = \'Xiaomi\', `modelo` = \'14T\', `precio` = \'750.00\', `stock` = \'30\', `categoria_id` = \'1\', `especificaciones` = \'{\\"Origen\\":\\"China\\"}\', `garantia_meses` = \'24\', `peso_kg` = NULL, `dimensiones` = NULL, `activo` = 1, `fecha_actualizacion` = \'2025-06-12 03:22:53\'
+WHERE `productos`.`id_producto` IN (\'4\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `productos` SET `nombre` = \'Xiaomi 14T\', `descripcion` = \'512GB RAM | Color: Black\', `marca` = \'Xiaomi\', `modelo` = \'14T\', `precio` = \'750.00\', `stock` = \'30\', `categoria_id` = \'1\', `especificaciones` = \'{\\"Origen\\":\\"China\\"}\', `garantia_meses` = \'24\', `peso_kg` = NULL, `dimensiones` = NULL, `activo` = 1, `fecha_actualizacion` = \'2025-06-12 03:22:53\'
+WHERE `productos`.`id_producto` IN (\'4\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE `productos` SET `nombre` = :nombre:, `descripcion` = :descripcion:, `marca` = :marca:, `modelo` = :modelo:, `precio` = :precio:, `stock` = :stock:, `categoria_id` = :categoria_id:, `especificaciones` = :especificaciones:, `garantia_meses` = :garantia_meses:, `peso_kg` = :peso_kg:, `dimensiones` = :dimensiones:, `activo` = :activo:, `fecha_actualizacion` = :fecha_actualizacion:
+WHERE `productos`.`id_producto` IN :productos.id_producto:', [...], false)
+ 5 SYSTEMPATH\Model.php(461): CodeIgniter\Database\BaseBuilder->update()
+ 6 SYSTEMPATH\BaseModel.php(1027): CodeIgniter\Model->doUpdate([...], [...])
+ 7 SYSTEMPATH\Model.php(863): CodeIgniter\BaseModel->update([...], [...])
+ 8 APPPATH\Controllers\ProductoController.php(418): CodeIgniter\Model->update('4', [...])
+ 9 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ProductoController->actualizarProducto('4')
+10 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductoController))
+11 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-06-12 03:25:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-06-12 03:25:57 --> mysqli_sql_exception: Unknown column 'fecha_actualizacion' in 'field list' in C:\xampp\htdocs\proyecto_benitez_lopez\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp\htdocs\proyecto_benitez_lopez\system\Database\MySQLi\Connection.php(327): mysqli->query('UPDATE `product...', 0)
+#1 C:\xampp\htdocs\proyecto_benitez_lopez\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `product...')
+#2 C:\xampp\htdocs\proyecto_benitez_lopez\system\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `product...')
+#3 C:\xampp\htdocs\proyecto_benitez_lopez\system\Database\BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE `product...', Array, false)
+#4 C:\xampp\htdocs\proyecto_benitez_lopez\system\Model.php(461): CodeIgniter\Database\BaseBuilder->update()
+#5 C:\xampp\htdocs\proyecto_benitez_lopez\system\BaseModel.php(1027): CodeIgniter\Model->doUpdate(Array, Array)
+#6 C:\xampp\htdocs\proyecto_benitez_lopez\system\Model.php(863): CodeIgniter\BaseModel->update(Array, Array)
+#7 C:\xampp\htdocs\proyecto_benitez_lopez\app\Controllers\ProductoController.php(418): CodeIgniter\Model->update('4', Array)
+#8 C:\xampp\htdocs\proyecto_benitez_lopez\system\CodeIgniter.php(933): App\Controllers\ProductoController->actualizarProducto('4')
+#9 C:\xampp\htdocs\proyecto_benitez_lopez\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductoController))
+#10 C:\xampp\htdocs\proyecto_benitez_lopez\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\xampp\htdocs\proyecto_benitez_lopez\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#12 C:\xampp\htdocs\proyecto_benitez_lopez\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#13 C:\xampp\htdocs\proyecto_benitez_lopez\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#14 {main}
+CRITICAL - 2025-06-12 03:25:57 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'fecha_actualizacion' in 'field list'
+[Method: POST, Route: admin/productos/actualizar/4]
+in SYSTEMPATH\Database\BaseConnection.php on line 692.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE `productos` SET `nombre` = :nombre:, `descripcion` = :descripcion:, `marca` = :marca:, `modelo` = :modelo:, `precio` = :precio:, `stock` = :stock:, `categoria_id` = :categoria_id:, `especificaciones` = :especificaciones:, `garantia_meses` = :garantia_meses:, `peso_kg` = :peso_kg:, `dimensiones` = :dimensiones:, `activo` = :activo:, `fecha_actualizacion` = :fecha_actualizacion:
+WHERE `productos`.`id_producto` IN :productos.id_producto:', [...], false)
+ 2 SYSTEMPATH\Model.php(461): CodeIgniter\Database\BaseBuilder->update()
+ 3 SYSTEMPATH\BaseModel.php(1027): CodeIgniter\Model->doUpdate([...], [...])
+ 4 SYSTEMPATH\Model.php(863): CodeIgniter\BaseModel->update([...], [...])
+ 5 APPPATH\Controllers\ProductoController.php(418): CodeIgniter\Model->update('4', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ProductoController->actualizarProducto('4')
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductoController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-12 03:25:57 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'fecha_actualizacion' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `productos` SET `nombre` = \'Xiaomi 14T\', `descripcion` = \'512GB RAM | Color: Black\', `marca` = \'Xiaomi\', `modelo` = \'14T\', `precio` = \'750.00\', `stock` = \'30\', `categoria_id` = \'1\', `especificaciones` = \'{\\"Origen\\":\\"China\\"}\', `garantia_meses` = \'24\', `peso_kg` = NULL, `dimensiones` = NULL, `activo` = 1, `fecha_actualizacion` = \'2025-06-12 03:25:57\'
+WHERE `productos`.`id_producto` IN (\'4\')')
+ 2 SYSTEMPATH\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `productos` SET `nombre` = \'Xiaomi 14T\', `descripcion` = \'512GB RAM | Color: Black\', `marca` = \'Xiaomi\', `modelo` = \'14T\', `precio` = \'750.00\', `stock` = \'30\', `categoria_id` = \'1\', `especificaciones` = \'{\\"Origen\\":\\"China\\"}\', `garantia_meses` = \'24\', `peso_kg` = NULL, `dimensiones` = NULL, `activo` = 1, `fecha_actualizacion` = \'2025-06-12 03:25:57\'
+WHERE `productos`.`id_producto` IN (\'4\')')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE `productos` SET `nombre` = :nombre:, `descripcion` = :descripcion:, `marca` = :marca:, `modelo` = :modelo:, `precio` = :precio:, `stock` = :stock:, `categoria_id` = :categoria_id:, `especificaciones` = :especificaciones:, `garantia_meses` = :garantia_meses:, `peso_kg` = :peso_kg:, `dimensiones` = :dimensiones:, `activo` = :activo:, `fecha_actualizacion` = :fecha_actualizacion:
+WHERE `productos`.`id_producto` IN :productos.id_producto:', [...], false)
+ 4 SYSTEMPATH\Model.php(461): CodeIgniter\Database\BaseBuilder->update()
+ 5 SYSTEMPATH\BaseModel.php(1027): CodeIgniter\Model->doUpdate([...], [...])
+ 6 SYSTEMPATH\Model.php(863): CodeIgniter\BaseModel->update([...], [...])
+ 7 APPPATH\Controllers\ProductoController.php(418): CodeIgniter\Model->update('4', [...])
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ProductoController->actualizarProducto('4')
+ 9 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductoController))
+10 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-12 03:25:57 --> [Caused by] mysqli_sql_exception: Unknown column 'fecha_actualizacion' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('UPDATE `productos` SET `nombre` = \'Xiaomi 14T\', `descripcion` = \'512GB RAM | Color: Black\', `marca` = \'Xiaomi\', `modelo` = \'14T\', `precio` = \'750.00\', `stock` = \'30\', `categoria_id` = \'1\', `especificaciones` = \'{\\"Origen\\":\\"China\\"}\', `garantia_meses` = \'24\', `peso_kg` = NULL, `dimensiones` = NULL, `activo` = 1, `fecha_actualizacion` = \'2025-06-12 03:25:57\'
+WHERE `productos`.`id_producto` IN (\'4\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `productos` SET `nombre` = \'Xiaomi 14T\', `descripcion` = \'512GB RAM | Color: Black\', `marca` = \'Xiaomi\', `modelo` = \'14T\', `precio` = \'750.00\', `stock` = \'30\', `categoria_id` = \'1\', `especificaciones` = \'{\\"Origen\\":\\"China\\"}\', `garantia_meses` = \'24\', `peso_kg` = NULL, `dimensiones` = NULL, `activo` = 1, `fecha_actualizacion` = \'2025-06-12 03:25:57\'
+WHERE `productos`.`id_producto` IN (\'4\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `productos` SET `nombre` = \'Xiaomi 14T\', `descripcion` = \'512GB RAM | Color: Black\', `marca` = \'Xiaomi\', `modelo` = \'14T\', `precio` = \'750.00\', `stock` = \'30\', `categoria_id` = \'1\', `especificaciones` = \'{\\"Origen\\":\\"China\\"}\', `garantia_meses` = \'24\', `peso_kg` = NULL, `dimensiones` = NULL, `activo` = 1, `fecha_actualizacion` = \'2025-06-12 03:25:57\'
+WHERE `productos`.`id_producto` IN (\'4\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE `productos` SET `nombre` = :nombre:, `descripcion` = :descripcion:, `marca` = :marca:, `modelo` = :modelo:, `precio` = :precio:, `stock` = :stock:, `categoria_id` = :categoria_id:, `especificaciones` = :especificaciones:, `garantia_meses` = :garantia_meses:, `peso_kg` = :peso_kg:, `dimensiones` = :dimensiones:, `activo` = :activo:, `fecha_actualizacion` = :fecha_actualizacion:
+WHERE `productos`.`id_producto` IN :productos.id_producto:', [...], false)
+ 5 SYSTEMPATH\Model.php(461): CodeIgniter\Database\BaseBuilder->update()
+ 6 SYSTEMPATH\BaseModel.php(1027): CodeIgniter\Model->doUpdate([...], [...])
+ 7 SYSTEMPATH\Model.php(863): CodeIgniter\BaseModel->update([...], [...])
+ 8 APPPATH\Controllers\ProductoController.php(418): CodeIgniter\Model->update('4', [...])
+ 9 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ProductoController->actualizarProducto('4')
+10 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductoController))
+11 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-06-12 03:26:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 03:26:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 03:26:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-06-12 03:26:46 --> mysqli_sql_exception: Unknown column 'fecha_actualizacion' in 'field list' in C:\xampp\htdocs\proyecto_benitez_lopez\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp\htdocs\proyecto_benitez_lopez\system\Database\MySQLi\Connection.php(327): mysqli->query('UPDATE `product...', 0)
+#1 C:\xampp\htdocs\proyecto_benitez_lopez\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `product...')
+#2 C:\xampp\htdocs\proyecto_benitez_lopez\system\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `product...')
+#3 C:\xampp\htdocs\proyecto_benitez_lopez\system\Database\BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE `product...', Array, false)
+#4 C:\xampp\htdocs\proyecto_benitez_lopez\system\Model.php(461): CodeIgniter\Database\BaseBuilder->update()
+#5 C:\xampp\htdocs\proyecto_benitez_lopez\system\BaseModel.php(1027): CodeIgniter\Model->doUpdate(Array, Array)
+#6 C:\xampp\htdocs\proyecto_benitez_lopez\system\Model.php(863): CodeIgniter\BaseModel->update(Array, Array)
+#7 C:\xampp\htdocs\proyecto_benitez_lopez\app\Controllers\ProductoController.php(418): CodeIgniter\Model->update('4', Array)
+#8 C:\xampp\htdocs\proyecto_benitez_lopez\system\CodeIgniter.php(933): App\Controllers\ProductoController->actualizarProducto('4')
+#9 C:\xampp\htdocs\proyecto_benitez_lopez\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductoController))
+#10 C:\xampp\htdocs\proyecto_benitez_lopez\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\xampp\htdocs\proyecto_benitez_lopez\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#12 C:\xampp\htdocs\proyecto_benitez_lopez\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#13 C:\xampp\htdocs\proyecto_benitez_lopez\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#14 {main}
+CRITICAL - 2025-06-12 03:26:46 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'fecha_actualizacion' in 'field list'
+[Method: POST, Route: admin/productos/actualizar/4]
+in SYSTEMPATH\Database\BaseConnection.php on line 692.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE `productos` SET `nombre` = :nombre:, `descripcion` = :descripcion:, `marca` = :marca:, `modelo` = :modelo:, `precio` = :precio:, `stock` = :stock:, `categoria_id` = :categoria_id:, `especificaciones` = :especificaciones:, `garantia_meses` = :garantia_meses:, `peso_kg` = :peso_kg:, `dimensiones` = :dimensiones:, `activo` = :activo:, `fecha_actualizacion` = :fecha_actualizacion:
+WHERE `productos`.`id_producto` IN :productos.id_producto:', [...], false)
+ 2 SYSTEMPATH\Model.php(461): CodeIgniter\Database\BaseBuilder->update()
+ 3 SYSTEMPATH\BaseModel.php(1027): CodeIgniter\Model->doUpdate([...], [...])
+ 4 SYSTEMPATH\Model.php(863): CodeIgniter\BaseModel->update([...], [...])
+ 5 APPPATH\Controllers\ProductoController.php(418): CodeIgniter\Model->update('4', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ProductoController->actualizarProducto('4')
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductoController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-12 03:26:46 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'fecha_actualizacion' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `productos` SET `nombre` = \'Xiaomi 14T\', `descripcion` = \'512GB RAM | Color: Black\', `marca` = \'Xiaomi\', `modelo` = \'14T\', `precio` = \'750.00\', `stock` = \'30\', `categoria_id` = \'1\', `especificaciones` = \'{\\"Origen\\":\\"China\\"}\', `garantia_meses` = \'24\', `peso_kg` = NULL, `dimensiones` = NULL, `activo` = 1, `fecha_actualizacion` = \'2025-06-12 03:26:46\'
+WHERE `productos`.`id_producto` IN (\'4\')')
+ 2 SYSTEMPATH\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `productos` SET `nombre` = \'Xiaomi 14T\', `descripcion` = \'512GB RAM | Color: Black\', `marca` = \'Xiaomi\', `modelo` = \'14T\', `precio` = \'750.00\', `stock` = \'30\', `categoria_id` = \'1\', `especificaciones` = \'{\\"Origen\\":\\"China\\"}\', `garantia_meses` = \'24\', `peso_kg` = NULL, `dimensiones` = NULL, `activo` = 1, `fecha_actualizacion` = \'2025-06-12 03:26:46\'
+WHERE `productos`.`id_producto` IN (\'4\')')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE `productos` SET `nombre` = :nombre:, `descripcion` = :descripcion:, `marca` = :marca:, `modelo` = :modelo:, `precio` = :precio:, `stock` = :stock:, `categoria_id` = :categoria_id:, `especificaciones` = :especificaciones:, `garantia_meses` = :garantia_meses:, `peso_kg` = :peso_kg:, `dimensiones` = :dimensiones:, `activo` = :activo:, `fecha_actualizacion` = :fecha_actualizacion:
+WHERE `productos`.`id_producto` IN :productos.id_producto:', [...], false)
+ 4 SYSTEMPATH\Model.php(461): CodeIgniter\Database\BaseBuilder->update()
+ 5 SYSTEMPATH\BaseModel.php(1027): CodeIgniter\Model->doUpdate([...], [...])
+ 6 SYSTEMPATH\Model.php(863): CodeIgniter\BaseModel->update([...], [...])
+ 7 APPPATH\Controllers\ProductoController.php(418): CodeIgniter\Model->update('4', [...])
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ProductoController->actualizarProducto('4')
+ 9 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductoController))
+10 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-12 03:26:46 --> [Caused by] mysqli_sql_exception: Unknown column 'fecha_actualizacion' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('UPDATE `productos` SET `nombre` = \'Xiaomi 14T\', `descripcion` = \'512GB RAM | Color: Black\', `marca` = \'Xiaomi\', `modelo` = \'14T\', `precio` = \'750.00\', `stock` = \'30\', `categoria_id` = \'1\', `especificaciones` = \'{\\"Origen\\":\\"China\\"}\', `garantia_meses` = \'24\', `peso_kg` = NULL, `dimensiones` = NULL, `activo` = 1, `fecha_actualizacion` = \'2025-06-12 03:26:46\'
+WHERE `productos`.`id_producto` IN (\'4\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `productos` SET `nombre` = \'Xiaomi 14T\', `descripcion` = \'512GB RAM | Color: Black\', `marca` = \'Xiaomi\', `modelo` = \'14T\', `precio` = \'750.00\', `stock` = \'30\', `categoria_id` = \'1\', `especificaciones` = \'{\\"Origen\\":\\"China\\"}\', `garantia_meses` = \'24\', `peso_kg` = NULL, `dimensiones` = NULL, `activo` = 1, `fecha_actualizacion` = \'2025-06-12 03:26:46\'
+WHERE `productos`.`id_producto` IN (\'4\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `productos` SET `nombre` = \'Xiaomi 14T\', `descripcion` = \'512GB RAM | Color: Black\', `marca` = \'Xiaomi\', `modelo` = \'14T\', `precio` = \'750.00\', `stock` = \'30\', `categoria_id` = \'1\', `especificaciones` = \'{\\"Origen\\":\\"China\\"}\', `garantia_meses` = \'24\', `peso_kg` = NULL, `dimensiones` = NULL, `activo` = 1, `fecha_actualizacion` = \'2025-06-12 03:26:46\'
+WHERE `productos`.`id_producto` IN (\'4\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE `productos` SET `nombre` = :nombre:, `descripcion` = :descripcion:, `marca` = :marca:, `modelo` = :modelo:, `precio` = :precio:, `stock` = :stock:, `categoria_id` = :categoria_id:, `especificaciones` = :especificaciones:, `garantia_meses` = :garantia_meses:, `peso_kg` = :peso_kg:, `dimensiones` = :dimensiones:, `activo` = :activo:, `fecha_actualizacion` = :fecha_actualizacion:
+WHERE `productos`.`id_producto` IN :productos.id_producto:', [...], false)
+ 5 SYSTEMPATH\Model.php(461): CodeIgniter\Database\BaseBuilder->update()
+ 6 SYSTEMPATH\BaseModel.php(1027): CodeIgniter\Model->doUpdate([...], [...])
+ 7 SYSTEMPATH\Model.php(863): CodeIgniter\BaseModel->update([...], [...])
+ 8 APPPATH\Controllers\ProductoController.php(418): CodeIgniter\Model->update('4', [...])
+ 9 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ProductoController->actualizarProducto('4')
+10 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductoController))
+11 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-06-12 03:29:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 03:29:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-06-12 03:29:32 --> Error: Call to undefined method CodeIgniter\Database\MySQLi\Builder::findAll()
+[Method: GET, Route: admin/productos/listar]
+in APPPATH\Controllers\ProductoController.php on line 119.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ProductoController->listar()
+ 2 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductoController))
+ 3 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-06-12 03:29:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-06-12 03:29:48 --> Error: Call to undefined method CodeIgniter\Database\MySQLi\Builder::findAll()
+[Method: GET, Route: admin/productos/listar]
+in APPPATH\Controllers\ProductoController.php on line 119.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ProductoController->listar()
+ 2 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductoController))
+ 3 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-06-12 03:29:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-06-12 03:29:55 --> Error: Call to undefined method CodeIgniter\Database\MySQLi\Builder::findAll()
+[Method: GET, Route: admin/productos/listar]
+in APPPATH\Controllers\ProductoController.php on line 119.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ProductoController->listar()
+ 2 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductoController))
+ 3 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-06-12 03:33:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 03:33:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 03:33:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 03:33:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 03:33:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 03:33:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 03:33:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 03:33:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 03:34:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 03:34:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 03:35:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 03:35:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 03:35:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 03:35:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-06-12 03:35:18 --> mysqli_sql_exception: Unknown column 'fecha_actualizacion' in 'field list' in C:\xampp\htdocs\proyecto_benitez_lopez\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp\htdocs\proyecto_benitez_lopez\system\Database\MySQLi\Connection.php(327): mysqli->query('UPDATE `product...', 0)
+#1 C:\xampp\htdocs\proyecto_benitez_lopez\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `product...')
+#2 C:\xampp\htdocs\proyecto_benitez_lopez\system\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `product...')
+#3 C:\xampp\htdocs\proyecto_benitez_lopez\system\Database\BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE `product...', Array, false)
+#4 C:\xampp\htdocs\proyecto_benitez_lopez\system\Model.php(461): CodeIgniter\Database\BaseBuilder->update()
+#5 C:\xampp\htdocs\proyecto_benitez_lopez\system\BaseModel.php(1027): CodeIgniter\Model->doUpdate(Array, Array)
+#6 C:\xampp\htdocs\proyecto_benitez_lopez\system\Model.php(863): CodeIgniter\BaseModel->update(Array, Array)
+#7 C:\xampp\htdocs\proyecto_benitez_lopez\app\Controllers\ProductoController.php(418): CodeIgniter\Model->update('15', Array)
+#8 C:\xampp\htdocs\proyecto_benitez_lopez\system\CodeIgniter.php(933): App\Controllers\ProductoController->actualizarProducto('15')
+#9 C:\xampp\htdocs\proyecto_benitez_lopez\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductoController))
+#10 C:\xampp\htdocs\proyecto_benitez_lopez\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\xampp\htdocs\proyecto_benitez_lopez\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#12 C:\xampp\htdocs\proyecto_benitez_lopez\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#13 C:\xampp\htdocs\proyecto_benitez_lopez\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#14 {main}
+CRITICAL - 2025-06-12 03:35:18 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'fecha_actualizacion' in 'field list'
+[Method: POST, Route: admin/productos/actualizar/15]
+in SYSTEMPATH\Database\BaseConnection.php on line 692.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE `productos` SET `nombre` = :nombre:, `descripcion` = :descripcion:, `marca` = :marca:, `modelo` = :modelo:, `precio` = :precio:, `stock` = :stock:, `categoria_id` = :categoria_id:, `especificaciones` = :especificaciones:, `garantia_meses` = :garantia_meses:, `peso_kg` = :peso_kg:, `dimensiones` = :dimensiones:, `activo` = :activo:, `fecha_actualizacion` = :fecha_actualizacion:
+WHERE `productos`.`id_producto` IN :productos.id_producto:', [...], false)
+ 2 SYSTEMPATH\Model.php(461): CodeIgniter\Database\BaseBuilder->update()
+ 3 SYSTEMPATH\BaseModel.php(1027): CodeIgniter\Model->doUpdate([...], [...])
+ 4 SYSTEMPATH\Model.php(863): CodeIgniter\BaseModel->update([...], [...])
+ 5 APPPATH\Controllers\ProductoController.php(418): CodeIgniter\Model->update('15', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ProductoController->actualizarProducto('15')
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductoController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-12 03:35:18 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'fecha_actualizacion' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `productos` SET `nombre` = \'Redmi Buds 5\', `descripcion` = \'in-ear | USB tipo C\', `marca` = \'Xiaomi\', `modelo` = \'Redmi Buds 5\', `precio` = \'140.00\', `stock` = \'45\', `categoria_id` = \'7\', `especificaciones` = \'{\\"Tipo\\":\\"in-ear\\",\\"Conectividad\\":\\"USB tipo C\\"}\', `garantia_meses` = \'12\', `peso_kg` = NULL, `dimensiones` = NULL, `activo` = 1, `fecha_actualizacion` = \'2025-06-12 03:35:18\'
+WHERE `productos`.`id_producto` IN (\'15\')')
+ 2 SYSTEMPATH\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `productos` SET `nombre` = \'Redmi Buds 5\', `descripcion` = \'in-ear | USB tipo C\', `marca` = \'Xiaomi\', `modelo` = \'Redmi Buds 5\', `precio` = \'140.00\', `stock` = \'45\', `categoria_id` = \'7\', `especificaciones` = \'{\\"Tipo\\":\\"in-ear\\",\\"Conectividad\\":\\"USB tipo C\\"}\', `garantia_meses` = \'12\', `peso_kg` = NULL, `dimensiones` = NULL, `activo` = 1, `fecha_actualizacion` = \'2025-06-12 03:35:18\'
+WHERE `productos`.`id_producto` IN (\'15\')')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE `productos` SET `nombre` = :nombre:, `descripcion` = :descripcion:, `marca` = :marca:, `modelo` = :modelo:, `precio` = :precio:, `stock` = :stock:, `categoria_id` = :categoria_id:, `especificaciones` = :especificaciones:, `garantia_meses` = :garantia_meses:, `peso_kg` = :peso_kg:, `dimensiones` = :dimensiones:, `activo` = :activo:, `fecha_actualizacion` = :fecha_actualizacion:
+WHERE `productos`.`id_producto` IN :productos.id_producto:', [...], false)
+ 4 SYSTEMPATH\Model.php(461): CodeIgniter\Database\BaseBuilder->update()
+ 5 SYSTEMPATH\BaseModel.php(1027): CodeIgniter\Model->doUpdate([...], [...])
+ 6 SYSTEMPATH\Model.php(863): CodeIgniter\BaseModel->update([...], [...])
+ 7 APPPATH\Controllers\ProductoController.php(418): CodeIgniter\Model->update('15', [...])
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ProductoController->actualizarProducto('15')
+ 9 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductoController))
+10 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-12 03:35:18 --> [Caused by] mysqli_sql_exception: Unknown column 'fecha_actualizacion' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('UPDATE `productos` SET `nombre` = \'Redmi Buds 5\', `descripcion` = \'in-ear | USB tipo C\', `marca` = \'Xiaomi\', `modelo` = \'Redmi Buds 5\', `precio` = \'140.00\', `stock` = \'45\', `categoria_id` = \'7\', `especificaciones` = \'{\\"Tipo\\":\\"in-ear\\",\\"Conectividad\\":\\"USB tipo C\\"}\', `garantia_meses` = \'12\', `peso_kg` = NULL, `dimensiones` = NULL, `activo` = 1, `fecha_actualizacion` = \'2025-06-12 03:35:18\'
+WHERE `productos`.`id_producto` IN (\'15\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `productos` SET `nombre` = \'Redmi Buds 5\', `descripcion` = \'in-ear | USB tipo C\', `marca` = \'Xiaomi\', `modelo` = \'Redmi Buds 5\', `precio` = \'140.00\', `stock` = \'45\', `categoria_id` = \'7\', `especificaciones` = \'{\\"Tipo\\":\\"in-ear\\",\\"Conectividad\\":\\"USB tipo C\\"}\', `garantia_meses` = \'12\', `peso_kg` = NULL, `dimensiones` = NULL, `activo` = 1, `fecha_actualizacion` = \'2025-06-12 03:35:18\'
+WHERE `productos`.`id_producto` IN (\'15\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `productos` SET `nombre` = \'Redmi Buds 5\', `descripcion` = \'in-ear | USB tipo C\', `marca` = \'Xiaomi\', `modelo` = \'Redmi Buds 5\', `precio` = \'140.00\', `stock` = \'45\', `categoria_id` = \'7\', `especificaciones` = \'{\\"Tipo\\":\\"in-ear\\",\\"Conectividad\\":\\"USB tipo C\\"}\', `garantia_meses` = \'12\', `peso_kg` = NULL, `dimensiones` = NULL, `activo` = 1, `fecha_actualizacion` = \'2025-06-12 03:35:18\'
+WHERE `productos`.`id_producto` IN (\'15\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE `productos` SET `nombre` = :nombre:, `descripcion` = :descripcion:, `marca` = :marca:, `modelo` = :modelo:, `precio` = :precio:, `stock` = :stock:, `categoria_id` = :categoria_id:, `especificaciones` = :especificaciones:, `garantia_meses` = :garantia_meses:, `peso_kg` = :peso_kg:, `dimensiones` = :dimensiones:, `activo` = :activo:, `fecha_actualizacion` = :fecha_actualizacion:
+WHERE `productos`.`id_producto` IN :productos.id_producto:', [...], false)
+ 5 SYSTEMPATH\Model.php(461): CodeIgniter\Database\BaseBuilder->update()
+ 6 SYSTEMPATH\BaseModel.php(1027): CodeIgniter\Model->doUpdate([...], [...])
+ 7 SYSTEMPATH\Model.php(863): CodeIgniter\BaseModel->update([...], [...])
+ 8 APPPATH\Controllers\ProductoController.php(418): CodeIgniter\Model->update('15', [...])
+ 9 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ProductoController->actualizarProducto('15')
+10 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductoController))
+11 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-06-12 03:37:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 03:37:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 03:38:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 03:38:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 03:38:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 03:38:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 03:38:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 03:38:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 03:38:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 03:38:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 03:38:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 03:39:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 03:39:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 03:39:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 03:39:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 03:39:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 03:39:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 03:39:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 03:39:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 03:39:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 03:39:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 03:41:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 03:41:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 03:41:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 03:41:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 03:41:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 03:41:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 03:41:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 03:41:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 03:46:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 03:46:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 03:46:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 03:46:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 03:46:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 03:46:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 03:46:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 03:46:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 03:46:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 03:46:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 03:46:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 03:46:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 03:46:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 03:46:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 03:47:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 03:47:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 03:47:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 03:47:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 03:47:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 03:47:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 03:48:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 03:48:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 03:48:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 03:48:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 03:48:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 03:48:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 03:48:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 03:48:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 03:48:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 03:48:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 03:48:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 03:48:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 03:48:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 03:49:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 03:49:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 03:49:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 03:49:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 03:49:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 03:49:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 03:49:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 03:49:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 03:49:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 03:49:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 03:49:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 03:49:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 03:49:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 03:49:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 03:49:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 03:49:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 03:49:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 03:49:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 03:49:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 03:49:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 03:52:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 03:52:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 04:00:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 04:00:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 04:00:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 04:04:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-06-12 04:04:56 --> ErrorException: Cannot redeclare App\Controllers\ProductoController::verificarVentas()
+[Method: GET, Route: admin/productos/listar]
+in APPPATH\Controllers\ProductoController.php on line 540.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+DEBUG - 2025-06-12 04:08:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 04:08:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 04:08:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 04:08:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 04:12:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 04:18:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 04:18:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 04:27:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 04:27:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 04:27:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 04:27:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 04:27:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 04:28:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 04:28:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 04:28:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 04:28:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 04:28:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 04:28:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 04:28:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 04:28:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 04:28:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 04:28:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 04:28:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 04:28:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 04:28:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 04:29:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 04:29:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 04:29:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 04:29:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 04:29:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 04:29:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 04:29:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 04:29:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 04:29:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 04:30:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 04:30:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 04:30:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 04:30:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 04:30:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 04:30:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 04:30:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 04:30:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 04:30:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 04:30:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 04:30:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 04:30:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 04:30:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 04:31:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 04:31:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 04:31:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 04:32:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 04:32:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 04:32:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 04:32:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 04:32:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

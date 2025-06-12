@@ -24,4 +24,6 @@ class PersonaModel extends Model
     {
         return $this->where('usuario_id', $usuario_id)->update($this->primaryKey, $data);
     }
+
+
 }
