@@ -187,6 +187,7 @@ public function detalle($producto_id)
             'peso_kg' => 'permit_empty|decimal',
             'dimensiones' => 'permit_empty|max_length[50]',
             'imagen' => [
+                'if_exist', // Permitir que no se suba imagen
                 'uploaded[imagen]',
                 'mime_in[imagen,image/jpg,image/jpeg,image/png]',
                 'max_size[imagen,2048]',
@@ -269,15 +270,12 @@ public function detalle($producto_id)
 
         // Si se subió una imagen, agregar la URL
         if ($nombreImagen) {
-            $data['imagen_url'] = 'uploads/productos/' . $nombreImagen;
+            $data['imagen_url'] = $nombreImagen;
         }
 
         // Insertar el producto
         if ($this->productoModel->insert($data)) {
             $productoId = $this->productoModel->getInsertID();
-            
-            // Registrar en el historial de precios
-            $this->registrarCambioPrecio($productoId, 0, $data['precio']);
             
             return redirect()->to('admin/productos/listar')->with('message', 'Producto agregado correctamente');
         } else {
@@ -318,126 +316,114 @@ public function detalle($producto_id)
         return view('header', $data) . view('navbar') . view('admin/productos/editar') . view('footer');
     }
 
-    public function actualizarProducto()
-    {
-        // Verificar si el usuario es administrador
-        if (session()->get('rol') !== 'admin') {
-            return redirect()->to('/')->with('error', 'No tienes permisos para realizar esta acción');
-        }
+public function actualizarProducto()
+{
+    // Verificar si el usuario es administrador
+    if (session()->get('rol') !== 'admin') {
+        return redirect()->to('/')->with('error', 'No tienes permisos para realizar esta acción');
+    }
 
-        $producto_id = $this->request->getPost('producto_id');
-        $producto = $this->productoModel->find($producto_id);
+    $producto_id = $this->request->getPost('producto_id');
+    $producto = $this->productoModel->find($producto_id);
+    
+    if (!$producto) {
+        return redirect()->to('productos')->with('error', 'Producto no encontrado');
+    }
+
+    $validation = \Config\Services::validation();
+    $request = \Config\Services::request();
+
+    // Reglas de validación
+    $validation->setRules([
+        'nombre' => 'required|min_length[3]|max_length[150]',
+        'descripcion' => 'required|min_length[10]',
+        'marca' => 'permit_empty|max_length[100]',
+        'modelo' => 'permit_empty|max_length[100]',
+        'precio' => 'required|decimal',
+        'stock' => 'required|integer',
+        'categoria_id' => 'required|integer',
+        'garantia_meses' => 'required|integer',
+        'peso_kg' => 'permit_empty|decimal',
+        'dimensiones' => 'permit_empty|max_length[50]',
+        'especificaciones' => 'permit_empty',
+        'imagen' => [
+            'if_exist',
+            'uploaded[imagen]',
+            'mime_in[imagen,image/jpg,image/jpeg,image/png]',
+            'max_size[imagen,2048]',
+        ]
+    ]);
+
+    if (!$validation->withRequest($request)->run()) {
+        return redirect()->back()->withInput()->with('validation', $validation);
+    }
+
+    // Procesar la imagen si se subió una nueva
+    $imagen = $this->request->getFile('imagen');
+    $nombreImagen = null;
+    $eliminarImagen = $this->request->getPost('eliminar_imagen') == '1';
+
+    // Si se marca eliminar imagen o se sube una nueva
+    if ($eliminarImagen || ($imagen && $imagen->isValid() && !$imagen->hasMoved())) {
+        // Eliminar la imagen anterior si existe
+        if (!empty($producto['imagen_url']) && file_exists(ROOTPATH . 'public/uploads/productos/' . $producto['imagen_url'])) {
+            unlink(ROOTPATH . 'public/uploads/productos/' . $producto['imagen_url']);
+        }
         
-        if (!$producto) {
-            return redirect()->to('productos')->with('error', 'Producto no encontrado');
-        }
-
-        $validation = \Config\Services::validation();
-        $request = \Config\Services::request();
-
-        // Reglas de validación (similar a guardarProducto pero sin requerir imagen)
-        $validation->setRules([
-            'nombre' => 'required|min_length[3]|max_length[150]',
-            'descripcion' => 'required|min_length[10]',
-            'marca' => 'permit_empty|max_length[100]',
-            'modelo' => 'permit_empty|max_length[100]',
-            'precio' => 'required|decimal',
-            'stock' => 'required|integer',
-            'categoria_id' => 'required|integer',
-            'garantia_meses' => 'required|integer',
-            'peso_kg' => 'permit_empty|decimal',
-            'dimensiones' => 'permit_empty|max_length[50]',
-            'especificaciones' => 'permit_empty',
-            'imagen' => [
-                'if_exist',
-                'uploaded[imagen]',
-                'mime_in[imagen,image/jpg,image/jpeg,image/png]',
-                'max_size[imagen,2048]',
-            ]
-        ]);
-
-        if (!$validation->withRequest($request)->run()) {
-            return redirect()->back()->withInput()->with('validation', $validation);
-        }
-
-        // Procesar la imagen si se subió una nueva
-        $imagen = $this->request->getFile('imagen');
-        $nombreImagen = null;
-        $imagenAnterior = $producto['imagen_url'];
-
+        // Si se sube nueva imagen, moverla
         if ($imagen && $imagen->isValid() && !$imagen->hasMoved()) {
             $nombreImagen = $imagen->getRandomName();
             $imagen->move(ROOTPATH . 'public/uploads/productos', $nombreImagen);
         }
+    }
 
-        // Procesar las especificaciones
-        $especificaciones = [];
-        $keys = $request->getPost('especificaciones_key');
-        $values = $request->getPost('especificaciones_value');
-        
-        if ($keys && $values) {
-            foreach ($keys as $index => $key) {
-                if (!empty($key) && !empty($values[$index])) {
-                    $especificaciones[$key] = $values[$index];
-                }
+    // Procesar las especificaciones
+    $especificaciones = [];
+    $keys = $request->getPost('especificaciones_key');
+    $values = $request->getPost('especificaciones_value');
+    
+    if ($keys && $values) {
+        foreach ($keys as $index => $key) {
+            if (!empty($key) && !empty($values[$index])) {
+                $especificaciones[$key] = $values[$index];
             }
-        }
-
-        // Preparar datos del producto
-        $data = [
-            'nombre' => $request->getPost('nombre'),
-            'descripcion' => $request->getPost('descripcion'),
-            'marca' => $request->getPost('marca'),
-            'modelo' => $request->getPost('modelo'),
-            'precio' => $request->getPost('precio'),
-            'stock' => $request->getPost('stock'),
-            'categoria_id' => $request->getPost('categoria_id'),
-            'especificaciones' => !empty($especificaciones) ? json_encode($especificaciones) : null,
-            'garantia_meses' => $request->getPost('garantia_meses'),
-            'peso_kg' => $request->getPost('peso_kg'),
-            'dimensiones' => $request->getPost('dimensiones'),
-            'activo' => $request->getPost('activo') ? 1 : 0
-        ];
-
-        // Si se subió una nueva imagen, actualizar la URL
-        if ($nombreImagen) {
-            $data['imagen_url'] = 'uploads/productos/' . $nombreImagen;
-            
-            // Eliminar la imagen anterior si existe
-            if ($imagenAnterior && file_exists(ROOTPATH . 'public/' . $imagenAnterior)) {
-                unlink(ROOTPATH . 'public/' . $imagenAnterior);
-            }
-        }
-
-        // Verificar si el precio cambió para registrar en el histórico
-        if ($producto['precio'] != $data['precio']) {
-            $this->registrarCambioPrecio($producto_id, $producto['precio'], $data['precio']);
-        }
-
-        // Actualizar el producto
-        if ($this->productoModel->update($producto_id, $data)) {
-            return redirect()->to('admin/productos/listar')->with('message', 'Producto actualizado correctamente');
-        } else {
-            // Si falla, eliminar la nueva imagen subida (si hubo)
-            if ($nombreImagen && file_exists(ROOTPATH . 'public/uploads/productos/' . $nombreImagen)) {
-                unlink(ROOTPATH . 'public/uploads/productos/' . $nombreImagen);
-            }
-            return redirect()->back()->withInput()->with('error', 'Ocurrió un error al actualizar el producto');
         }
     }
 
-    private function registrarCambioPrecio($productoId, $precioAnterior, $precioNuevo)
-    {
-        $historicoModel = new \App\Models\HistoricoPreciosModel();
-        
-        $data = [
-            'producto_id' => $productoId,
-            'precio_anterior' => $precioAnterior,
-            'precio_nuevo' => $precioNuevo
-        ];
-        
-        $historicoModel->insert($data);
+    // Preparar datos del producto
+    $data = [
+        'nombre' => $request->getPost('nombre'),
+        'descripcion' => $request->getPost('descripcion'),
+        'marca' => $request->getPost('marca'),
+        'modelo' => $request->getPost('modelo'),
+        'precio' => $request->getPost('precio'),
+        'stock' => $request->getPost('stock'),
+        'categoria_id' => $request->getPost('categoria_id'),
+        'especificaciones' => !empty($especificaciones) ? json_encode($especificaciones) : null,
+        'garantia_meses' => $request->getPost('garantia_meses'),
+        'peso_kg' => $request->getPost('peso_kg'),
+        'dimensiones' => $request->getPost('dimensiones'),
+        'activo' => $request->getPost('activo') ? 1 : 0
+    ];
+
+    // Manejar la imagen
+    if ($eliminarImagen) {
+        $data['imagen_url'] = null;
+    } elseif ($nombreImagen) {
+        $data['imagen_url'] = $nombreImagen;
     }
+
+    // Actualizar el producto
+    if ($this->productoModel->update($producto_id, $data)) {
+        return redirect()->to('admin/productos/listar')->with('message', 'Producto actualizado correctamente');
+    } else {
+        // Si falla, eliminar la nueva imagen subida (si hubo)
+        if ($nombreImagen && file_exists(ROOTPATH . 'public/uploads/productos/' . $nombreImagen)) {
+            unlink(ROOTPATH . 'public/uploads/productos/' . $nombreImagen);
+        }
+        return redirect()->back()->withInput()->with('error', 'Ocurrió un error al actualizar el producto');
+    }
+}
 
     public function buscar()
     {
