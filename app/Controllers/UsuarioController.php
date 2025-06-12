@@ -68,7 +68,7 @@ class UsuarioController extends BaseController
             $session->set($data);
 
         if ($usuario['rol'] === 'admin') {
-            return redirect()->to('panel')->with('message_welcome', 'Bienvenido '.$usuario['username']);
+            return redirect()->to('admin/panel')->with('message_welcome', 'Bienvenido '.$usuario['username']);
         } else {
             return redirect()->to('principal')->with('message_welcome', 'Bienvenido '.$usuario['username']);
         }

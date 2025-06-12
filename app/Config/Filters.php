@@ -153,6 +153,8 @@ class Filters extends BaseFilters
                 'admin/resenas/editar/*',
                 'admin/resenas/actualizar/*',
                 'admin/resenas/eliminar/*',
+                // Panel de administración
+                'admin/panel'
             ]
         ]
     ];

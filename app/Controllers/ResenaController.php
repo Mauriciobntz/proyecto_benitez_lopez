@@ -21,7 +21,7 @@ class ResenaController extends BaseController
     public function listar()
     {
         if (session()->get('rol') !== 'admin') {
-            return redirect()->to('/')->with('error', 'No tienes permisos para realizar esta acción');
+            return redirect()->to('denegado')->with('error', 'No tienes permisos para realizar esta acción');
         }
 
         $filtros = [

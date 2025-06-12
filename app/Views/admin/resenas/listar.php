@@ -135,4 +135,5 @@ function confirmarEliminacion(resenaId) {
         window.location.href = '<?= base_url('admin/resenas/eliminar/') ?>' + resenaId;
     }
 }
+
 </script>

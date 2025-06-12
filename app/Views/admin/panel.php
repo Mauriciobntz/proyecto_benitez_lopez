@@ -6,9 +6,9 @@
                     <div class="d-flex justify-content-between align-items-center">
                         <div>
                             <h6 class="card-title">Ventas Hoy</h6>
-                            <h3 class="card-text">€1,245</h3>
+                            <h3 class="card-text">$<?= number_format($totalVentasHoy, 2) ?></h3>
                         </div>
-                        <i class="bi bi-currency-euro" style="font-size: 2rem;"></i>
+                        <i class="bi bi-currency-dollar" style="font-size: 2rem;"></i>
                     </div>
                 </div>
             </div>
@@ -20,7 +20,7 @@
                     <div class="d-flex justify-content-between align-items-center">
                         <div>
                             <h6 class="card-title">Pedidos Hoy</h6>
-                            <h3 class="card-text">12</h3>
+                            <h3 class="card-text"><?= $pedidosHoy ?></h3>
                         </div>
                         <i class="bi bi-cart" style="font-size: 2rem;"></i>
                     </div>
@@ -34,7 +34,7 @@
                     <div class="d-flex justify-content-between align-items-center">
                         <div>
                             <h6 class="card-title">Productos</h6>
-                            <h3 class="card-text">45</h3>
+                            <h3 class="card-text"><?= $totalProductos ?></h3>
                         </div>
                         <i class="bi bi-box-seam" style="font-size: 2rem;"></i>
                     </div>
@@ -48,7 +48,7 @@
                     <div class="d-flex justify-content-between align-items-center">
                         <div>
                             <h6 class="card-title">Clientes</h6>
-                            <h3 class="card-text">128</h3>
+                            <h3 class="card-text"><?= $totalClientes ?></h3>
                         </div>
                         <i class="bi bi-people" style="font-size: 2rem;"></i>
                     </div>
@@ -62,8 +62,8 @@
             <div class="card mb-4">
                 <div class="card-header">
                     <div class="d-flex justify-content-between align-items-center">
-                        <span>Últimos Pedidos</span>
-                        <a href="#" class="btn btn-sm btn-outline-primary">Ver todos</a>
+                        <span>Últimas Ventas</span>
+                        <a href="<?= base_url('admin/ventas/listar') ?>" class="btn btn-sm btn-outline-primary">Ver todos</a>
                     </div>
                 </div>
                 <div class="card-body">
@@ -80,30 +80,33 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                <?php foreach ($ultimasVentas as $venta): 
+                                    $badgeClass = [
+                                        'pendiente' => 'bg-secondary',
+                                        'pagado' => 'bg-primary',
+                                        'enviado' => 'bg-info',
+                                        'entregado' => 'bg-success',
+                                        'cancelado' => 'bg-danger'
+                                    ][$venta['estado']];
+                                ?>
                                 <tr>
-                                    <td>#1001</td>
-                                    <td>Juan Pérez</td>
-                                    <td>22/05/2025</td>
-                                    <td>€599.99</td>
-                                    <td><span class="badge bg-success">Entregado</span></td>
+                                    <td>#<?= $venta['id_venta'] ?></td>
+                                    <td><?= $venta['nombre'] ?> <?= $venta['apellido'] ?></td>
+                                    <td><?= date('d/m/Y', strtotime($venta['fecha_venta'])) ?></td>
+                                    <td>€<?= number_format($venta['total'], 2) ?></td>
+                                    <td><span class="badge <?= $badgeClass ?>"><?= ucfirst($venta['estado']) ?></span></td>
                                     <td>
-                                        <button class="btn btn-sm btn-outline-primary">
+                                    <div class="btn-group btn-group-sm">
+                                        <a href="<?= base_url('admin/ventas/detalle/' . $venta['id_venta']) ?>" class="btn btn-outline-primary">
                                             <i class="bi bi-eye"></i>
-                                        </button>
+                                        </a>
+                                        <a href="<?= base_url('admin/ventas/factura/' . $venta['id_venta']) ?>" class="btn btn-outline-secondary" target="_blank">
+                                            <i class="bi bi-printer"></i>
+                                        </a>
+                                    </div>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td>#1002</td>
-                                    <td>María Gómez</td>
-                                    <td>23/05/2025</td>
-                                    <td>€1,398.00</td>
-                                    <td><span class="badge bg-info">Enviado</span></td>
-                                    <td>
-                                        <button class="btn btn-sm btn-outline-primary">
-                                            <i class="bi bi-eye"></i>
-                                        </button>
-                                    </td>
-                                </tr>
+                                <?php endforeach; ?>
                             </tbody>
                         </table>
                     </div>
@@ -116,18 +119,16 @@
                 <div class="card-header">Productos con poco stock</div>
                 <div class="card-body">
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            Smart TV 55"
-                            <span class="badge bg-warning rounded-pill">5 unidades</span>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            Auriculares Bluetooth
-                            <span class="badge bg-warning rounded-pill">3 unidades</span>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            Ratón Inalámbrico
-                            <span class="badge bg-warning rounded-pill">2 unidades</span>
-                        </li>
+                        <?php if (!empty($productosBajoStock)): ?>
+                            <?php foreach ($productosBajoStock as $producto): ?>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <?= $producto['nombre'] ?>
+                                <span class="badge bg-warning rounded-pill"><?= $producto['stock'] ?> unidades</span>
+                            </li>
+                            <?php endforeach; ?>
+                        <?php else: ?>
+                            <li class="list-group-item text-muted">No hay productos con stock bajo</li>
+                        <?php endif; ?>
                     </ul>
                 </div>
             </div>
@@ -135,35 +136,24 @@
             <div class="card">
                 <div class="card-header">Últimas reseñas</div>
                 <div class="card-body">
-                    <div class="mb-3">
-                        <div class="d-flex justify-content-between">
-                            <strong>Smartphone X</strong>
-                            <div>
-                                <i class="bi bi-star-fill text-warning"></i>
-                                <i class="bi bi-star-fill text-warning"></i>
-                                <i class="bi bi-star-fill text-warning"></i>
-                                <i class="bi bi-star-fill text-warning"></i>
-                                <i class="bi bi-star-fill text-warning"></i>
+                    <?php if (!empty($ultimasResenas)): ?>
+                        <?php foreach ($ultimasResenas as $resena): ?>
+                        <div class="mb-3">
+                            <div class="d-flex justify-content-between">
+                                <strong><?= $resena['producto_nombre'] ?></strong>
+                                <div>
+                                    <?php for ($i = 1; $i <= 5; $i++): ?>
+                                        <i class="bi bi-star<?= $i <= $resena['calificacion'] ? '-fill' : '' ?> text-warning"></i>
+                                    <?php endfor; ?>
+                                </div>
                             </div>
+                            <p class="small mb-1">"<?= $resena['comentario'] ?>"</p>
+                            <p class="small text-muted">Por <?= $resena['nombre'] ?> <?= $resena['apellido'] ?> - <?= date('d/m/Y', strtotime($resena['fecha'])) ?></p>
                         </div>
-                        <p class="small mb-1">"Excelente teléfono, muy rápido y buena cámara"</p>
-                        <p class="small text-muted">Por Juan Pérez - 25/05/2025</p>
-                    </div>
-                    
-                    <div class="mb-3">
-                        <div class="d-flex justify-content-between">
-                            <strong>Smart TV 55"</strong>
-                            <div>
-                                <i class="bi bi-star-fill text-warning"></i>
-                                <i class="bi bi-star-fill text-warning"></i>
-                                <i class="bi bi-star-fill text-warning"></i>
-                                <i class="bi bi-star-fill text-warning"></i>
-                                <i class="bi bi-star text-warning"></i>
-                            </div>
-                        </div>
-                        <p class="small mb-1">"Buena calidad de imagen, pero el sonido podría mejorar"</p>
-                        <p class="small text-muted">Por María Gómez - 26/05/2025</p>
-                    </div>
+                        <?php endforeach; ?>
+                    <?php else: ?>
+                        <div class="text-muted">No hay reseñas recientes</div>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>

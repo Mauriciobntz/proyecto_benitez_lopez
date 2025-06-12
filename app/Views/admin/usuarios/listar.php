@@ -1,11 +1,6 @@
 <div class="container-fluid mt-4">
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h2>Gestión de Usuarios</h2>
-        <div>
-            <a href="<?= base_url('admin/usuarios/agregar') ?>" class="btn btn-primary">
-                <i class="bi bi-plus-circle"></i> Nuevo Usuario
-            </a>
-        </div>
     </div>
 
     <?php if (session()->has('message')): ?>

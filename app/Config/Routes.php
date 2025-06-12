@@ -8,6 +8,7 @@ use App\Controllers\CategoriaController;
 use App\Controllers\VentaController;
 use App\Controllers\ConsultaController;
 use App\Controllers\ResenaController;
+use App\Controllers\PanelController;
 
 /**
  * @var RouteCollection $routes
@@ -20,7 +21,6 @@ $routes->get('somos', 'Home::somos');
 $routes->get('comercializacion', 'Home::comercializacion');
 $routes->get('terminos', 'Home::terminos');
 //borrar
-$routes->get('panel', 'Home::panel');
 $routes->get('denegado', 'Home::denegado');
 
 
@@ -42,7 +42,6 @@ $routes->get('productos/destacados', [ProductoController::class, 'listarDestacad
 $routes->get('productos/categoria/(:num)', [ProductoController::class, 'productosPorCategoria']);
 $routes->get('productos/buscar', [ProductoController::class, 'buscar']);
 $routes->get('productos/(:num)', [ProductoController::class, 'detalle']);
-// revisar
 $routes->get('contacto', 'ConsultaController::formularioContacto');
 $routes->post('contacto/procesar', 'ConsultaController::procesarConsulta');
 
@@ -53,6 +52,10 @@ $routes->post('productos/(:num)/resena', [ProductoController::class, 'agregarRes
 
 // Rutas de administrador (requieren rol admin)
 $routes->group('admin', ['filter' => 'admin'], function($routes) {
+
+    // Rutas para el panel de administración
+    $routes->get('panel', [PanelController::class, 'verPanel']);
+
     $routes->get('productos/listar', [ProductoController::class, 'listar']);
     $routes->get('productos/crear', [ProductoController::class, 'agregarProducto']);
     $routes->post('productos/guardar', [ProductoController::class, 'guardarProducto']);
@@ -80,8 +83,6 @@ $routes->group('admin', ['filter' => 'admin'], function($routes) {
     $routes->get('usuarios/listar', [UsuarioController::class, 'listarUsuarios']);
     $routes->get('usuarios/editar/(:num)', [UsuarioController::class, 'editarUsuario']);
     $routes->post('usuarios/actualizar/(:num)', [UsuarioController::class, 'actualizarUsuario']);
-    $routes->get('usuarios/agregar', [UsuarioController::class, 'agregarUsuario']);
-    $routes->post('usuarios/guardar', [UsuarioController::class, 'guardarUsuario']);
     $routes->get('usuarios/perfil/(:num)', [UsuarioController::class, 'perfilUsuario']);
     
 

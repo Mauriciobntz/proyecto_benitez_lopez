@@ -29,7 +29,7 @@
       <!-- Menú para administrador -->
       <ul class="navbar-nav mx-auto d-none d-lg-flex">
         <li class="nav-item">
-          <a class="nav-link text-white" href="<?= base_url('panel') ?>">
+          <a class="nav-link text-white" href="<?= base_url('admin/panel') ?>">
             <i class="bi bi-speedometer2 me-1"></i> Panel
           </a>
         </li>
