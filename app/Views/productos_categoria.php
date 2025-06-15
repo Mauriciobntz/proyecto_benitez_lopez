@@ -1,8 +1,3 @@
-<?php
-// Vista para mostrar productos por categoría
-// Espera recibir: $productos, $categoria, $categorias
-?>
-
 <div class="container-fluid p-0">
   <!-- banner -->
   <div class="banner" style="background-image: url('assets/img/banners.png'); background-size: cover; background-position: center; height: 310px;">

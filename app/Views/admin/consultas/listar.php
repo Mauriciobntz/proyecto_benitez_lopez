@@ -90,7 +90,7 @@
                                         <?= $consulta['estado'] ?>
                                     </span>
                                 </td>
-                                <td>
+                                <td class="px-4">
                                     <a href="<?= base_url('admin/consultas/detalle/' . $consulta['id_consulta']) ?>" class="btn btn-outline-primary btn-sm">
                                         <i class="bi bi-eye"></i>
                                     </a>

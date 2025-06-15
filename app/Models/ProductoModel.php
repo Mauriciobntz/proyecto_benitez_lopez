@@ -103,4 +103,19 @@ class ProductoModel extends Model
                     ->set('stock', 'stock + ' . (int)$cantidad, false)
                     ->update();
     }
+
+    public function getProductosMasVendidos($limit = 4)
+    {
+        return $this->where('activo', 1)
+                ->orderBy('ventas_totales', 'DESC')
+                ->limit($limit)
+                ->findAll();
+    }
+
+    public function incrementarVentas($producto_id, $cantidad = 1)
+    {
+        return $this->where('id_producto', $producto_id)
+                ->set('ventas_totales', 'ventas_totales + ' . (int)$cantidad, false)
+                ->update();
+    }
 }

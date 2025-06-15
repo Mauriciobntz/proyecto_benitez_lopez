@@ -9,10 +9,14 @@ use App\Controllers\VentaController;
 use App\Controllers\ConsultaController;
 use App\Controllers\ResenaController;
 use App\Controllers\PanelController;
+use App\Controllers\ConfiguracionController;
+use App\Controllers\CarruselController;
+use App\Controllers\DestacadosController;
 
 /**
  * @var RouteCollection $routes
  */
+
 $routes->get('/', 'Home::index');
 
 // Rutas públicas
@@ -67,10 +71,10 @@ $routes->group('admin', ['filter' => 'admin'], function($routes) {
 
     // Rutas para categorías
     $routes->get('categorias/listar', [CategoriaController::class, 'listar']);
-    $routes->get('categorias/crear', [CategoriaController::class, 'agregar']);
+    $routes->get('categorias/crear', [CategoriaController::class, 'crear']);
     $routes->post('categorias/guardar', [CategoriaController::class, 'guardar']);
     $routes->get('categorias/editar/(:num)', [CategoriaController::class, 'editar']);
-    $routes->post('categorias/actualizar/(:num)', [CategoriaController::class, 'actualizar']);
+    $routes->post('categorias/actualizar', [CategoriaController::class, 'actualizar']);
     $routes->get('categorias/eliminar/(:num)', [CategoriaController::class, 'eliminar']);
 
     // Rutas para ventas
@@ -97,6 +101,27 @@ $routes->group('admin', ['filter' => 'admin'], function($routes) {
     $routes->get('resenas/editar/(:num)', [ResenaController::class, 'editar']);
     $routes->post('resenas/actualizar/(:num)', [ResenaController::class, 'actualizar']);
     $routes->get('resenas/eliminar/(:num)', [ResenaController::class, 'eliminar']);
+
+    // Configuración de la tienda
+    $routes->get('configuracion/tienda/ver', [ConfiguracionController::class, 'ver']);
+    $routes->get('configuracion/tienda/editar', [ConfiguracionController::class, 'editar']);
+    $routes->post('configuracion/tienda/actualizar', [ConfiguracionController::class, 'actualizar']);
+
+    // Configuracion para el carrusel
+    $routes->get('configuracion/carrusel/listar', [CarruselController::class, 'listar']);
+    $routes->get('configuracion/carrusel/crear', [CarruselController::class, 'crear']);
+    $routes->post('configuracion/carrusel/guardar', [CarruselController::class, 'guardar']);
+    $routes->get('configuracion/carrusel/editar/(:num)', [CarruselController::class, 'editar']);
+    $routes->post('configuracion/carrusel/actualizar/(:num)', [CarruselController::class, 'actualizar']);
+    $routes->get('configuracion/carrusel/eliminar/(:num)', [CarruselController::class, 'eliminar']);
+
+    // Configuracion para los destacados
+    $routes->get('configuracion/destacados/listar', [DestacadosController::class, 'listar']);
+    $routes->get('configuracion/destacados/crear', [DestacadosController::class, 'crear']);
+    $routes->post('configuracion/destacados/guardar', [DestacadosController::class, 'guardar']);
+    $routes->get('configuracion/destacados/editar/(:num)', [DestacadosController::class, 'editar']);
+    $routes->post('configuracion/destacados/actualizar/(:num)', [DestacadosController::class, 'actualizar']);
+    $routes->get('configuracion/destacados/eliminar/(:num)', [DestacadosController::class, 'eliminar']);
 });
 
 

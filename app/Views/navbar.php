@@ -69,12 +69,9 @@
             <i class="bi bi-gear me-1"></i> Configuración
           </a>
           <ul class="dropdown-menu dropdown-menu-dark">
-            <li><a class="dropdown-item text-white" href="<?= base_url('admin/usuarios') ?>"><i class="bi bi-person-badge me-2"></i> Carrusel</a></li>
-            <li><a class="dropdown-item text-white" href="<?= base_url('admin/usuarios') ?>"><i class="bi bi-person-badge me-2"></i> GIF Promociones</a></li>
-            <li><a class="dropdown-item text-white" href="<?= base_url('admin/usuarios') ?>"><i class="bi bi-person-badge me-2"></i> Nuevos Ingresos</a></li>
-            <li><a class="dropdown-item text-white" href="<?= base_url('admin/usuarios') ?>"><i class="bi bi-person-badge me-2"></i> Cinta Promociones</a></li>
-            <li><a class="dropdown-item text-white" href="<?= base_url('admin/usuarios') ?>"><i class="bi bi-person-badge me-2"></i> Cinta Marcas</a></li>
-            <li><a class="dropdown-item text-white" href="<?= base_url('admin/config') ?>"><i class="bi bi-gear me-2"></i> Configuración Tienda</a></li>
+            <li><a class="dropdown-item text-white" href="<?= base_url('admin/configuracion/carrusel/listar') ?>"><i class="bi bi-images me-2"></i> Carrusel</a></li>
+            <li><a class="dropdown-item text-white" href="<?= base_url('admin/configuracion/destacados/listar') ?>"><i class="bi bi-broadcast me-2"></i> Destacados</a></li>
+            <li><a class="dropdown-item text-white" href="<?= base_url('admin/configuracion/tienda/ver') ?>"><i class="bi bi-gear me-2"></i> Tienda</a></li>
           </ul>
         </li>
       </ul>
@@ -84,11 +81,20 @@
         <li class="nav-item dropdown">
           <a class="nav-link text-white fw-bold dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Productos</a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="<?= base_url('productos'); ?>">Todos</a></li>
-            <li><a class="dropdown-item" href="<?= base_url('celulares'); ?>">Celulares</a></li>
-            <li><a class="dropdown-item" href="<?= base_url('notebooks'); ?>">Notebooks</a></li>
-            <li><a class="dropdown-item" href="<?= base_url('tablets'); ?>">Tablets</a></li>
-            <li><a class="dropdown-item" href="<?= base_url('auriculares'); ?>">Auriculares</a></li>
+
+            <a href="<?= base_url('productos') ?>" class="btn btn-outline-dark w-100 text-start py-2">Todos</a>
+
+            <?php if(isset($categorias) && is_array($categorias)): ?>
+              <?php foreach($categorias as $categoria): ?>
+                <a href="<?= base_url('productos/categoria/'.$categoria['id_categoria']) ?>" class="btn btn-outline-dark w-100 text-start py-2">
+                  <?= htmlspecialchars($categoria['nombre']) ?>
+                </a>
+
+              <?php endforeach; ?>
+            <?php endif; ?>
+
+
+
           </ul>
         </li>
         <li class="nav-item">
@@ -214,11 +220,18 @@
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Productos</a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="<?= base_url('productos'); ?>">Todos</a></li>
-            <li><a class="dropdown-item" href="<?= base_url('celulares'); ?>">Celulares</a></li>
-            <li><a class="dropdown-item" href="<?= base_url('notebooks'); ?>">Notebooks</a></li>
-            <li><a class="dropdown-item" href="<?= base_url('tablets'); ?>">Tablets</a></li>
-            <li><a class="dropdown-item" href="<?= base_url('auriculares'); ?>">Auriculares</a></li>
+
+            <a href="<?= base_url('productos') ?>" class="btn btn-outline-dark w-100 text-start py-2">Todos</a>
+
+            <?php if(isset($categorias) && is_array($categorias)): ?>
+              <?php foreach($categorias as $categoria): ?>
+                <a href="<?= base_url('productos/categoria/'.$categoria['id_categoria']) ?>" class="btn btn-outline-dark w-100 text-start py-2">
+                  <?= htmlspecialchars($categoria['nombre']) ?>
+                </a>
+
+              <?php endforeach; ?>
+            <?php endif; ?>
+            
           </ul>
         </li>
         <li class="nav-item">

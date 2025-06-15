@@ -25,6 +25,7 @@
                     <thead>
                         <tr>
                             <th>ID</th>
+                            <th>Imagen</th>
                             <th>Nombre</th>
                             <th>Descripción</th>
                             <th>Productos</th>
@@ -35,6 +36,14 @@
                         <?php foreach ($categorias as $categoria): ?>
                             <tr>
                                 <td><?= $categoria['id_categoria'] ?></td>
+                                <td>
+                                    <?php if (!empty($categoria['imagen_url'])): ?>
+                                        <img src="<?= base_url('public/uploads/categorias/' . $categoria['imagen_url']) ?>" 
+                                            class="img-thumbnail" style="max-height: 50px; max-width: 75px;">
+                                    <?php else: ?>
+                                        <span class="text-muted">Sin imagen</span>
+                                    <?php endif; ?>
+                                </td>
                                 <td><?= $categoria['nombre'] ?></td>
                                 <td><?= $categoria['descripcion'] ?? 'Sin descripción' ?></td>
                                 <td><?= $categoria['total_productos'] ?? 0 ?></td>

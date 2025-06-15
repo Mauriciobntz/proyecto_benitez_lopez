@@ -1,13 +1,22 @@
 <?php
 
 namespace App\Controllers;
+use App\Controllers\BaseController;
+use App\Models\CategoriaModel;
 
 class Home extends BaseController
 {
+        protected $categoriaModel;
+
     public function index(): string
     {
-        $data['titulo']='Principal';
-        return view('header', $data).view('navbar').view('carousel').view('principal').view('footer');
+        $this->categoriaModel = new CategoriaModel();
+        $categorias = $this->categoriaModel->getCategoriasParaMostrar();
+        $data = [
+            'titulo' => 'Principal',
+            'categorias' => $categorias,
+        ];
+        return view('header', $data).view('navbar').view('carousel').view('destacados').view('mas_vendidos').view('nuevos_ingresos').view('categorias', $data).view('footer');
     }
     public function somos(): string
     {

@@ -130,7 +130,7 @@ class Filters extends BaseFilters
                 'admin/categorias/crear',
                 'admin/categorias/guardar',
                 'admin/categorias/editar/*',
-                'admin/categorias/actualizar/*',
+                'admin/categorias/actualizar',
                 'admin/categorias/eliminar/*',
                 //Ventas
                 'admin/ventas/listar',
@@ -154,7 +154,25 @@ class Filters extends BaseFilters
                 'admin/resenas/actualizar/*',
                 'admin/resenas/eliminar/*',
                 // Panel de administración
-                'admin/panel'
+                'admin/panel',
+                // Configuración
+                'admin/configuracion/tienda/ver',
+                'admin/configuracion/tienda/editar',
+                'admin/configuracion/tienda/actualizar',
+                // Configuración de carrusel
+                'admin/configuracion/carrusel/listar',
+                'admin/configuracion/carrusel/crear',
+                'admin/configuracion/carrusel/guardar',
+                'admin/configuracion/carrusel/editar/*',
+                'admin/configuracion/carrusel/actualizar/*',
+                'admin/configuracion/carrusel/eliminar/*',
+                // Configuración de destacados
+                'admin/configuracion/destacados/listar',
+                'admin/configuracion/destacados/crear', 
+                'admin/configuracion/destacados/guardar',
+                'admin/configuracion/destacados/editar/*',
+                'admin/configuracion/destacados/actualizar/*',
+                'admin/configuracion/destacados/eliminar/*',
             ]
         ]
     ];

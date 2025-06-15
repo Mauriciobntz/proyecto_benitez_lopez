@@ -8,17 +8,33 @@ class ConfiguracionModel extends Model
     protected $table = 'configuracion';
     protected $primaryKey = 'id';
     protected $allowedFields = [
-        'nombre_tienda', 'email_tienda', 'telefono_tienda', 'direccion_tienda',
-        'costo_envio', 'envio_gratis_desde', 'tiempo_entrega', 'iva',
-        'pago_tarjeta', 'pago_transferencia', 'cuenta_bancaria',
-        'smtp_host', 'smtp_port', 'smtp_user', 'smtp_pass', 'smtp_secure'
+        'nombre_tienda', 
+        'razon_social',
+        'email_tienda', 
+        'telefono_tienda',
+        'whatsapp_tienda',
+        'direccion_tienda',
+        'cuit',
+        'cbu',
+        'area_cobertura',
+        'facebook_url',
+        'instagram_url',
+        'twitter_url',
+        'whatsapp_url',
+        'horario_atencion',
+        'logo_url',
+        'mensaje_bienvenida'
     ];
-    protected $useTimestamps = true;
-    protected $createdField = 'created_at';
-    protected $updatedField = 'updated_at';
+    protected $useTimestamps = false;
 
     public function getConfiguracion()
     {
         return $this->first();
+    }
+
+    public function actualizarConfiguracion($data)
+    {
+        // Como solo hay un registro, actualizamos siempre el registro con ID 1
+        return $this->update(1, $data);
     }
 }
