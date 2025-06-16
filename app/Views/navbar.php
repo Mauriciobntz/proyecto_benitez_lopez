@@ -126,11 +126,26 @@
     <!-- Iconos derecha -->
     <div class="d-none d-lg-block">
       <?php if (!session('logged_in') || (session('logged_in') && session('rol') !== 'admin')): ?>
-        <!-- Carrito solo para no administradores -->
-        <button class="btn btn-light rounded-pill me-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight">
-          <i class="fas fa-shopping-cart"></i>
-        </button>
+    <!-- Carrito solo para no administradores -->
+    <a href="<?= base_url('usuario/carrito') ?>" class="btn btn-light rounded-pill me-2 position-relative">
+      <i class="fas fa-shopping-cart"></i>
+      <?php if (session('logged_in')): ?>
+        <?php
+        $carritoModel = new \App\Models\CarritoModel();
+        $carritoItemModel = new \App\Models\CarritoItemModel();
+        $usuario_id = session()->get('id_usuario');
+        $carrito = $carritoModel->getCarritoByUsuario($usuario_id);
+        $itemCount = $carrito ? count($carritoItemModel->getItemsByCarrito($carrito['id_carrito'])) : 0;
+        ?>
+        <?php if ($itemCount > 0): ?>
+          <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+            <?= $itemCount ?>
+          </span>
+        <?php endif; ?>
+      <?php endif; ?>
+    </a>
       <?php else: ?>
+
           <!-- Notificaciones solo para admin -->
 
           <?php $consultas_sin_leer = session()->get('consultas_sin_leer') ?? 0; ?>
@@ -286,63 +301,7 @@
   </div>
 </div>
 
-<!-- Carrito offcanvas (solo para no administradores) -->
-<?php if (!session('logged_in') || (session('logged_in') && session('rol') !== 'admin')): ?>
-<div class="offcanvas offcanvas-end" data-bs-backdrop="static" id="offcanvasRight">
-  <div class="offcanvas-header">
-    <h5 class="offcanvas-title">Carrito de Compras</h5>
-    <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
-  </div>
-  <div class="offcanvas-body d-flex flex-column align-items-center" style="overflow-x: hidden;">
-    <?php if (session('logged_in')): ?>
-      <!-- Carrito para usuarios logueados -->
-      <div class="card mb-3 w-100 overflow-hidden" style="max-height: 120px;">
-        <div class="row g-0 align-items-center">
-          <div class="col-4">
-            <img src="<?= base_url('assets/img/zapatilla.jpg') ?>" class="img-fluid rounded-start d-block" alt="Producto">
-          </div>
-          <div class="col-8">
-            <div class="card-body p-2">
-              <h6 class="card-title mb-1">Nombre del Producto</h6>
-              <p class="card-text mb-2">
-                <small class="text-muted">Precio: $1.500</small>
-              </p>
-              <div class="d-flex align-items-center justify-content-between">
-                <div class="btn-group" role="group">
-                  <button type="button" class="btn btn-outline-dark btn-sm">−</button>
-                  <span class="px-2">2</span>
-                  <button type="button" class="btn btn-outline-dark btn-sm">+</button>
-                </div>
-                <button type="button" class="btn btn-outline-danger btn-sm">
-                  <i class="fas fa-trash"></i>
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="flex-grow-1"></div>
-      <div class="mt-auto w-100 border-top pt-3">
-        <div class="d-flex justify-content-between align-items-center px-2">
-          <strong>Total:</strong>
-          <span>$3.000</span>
-        </div>
-        <div class="d-grid gap-2 px-2 mt-3">
-          <button type="button" class="btn btn-dark">Finalizar compra</button>
-        </div>
-      </div>
-    <?php else: ?>
-      <!-- Mensaje para usuarios no logueados -->
-      <div class="text-center py-4">
-        <i class="fas fa-shopping-cart fa-3x mb-3 text-muted"></i>
-        <h5>Tu carrito está vacío</h5>
-        <p class="text-muted">Inicia sesión para ver los productos en tu carrito</p>
-        <a href="<?= base_url('login') ?>" class="btn btn-dark mt-2">Iniciar Sesión</a>
-      </div>
-    <?php endif; ?>
-  </div>
-</div>
-<?php endif; ?>
+<!-- ==================== Mensaje de bienvenida (si existe) ==================== -->
 
 <?php if (session('message_welcome')): ?>
   <div class="alert alert-success">

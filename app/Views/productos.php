@@ -1,6 +1,18 @@
-<?php
-// This view now expects $productos and $categorias to be passed from the controller
-?>
+<?php if (session()->getFlashdata('message')): ?>
+    <div class="container mt-3">
+        <div class="alert alert-success">
+            <?= session()->getFlashdata('message') ?>
+        </div>
+    </div>
+<?php endif; ?>
+
+<?php if (session()->getFlashdata('error')): ?>
+    <div class="container mt-3">
+        <div class="alert alert-danger">
+            <?= session()->getFlashdata('error') ?>
+        </div>
+    </div>
+<?php endif; ?>
 
 <div class="container-fluid p-0">
   <!-- banner -->
@@ -78,10 +90,13 @@
                     </p>
                     <p class="fw-bold mt-auto"><?= number_format($producto['precio'], 2) ?> €</p>
                     <div class="row mt-2">
-                      <a href="<?= base_url('productos/'.$producto['id_producto']) ?>" class="btn btn-outline-dark col-9 rounded-pill">Ver detalles</a>
-                      <a href="#" class="btn btn-outline-success col-3 rounded-pill">
-                        <img src="<?= base_url('assets/img/carrito.svg') ?>" alt="carrito">
-                      </a>
+                        <a href="<?= base_url('productos/'.$producto['id_producto']) ?>" class="btn btn-outline-dark col-9 rounded-pill">Ver detalles</a>
+                        <form action="<?= base_url('usuario/carrito/agregar/'.$producto['id_producto']) ?>" method="post" class="col-3 p-0">
+                            <button type="submit" class="btn btn-outline-success w-100 rounded-pill" <?= $producto['stock'] <= 0 ? 'disabled' : '' ?>>
+                                <img src="<?= base_url('assets/img/carrito.svg') ?>" alt="carrito">
+                            </button>
+                            <input type="hidden" name="cantidad" value="1">
+                        </form>
                     </div>
                   </div>
                 </div>

@@ -114,8 +114,9 @@ class ProductoModel extends Model
 
     public function incrementarVentas($producto_id, $cantidad = 1)
     {
-        return $this->where('id_producto', $producto_id)
-                ->set('ventas_totales', 'ventas_totales + ' . (int)$cantidad, false)
-                ->update();
+        return $this->db->table($this->table)
+            ->set('ventas_totales', 'ventas_totales + ' . (int)$cantidad, false)
+            ->where('id_producto', $producto_id)
+            ->update();
     }
 }

@@ -2,9 +2,9 @@
 
 use CodeIgniter\Router\RouteCollection;
 use App\Controllers\ProductoController;
+use App\Controllers\CategoriaController;
 use App\Controllers\Home;
 use App\Controllers\UsuarioController;
-use App\Controllers\CategoriaController;
 use App\Controllers\VentaController;
 use App\Controllers\ConsultaController;
 use App\Controllers\ResenaController;
@@ -12,6 +12,7 @@ use App\Controllers\PanelController;
 use App\Controllers\ConfiguracionController;
 use App\Controllers\CarruselController;
 use App\Controllers\DestacadosController;
+use App\Controllers\CarritoController;
 
 /**
  * @var RouteCollection $routes
@@ -128,9 +129,21 @@ $routes->group('admin', ['filter' => 'admin'], function($routes) {
 
 
 $routes->group('usuario', ['filter' => 'auth'], function($routes) {
+    // Rutas del usuario autenticado
     $routes->get('mi-perfil', [UsuarioController::class, 'miPerfil']);
     $routes->post('actualizar-perfil', [UsuarioController::class, 'actualizarPerfil']);
     $routes->post('productos/(:num)/resena', [ProductoController::class, 'agregarResena']);
     $routes->get('mis-resenas', [ProductoController::class, 'misResenas']);
+
+
+    // Rutas del carrito
+    $routes->get('carrito', [CarritoController::class, 'verCarrito']);
+    $routes->post('carrito/agregar/(:num)', [CarritoController::class, 'agregarProducto']);
+    $routes->post('carrito/actualizar/(:num)', [CarritoController::class, 'actualizarCantidad']);
+    $routes->get('carrito/eliminar/(:num)', [CarritoController::class, 'eliminarItem']);
+    $routes->get('carrito/vaciar', [CarritoController::class, 'vaciarCarrito']);
+    $routes->get('carrito/checkout', [CarritoController::class, 'checkout']);
+    $routes->post('carrito/procesar-compra', [CarritoController::class, 'procesarCompra']);
+    $routes->get('confirmacion/(:num)', [CarritoController::class, 'confirmacionCompra']);
 });
 

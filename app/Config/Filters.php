@@ -12,6 +12,8 @@ use CodeIgniter\Filters\InvalidChars;
 use CodeIgniter\Filters\PageCache;
 use CodeIgniter\Filters\PerformanceMetrics;
 use CodeIgniter\Filters\SecureHeaders;
+use App\Filters\AuthFilter;
+use App\Filters\AdminFilter;
 
 class Filters extends BaseFilters
 {
@@ -111,9 +113,14 @@ class Filters extends BaseFilters
     public array $filters = [
         'auth' => [
             'before' => [
-                'productos/*/resena',
-                'perfil/*',
-                'carrito/*'
+                'usuario/perfil',
+                'usuario/editar',
+                // Carrito
+                'usuario/carrito',
+                'usuario/carrito/agregar/*',
+                'usuario/carrito/actualizar/*',
+                'usuario/carrito/eliminar/*',
+                'usuario/carrito/vaciar',
             ]
         ],
         'admin' => [

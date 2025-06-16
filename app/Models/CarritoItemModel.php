@@ -9,7 +9,9 @@ class CarritoItemModel extends Model
     protected $primaryKey = 'id_item';
     protected $allowedFields = ['carrito_id', 'producto_id', 'cantidad'];
     protected $useTimestamps = false;
-
+    protected $useAutoIncrement = true; 
+    protected $returnType = 'array';
+    
     public function getItemsByCarrito($carrito_id)
     {
         return $this->where('carrito_id', $carrito_id)->findAll();

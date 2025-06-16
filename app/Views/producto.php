@@ -71,10 +71,16 @@
                     <!-- Botones de acción -->
                     <div class="d-grid gap-3">
                         <?php if ($producto['stock'] > 0): ?>
-                            <button class="btn btn-dark rounded-pill py-2 fw-bold">COMPRAR AHORA</button>
-                            <button class="btn btn-outline-dark rounded-pill py-2">
-                                <i class="bi bi-cart-plus me-2"></i> AÑADIR AL CARRITO
-                            </button>
+                            <a href="<?= base_url('checkout/directo/'.$producto['id_producto']) ?>" class="btn btn-dark rounded-pill py-2 fw-bold">COMPRAR AHORA</a>
+                            
+                            <form action="<?= base_url('usuario/carrito/agregar/'.$producto['id_producto']) ?>" method="post">
+                                <div class="input-group">
+                                    <input type="number" name="cantidad" class="form-control" value="1" min="1" max="<?= $producto['stock'] ?>">
+                                    <button type="submit" class="btn btn-outline-dark rounded-pill py-2 w-100">
+                                        <i class="bi bi-cart-plus me-2"></i> AÑADIR AL CARRITO
+                                    </button>
+                                </div>
+                            </form>
                         <?php else: ?>
                             <button class="btn btn-secondary rounded-pill py-2 fw-bold" disabled>PRODUCTO AGOTADO</button>
                         <?php endif; ?>
