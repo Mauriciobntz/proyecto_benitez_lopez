@@ -149,6 +149,7 @@ $routes->group('', ['filter' => 'auth'], function($routes) {
     $routes->post('carrito/actualizar/(:num)', [CarritoController::class, 'actualizarCantidad']);
     $routes->get('carrito/eliminar/(:num)', [CarritoController::class, 'eliminarItem']);
     $routes->get('carrito/vaciar', [CarritoController::class, 'vaciarCarrito']);
+    $routes->post('carrito/comprar', 'CheckoutController::iniciarCheckout');
 
     // Rutas de compra
     $routes->get('checkout/direccion', 'CheckoutController::direccionEnvio');
