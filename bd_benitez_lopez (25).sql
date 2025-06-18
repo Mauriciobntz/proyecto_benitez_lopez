@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 18-06-2025 a las 17:41:08
+-- Tiempo de generación: 19-06-2025 a las 00:21:11
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -38,9 +38,8 @@ CREATE TABLE `carritos` (
 --
 
 INSERT INTO `carritos` (`id_carrito`, `usuario_id`, `fecha_creacion`) VALUES
-(0, 5, '2025-06-16 21:30:47'),
-(1, 4, '2025-05-23 16:00:00'),
-(2, 16, '2025-05-23 17:30:00');
+(1, 22, '2025-06-18 23:03:28'),
+(2, 4, '2025-06-19 00:06:09');
 
 -- --------------------------------------------------------
 
@@ -60,10 +59,7 @@ CREATE TABLE `carrito_items` (
 --
 
 INSERT INTO `carrito_items` (`id_item`, `carrito_id`, `producto_id`, `cantidad`) VALUES
-(3, 2, 6, 2),
-(13, 0, 4, 1),
-(18, 1, 34, 10),
-(19, 1, 4, 1);
+(31, 2, 4, 1);
 
 -- --------------------------------------------------------
 
@@ -246,8 +242,9 @@ INSERT INTO `direcciones` (`id_direccion`, `usuario_id`, `tipo`, `alias`, `direc
 (1, 2, 'particular', 'Casa', 'Calle Principal 123', '28001', 'Madrid', 'Madrid', 'España', 1, '2025-05-23 00:00:00'),
 (2, 2, 'trabajo', 'Oficina', 'Avenida Secundaria 456', '28002', 'Madrid', 'Madrid', 'España', 0, '2025-05-23 00:01:00'),
 (3, 3, 'particular', 'Domicilio', 'Plaza Central 789', '08001', 'Barcelona', 'Barcelona', 'España', 1, '2025-05-23 00:02:00'),
-(4, 4, 'particular', 'Casa', 'Calle Falsa 123', '28001', 'Madrid', 'Madrid', 'España', 0, '2025-06-16 15:07:34'),
-(5, 4, 'trabajo', 'Oficina', 'Avenida Real 456', '28002', 'Madrid', 'Madrid', 'España', 0, '2025-06-16 15:07:34');
+(4, 4, 'particular', 'Casa', 'Calle Falsa 123', '28001', 'Madrid', 'Madrid', 'España', 1, '2025-06-16 15:07:34'),
+(5, 4, 'trabajo', 'Oficina', 'Avenida Real 456', '28002', 'Madrid', 'Madrid', 'España', 0, '2025-06-16 15:07:34'),
+(7, 22, 'particular', 'Casa', '9 de Julio', '3400', 'clorinda', 'Corrientes', 'Argentina', 0, '2025-06-18 23:30:32');
 
 -- --------------------------------------------------------
 
@@ -262,7 +259,7 @@ CREATE TABLE `direccion_envio` (
   `ciudad` varchar(100) NOT NULL,
   `provincia` varchar(100) NOT NULL,
   `codigo_postal` varchar(10) NOT NULL,
-  `pais` varchar(50) NOT NULL DEFAULT 'España',
+  `pais` varchar(50) NOT NULL DEFAULT 'Argentina',
   `nombre_destinatario` varchar(200) NOT NULL,
   `telefono_contacto` varchar(20) NOT NULL,
   `instrucciones_entrega` text DEFAULT NULL
@@ -283,7 +280,11 @@ INSERT INTO `direccion_envio` (`id_direccion_envio`, `venta_id`, `direccion`, `c
 (10, 14, 'Avenida Real 456', 'Madrid', 'Madrid', '28002', 'España', 'Pepe', '3794000000', NULL),
 (11, 15, 'Avenida Real 456', 'Madrid', 'Madrid', '28002', 'España', 'Pepe', '3794000000', NULL),
 (12, 16, 'Avenida Real 456', 'Madrid', 'Madrid', '28002', 'España', 'Pepe', '3794000000', NULL),
-(13, 17, 'Avenida Real 456', 'Madrid', 'Madrid', '28002', 'España', 'Pepe', '3794000000', NULL);
+(13, 17, 'Avenida Real 456', 'Madrid', 'Madrid', '28002', 'España', 'Pepe', '3794000000', NULL),
+(14, 32, 'Avenida Real 456', 'Madrid', 'Madrid', '28002', 'España', '', '611111111', ''),
+(15, 33, '9 de Julio', 'clorinda', 'Corrientes', '3400', 'Argentina', '', '3794000000', ''),
+(16, 34, '9 de Julio', 'clorinda', 'Corrientes', '3400', 'Argentina', '', '3794000000', ''),
+(17, 35, 'Calle Falsa 123', 'Madrid', 'Madrid', '28001', 'España', '', '611111111', '');
 
 -- --------------------------------------------------------
 
@@ -304,7 +305,8 @@ CREATE TABLE `facturas` (
 --
 
 INSERT INTO `facturas` (`id_factura`, `venta_id`, `fecha_emision`, `datos_fiscales`, `pdf_url`) VALUES
-(1, 11, '2025-06-11 18:53:57', 'DNI: 87654321B, Nombre: Juan Pérez', 'facturas/factura-11.pdf');
+(1, 11, '2025-06-11 18:53:57', 'DNI: 87654321B, Nombre: Juan Pérez', 'facturas/factura-11.pdf'),
+(2, 30, '2025-06-18 19:37:39', 'DNI: 35478963C, Nombre: Pepe González', 'facturas/factura-30.pdf');
 
 -- --------------------------------------------------------
 
@@ -355,7 +357,15 @@ INSERT INTO `historico_ventas` (`id_historico`, `venta_id`, `estado_anterior`, `
 (37, 12, 'entregado', 'entregado', 'Estado cambiado a entregado', 6, '2025-06-12 12:55:48'),
 (38, 17, 'pendiente', 'pagado', 'Compra realizada', 4, '2025-06-16 12:16:46'),
 (39, 17, 'pagado', 'cancelado', 'Estado cambiado a cancelado', 6, '2025-06-16 12:22:17'),
-(40, 16, 'pendiente', 'cancelado', 'Estado cambiado a cancelado', 6, '2025-06-16 12:22:26');
+(40, 16, 'pendiente', 'cancelado', 'Estado cambiado a cancelado', 6, '2025-06-16 12:22:26'),
+(41, 10, 'pagado', 'entregado', 'Estado cambiado a entregado', 6, '2025-06-18 15:41:37'),
+(42, 29, 'pendiente', 'pagado', 'Compra realizada', 4, '2025-06-18 19:34:37'),
+(43, 30, 'pendiente', 'pagado', 'Compra realizada', 4, '2025-06-18 19:36:37'),
+(44, 31, 'pendiente', 'pagado', 'Compra realizada', 4, '2025-06-18 19:46:57'),
+(45, 32, 'pendiente', 'pagado', 'Compra realizada', 4, '2025-06-18 19:50:32'),
+(46, 33, 'pendiente', 'pagado', 'Compra realizada', 22, '2025-06-18 20:30:56'),
+(47, 34, 'pendiente', 'pagado', 'Compra realizada', 22, '2025-06-18 20:58:02'),
+(48, 35, 'pendiente', 'pagado', 'Compra realizada', 4, '2025-06-18 21:06:46');
 
 -- --------------------------------------------------------
 
@@ -386,7 +396,14 @@ INSERT INTO `pagos` (`id_pago`, `venta_id`, `monto`, `metodo_pago`, `estado`, `f
 (5, 11, 1549.99, 'Tarjeta', 'exitoso', '2025-06-11 06:01:59', NULL, NULL),
 (6, 12, 1799.00, 'Transferencia', 'exitoso', '2025-06-11 06:01:59', NULL, NULL),
 (7, 17, 2425.99, 'Tarjeta', 'exitoso', '2025-06-16 18:16:46', NULL, NULL),
-(8, 18, 4214.00, 'Bitcoin', '', '2025-06-17 22:12:50', NULL, NULL);
+(8, 18, 4214.00, 'Bitcoin', '', '2025-06-17 22:12:50', NULL, NULL),
+(9, 29, 827.58, 'Bitcoin', 'exitoso', '2025-06-18 22:34:37', NULL, NULL),
+(10, 30, 2062.99, 'Tarjeta', 'exitoso', '2025-06-18 22:36:37', '2345', NULL),
+(11, 31, 827.58, 'Contrapago', 'exitoso', '2025-06-18 22:46:57', NULL, NULL),
+(12, 32, 827.58, 'Contrapago', 'exitoso', '2025-06-18 22:50:32', NULL, NULL),
+(13, 33, 827.58, 'Bitcoin', 'exitoso', '2025-06-18 23:30:56', NULL, NULL),
+(14, 34, 827.58, 'Bitcoin', 'exitoso', '2025-06-18 23:58:02', NULL, NULL),
+(15, 35, 1518.49, 'Transferencia', 'exitoso', '2025-06-19 00:06:46', NULL, '777777777777777777777777777777777777');
 
 -- --------------------------------------------------------
 
@@ -424,7 +441,8 @@ INSERT INTO `personas` (`id_persona`, `usuario_id`, `tipo_documento`, `documento
 (9, 18, 'DNI', '31999888H', 'Cesilia', 'Acosta', '1992-04-02', 'M', '600333333', '2025-06-11 06:11:42', '2025-06-11 06:11:42'),
 (10, 19, 'DNI', '31222333J', 'Baul', 'Martínez', '1991-12-24', 'H', '600444444', '2025-06-11 06:11:42', '2025-06-11 06:11:42'),
 (11, 20, 'DNI', '30201011Z', 'Jesus', 'Nazareno', '0001-01-01', 'H', '600555555', '2025-06-11 06:11:42', '2025-06-11 06:11:42'),
-(12, 21, 'DNI', '32323232Q', 'Yoyo', 'Tester', '1999-09-09', 'O', '600666666', '2025-06-11 06:11:42', '2025-06-11 06:11:42');
+(12, 21, 'DNI', '32323232Q', 'Yoyo', 'Tester', '1999-09-09', 'O', '600666666', '2025-06-11 06:11:42', '2025-06-11 06:11:42'),
+(13, 22, 'DNI', '43329300', 'Prueba', 'González', '0000-00-00', 'H', '3794000000', '2025-06-18 23:29:25', '2025-06-18 23:29:44');
 
 -- --------------------------------------------------------
 
@@ -463,7 +481,7 @@ INSERT INTO `productos` (`id_producto`, `nombre`, `descripcion`, `marca`, `model
 (8, 'Samsung A55 5G', '512GB RAM | Color: White', 'Samsung', 'A55 5G', 450.00, 35, 'a55.png', 4, '2025-06-09 23:26:52', NULL, 24, NULL, NULL, 1, 0),
 (9, 'Samsung S25 Ultra', '1024GB RAM | Color: White', 'Samsung', 'S25 Ultra', 1100.00, 20, 's25ultra.png', 4, '2025-06-09 23:26:52', NULL, 36, NULL, NULL, 1, 0),
 (10, 'iPhone 16', '512GB RAM | Color: Blue', 'Apple', 'iPhone 16', 1000.00, 24, 'iphone16.png', 4, '2025-06-09 23:26:52', NULL, 12, NULL, NULL, 1, 3),
-(11, 'iPhone 16 Pro Max', '1024GB RAM | Color: White', 'Apple', 'iPhone 16 Pro Max', 1250.00, 15, 'iphone16promax.png', 4, '2025-06-09 23:26:52', NULL, 12, NULL, NULL, 1, 0),
+(11, 'iPhone 16 Pro Max', '1024GB RAM | Color: White', 'Apple', 'iPhone 16 Pro Max', 1250.00, 14, 'iphone16promax.png', 4, '2025-06-09 23:26:52', NULL, 12, NULL, NULL, 1, 0),
 (12, 'Redmi Note 13 Pro', '512GB RAM | Color: Blue', 'Xiaomi', 'Redmi Note 13 Pro', 450.00, 30, 'redminote13pro.png', 4, '2025-06-10 06:08:43', NULL, 12, NULL, NULL, 1, 0),
 (13, 'Poco X6', '256GB RAM | Color: White', 'Xiaomi', 'Poco X6', 250.00, 40, 'pocox6.png', 4, '2025-06-10 06:08:43', '{\"Almacenamiento\":\"256GB\",\"Color\":\"White\",\"RAM\":\"8GB\"}', 12, NULL, NULL, 1, 0),
 (14, 'Redmi Buds 4', 'in-ear | USB tipo C', 'Xiaomi', 'Redmi Buds 4', 120.00, 50, 'redmibuds4.png', 7, '2025-06-10 06:08:43', NULL, 12, NULL, NULL, 1, 1),
@@ -473,7 +491,7 @@ INSERT INTO `productos` (`id_producto`, `nombre`, `descripcion`, `marca`, `model
 (18, 'Galaxy Book 3', '16GB RAM | 152GB SSD', 'Samsung', 'Galaxy Book 3', 1200.00, 20, 'galaxybook3.png', 5, '2025-06-10 06:08:43', '{\"RAM\":\"16GB\",\"Almacenamiento\":\"152GB SSD\"}', 24, NULL, NULL, 1, 0),
 (19, 'Galaxy Book 3 Pro', '16GB RAM | 1TB SSD', 'Samsung', 'Galaxy Book 3 Pro', 1500.00, 15, 'galaxybook3pro.png', 5, '2025-06-10 06:08:43', '{\"RAM\":\"16GB\",\"Almacenamiento\":\"1TB SSD\"}', 24, NULL, NULL, 1, 0),
 (20, 'MacBook Air M2', 'Apple M2 | Pantalla 13,6', 'Apple', 'MacBook Air M2', 1500.00, 25, 'macbookair2.png', 5, '2025-06-10 06:08:43', '{\"Procesador\":\"Apple M2\",\"Pantalla\":\"13.6 pulgadas\"}', 24, NULL, NULL, 1, 1),
-(21, 'MacBook Pro M3', 'Apple M3 | Pantalla 120Hz', 'Apple', 'MacBook Pro M3', 1700.00, 15, 'macbookpro3.png', 2, '2025-06-10 06:08:43', '{\"Procesador\":\"Apple M3\", \"Pantalla\":\"120Hz\"}', 24, 1.40, '31.2x22.1x1.6 cm', 1, 0),
+(21, 'MacBook Pro M3', 'Apple M3 | Pantalla 120Hz', 'Apple', 'MacBook Pro M3', 1700.00, 14, 'macbookpro3.png', 2, '2025-06-10 06:08:43', '{\"Procesador\":\"Apple M3\", \"Pantalla\":\"120Hz\"}', 24, 1.40, '31.2x22.1x1.6 cm', 1, 0),
 (22, 'Dell XPS 13', 'Intel Core i7 | Pantalla 4k', 'Dell', 'XPS 13', 1400.00, 20, 'dell.png', 2, '2025-06-10 06:08:43', NULL, 24, NULL, NULL, 1, 0),
 (23, 'Asus ROG Zephyrus G14', 'AMD Ryzen 9 | RTX 4060', 'Asus', 'ROG Zephyrus G14', 1700.00, 10, 'zephyrus.png', 2, '2025-06-10 06:08:43', '{\"Procesador\":\"AMD Ryzen 9\", \"GPU\":\"RTX 4060\"}', 24, 1.65, '31.2x22.7x1.9 cm', 1, 0),
 (24, 'Logitech MX Master 3S', 'Sensor de 8K DPI | Scroll MagSpeed', 'Logitech', 'MX Master 3S', 340.00, 30, 'logitechmouse.png', 6, '2025-06-10 06:08:43', NULL, 12, NULL, NULL, 1, 0),
@@ -486,7 +504,7 @@ INSERT INTO `productos` (`id_producto`, `nombre`, `descripcion`, `marca`, `model
 (31, 'iPad Pro M2', 'Apple M2 | Pantalla XDR 120Hz', 'Apple', 'iPad Pro M2', 799.00, 20, 'ipadprom2.png', 8, '2025-06-10 06:08:43', '{\"Procesador\":\"Apple M2\",\"Pantalla\":\"XDR 120Hz\"}', 12, NULL, NULL, 1, 0),
 (32, 'iPad Air M2', 'Apple M2 | Pantalla Retina 10,9', 'Apple', 'iPad Air M2', 749.00, 25, 'ipadair13.png', 8, '2025-06-10 06:08:43', '{\"Procesador\":\"Apple M2\",\"Pantalla\":\"Retina 10.9\"}', 12, NULL, NULL, 1, 1),
 (33, 'iPad (10ª generación)', 'Apple A14 | Pantalla Retina 10,9', 'Apple', 'iPad 10', 579.00, 30, 'ipad10.png', 8, '2025-06-10 06:08:43', '{\"Procesador\":\"Apple A14\",\"Pantalla\":\"Retina 10.9\"}', 12, NULL, NULL, 1, 0),
-(34, 'Samsung Galaxy Tab S9 Ultra', 'Snapdragon 8 Gen 2 | Pantalla Amoled 14,6', 'Samsung', 'Galaxy Tab S9 Ultra', 679.00, 11, 'galaxytabs9ultra.png', 8, '2025-06-10 06:08:43', NULL, 12, NULL, NULL, 1, 0),
+(34, 'Samsung Galaxy Tab S9 Ultra', 'Snapdragon 8 Gen 2 | Pantalla Amoled 14,6', 'Samsung', 'Galaxy Tab S9 Ultra', 679.00, 6, 'galaxytabs9ultra.png', 8, '2025-06-10 06:08:43', NULL, 12, NULL, NULL, 1, 0),
 (35, 'Samsung Galaxy Tab S9 FE', 'Exynos 1380 | Pantalla LCD 12,4', 'Samsung', 'Galaxy Tab S9 FE', 449.00, 20, 'tabgalaxys9fe.png', 8, '2025-06-10 06:08:43', '{\"Procesador\":\"Exynos 1380\",\"Pantalla\":\"LCD 12.4\"}', 12, NULL, NULL, 1, 0),
 (36, 'Microsoft Surface Pro 9', 'Intel Core i5/i7 | Pantalla PixelSense de 13', 'Microsoft', 'Surface Pro 9', 999.00, 15, 'surface.png', 8, '2025-06-10 06:08:43', '{\"Procesador\":\"Intel Core i5\\/i7\",\"Pantalla\":\"PixelSense 13\"}', 12, NULL, NULL, 1, 0),
 (37, 'Amazon Fire HD 10', 'Octa-Core | Pantalla Full-HD 10,1', 'Amazon', 'Fire HD 10', 150.00, 30, 'amazon.png', 8, '2025-06-10 06:08:43', '{\"Procesador\":\"Octa-Core\",\"Pantalla\":\"Full-HD 10.1\"}', 12, NULL, NULL, 1, 0),
@@ -540,7 +558,7 @@ INSERT INTO `resenas` (`id_resena`, `producto_id`, `usuario_id`, `calificacion`,
 (7, 4, 2, 4, 'Buena calidad, pero la entrega fue lenta.', '2025-06-11 03:34:05'),
 (8, 6, 3, 3, 'Producto aceptable, pero esperaba más.', '2025-06-11 03:34:05'),
 (9, 4, 1, 1, 'No funcionó correctamente. Tuve que devolverlo.', '2025-06-11 03:34:05'),
-(10, 4, 4, 5, 'Todo Perfecto.', '2025-06-12 15:57:48');
+(14, 4, 4, 4, 'prueba de la reseña', '2025-06-18 21:46:13');
 
 -- --------------------------------------------------------
 
@@ -573,7 +591,8 @@ INSERT INTO `usuarios` (`id_usuario`, `email`, `password_hash`, `rol`, `fecha_re
 (18, 'cesiliaacosta01@gmail.com', '$2y$10$pUNctLb.T.u7CWdos1vONed.8vA/ackUdBy3fA1IA0k7Zz/0IzOCS', 'cliente', '2025-06-08 05:37:48', 'enzop'),
 (19, 'baul@gmail.com', '$2y$10$UZqVeOlXBVoblZ1v01nMhOCPb2LCpuUzk2qdomp5sPE2jTWE2VJr6', 'cliente', '2025-06-08 10:26:29', 'Baul'),
 (20, 'jesus@gmail.com', '$2y$10$bw0OOjqcz3dzvrHNVrkak.T/VRdNF3Z14yk5Zk4lBA5jA8MoF/K0C', 'cliente', '2025-06-08 11:16:03', 'Jesus'),
-(21, 'yo@gmail.com', '$2y$10$S9iDO2pQGNtL/UHuuAuVQewC5UARRt5GT6QpVw3PHDcgf0nXeN9NO', 'cliente', '2025-06-08 11:29:17', 'yoyo');
+(21, 'yo@gmail.com', '$2y$10$S9iDO2pQGNtL/UHuuAuVQewC5UARRt5GT6QpVw3PHDcgf0nXeN9NO', 'cliente', '2025-06-08 11:29:17', 'yoyo'),
+(22, 'prueba@gmail.com', '$2y$10$3aY98RPrgeV1zehreOjPqOYHxM9MBtErnpeedsT7NiiV508Q0tB2e', 'cliente', '2025-06-18 22:56:39', 'Prueba');
 
 -- --------------------------------------------------------
 
@@ -599,7 +618,7 @@ INSERT INTO `ventas` (`id_venta`, `usuario_id`, `fecha_venta`, `fecha_actualizac
 (6, 2, '2025-06-11 05:40:14', '2025-06-11 05:57:21', 'enviado', 1800.00, 5),
 (7, 3, '2025-06-11 05:41:05', '2025-06-11 18:47:56', 'cancelado', 1950.00, 2),
 (9, 5, '2025-06-11 05:44:45', NULL, 'entregado', 2249.99, 4),
-(10, 4, '2025-06-11 05:45:17', NULL, 'pagado', 749.00, 6),
+(10, 4, '2025-06-11 05:45:17', '2025-06-18 18:41:37', 'entregado', 749.00, 6),
 (11, 2, '2025-06-11 06:01:59', '2025-06-12 14:57:22', 'enviado', 1549.99, 7),
 (12, 3, '2025-06-11 06:01:59', '2025-06-12 15:55:48', 'entregado', 1799.00, 8),
 (13, 4, '2025-06-16 18:13:45', '2025-06-16 15:13:45', 'pendiente', 2425.99, 9),
@@ -607,7 +626,14 @@ INSERT INTO `ventas` (`id_venta`, `usuario_id`, `fecha_venta`, `fecha_actualizac
 (15, 4, '2025-06-16 18:15:41', '2025-06-16 15:15:41', 'pendiente', 2425.99, 11),
 (16, 4, '2025-06-16 18:15:45', '2025-06-16 15:22:26', 'cancelado', 2425.99, 12),
 (17, 4, '2025-06-16 18:16:46', '2025-06-16 15:22:17', 'cancelado', 2425.99, 13),
-(18, 4, '2025-06-17 22:12:50', '2025-06-17 19:12:50', 'pendiente', 4214.00, 0);
+(18, 4, '2025-06-17 22:12:50', '2025-06-17 19:12:50', 'pendiente', 4214.00, 0),
+(29, 4, '2025-06-18 22:34:37', '2025-06-18 19:34:37', 'pagado', 827.58, 0),
+(30, 4, '2025-06-18 22:36:37', '2025-06-18 19:36:37', 'pagado', 2062.99, 0),
+(31, 4, '2025-06-18 22:46:57', '2025-06-18 19:46:57', 'pagado', 827.58, 0),
+(32, 4, '2025-06-18 22:50:32', '2025-06-18 19:50:32', 'pagado', 827.58, 14),
+(33, 22, '2025-06-18 23:30:56', '2025-06-18 20:30:56', 'pagado', 827.58, 15),
+(34, 22, '2025-06-18 23:58:02', '2025-06-18 20:58:02', 'pagado', 827.58, 16),
+(35, 4, '2025-06-19 00:06:46', '2025-06-18 21:06:46', 'pagado', 1518.49, 17);
 
 -- --------------------------------------------------------
 
@@ -646,7 +672,14 @@ INSERT INTO `venta_items` (`id_item`, `venta_id`, `producto_id`, `cantidad`, `pr
 (19, 16, 10, 2, 1000.00),
 (20, 17, 10, 2, 1000.00),
 (21, 18, 34, 4, 679.00),
-(22, 18, 34, 4, 679.00);
+(22, 18, 34, 4, 679.00),
+(23, 29, 34, 1, 679.00),
+(24, 30, 21, 1, 1700.00),
+(25, 31, 34, 1, 679.00),
+(26, 32, 34, 1, 679.00),
+(27, 33, 34, 1, 679.00),
+(28, 34, 34, 1, 679.00),
+(29, 35, 11, 1, 1250.00);
 
 --
 -- Índices para tablas volcadas
@@ -791,10 +824,16 @@ ALTER TABLE `venta_items`
 --
 
 --
+-- AUTO_INCREMENT de la tabla `carritos`
+--
+ALTER TABLE `carritos`
+  MODIFY `id_carrito` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT de la tabla `carrito_items`
 --
 ALTER TABLE `carrito_items`
-  MODIFY `id_item` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id_item` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT de la tabla `carrusel`
@@ -824,37 +863,37 @@ ALTER TABLE `destacados`
 -- AUTO_INCREMENT de la tabla `direcciones`
 --
 ALTER TABLE `direcciones`
-  MODIFY `id_direccion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_direccion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `direccion_envio`
 --
 ALTER TABLE `direccion_envio`
-  MODIFY `id_direccion_envio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id_direccion_envio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT de la tabla `facturas`
 --
 ALTER TABLE `facturas`
-  MODIFY `id_factura` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_factura` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `historico_ventas`
 --
 ALTER TABLE `historico_ventas`
-  MODIFY `id_historico` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `id_historico` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT de la tabla `pagos`
 --
 ALTER TABLE `pagos`
-  MODIFY `id_pago` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_pago` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT de la tabla `personas`
 --
 ALTER TABLE `personas`
-  MODIFY `id_persona` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_persona` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT de la tabla `productos`
@@ -866,19 +905,25 @@ ALTER TABLE `productos`
 -- AUTO_INCREMENT de la tabla `resenas`
 --
 ALTER TABLE `resenas`
-  MODIFY `id_resena` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_resena` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
+-- AUTO_INCREMENT de la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT de la tabla `ventas`
 --
 ALTER TABLE `ventas`
-  MODIFY `id_venta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id_venta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT de la tabla `venta_items`
 --
 ALTER TABLE `venta_items`
-  MODIFY `id_item` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id_item` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- Restricciones para tablas volcadas
