@@ -7,9 +7,7 @@ class VentaModel extends Model
 {
     protected $table = 'ventas';
     protected $primaryKey = 'id_venta';
-    // Backup del array original
-    // protected $allowedFields = ['usuario_id', 'direccion_id', 'estado', 'total', 'subtotal', 'costo_envio', 'iva', 'total_iva'];
-    protected $allowedFields = ['usuario_id', 'direccion_id', 'fecha_venta', 'estado', 'total', 'subtotal', 'costo_envio', 'iva', 'total_iva', 'fecha_actualizacion'];
+    protected $allowedFields = ['usuario_id', 'fecha_venta', 'fecha_actualizacion', 'estado', 'total', 'id_direccion_envio'];
     protected $useTimestamps = true;
     protected $createdField = 'fecha_venta';
     protected $updatedField = 'fecha_actualizacion';
@@ -44,5 +42,15 @@ public function getVentasConFiltros($filtros = [])
         return $this->where('usuario_id', $usuario_id)
                    ->orderBy('fecha_venta', 'DESC')
                    ->findAll();
+    }
+
+    public function getItemsVenta($venta_id)
+    {
+        return $this->db->table('venta_items')
+            ->select('venta_items.*, productos.nombre, productos.marca, productos.imagen_url')
+            ->join('productos', 'productos.id_producto = venta_items.producto_id')
+            ->where('venta_items.venta_id', $venta_id)
+            ->get()
+            ->getResultArray();
     }
 }

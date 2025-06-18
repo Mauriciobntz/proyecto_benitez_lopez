@@ -113,11 +113,38 @@ class ConfiguracionController extends BaseController
                 ]
             ],
             'cbu' => [
-                'rules' => 'required|numeric|max_length[12]',
+                'rules' => 'required|numeric|max_length[22]',
                 'errors' => [
                     'required' => 'El CBU es obligatorio',
                     'numeric' => 'El CBU debe contener solo números',
-                    'max_length' => 'El CBU no puede exceder los 12 caracteres'
+                    'max_length' => 'El CBU no puede exceder los 22 caracteres'
+                ]
+            ],
+            'alias_cbu' => [
+                'rules' => 'required|max_length[50]',
+                'errors' => [
+                    'required' => 'El alias CBU es obligatorio',
+                    'max_length' => 'El alias CBU no puede exceder los 50 caracteres'
+                ]
+            ],
+            'banco' => [
+                'rules' => 'required|max_length[100]',
+                'errors' => [
+                    'required' => 'El banco es obligatorio',
+                    'max_length' => 'El banco no puede exceder los 100 caracteres'
+                ]
+            ],
+            'titular_cuenta' => [
+                'rules' => 'required|max_length[100]',
+                'errors' => [
+                    'required' => 'El titular de la cuenta es obligatorio',
+                    'max_length' => 'El titular no puede exceder los 100 caracteres'
+                ]
+            ],
+            'tipo_cuenta' => [
+                'rules' => 'required|in_list[Caja de ahorro,Cuenta corriente]',
+                'errors' => [
+                    'in_list' => 'El tipo de cuenta no es válido'
                 ]
             ],
             'area_cobertura' => [

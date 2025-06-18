@@ -76,6 +76,7 @@
                                     <th>Fecha</th>
                                     <th>Total</th>
                                     <th>Estado</th>
+                                    <th>Método Pago</th>
                                     <th>Acciones</th>
                                 </tr>
                             </thead>
@@ -95,6 +96,7 @@
                                     <td><?= date('d/m/Y', strtotime($venta['fecha_venta'])) ?></td>
                                     <td>€<?= number_format($venta['total'], 2) ?></td>
                                     <td><span class="badge <?= $badgeClass ?>"><?= ucfirst($venta['estado']) ?></span></td>
+                                    <td><?= isset($venta['metodo_pago']) ? ucfirst(strtolower($venta['metodo_pago'])) : 'No especificado' ?></td>
                                     <td>
                                     <div class="btn-group btn-group-sm">
                                         <a href="<?= base_url('admin/ventas/detalle/' . $venta['id_venta']) ?>" class="btn btn-outline-primary">

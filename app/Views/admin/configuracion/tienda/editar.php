@@ -118,6 +118,56 @@
                                 </div>
                             <?php endif; ?>
                         </div>
+
+                        <div class="mb-3">
+                            <label for="alias_cbu" class="form-label">Alias CBU</label>
+                            <input type="text" class="form-control <?= session('errors.alias_cbu') ? 'is-invalid' : '' ?>" 
+                                id="alias_cbu" name="alias_cbu" 
+                                value="<?= old('alias_cbu', $config['alias_cbu'] ?? '') ?>">
+                            <?php if (session('errors.alias_cbu')): ?>
+                                <div class="invalid-feedback">
+                                    <?= session('errors.alias_cbu') ?>
+                                </div>
+                            <?php endif; ?>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="banco" class="form-label">Banco</label>
+                            <input type="text" class="form-control <?= session('errors.banco') ? 'is-invalid' : '' ?>" 
+                                id="banco" name="banco" 
+                                value="<?= old('banco', $config['banco'] ?? '') ?>">
+                            <?php if (session('errors.banco')): ?>
+                                <div class="invalid-feedback">
+                                    <?= session('errors.banco') ?>
+                                </div>
+                            <?php endif; ?>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="titular_cuenta" class="form-label">Titular de la Cuenta</label>
+                            <input type="text" class="form-control <?= session('errors.titular_cuenta') ? 'is-invalid' : '' ?>" 
+                                id="titular_cuenta" name="titular_cuenta" 
+                                value="<?= old('titular_cuenta', $config['titular_cuenta'] ?? '') ?>">
+                            <?php if (session('errors.titular_cuenta')): ?>
+                                <div class="invalid-feedback">
+                                    <?= session('errors.titular_cuenta') ?>
+                                </div>
+                            <?php endif; ?>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="tipo_cuenta" class="form-label">Tipo de Cuenta</label>
+                            <select class="form-select <?= session('errors.tipo_cuenta') ? 'is-invalid' : '' ?>" 
+                                    id="tipo_cuenta" name="tipo_cuenta">
+                                <option value="Caja de ahorro" <?= old('tipo_cuenta', $config['tipo_cuenta'] ?? '') == 'Caja de ahorro' ? 'selected' : '' ?>>Caja de ahorro</option>
+                                <option value="Cuenta corriente" <?= old('tipo_cuenta', $config['tipo_cuenta'] ?? '') == 'Cuenta corriente' ? 'selected' : '' ?>>Cuenta corriente</option>
+                            </select>
+                            <?php if (session('errors.tipo_cuenta')): ?>
+                                <div class="invalid-feedback">
+                                    <?= session('errors.tipo_cuenta') ?>
+                                </div>
+                            <?php endif; ?>
+                        </div>
                         
                         <div class="mb-3">
                             <label for="area_cobertura" class="form-label">Área de Cobertura</label>

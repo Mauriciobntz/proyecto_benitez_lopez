@@ -37,10 +37,10 @@ class ConsultaModel extends Model
         // Aplicar filtros
         if (!empty($filtros['search'])) {
             $builder->groupStart()
-                   ->like('nombre', $filtros['search'])
-                   ->orLike('correo', $filtros['search'])
-                   ->orLike('mensaje', $filtros['search'])
-                   ->groupEnd();
+                    ->like('nombre', $filtros['search'])
+                    ->orLike('correo', $filtros['search'])
+                    ->orLike('mensaje', $filtros['search'])
+                    ->groupEnd();
         }
         
         if (!empty($filtros['estado'])) {
@@ -60,8 +60,8 @@ class ConsultaModel extends Model
         }
 
         return $builder->orderBy('fecha_creacion', 'DESC')
-                      ->get()
-                      ->getResultArray();
+                        ->get()
+                        ->getResultArray();
     }
 
     // Actualizar estado de una consulta

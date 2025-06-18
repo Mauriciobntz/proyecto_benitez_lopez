@@ -16,7 +16,7 @@ class UsuarioController extends BaseController
     public function formularioLogin(): string
     {
         $data['titulo'] = 'Iniciar Sesión';
-        return view('header', $data).view('navbar').view('login').view('footer');
+        return view('header', $data).view('navbar').view('autenticacion/login').view('footer');
     }
 
     public function procesarLogin()
@@ -43,7 +43,7 @@ class UsuarioController extends BaseController
         if (!$validation->withRequest($request)->run()) {
             $data['titulo'] = 'Iniciar Sesión';
             $data['validation'] = $validation->getErrors();
-            return view('header', $data).view('navbar').view('login').view('footer');
+            return view('header', $data).view('navbar').view('autenticacion/login').view('footer');
         }
 
         $email = $request->getPost('email');
@@ -87,7 +87,7 @@ class UsuarioController extends BaseController
     public function formularioRegistro(): string
     {
         $data['titulo'] = 'Registro de Usuario';
-        return view('header', $data).view('navbar').view('sign').view('footer');
+        return view('header', $data).view('navbar').view('autenticacion/sign').view('footer');
     }
 
     public function procesarRegistro()
@@ -125,7 +125,7 @@ class UsuarioController extends BaseController
         if (!$validation->withRequest($request)->run()) {
             $data['titulo'] = 'Registro de Usuario';
             $data['validation'] = $validation;
-            return view('header', $data).view('navbar').view('sign').view('footer');
+            return view('header', $data).view('navbar').view('autenticacion/sign').view('footer');
         }
 
         $data = [

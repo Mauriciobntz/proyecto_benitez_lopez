@@ -1,5 +1,11 @@
-<!-- ==================== Promos (solo para no administradores) ==================== -->
-<?php if (!session('logged_in') || (session('logged_in') && session('rol') !== 'admin')): ?>
+<?php
+$isLoggedIn = session('logged_in');
+$isAdmin = $isLoggedIn && session('rol') === 'admin';
+$isUser = $isLoggedIn && !$isAdmin;
+?>
+
+<!-- ==================== Promociones (no para admin) ==================== -->
+<?php if (!$isAdmin): ?>
 <header class="header">
   <div class="text-center">
     <div class="flex justify-center w-100">
@@ -12,7 +18,7 @@
 <?php endif; ?>
 
 <!-- ==================== NAVBAR PRINCIPAL ==================== -->
-<nav class="navbar navbar-expand-lg <?= (session('logged_in') && session('rol') === 'admin' ? 'navbar-dark bg-dark' : 'bg-dark') ?>">
+<nav class="navbar navbar-expand-lg <?= $isAdmin ? 'navbar-dark bg-dark' : 'bg-dark' ?>">
   <div class="container-fluid d-flex justify-content-between align-items-center">
     <!-- Botón menú mobile -->
     <button class="btn btn-light rounded-pill d-block d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#staticBackdrop">
@@ -25,7 +31,7 @@
     </a>
 
     <!-- Menú principal -->
-    <?php if (session('logged_in') && session('rol') === 'admin'): ?>
+    <?php if ($isAdmin): ?>
       <!-- Menú para administrador -->
       <ul class="navbar-nav mx-auto d-none d-lg-flex">
         <li class="nav-item">
@@ -81,20 +87,14 @@
         <li class="nav-item dropdown">
           <a class="nav-link text-white fw-bold dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Productos</a>
           <ul class="dropdown-menu">
-
             <a href="<?= base_url('productos') ?>" class="btn btn-outline-dark w-100 text-start py-2">Todos</a>
-
             <?php if(isset($categorias) && is_array($categorias)): ?>
               <?php foreach($categorias as $categoria): ?>
                 <a href="<?= base_url('productos/categoria/'.$categoria['id_categoria']) ?>" class="btn btn-outline-dark w-100 text-start py-2">
                   <?= htmlspecialchars($categoria['nombre']) ?>
                 </a>
-
               <?php endforeach; ?>
             <?php endif; ?>
-
-
-
           </ul>
         </li>
         <li class="nav-item">
@@ -110,7 +110,7 @@
     <?php endif; ?>
 
     <!-- Buscador (solo para no administradores) -->
-    <?php if (!session('logged_in') || (session('logged_in') && session('rol') !== 'admin')): ?>
+    <?php if (!$isAdmin): ?>
       <button class="btn btn-light rounded-pill d-block d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSearch">
         <i class="fas fa-search"></i>
       </button>
@@ -125,54 +125,53 @@
 
     <!-- Iconos derecha -->
     <div class="d-none d-lg-block">
-      <?php if (!session('logged_in') || (session('logged_in') && session('rol') !== 'admin')): ?>
-    <!-- Carrito solo para no administradores -->
-    <a href="<?= base_url('usuario/carrito') ?>" class="btn btn-light rounded-pill me-2 position-relative">
-      <i class="fas fa-shopping-cart"></i>
-      <?php if (session('logged_in')): ?>
-        <?php
-        $carritoModel = new \App\Models\CarritoModel();
-        $carritoItemModel = new \App\Models\CarritoItemModel();
-        $usuario_id = session()->get('id_usuario');
-        $carrito = $carritoModel->getCarritoByUsuario($usuario_id);
-        $itemCount = $carrito ? count($carritoItemModel->getItemsByCarrito($carrito['id_carrito'])) : 0;
-        ?>
-        <?php if ($itemCount > 0): ?>
-          <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-            <?= $itemCount ?>
-          </span>
-        <?php endif; ?>
-      <?php endif; ?>
-    </a>
-      <?php else: ?>
-
-          <!-- Notificaciones solo para admin -->
-
-          <?php $consultas_sin_leer = session()->get('consultas_sin_leer') ?? 0; ?>
-
-          <a class="btn btn-light rounded-pill position-relative me-2" href="<?= base_url('admin/consultas/listar') ?>">
-            <i class="bi bi-bell"></i>
-            <?php if ($consultas_sin_leer > 0): ?>
+      <?php if (!$isAdmin): ?>
+        <!-- Carrito solo para no administradores -->
+        <a href="<?= base_url('carrito') ?>" class="btn btn-light rounded-pill me-2 position-relative">
+          <i class="fas fa-shopping-cart"></i>
+          <?php if ($isUser): ?>
+            <?php
+            $carritoModel = new \App\Models\CarritoModel();
+            $carritoItemModel = new \App\Models\CarritoItemModel();
+            $usuario_id = session()->get('id_usuario');
+            $carrito = $carritoModel->getCarritoByUsuario($usuario_id);
+            $itemCount = $carrito ? count($carritoItemModel->getItemsByCarrito($carrito['id_carrito'])) : 0;
+            ?>
+            <?php if ($itemCount > 0): ?>
               <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                <?= $consultas_sin_leer ?>
+                <?= $itemCount ?>
               </span>
             <?php endif; ?>
-          </a>
+          <?php endif; ?>
+        </a>
+      <?php else: ?>
+        <!-- Notificaciones solo para admin -->
+        <?php $consultas_sin_leer = session()->get('consultas_sin_leer') ?? 0; ?>
+        <a class="btn btn-light rounded-pill position-relative me-2" href="<?= base_url('admin/consultas/listar') ?>">
+          <i class="bi bi-bell"></i>
+          <?php if ($consultas_sin_leer > 0): ?>
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+              <?= $consultas_sin_leer ?>
+            </span>
+          <?php endif; ?>
+        </a>
       <?php endif; ?>
       
-      <?php if (session('logged_in')): ?>
+      <?php if ($isLoggedIn): ?>
         <!-- Usuario logueado - Mostrar menú dropdown -->
         <div class="btn-group">
           <button type="button" class="btn btn-light rounded-pill dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
             <i class="fas fa-user"></i> <?= esc(session('username') ?? 'Usuario') ?>
           </button>
           <ul class="dropdown-menu dropdown-menu-end">
-            <?php if (session('rol') === 'admin'): ?>
+            <?php if ($isAdmin): ?>
               <!-- Opciones para administrador -->
             <?php else: ?>
               <!-- Opciones para clientes -->
               <li><a class="dropdown-item" href="<?= base_url('perfil') ?>"><i class="fas fa-user-circle me-2"></i>Mi Perfil</a></li>
-              <li><a class="dropdown-item" href="<?= base_url('mis-pedidos') ?>"><i class="fas fa-box-open me-2"></i>Mis Pedidos</a></li>
+              <li><a class="dropdown-item" href="<?= base_url('perfil/pedidos') ?>"><i class="fas fa-box-open me-2"></i>Mis Pedidos</a></li>
+              <li><a class="dropdown-item" href="<?= base_url('perfil/direcciones') ?>"><i class="bi bi-house-check me-2"></i>Mis Direcciones</a></li>
+              <li><a class="dropdown-item" href="<?= base_url('perfil/resenas') ?>"><i class="bi bi-patch-check me-2"></i>Mis Reseñas</a></li>
               <li><hr class="dropdown-divider"></li>
             <?php endif; ?>
             <li><a class="dropdown-item" href="<?= base_url('logout') ?>"><i class="fas fa-sign-out-alt me-2"></i>Cerrar Sesión</a></li>
@@ -196,7 +195,7 @@
   </div>
   <div class="offcanvas-body">
     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-      <?php if (session('logged_in') && session('rol') === 'admin'): ?>
+      <?php if ($isAdmin): ?>
         <!-- Menú mobile para admin -->
         <li class="nav-item">
           <a class="nav-link active" href="<?= base_url('admin/dashboard') ?>">
@@ -235,18 +234,14 @@
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Productos</a>
           <ul class="dropdown-menu">
-
             <a href="<?= base_url('productos') ?>" class="btn btn-outline-dark w-100 text-start py-2">Todos</a>
-
             <?php if(isset($categorias) && is_array($categorias)): ?>
               <?php foreach($categorias as $categoria): ?>
                 <a href="<?= base_url('productos/categoria/'.$categoria['id_categoria']) ?>" class="btn btn-outline-dark w-100 text-start py-2">
                   <?= htmlspecialchars($categoria['nombre']) ?>
                 </a>
-
               <?php endforeach; ?>
             <?php endif; ?>
-            
           </ul>
         </li>
         <li class="nav-item">
@@ -261,13 +256,13 @@
       <?php endif; ?>
       
       <!-- Sección de usuario en mobile -->
-      <?php if (session('logged_in')): ?>
+      <?php if ($isLoggedIn): ?>
         <li class="nav-item mt-3 border-top pt-2">
-          <a class="nav-link" href="<?= base_url(session('rol') === 'admin' ? 'admin/perfil' : 'perfil') ?>">
+          <a class="nav-link" href="<?= base_url($isAdmin ? 'admin/perfil' : 'perfil') ?>">
             <i class="fas fa-user-circle me-2"></i>Mi Perfil
           </a>
         </li>
-        <?php if (session('rol') === 'admin'): ?>
+        <?php if ($isAdmin): ?>
           <li class="nav-item">
             <a class="nav-link" href="<?= base_url('admin') ?>">
               <i class="fas fa-cog me-2"></i>Panel Admin
@@ -302,7 +297,6 @@
 </div>
 
 <!-- ==================== Mensaje de bienvenida (si existe) ==================== -->
-
 <?php if (session('message_welcome')): ?>
   <div class="alert alert-success">
     <?= esc(session('message_welcome')) ?>

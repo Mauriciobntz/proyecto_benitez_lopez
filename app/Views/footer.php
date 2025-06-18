@@ -160,5 +160,10 @@
 <script src="http://localhost/proyecto_benitez_lopez/assets/js/mi-script.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+<script>
+  const mp = new MercadoPago("APP_USR-a4179224-69c5-4780-892c-e2128595f458");
+</script>
+
+
 </body>
 </html>

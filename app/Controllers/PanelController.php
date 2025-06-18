@@ -7,6 +7,7 @@ use App\Models\VentaModel;
 use App\Models\ProductoModel;
 use App\Models\UsuarioModel;
 use App\Models\ResenaModel;
+use App\Models\PagoModel;
 
 class PanelController extends BaseController
 {
@@ -53,6 +54,13 @@ class PanelController extends BaseController
                           ->limit(5)
                           ->get()
                           ->getResultArray();
+        
+        // Agregar método de pago real a cada venta
+        $pagoModel = new PagoModel();
+        foreach ($ultimasVentas as &$venta) {
+            $pago = $pagoModel->where('venta_id', $venta['id_venta'])->first();
+            $venta['metodo_pago'] = $pago['metodo_pago'] ?? null;
+        }
         
         // Productos con bajo stock (<10 unidades)
         $productosBajoStock = $this->productoModel

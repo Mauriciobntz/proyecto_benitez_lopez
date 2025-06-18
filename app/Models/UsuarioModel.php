@@ -51,9 +51,10 @@ public function getUsuariosConFiltros($filtros = [])
         
         return $usuario;
     }
-public function getPersona($usuario_id)
-{
-    $db = \Config\Database::connect();
-    return $db->table('personas')->where('usuario_id', $usuario_id)->get()->getRowArray();
-}
+    
+    public function getPersona($usuario_id)
+    {
+        $db = \Config\Database::connect();
+        return $db->table('personas')->where('usuario_id', $usuario_id)->get()->getRowArray();
+    }
 }

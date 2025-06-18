@@ -97,7 +97,7 @@
 
                     <div class="mb-3">
                         <h6>Método de pago</h6>
-                        <p><?= ucfirst($venta['metodo_pago'] ?? 'N/A') ?></p>
+                        <p><?= isset($pago['metodo_pago']) ? ucfirst(strtolower($pago['metodo_pago'])) : 'No especificado' ?></p>
                     </div>
 
                     <div class="mb-3">
@@ -118,20 +118,6 @@
                     <div class="mb-3">
                         <h6>Resumen de pago</h6>
                         <table class="table table-sm">
-                            <tr>
-                                <th>Subtotal</th>
-                                <td class="text-end">€<?= number_format($venta['subtotal'] ?? $venta['total'], 2) ?></td>
-                            </tr>
-                            <tr>
-                                <th>Envío</th>
-                                <td class="text-end">€<?= number_format($venta['costo_envio'] ?? 0, 2) ?></td>
-                            </tr>
-                            <?php if (isset($venta['iva']) && $venta['iva'] > 0): ?>
-                                <tr>
-                                    <th>IVA (<?= $venta['iva'] ?>%)</th>
-                                    <td class="text-end">€<?= number_format($venta['total_iva'], 2) ?></td>
-                                </tr>
-                            <?php endif; ?>
                             <tr class="table-active">
                                 <th>Total</th>
                                 <td class="text-end fw-bold">€<?= number_format($venta['total'], 2) ?></td>

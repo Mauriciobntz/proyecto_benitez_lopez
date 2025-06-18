@@ -16,7 +16,7 @@ class Home extends BaseController
             'titulo' => 'Principal',
             'categorias' => $categorias,
         ];
-        return view('header', $data).view('navbar').view('carousel').view('destacados').view('mas_vendidos').view('nuevos_ingresos').view('categorias', $data).view('footer');
+        return view('header', $data).view('navbar').view('principal/carousel').view('principal/destacados').view('principal/mas_vendidos').view('principal/nuevos_ingresos').view('principal/categorias', $data).view('footer');
     }
     public function somos(): string
     {

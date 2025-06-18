@@ -15,8 +15,7 @@
 <?php endif; ?>
 
 <div class="container mt-4">
-    <h2><?= $titulo ?></h2>
-    
+
     <?php if (empty($items)): ?>
         <div class="alert alert-info">
             Tu carrito está vacío
@@ -55,7 +54,7 @@
                                         </td>
                                         <td>€<?= number_format($item['producto']['precio'], 2) ?></td>
                                         <td>
-                                            <form action="<?= base_url('usuario/carrito/actualizar/' . $item['id_item']) ?>" method="post" class="d-flex">
+                                            <form action="<?= base_url('carrito/actualizar/' . $item['id_item']) ?>" method="post" class="d-flex">
                                                 <input type="number" name="cantidad" class="form-control" style="width: 70px;" 
                                                     value="<?= $item['cantidad'] ?>" min="1" max="<?= $item['producto']['stock'] ?>">
                                                 <button type="submit" class="btn btn-sm btn-outline-primary ms-2">
@@ -65,7 +64,7 @@
                                         </td>
                                         <td>€<?= number_format($item['subtotal'], 2) ?></td>
                                         <td>
-                                            <a href="<?= base_url('usuario/carrito/eliminar/' . $item['id_item']) ?>" class="btn btn-sm btn-outline-danger">
+                                            <a href="<?= base_url('carrito/eliminar/' . $item['id_item']) ?>" class="btn btn-sm btn-outline-danger">
                                                 <i class="bi bi-trash"></i>
                                             </a>
                                         </td>
@@ -79,7 +78,7 @@
                             <a href="<?= base_url('productos') ?>" class="btn btn-outline-secondary">
                                 <i class="bi bi-arrow-left"></i> Seguir comprando
                             </a>
-                            <a href="<?= base_url('usuario/carrito/vaciar') ?>" class="btn btn-outline-danger">Vaciar carrito</a>
+                            <a href="<?= base_url('carrito/vaciar') ?>" class="btn btn-outline-danger">Vaciar carrito</a>
                         </div>
                     </div>
                 </div>
@@ -107,7 +106,9 @@
                         </table>
                         
                         <div class="d-grid gap-2">
-                            <a href="<?= base_url('usuario/carrito/checkout') ?>" class="btn btn-primary">Proceder al pago</a>
+                            <form action="<?= base_url('carrito/comprar') ?>" method="post">
+                                <button type="submit" class="btn btn-primary w-100">Proceder al pago</button>
+                            </form>
                         </div>
                     </div>
                 </div>

@@ -60,6 +60,26 @@
                         <h6>CBU</h6>
                         <p><?= esc($config['cbu']) ?></p>
                     </div>
+
+                    <div class="mb-3">
+                        <h6>Alias CBU</h6>
+                        <p><?= esc($config['alias_cbu'] ?? 'No especificado') ?></p>
+                    </div>
+
+                    <div class="mb-3">
+                        <h6>Banco</h6>
+                        <p><?= esc($config['banco'] ?? 'No especificado') ?></p>
+                    </div>
+
+                    <div class="mb-3">
+                        <h6>Titular de la Cuenta</h6>
+                        <p><?= esc($config['titular_cuenta'] ?? 'No especificado') ?></p>
+                    </div>
+
+                    <div class="mb-3">
+                        <h6>Tipo de Cuenta</h6>
+                        <p><?= esc($config['tipo_cuenta'] ?? 'No especificado') ?></p>
+                    </div>
                     
                     <div class="mb-3">
                         <h6>Área de Cobertura</h6>

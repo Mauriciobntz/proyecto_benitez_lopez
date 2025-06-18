@@ -149,7 +149,7 @@ el potencial cliente se comunique con miembros de la empresa.
                                     <span class="input-group-text bg-light">
                                         <i class="fas fa-building text-dark"></i>
                                     </span>
-                                    <input type="text" class="form-control" id="razon_social" name="razon_social">
+                                    <input type="text" class="form-control" id="razon_social" name="razon_social" required>
                                 </div>
                             </div>
 
@@ -171,7 +171,7 @@ el potencial cliente se comunique con miembros de la empresa.
                                     <span class="input-group-text bg-light">
                                         <i class="fas fa-phone text-dark"></i>
                                     </span>
-                                    <input type="tel" class="form-control" id="telefono" name="telefono">
+                                    <input type="tel" class="form-control" id="telefono" name="telefono" required>
                                 </div>
                             </div>
 

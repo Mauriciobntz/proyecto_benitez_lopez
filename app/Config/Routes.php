@@ -13,24 +13,40 @@ use App\Controllers\ConfiguracionController;
 use App\Controllers\CarruselController;
 use App\Controllers\DestacadosController;
 use App\Controllers\CarritoController;
+use App\Controllers\PerfilController;
+use App\Controllers\CheckoutController;
 
 /**
  * @var RouteCollection $routes
  */
 
-$routes->get('/', 'Home::index');
 
-// Rutas públicas
+//######################## Rutas Publicas ########################
+
+$routes->get('/', 'Home::index');
 $routes->get('principal', 'Home::index');
 $routes->get('somos', 'Home::somos');
 $routes->get('comercializacion', 'Home::comercializacion');
 $routes->get('terminos', 'Home::terminos');
-//borrar
 $routes->get('denegado', 'Home::denegado');
 
+//######################## Rutas Productos ########################
+
+$routes->get('productos', [ProductoController::class, 'productos']);
+$routes->get('productos/destacados', [ProductoController::class, 'listarDestacados']);
+$routes->get('productos/categoria/(:num)', [ProductoController::class, 'productosPorCategoria']);
+$routes->get('productos/buscar', [ProductoController::class, 'buscar']);
+$routes->get('productos/(:num)', [ProductoController::class, 'detalle']);
+
+//######################## Rutas Contacto ########################
+
+$routes->get('contacto', 'ConsultaController::formularioContacto');
+$routes->post('contacto/procesar', 'ConsultaController::procesarConsulta');
 
 
-// Rutas de autenticación
+//######################## Rutas de autenticación ########################
+
+
 $routes->get('login', 'UsuarioController::formularioLogin');
 $routes->post('login', 'UsuarioController::procesarLogin');
 $routes->get('logout', 'UsuarioController::cerrarSesion');
@@ -39,28 +55,23 @@ $routes->get('logout', 'UsuarioController::cerrarSesion');
 $routes->get('sign', 'UsuarioController::formularioRegistro');
 $routes->post('sign', 'UsuarioController::procesarRegistro');
 
-//######################## Rutas Productos ########################
 
-// Rutas públicas (accesibles sin autenticación)
-$routes->get('productos', [ProductoController::class, 'productos']);
-$routes->get('productos/destacados', [ProductoController::class, 'listarDestacados']);
-$routes->get('productos/categoria/(:num)', [ProductoController::class, 'productosPorCategoria']);
-$routes->get('productos/buscar', [ProductoController::class, 'buscar']);
-$routes->get('productos/(:num)', [ProductoController::class, 'detalle']);
-$routes->get('contacto', 'ConsultaController::formularioContacto');
-$routes->post('contacto/procesar', 'ConsultaController::procesarConsulta');
 
 // Rutas protegidas (requieren autenticación)
 $routes->post('productos/(:num)/resena', [ProductoController::class, 'agregarResena'], ['filter' => 'auth']);
 
 
 
-// Rutas de administrador (requieren rol admin)
+
+//######################## Rutas de administrador (requieren rol admin) ########################
+
+
 $routes->group('admin', ['filter' => 'admin'], function($routes) {
 
-    // Rutas para el panel de administración
+    // Ruta para el panel de administración
     $routes->get('panel', [PanelController::class, 'verPanel']);
 
+    // Rutas para Productos
     $routes->get('productos/listar', [ProductoController::class, 'listar']);
     $routes->get('productos/crear', [ProductoController::class, 'agregarProducto']);
     $routes->post('productos/guardar', [ProductoController::class, 'guardarProducto']);
@@ -90,7 +101,6 @@ $routes->group('admin', ['filter' => 'admin'], function($routes) {
     $routes->post('usuarios/actualizar/(:num)', [UsuarioController::class, 'actualizarUsuario']);
     $routes->get('usuarios/perfil/(:num)', [UsuarioController::class, 'perfilUsuario']);
     
-
 
     // Consultas
     $routes->get('consultas/listar', [ConsultaController::class, 'listarConsultas']);
@@ -128,13 +138,10 @@ $routes->group('admin', ['filter' => 'admin'], function($routes) {
 
 
 
-$routes->group('usuario', ['filter' => 'auth'], function($routes) {
-    // Rutas del usuario autenticado
-    $routes->get('mi-perfil', [UsuarioController::class, 'miPerfil']);
-    $routes->post('actualizar-perfil', [UsuarioController::class, 'actualizarPerfil']);
-    $routes->post('productos/(:num)/resena', [ProductoController::class, 'agregarResena']);
-    $routes->get('mis-resenas', [ProductoController::class, 'misResenas']);
+//######################## Rutas del usuario autenticado ########################
 
+
+$routes->group('', ['filter' => 'auth'], function($routes) {
 
     // Rutas del carrito
     $routes->get('carrito', [CarritoController::class, 'verCarrito']);
@@ -142,8 +149,55 @@ $routes->group('usuario', ['filter' => 'auth'], function($routes) {
     $routes->post('carrito/actualizar/(:num)', [CarritoController::class, 'actualizarCantidad']);
     $routes->get('carrito/eliminar/(:num)', [CarritoController::class, 'eliminarItem']);
     $routes->get('carrito/vaciar', [CarritoController::class, 'vaciarCarrito']);
-    $routes->get('carrito/checkout', [CarritoController::class, 'checkout']);
-    $routes->post('carrito/procesar-compra', [CarritoController::class, 'procesarCompra']);
-    $routes->get('confirmacion/(:num)', [CarritoController::class, 'confirmacionCompra']);
+
+    // Rutas de compra
+    $routes->get('checkout/direccion', 'CheckoutController::direccionEnvio');
+    $routes->post('checkout/guardar-direccion', 'CheckoutController::guardarDireccionEnvio');
+    $routes->get('checkout/resumen', 'CheckoutController::resumenPedido');
+    $routes->post('checkout/confirmar-resumen', 'CheckoutController::confirmarResumen');
+    $routes->get('checkout/pago', 'CheckoutController::pago');
+    $routes->post('checkout/procesar-pago', 'CheckoutController::procesarPago');
+    $routes->get('checkout/confirmacion/(:num)', 'CheckoutController::confirmacion/$1');
 });
 
+
+// Perfil de usuario
+$routes->group('perfil', ['filter' => 'auth'], function($routes) {
+    $routes->get('/', 'PerfilController::index');
+    
+    // Edición de perfil
+    $routes->get('editar', 'PerfilController::editarPerfil');
+    $routes->post('actualizar', 'PerfilController::actualizarPerfil');
+    
+    // Cambio de contraseña
+    $routes->get('cambiar-password', 'PerfilController::cambiarPassword');
+    $routes->post('actualizar-password', 'PerfilController::actualizarPassword');
+    
+    // Pedidos
+    $routes->get('pedidos', 'PerfilController::misPedidos');
+    $routes->get('pedidos/(:num)', 'PerfilController::detallePedido/$1');
+    $routes->get('factura/(:num)', 'PerfilController::factura/$1');
+    
+    // Direcciones
+    $routes->get('direcciones', 'PerfilController::misDirecciones');
+    $routes->get('direcciones/agregar', 'PerfilController::agregarDireccion');
+    $routes->post('direcciones/guardar', 'PerfilController::guardarDireccion');
+    $routes->get('direcciones/editar/(:num)', 'PerfilController::editarDireccion/$1');
+    $routes->post('direcciones/actualizar/(:num)', 'PerfilController::actualizarDireccion/$1');
+    $routes->get('direcciones/eliminar/(:num)', 'PerfilController::eliminarDireccion/$1');
+    $routes->get('direcciones/principal/(:num)', 'PerfilController::setDireccionPrincipal/$1');
+    
+    // Reseñas
+    $routes->get('resenas', 'PerfilController::misResenas');
+    $routes->get('resenas/agregar/(:num)', 'PerfilController::agregarResena/$1');
+    $routes->post('resenas/guardar/(:num)', 'PerfilController::guardarResena/$1');
+    $routes->get('resenas/editar/(:num)', 'PerfilController::editarResena/$1');
+    $routes->post('resenas/actualizar/(:num)', 'PerfilController::actualizarResena/$1');
+    $routes->get('resenas/eliminar/(:num)', 'PerfilController::eliminarResena/$1');
+    
+    // Devoluciones
+    $routes->get('devoluciones', 'PerfilController::devoluciones');
+    $routes->get('devoluciones/nueva/(:num)', 'PerfilController::nuevaDevolucion/$1');
+    $routes->post('devoluciones/guardar/(:num)', 'PerfilController::guardarDevolucion/$1');
+    $routes->get('devoluciones/(:num)', 'PerfilController::detalleDevolucion/$1');
+});

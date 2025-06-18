@@ -7,7 +7,7 @@ class PagoModel extends Model
 {
     protected $table = 'pagos';
     protected $primaryKey = 'id_pago';
-    protected $allowedFields = ['venta_id', 'monto', 'metodo_pago', 'estado'];
+    protected $allowedFields = ['venta_id', 'monto', 'metodo_pago', 'estado', 'fecha_pago', 'comprobante', 'referencia_pago'];
     protected $useTimestamps = true;
     protected $createdField = 'fecha_pago';
     protected $updatedField = '';

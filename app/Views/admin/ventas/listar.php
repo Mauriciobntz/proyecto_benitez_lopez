@@ -80,7 +80,7 @@
                                 <td><?= $venta['nombre_cliente'] ?? 'Cliente #' . $venta['usuario_id'] ?></td>
                                 <td>€<?= number_format($venta['total'], 2) ?></td>
                                 <td><span class="badge <?= $badgeClass[$venta['estado']] ?>"><?= ucfirst($venta['estado']) ?></span></td>
-                                <td><?= $venta['metodo_pago'] ?? 'N/A' ?></td>
+                                <td><?= isset($venta['metodo_pago']) ? ucfirst(strtolower($venta['metodo_pago'])) : 'No especificado' ?></td>
                                 <td>
                                     <div class="btn-group btn-group-sm">
                                         <a href="<?= base_url('admin/ventas/detalle/' . $venta['id_venta']) ?>" class="btn btn-outline-primary">

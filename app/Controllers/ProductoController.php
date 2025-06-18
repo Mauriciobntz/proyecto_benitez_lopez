@@ -33,7 +33,7 @@ class ProductoController extends BaseController
             'categorias' => $this->categoriaModel->findAll()
         ];
 
-        return view('header', $data) . view('navbar') . view('productos') . view('footer');
+        return view('header', $data) . view('navbar') . view('catalogo/productos') . view('footer');
     }
 
 public function detalle($producto_id)
@@ -65,7 +65,7 @@ public function detalle($producto_id)
         'yaReseno' => $this->resenaModel->usuarioYaReseno($producto_id, session()->get('id_usuario'))
     ];
 
-    return view('header', $data) . view('navbar') . view('producto') . view('footer');
+    return view('header', $data) . view('navbar') . view('catalogo/producto') . view('footer');
 }
 
 
@@ -81,7 +81,7 @@ public function detalle($producto_id)
             'categorias' => $this->categoriaModel->findAll()
         ];
 
-        return view('header', $data) . view('navbar') . view('productos_categoria') . view('footer');
+        return view('header', $data) . view('navbar') . view('catalogo/productos_categoria') . view('footer');
     }
 
     public function listar()

@@ -9,7 +9,7 @@ class PersonaModel extends Model
     protected $primaryKey = 'id_persona';
     protected $allowedFields = [
         'usuario_id', 'tipo_documento', 'documento', 'nombre', 'apellido',
-        'fecha_nacimiento', 'genero', 'telefono', 'telefono_alternativo'
+        'fecha_nacimiento', 'genero', 'telefono'
     ];
     protected $useTimestamps = true;
     protected $createdField = 'fecha_creacion';

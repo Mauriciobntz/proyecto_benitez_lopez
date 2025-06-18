@@ -98,6 +98,9 @@ class VentaController extends BaseController
         $usuario = $this->usuarioModel->find($venta['usuario_id']);
         $persona = $this->usuarioModel->getPersona($venta['usuario_id']);
 
+        // Obtener método de pago real
+        $pago = $this->pagoModel->where('venta_id', $venta_id)->first();
+
         // Obtener historial de estados de la venta
         $historial = $this->historicoVentaModel
             ->where('venta_id', $venta_id)
@@ -116,7 +119,8 @@ class VentaController extends BaseController
             'usuario' => $usuario,
             'persona' => $persona,
             'historial' => $historial,
-            'titulo' => 'Detalle de Venta'
+            'titulo' => 'Detalle de Venta',
+            'pago' => $pago
         ];
 
         return view('header', $data) . view('navbar') . view('admin/ventas/detalle_venta', $data) . view('footer');
