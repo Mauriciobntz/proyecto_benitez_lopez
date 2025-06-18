@@ -90,14 +90,6 @@
                     <div class="card-body">
                         <table class="table table-sm">
                             <tbody>
-                                <tr>
-                                    <th>Subtotal</th>
-                                    <td class="text-end">€<?= number_format($total, 2) ?></td>
-                                </tr>
-                                <tr>
-                                    <th>Total productos sin IVA</th>
-                                    <td class="text-end">€<?= number_format($total / 1.21, 2) ?></td>
-                                </tr>
                                 <tr class="table-active">
                                     <th>Total</th>
                                     <td class="text-end fw-bold">€<?= number_format($total, 2) ?></td>

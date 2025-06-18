@@ -97,9 +97,25 @@ class CheckoutController extends BaseController
             return redirect()->to('login');
         }
         $direcciones = $this->direccionModel->getDireccionesByUsuario($usuario_id);
+        
+        // Obtener datos del carrito para el resumen
+        $carrito = $this->carritoModel->getCarritoByUsuario($usuario_id);
+        $items = $this->carritoItemModel->getItemsByCarrito($carrito['id_carrito']);
+        
+        // Calcular total
+        $total = 0;
+        foreach ($items as &$item) {
+            $producto = $this->productoModel->find($item['producto_id']);
+            $item['producto'] = $producto;
+            $item['subtotal'] = $producto['precio'] * $item['cantidad'];
+            $total += $item['subtotal'];
+        }
+        
         $data = [
             'titulo' => 'Dirección de Envío',
-            'direcciones' => $direcciones
+            'direcciones' => $direcciones,
+            'items' => $items,
+            'total' => $total
         ];
         return view('header', $data)
             . view('navbar')
@@ -171,23 +187,17 @@ class CheckoutController extends BaseController
             return redirect()->to('carrito')->with('error', 'No tienes productos en el carrito.');
         }
         $direccion = $this->direccionModel->find($checkout_data['direccion_id']);
-        // Calcular totales
-        $subtotal = 0;
+        // Calcular total
+        $total = 0;
         foreach ($items as &$item) {
             $producto = $this->productoModel->find($item['producto_id']);
             $item['producto'] = $producto;
             $item['subtotal'] = $producto['precio'] * $item['cantidad'];
-            $subtotal += $item['subtotal'];
+            $total += $item['subtotal'];
         }
-        $costo_envio = 5.99;
-        $iva = $subtotal * 0.21;
-        $total = $subtotal + $costo_envio + $iva;
         $data = [
             'titulo' => 'Resumen del Pedido',
             'items' => $items,
-            'subtotal' => $subtotal,
-            'costo_envio' => $costo_envio,
-            'iva' => $iva,
             'total' => $total,
             'direccion' => $direccion
         ];
@@ -220,23 +230,22 @@ class CheckoutController extends BaseController
         }
         $carrito = $this->carritoModel->getCarritoByUsuario($usuario_id);
         $items = $this->carritoItemModel->getItemsByCarrito($carrito['id_carrito']);
-        $subtotal = 0;
+        $total = 0;
         foreach ($items as &$item) {
             $producto = $this->productoModel->find($item['producto_id']);
             $item['producto'] = $producto;
             $item['subtotal'] = $producto['precio'] * $item['cantidad'];
-            $subtotal += $item['subtotal'];
+            $total += $item['subtotal'];
         }
-        $costo_envio = 5.99;
-        $iva = $subtotal * 0.21;
-        $total = $subtotal + $costo_envio + $iva;
+        
+        // Obtener información de la dirección de envío
+        $direccion = $this->direccionModel->find($checkout_data['direccion_id']);
+        
         $data = [
             'titulo' => 'Pago',
             'items' => $items,
-            'subtotal' => $subtotal,
-            'costo_envio' => $costo_envio,
-            'iva' => $iva,
-            'total' => $total
+            'total' => $total,
+            'direccion' => $direccion
         ];
         return view('header', $data)
             . view('navbar')
@@ -258,18 +267,15 @@ class CheckoutController extends BaseController
             return redirect()->to('carrito')->with('error', 'No tienes productos en el carrito.');
         }
         $direccion = $this->direccionModel->find($checkout_data['direccion_id']);
-        // Calcular totales
-        $subtotal = 0;
+        // Calcular total
+        $total = 0;
         foreach ($items as $item) {
             $producto = $this->productoModel->find($item['producto_id']);
             if (!$producto || $producto['stock'] < $item['cantidad']) {
                 return redirect()->to('carrito')->with('error', 'Stock insuficiente para ' . ($producto['nombre'] ?? 'un producto'));
             }
-            $subtotal += $producto['precio'] * $item['cantidad'];
+            $total += $producto['precio'] * $item['cantidad'];
         }
-        $costo_envio = 5.99;
-        $iva = $subtotal * 0.21;
-        $total = $subtotal + $costo_envio + $iva;
         // Validar método de pago
         $validation = \Config\Services::validation();
         $validation->setRules([

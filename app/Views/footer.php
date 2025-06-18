@@ -78,71 +78,87 @@
     <div class="row w-100 justify-content-center g-4">
       <!-- Columna 1: Información -->
       <div class="col-12 col-lg-2 text-white">
-        <h6 class="text-uppercase fw-bold mb-4">Follow</h6>
+        <h6 class="text-uppercase fw-bold mb-4"><?= htmlspecialchars($nombreTienda) ?></h6>
         <p>
-          Somos una empresa dedicada al comercio electrónico con sede en Corrientes Capital, y presencia en el NEA.
+          <?= htmlspecialchars($configuracionTienda['mensaje_bienvenida'] ?? 'Somos una empresa dedicada al comercio electrónico con sede en Corrientes Capital, y presencia en el NEA.') ?>
         </p>
       </div>
 
       <!-- Columna 2: Productos -->
       <div class="col-6 col-lg-2 text-white">
         <h6 class="text-uppercase fw-bold mb-4">Productos</h6>
-        <p>
-          <a href="http://localhost/proyecto_benitez_lopez/celulares" class="text-reset text-decoration-none">Celulares</a>
-        </p>
-        <p>
-          <a href="http://localhost/proyecto_benitez_lopez/auriculares" class="text-reset text-decoration-none">Auriculares</a>
-        </p>
-        <p>
-          <a href="http://localhost/proyecto_benitez_lopez/notebooks" class="text-reset text-decoration-none">Notebooks</a>
-        </p>
-        <p>
-          <a href="http://localhost/proyecto_benitez_lopez/tablets" class="text-reset text-decoration-none">Tablets</a>
-        </p>
+        <?php if(isset($categoriasGlobales) && is_array($categoriasGlobales)): ?>
+          <?php foreach(array_slice($categoriasGlobales, 0, 4) as $categoria): ?>
+            <p>
+              <a href="<?= base_url('productos/categoria/'.$categoria['id_categoria']) ?>" class="text-reset text-decoration-none">
+                <?= htmlspecialchars($categoria['nombre']) ?>
+              </a>
+            </p>
+          <?php endforeach; ?>
+        <?php endif; ?>
       </div>
 
       <!-- Columna 3: Menú -->
       <div class="col-6 col-lg-2 text-white">
         <h6 class="text-uppercase fw-bold mb-4">Menú</h6>
         <p>
-          <a href="http://localhost/proyecto_benitez_lopez/principal" class="text-reset text-decoration-none">Inicio</a>
+          <a href="<?= base_url('principal') ?>" class="text-reset text-decoration-none">Inicio</a>
         </p>
         <p>
-          <a href="http://localhost/proyecto_benitez_lopez/productos" class="text-reset text-decoration-none">Productos</a>
+          <a href="<?= base_url('productos') ?>" class="text-reset text-decoration-none">Productos</a>
         </p>
         <p>
-          <a href="http://localhost/proyecto_benitez_lopez/contacto" class="text-reset text-decoration-none">Contacto</a>
+          <a href="<?= base_url('contacto') ?>" class="text-reset text-decoration-none">Contacto</a>
         </p>
         <p>
-          <a href="http://localhost/proyecto_benitez_lopez/terminos" class="text-reset text-decoration-none">Términos de Uso</a>
+          <a href="<?= base_url('terminos') ?>" class="text-reset text-decoration-none">Términos de Uso</a>
         </p>
       </div>
 
       <!-- Columna 4: Contacto -->
       <div class="col-12 col-lg-3 text-white">
         <h6 class="text-uppercase fw-bold mb-4">Contacto</h6>
-        <p><i class="fas fa-home me-3"></i>Ctes, Corrientes, Arg</p>
-        <p><i class="fas fa-envelope me-3"></i>soporte@follow.com.ar</p>
-        <p><i class="fas fa-phone me-3"></i>(+54 379) 400-0000</p>
-        <p><i class="fas fa-print me-3"></i>(+54 379) 500-0000</p>
+        <?php if(!empty($direccionTienda)): ?>
+          <p><i class="fas fa-home me-3"></i><?= htmlspecialchars($direccionTienda) ?></p>
+        <?php endif; ?>
+        <?php if(!empty($emailTienda)): ?>
+          <p><i class="fas fa-envelope me-3"></i><?= htmlspecialchars($emailTienda) ?></p>
+        <?php endif; ?>
+        <?php if(!empty($telefonoTienda)): ?>
+          <p><i class="fas fa-phone me-3"></i><?= htmlspecialchars($telefonoTienda) ?></p>
+        <?php endif; ?>
+        <?php if(!empty($whatsappTienda)): ?>
+          <p><i class="fab fa-whatsapp me-3"></i><?= htmlspecialchars($whatsappTienda) ?></p>
+        <?php endif; ?>
+        <?php if(!empty($horarioAtencion)): ?>
+          <p><i class="fas fa-clock me-3"></i><?= htmlspecialchars($horarioAtencion) ?></p>
+        <?php endif; ?>
       </div>
 
       <!-- Columna 5: Redes Sociales -->
       <div class="col-12 col-lg-2 text-white">
         <h6 class="text-uppercase fw-bold mb-4">Redes Sociales</h6>
         <div class="d-flex flex-column">
-          <a href="https://facebook.com/tupagina" class="text-reset text-decoration-none mb-2" target="_blank">
-            <i class="fab fa-facebook-f me-2"></i> Facebook
-          </a>
-          <a href="https://instagram.com/tupagina" class="text-reset text-decoration-none mb-2" target="_blank">
-            <i class="fab fa-instagram me-2"></i> Instagram
-          </a>
-          <a href="https://twitter.com/tupagina" class="text-reset text-decoration-none mb-2" target="_blank">
-            <i class="fab fa-twitter me-2"></i> Twitter
-          </a>
-          <a href="https://wa.me/tunumerowhatsapp" class="text-reset text-decoration-none" target="_blank">
-            <i class="fab fa-whatsapp me-2"></i> WhatsApp
-          </a>
+          <?php if(!empty($facebookUrl)): ?>
+            <a href="<?= htmlspecialchars($facebookUrl) ?>" class="text-reset text-decoration-none mb-2" target="_blank">
+              <i class="fab fa-facebook-f me-2"></i> Facebook
+            </a>
+          <?php endif; ?>
+          <?php if(!empty($instagramUrl)): ?>
+            <a href="<?= htmlspecialchars($instagramUrl) ?>" class="text-reset text-decoration-none mb-2" target="_blank">
+              <i class="fab fa-instagram me-2"></i> Instagram
+            </a>
+          <?php endif; ?>
+          <?php if(!empty($twitterUrl)): ?>
+            <a href="<?= htmlspecialchars($twitterUrl) ?>" class="text-reset text-decoration-none mb-2" target="_blank">
+              <i class="fab fa-twitter me-2"></i> Twitter
+            </a>
+          <?php endif; ?>
+          <?php if(!empty($whatsappUrl)): ?>
+            <a href="<?= htmlspecialchars($whatsappUrl) ?>" class="text-reset text-decoration-none" target="_blank">
+              <i class="fab fa-whatsapp me-2"></i> WhatsApp
+            </a>
+          <?php endif; ?>
         </div>
       </div>
     </div>
@@ -150,8 +166,8 @@
 
   <!-- Copyright -->
   <div class="text-center text-white p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-    © 2025 Copyright:
-    <a class="text-white text-decoration-none" href="http://localhost/proyecto_benitez_lopez/">Follow.com.ar</a>
+    © <?= date('Y') ?> Copyright:
+    <a class="text-white text-decoration-none" href="<?= base_url() ?>"><?= htmlspecialchars($nombreTienda) ?>.com.ar</a>
   </div>
 </footer>
 
@@ -159,11 +175,6 @@
 <script src="http://localhost/proyecto_benitez_lopez/assets/js/bootstrap.bundle.min.js"></script>
 <script src="http://localhost/proyecto_benitez_lopez/assets/js/mi-script.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-<script>
-  const mp = new MercadoPago("APP_USR-a4179224-69c5-4780-892c-e2128595f458");
-</script>
-
 
 </body>
 </html>

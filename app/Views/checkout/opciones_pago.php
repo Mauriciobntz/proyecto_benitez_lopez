@@ -90,9 +90,6 @@
         <div class="col-md-4">
             <?= view('checkout/resumen_pedido', [
                 'items' => $items,
-                'subtotal' => $subtotal,
-                'costo_envio' => $costo_envio,
-                'iva' => $iva,
                 'total' => $total
             ]) ?>
         </div>

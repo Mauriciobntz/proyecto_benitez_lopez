@@ -112,6 +112,28 @@
                     <h5 class="mb-0">Resumen del Pedido</h5>
                 </div>
                 <div class="card-body">
+                    <!-- Información de Dirección de Envío -->
+                    <?php if (isset($direccion) && !empty($direccion)): ?>
+                    <div class="mb-3">
+                        <h6 class="text-muted">Dirección de Envío</h6>
+                        <div class="bg-light p-2 rounded">
+                            <?php if (isset($direccion['alias'])): ?>
+                                <small class="fw-bold"><?= esc($direccion['alias']) ?></small><br>
+                            <?php endif; ?>
+                            <small><?= esc($direccion['direccion']) ?></small><br>
+                            <small>
+                                <?= esc($direccion['codigo_postal']) ?>, 
+                                <?= esc($direccion['ciudad']) ?>, 
+                                <?= esc($direccion['provincia']) ?>
+                            </small><br>
+                            <small><?= esc($direccion['pais']) ?></small>
+                        </div>
+                    </div>
+                    <hr>
+                    <?php endif; ?>
+
+                    <!-- Productos -->
+                    <h6 class="text-muted">Productos</h6>
                     <?php if (!empty($items)): ?>
                         <?php foreach ($items as $item): ?>
                         <div class="d-flex justify-content-between mb-2">
@@ -120,6 +142,8 @@
                         </div>
                         <?php endforeach; ?>
                         <hr>
+                        
+                        <!-- Resumen de Costos -->
                         <div class="d-flex justify-content-between fw-bold">
                             <span>Total:</span>
                             <span>€<?= number_format($total, 2) ?></span>

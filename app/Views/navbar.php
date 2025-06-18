@@ -88,8 +88,8 @@ $isUser = $isLoggedIn && !$isAdmin;
           <a class="nav-link text-white fw-bold dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Productos</a>
           <ul class="dropdown-menu">
             <a href="<?= base_url('productos') ?>" class="btn btn-outline-dark w-100 text-start py-2">Todos</a>
-            <?php if(isset($categorias) && is_array($categorias)): ?>
-              <?php foreach($categorias as $categoria): ?>
+            <?php if(isset($categoriasGlobales) && is_array($categoriasGlobales)): ?>
+              <?php foreach($categoriasGlobales as $categoria): ?>
                 <a href="<?= base_url('productos/categoria/'.$categoria['id_categoria']) ?>" class="btn btn-outline-dark w-100 text-start py-2">
                   <?= htmlspecialchars($categoria['nombre']) ?>
                 </a>

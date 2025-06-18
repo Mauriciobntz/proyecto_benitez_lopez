@@ -104,6 +104,8 @@
                 </div>
                 <div class="card-body">
                     <?php if (!empty($items)): ?>
+                        <!-- Productos -->
+                        <h6 class="text-muted">Productos</h6>
                         <?php foreach ($items as $item): ?>
                         <div class="d-flex justify-content-between mb-2">
                             <span><?= $item['producto']['nombre'] ?> x<?= $item['cantidad'] ?></span>
@@ -111,6 +113,8 @@
                         </div>
                         <?php endforeach; ?>
                         <hr>
+                        
+                        <!-- Resumen de Costos -->
                         <div class="d-flex justify-content-between fw-bold">
                             <span>Total:</span>
                             <span>€<?= number_format($total, 2) ?></span>
