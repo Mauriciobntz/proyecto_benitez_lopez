@@ -29,7 +29,7 @@
                                         <td>
                                             <div class="d-flex align-items-center">
                                                 <?php if (!empty($item['imagen_url'])): ?>
-                                                    <img src="<?= base_url('uploads/productos/' . $item['imagen_url']) ?>" 
+                                                    <img src="<?= base_url('public/uploads/productos/' . $item['imagen_url']) ?>" 
                                                          alt="<?= esc($item['nombre']) ?>" width="60" class="me-3">
                                                 <?php else: ?>
                                                     <img src="https://via.placeholder.com/60" 
