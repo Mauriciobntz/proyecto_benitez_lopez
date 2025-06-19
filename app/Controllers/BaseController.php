@@ -115,6 +115,19 @@ abstract class BaseController extends Controller
         $view->setVar('twitterUrl', $this->configuracionTienda['twitter_url'] ?? '');
         $view->setVar('whatsappUrl', $this->configuracionTienda['whatsapp_url'] ?? '');
         $view->setVar('horarioAtencion', $this->configuracionTienda['horario_atencion'] ?? '');
+
+        // 
+        $view->setVar('logoUrl', $this->configuracionTienda['logo_url'] ?? '');
+        $view->setVar('mensajeBienvenida', $this->configuracionTienda['mensaje_bienvenida'] ?? '');
+        $view->setVar('razonSocial', $this->configuracionTienda['razon_social'] ?? '');
+        $view->setVar('cuit', $this->configuracionTienda['cuit'] ?? '');
+        $view->setVar('cbu', $this->configuracionTienda['cbu'] ?? '');
+        $view->setVar('aliasCbu', $this->configuracionTienda['alias_cbu'] ?? '');
+        $view->setVar('banco', $this->configuracionTienda['banco'] ?? '');
+        $view->setVar('titularCuenta', $this->configuracionTienda['titular_cuenta'] ?? '');
+        $view->setVar('tipoCuenta', $this->configuracionTienda['tipo_cuenta'] ?? '');
+        $view->setVar('areaCobertura', $this->configuracionTienda['area_cobertura'] ?? '');
+        $view->setVar('mercadopagoPublicKey', $this->configuracionTienda['mercadopago_public_key'] ?? '');
     }
 
     /**

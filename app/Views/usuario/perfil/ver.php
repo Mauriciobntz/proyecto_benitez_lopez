@@ -1,16 +1,19 @@
 <?php
-// Eliminamos la extensión del layout ya que usaremos la concatenación de vistas
+$nombre = $usuario['persona']['nombre'] ?? $usuario['username'] ?? '';
+$apellido = $usuario['persona']['apellido'] ?? '';
+$telefono = $usuario['persona']['telefono'] ?? '';
+$avatar_nombre = trim(($usuario['persona']['nombre'] ?? $usuario['username'] ?? '') . ' ' . ($usuario['persona']['apellido'] ?? ''));
 ?>
 <div class="container py-5">
     <div class="row">
         <div class="col-lg-4">
             <div class="card shadow-sm">
                 <div class="card-body text-center">
-                    <img src="https://ui-avatars.com/api/?name=<?= urlencode($usuario['persona']['nombre'] . ' ' . $usuario['persona']['apellido']) ?>&background=0D8ABC&color=fff" 
+                    <img src="https://ui-avatars.com/api/?name=<?= urlencode($avatar_nombre) ?>&background=0D8ABC&color=fff" 
                          alt="Avatar" class="rounded-circle mb-3" width="120">
-                    <h4><?= esc($usuario['persona']['nombre'] ?? $usuario['username']) ?> <?= esc($usuario['persona']['apellido'] ?? '') ?></h4>
+                    <h4><?= esc($nombre) ?> <?= esc($apellido) ?></h4>
                     <p class="text-muted mb-1"><?= esc($usuario['email']) ?></p>
-                    <p class="text-muted"><?= esc($usuario['persona']['telefono'] ?? '') ?></p>
+                    <p class="text-muted"><?= esc($telefono) ?></p>
                     <div class="d-flex justify-content-center mb-2">
                         <a href="<?= base_url('perfil/editar') ?>" class="btn btn-primary me-2">Editar Perfil</a>
                         <a href="<?= base_url('perfil/cambiar-password') ?>" class="btn btn-outline-secondary">Cambiar Contraseña</a>

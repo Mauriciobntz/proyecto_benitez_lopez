@@ -36,37 +36,36 @@ class ProductoController extends BaseController
         return view('header', $data) . view('navbar') . view('catalogo/productos') . view('footer');
     }
 
-public function detalle($producto_id)
-{
-    $producto = $this->productoModel->find($producto_id);
-    
-    if (!$producto) {
-        return redirect()->to('productos')->with('error', 'Producto no encontrado');
+    public function detalle($producto_id)
+    {
+        $producto = $this->productoModel->find($producto_id);
+        
+        if (!$producto) {
+            return redirect()->to('productos')->with('error', 'Producto no encontrado');
+        }
+
+        $categoria = $this->categoriaModel->find($producto['categoria_id']);
+        $resenas = $this->resenaModel->getResenasByProducto($producto_id);
+        $promedio = $this->resenaModel->getPromedioCalificacion($producto_id);
+
+        // Procesar especificaciones si existen
+        $especificaciones = [];
+        if (!empty($producto['especificaciones'])) {
+            $especificaciones = json_decode($producto['especificaciones'], true);
+        }
+
+        $data = [
+            'titulo' => $producto['nombre'],
+            'producto' => $producto,
+            'categoria' => $categoria,
+            'resenas' => $resenas,
+            'promedio' => $promedio,
+            'totalResenas' => count($resenas),
+            'especificaciones' => $especificaciones
+        ];
+
+        return view('header', $data) . view('navbar') . view('catalogo/producto') . view('footer');
     }
-
-    $categoria = $this->categoriaModel->find($producto['categoria_id']);
-    $resenas = $this->resenaModel->getResenasByProducto($producto_id);
-    $promedio = $this->resenaModel->getPromedioCalificacion($producto_id);
-
-    // Procesar especificaciones si existen
-    $especificaciones = [];
-    if (!empty($producto['especificaciones'])) {
-        $especificaciones = json_decode($producto['especificaciones'], true);
-    }
-
-    $data = [
-        'titulo' => $producto['nombre'],
-        'producto' => $producto,
-        'categoria' => $categoria,
-        'resenas' => $resenas,
-        'promedio' => $promedio['calificacion'] ?? 0,
-        'totalResenas' => count($resenas),
-        'especificaciones' => $especificaciones,
-        'yaReseno' => $this->resenaModel->usuarioYaReseno($producto_id, session()->get('id_usuario'))
-    ];
-
-    return view('header', $data) . view('navbar') . view('catalogo/producto') . view('footer');
-}
 
 
     public function productosPorCategoria($categoria_id)
@@ -454,37 +453,6 @@ public function actualizarProducto()
             . view('navbar')
             . view('busqueda')
             . view('footer');
-    }
-
-
-    public function agregarResena($producto_id)
-    {
-        $validation = \Config\Services::validation();
-        $validation->setRules([
-            'calificacion' => 'required|integer|greater_than[0]|less_than[6]',
-            'comentario' => 'permit_empty|max_length[500]'
-        ]);
-
-        if (!$validation->withRequest($this->request)->run()) {
-            return redirect()->back()->withInput()->with('errors', $validation->getErrors());
-        }
-
-        $usuario_id = session()->get('id_usuario');
-        
-        if ($this->resenaModel->usuarioYaReseno($producto_id, $usuario_id)) {
-            return redirect()->back()->with('error', 'Ya has reseñado este producto');
-        }
-
-        $data = [
-            'producto_id' => $producto_id,
-            'usuario_id' => $usuario_id,
-            'calificacion' => $this->request->getPost('calificacion'),
-            'comentario' => $this->request->getPost('comentario')
-        ];
-
-        $this->resenaModel->insert($data);
-
-        return redirect()->back()->with('message', 'Reseña agregada correctamente');
     }
 
     public function verificarVentas($producto_id)

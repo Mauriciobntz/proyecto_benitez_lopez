@@ -1,6 +1,3 @@
-<?php
-// Eliminamos la extensión del layout ya que usaremos la concatenación de vistas
-?>
 <div class="container py-5">
     <div class="row justify-content-center">
         <div class="col-lg-8">
@@ -20,6 +17,10 @@
                           class="needs-validation" 
                           novalidate>
                         
+                        <?php if (session()->getFlashdata('from_checkout')): ?>
+                            <input type="hidden" name="from_checkout" value="1">
+                        <?php endif; ?>
+
                         <div class="mb-3">
                             <label for="tipo" class="form-label">Tipo de Dirección</label>
                             <select class="form-select <?= session('errors.tipo') ? 'is-invalid' : '' ?>" 
@@ -125,7 +126,7 @@
                                        class="form-control <?= session('errors.pais') ? 'is-invalid' : '' ?>" 
                                        id="pais" 
                                        name="pais" 
-                                       value="<?= old('pais', 'España') ?>" 
+                                       value="<?= old('pais', 'Argentina') ?>" 
                                        required>
                                 <?php if (session('errors.pais')): ?>
                                     <div class="invalid-feedback">
@@ -150,7 +151,7 @@
                         </div>
 
                         <div class="d-flex justify-content-between">
-                            <a href="<?= base_url('perfil/direcciones') ?>" class="btn btn-outline-secondary">
+                            <a href="<?= session()->getFlashdata('from_checkout') ? base_url('checkout/direccion') : base_url('perfil/direcciones') ?>" class="btn btn-outline-secondary">
                                 <i class="bi bi-arrow-left"></i> Volver
                             </a>
                             <button type="submit" class="btn btn-primary">

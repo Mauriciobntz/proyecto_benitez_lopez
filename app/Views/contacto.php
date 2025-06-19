@@ -27,23 +27,23 @@ el potencial cliente se comunique con miembros de la empresa.
                         <ul class="list-unstyled ps-4">
                             <li class="mb-2">
                                 <span class="text-muted">Nombre Comercial:</span>
-                                <span class="fw-bold d-block">Follow</span>
+                                <span class="fw-bold d-block"><?= esc($nombreTienda) ?></span>
                             </li>
                             <li class="mb-2">
                                 <span class="text-muted">Razón Social:</span>
-                                <span class="fw-bold d-block">Follow S.A.</span>
+                                <span class="fw-bold d-block"><?= esc($razonSocial) ?></span>
                             </li>
                             <li class="mb-2">
                                 <span class="text-muted">CUIT:</span>
-                                <span class="fw-bold d-block">30-12345678-9</span>
+                                <span class="fw-bold d-block"><?= esc($cuit) ?></span>
                             </li>
                             <li class="mb-2">
                                 <span class="text-muted">Domicilio Legal:</span>
-                                <span class="fw-bold d-block">9 de Julio 1813</span>
+                                <span class="fw-bold d-block"><?= esc($direccionTienda) ?></span>
                             </li>
                             <li class="mb-2">
                                 <span class="text-muted">Área de Cobertura:</span>
-                                <span class="fw-bold d-block">Corrientes, Chaco, Formosa y Misiones (NEA)</span>
+                                <span class="fw-bold d-block"><?= esc($areaCobertura) ?></span>
                             </li>
                         </ul>
                     </div>
@@ -64,7 +64,7 @@ el potencial cliente se comunique con miembros de la empresa.
                                     </div>
                                     <div>
                                         <span class="text-muted d-block">Teléfono</span>
-                                        <a href="tel:+543794000000" class="text-dark text-decoration-none fw-bold">(+54 379) 400-0000</a>
+                                        <a href="tel:<?= esc($telefonoTienda) ?>" class="text-dark text-decoration-none fw-bold"><?= esc($telefonoTienda) ?></a>
                                     </div>
                                 </div>
                             </li>
@@ -75,7 +75,7 @@ el potencial cliente se comunique con miembros de la empresa.
                                     </div>
                                     <div>
                                         <span class="text-muted d-block">WhatsApp</span>
-                                        <a href="https://wa.me/543795000000" class="text-dark text-decoration-none fw-bold">(+54 9 379) 500-0000</a>
+                                        <a href="<?= esc($whatsappUrl) ?>" class="text-dark text-decoration-none fw-bold"><?= esc($whatsappTienda) ?></a>
                                     </div>
                                 </div>
                             </li>
@@ -86,7 +86,7 @@ el potencial cliente se comunique con miembros de la empresa.
                                     </div>
                                     <div>
                                         <span class="text-muted d-block">Email</span>
-                                        <a href="mailto:soporte@follow.com.ar" class="text-dark text-decoration-none fw-bold">soporte@follow.com.ar</a>
+                                        <a href="mailto:<?= esc($emailTienda) ?>" class="text-dark text-decoration-none fw-bold"><?= esc($emailTienda) ?></a>
                                     </div>
                                 </div>
                             </li>
@@ -97,7 +97,7 @@ el potencial cliente se comunique con miembros de la empresa.
                                     </div>
                                     <div>
                                         <span class="text-muted d-block">Horario de Atención</span>
-                                        <span class="fw-bold">Lunes a Viernes de 9:00 a 21:00 hs</span>
+                                        <span class="fw-bold"><?= esc($horarioAtencion) ?></span>
                                     </div>
                                 </div>
                             </li>

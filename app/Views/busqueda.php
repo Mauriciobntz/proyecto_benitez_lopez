@@ -99,12 +99,15 @@
                       <?= !empty($producto['marca']) ? htmlspecialchars($producto['marca']) : '' ?> 
                       <?= !empty($producto['modelo']) ? htmlspecialchars($producto['modelo']) : '' ?>
                     </p>
-                    <p class="fw-bold mt-auto"><?= number_format($producto['precio'], 2) ?> €</p>
+                    <p class="fw-bold mt-auto"><?= number_format($producto['precio'], 2) ?> $</p>
                     <div class="row mt-2">
-                      <a href="<?= base_url('productos/'.$producto['id_producto']) ?>" class="btn btn-outline-dark col-9 rounded-pill">Ver detalles</a>
-                      <a href="#" class="btn btn-outline-success col-3 rounded-pill">
-                        <img src="<?= base_url('assets/img/carrito.svg') ?>" alt="carrito">
-                      </a>
+                        <a href="<?= base_url('productos/'.$producto['id_producto']) ?>" class="btn btn-outline-dark col-9 rounded-pill">Ver detalles</a>
+                        <form action="<?= base_url('carrito/agregar/'.$producto['id_producto']) ?>" method="post" class="col-3 p-0">
+                            <button type="submit" class="btn btn-outline-success w-100 rounded-pill" <?= $producto['stock'] <= 0 ? 'disabled' : '' ?>>
+                                <img src="<?= base_url('assets/img/carrito.svg') ?>" alt="carrito">
+                            </button>
+                            <input type="hidden" name="cantidad" value="1">
+                        </form>
                     </div>
                   </div>
                 </div>
@@ -125,8 +128,8 @@ function ordenarProductos(criterio) {
   const productos = Array.from(container.children);
   
   productos.sort((a, b) => {
-    const precioA = parseFloat(a.querySelector('.fw-bold').textContent.replace(' €', '').replace(',', ''));
-    const precioB = parseFloat(b.querySelector('.fw-bold').textContent.replace(' €', '').replace(',', ''));
+    const precioA = parseFloat(a.querySelector('.fw-bold').textContent.replace(' $', '').replace(',', ''));
+    const precioB = parseFloat(b.querySelector('.fw-bold').textContent.replace(' $', '').replace(',', ''));
     const nombreA = a.querySelector('.card-title').textContent.toLowerCase();
     const nombreB = b.querySelector('.card-title').textContent.toLowerCase();
     

@@ -65,10 +65,10 @@
                         <div id="transferenciaInfo" class="p-3 border rounded mb-3" style="display: none;">
                             <div class="alert alert-info">
                                 <h5>Datos para transferencia</h5>
-                                <p>CBU: <?= $configuracion['cbu'] ?? 'XXXXXXXXXXXXX' ?></p>
-                                <p>Alias: <?= $configuracion['alias_cbu'] ?? 'TIENDA.ONLINE' ?></p>
-                                <p>Razón Social: <?= $configuracion['razon_social'] ?? 'Mi Tienda Online' ?></p>
-                                <p>Una vez realizada la transferencia, envíe el comprobante a <?= $configuracion['email_tienda'] ?? 'soporte@tienda.com' ?></p>
+                                <p>CBU: <?= $cbu ?></p>
+                                <p>Alias: <?= $aliasCbu ?></p>
+                                <p>Razón Social: <?= $razonSocial ?></p>
+                                <p>Una vez realizada la transferencia, envíe el comprobante a <?= $emailTienda ?></p>
                             </div>
                             <div class="mb-3">
                                 <label for="referencia_pago" class="form-label">Número de referencia de la transferencia</label>
@@ -138,7 +138,7 @@
                         <?php foreach ($items as $item): ?>
                         <div class="d-flex justify-content-between mb-2">
                             <span><?= $item['producto']['nombre'] ?> x<?= $item['cantidad'] ?></span>
-                            <span>€<?= number_format($item['subtotal'], 2) ?></span>
+                            <span>$<?= number_format($item['subtotal'], 2) ?></span>
                         </div>
                         <?php endforeach; ?>
                         <hr>
@@ -146,7 +146,7 @@
                         <!-- Resumen de Costos -->
                         <div class="d-flex justify-content-between fw-bold">
                             <span>Total:</span>
-                            <span>€<?= number_format($total, 2) ?></span>
+                            <span>$<?= number_format($total, 2) ?></span>
                         </div>
                     <?php endif; ?>
                 </div>

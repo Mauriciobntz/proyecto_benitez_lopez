@@ -100,7 +100,7 @@ class DireccionController extends BaseController
             'codigo_postal' => $this->request->getPost('codigo_postal'),
             'ciudad' => $this->request->getPost('ciudad'),
             'provincia' => $this->request->getPost('provincia'),
-            'pais' => $this->request->getPost('pais') ?? 'España',
+            'pais' => $this->request->getPost('pais') ?? 'Argentina',
             'es_principal' => $es_principal
         ];
 
@@ -169,7 +169,7 @@ class DireccionController extends BaseController
             'codigo_postal' => $this->request->getPost('codigo_postal'),
             'ciudad' => $this->request->getPost('ciudad'),
             'provincia' => $this->request->getPost('provincia'),
-            'pais' => $this->request->getPost('pais') ?? 'España',
+            'pais' => $this->request->getPost('pais') ?? 'Argentina',
             'es_principal' => $es_principal
         ];
 

@@ -57,12 +57,6 @@ $routes->post('sign', 'UsuarioController::procesarRegistro');
 
 
 
-// Rutas protegidas (requieren autenticación)
-$routes->post('productos/(:num)/resena', [ProductoController::class, 'agregarResena'], ['filter' => 'auth']);
-
-
-
-
 //######################## Rutas de administrador (requieren rol admin) ########################
 
 
@@ -93,7 +87,7 @@ $routes->group('admin', ['filter' => 'admin'], function($routes) {
     $routes->get('ventas/listar', [VentaController::class, 'listar']);
     $routes->get('ventas/detalle/(:num)', [VentaController::class, 'detalle']);
     $routes->post('ventas/actualizar-estado/(:num)', [VentaController::class, 'actualizarEstado']);
-    $routes->get('ventas/factura/(:num)', [VentaController::class, 'generarFactura']);
+    $routes->get('ventas/factura/(:num)', [VentaController::class, 'factura']);
 
     // Usuarios
     $routes->get('usuarios/listar', [UsuarioController::class, 'listarUsuarios']);
@@ -159,6 +153,7 @@ $routes->group('', ['filter' => 'auth'], function($routes) {
     $routes->get('checkout/pago', 'CheckoutController::pago');
     $routes->post('checkout/procesar-pago', 'CheckoutController::procesarPago');
     $routes->get('checkout/confirmacion/(:num)', 'CheckoutController::confirmacion/$1');
+    $routes->get('checkout/agregar-direccion', 'CheckoutController::redirigirAgregarDireccion');
 });
 
 

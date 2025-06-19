@@ -435,11 +435,18 @@ class PerfilController extends BaseController
             'codigo_postal' => $request->getPost('codigo_postal'),
             'ciudad' => $request->getPost('ciudad'),
             'provincia' => $request->getPost('provincia'),
-            'pais' => $request->getPost('pais') ?? 'España',
+            'pais' => $request->getPost('pais') ?? 'Argentina',
             'es_principal' => $es_principal
         ];
 
         $this->direccionModel->insert($data);
+
+        // Cambios: Si viene del checkout, guardar el id y redirigir
+        if ($request->getPost('from_checkout')) {
+            $nueva_id = $this->direccionModel->getInsertID();
+            session()->set('checkout_data', ['direccion_id' => $nueva_id]);
+            return redirect()->to('checkout/direccion')->with('message', 'Dirección guardada correctamente.');
+        }
 
         return redirect()->to('perfil/direcciones')->with('message', 'Dirección agregada correctamente');
     }
@@ -555,7 +562,7 @@ class PerfilController extends BaseController
             'codigo_postal' => $request->getPost('codigo_postal'),
             'ciudad' => $request->getPost('ciudad'),
             'provincia' => $request->getPost('provincia'),
-            'pais' => $request->getPost('pais') ?? 'España',
+            'pais' => $request->getPost('pais') ?? 'Argentina',
             'es_principal' => $es_principal
         ];
 

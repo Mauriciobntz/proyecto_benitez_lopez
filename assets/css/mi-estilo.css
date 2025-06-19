@@ -192,3 +192,12 @@ opacity: 1;
     padding: 1rem;
     margin: 1rem 0;
   }
+
+/* Superponer el menú de perfil del navbar sobre cualquier vista */
+.dropdown-menu {
+  z-index: 3000 !important;
+}
+
+.card.sticky-md-top {
+  z-index: 100 !important;
+}

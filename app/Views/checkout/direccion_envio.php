@@ -38,59 +38,13 @@
                                 </div>
                             </div>
                             <?php endforeach; ?>
-                            <button type="button" class="btn btn-outline-primary mb-3" data-bs-toggle="modal" data-bs-target="#nuevaDireccionModal">
+                            <a href="<?= base_url('checkout/agregar-direccion') ?>" 
+                               class="btn btn-outline-primary mb-3">
                                 <i class="bi bi-plus"></i> Añadir nueva dirección
-                            </button>
+                            </a>
                         <?php else: ?>
                             <div class="alert alert-warning">No tienes direcciones registradas. Por favor, agrega una dirección para continuar.</div>
                         <?php endif; ?>
-
-                        <!-- Modal para nueva dirección -->
-                        <div class="modal fade" id="nuevaDireccionModal" tabindex="-1" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title">Nueva Dirección</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <div id="nuevaDireccionForm">
-                                            <input type="hidden" name="tipo" value="envio">
-                                            <div class="mb-3">
-                                                <label for="alias" class="form-label">Alias (Ej: Casa, Trabajo)</label>
-                                                <input type="text" class="form-control<?= session('errors.alias') ? ' is-invalid' : '' ?>" id="alias" name="alias" value="<?= old('alias') ?>">
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="direccion" class="form-label">Dirección</label>
-                                                <input type="text" class="form-control<?= session('errors.direccion') ? ' is-invalid' : '' ?>" id="direccion" name="direccion" value="<?= old('direccion') ?>">
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-6 mb-3">
-                                                    <label for="codigo_postal" class="form-label">Código Postal</label>
-                                                    <input type="text" class="form-control<?= session('errors.codigo_postal') ? ' is-invalid' : '' ?>" id="codigo_postal" name="codigo_postal" value="<?= old('codigo_postal') ?>">
-                                                </div>
-                                                <div class="col-md-6 mb-3">
-                                                    <label for="ciudad" class="form-label">Ciudad</label>
-                                                    <input type="text" class="form-control<?= session('errors.ciudad') ? ' is-invalid' : '' ?>" id="ciudad" name="ciudad" value="<?= old('ciudad') ?>">
-                                                </div>
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="provincia" class="form-label">Provincia</label>
-                                                <input type="text" class="form-control<?= session('errors.provincia') ? ' is-invalid' : '' ?>" id="provincia" name="provincia" value="<?= old('provincia') ?>">
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="pais" class="form-label">País</label>
-                                                <input type="text" class="form-control<?= session('errors.pais') ? ' is-invalid' : '' ?>" id="pais" name="pais" value="<?= old('pais', 'España') ?>">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                                        <button type="submit" class="btn btn-primary" name="nueva_direccion" value="1">Guardar Dirección</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
 
                         <button type="submit" class="btn btn-primary w-100 mt-3" <?= empty($direcciones) ? 'disabled' : '' ?>>Continuar</button>
                     </form>
@@ -109,7 +63,7 @@
                         <?php foreach ($items as $item): ?>
                         <div class="d-flex justify-content-between mb-2">
                             <span><?= $item['producto']['nombre'] ?> x<?= $item['cantidad'] ?></span>
-                            <span>€<?= number_format($item['subtotal'], 2) ?></span>
+                            <span>$<?= number_format($item['subtotal'], 2) ?></span>
                         </div>
                         <?php endforeach; ?>
                         <hr>
@@ -117,8 +71,9 @@
                         <!-- Resumen de Costos -->
                         <div class="d-flex justify-content-between fw-bold">
                             <span>Total:</span>
-                            <span>€<?= number_format($total, 2) ?></span>
+                            <span>$<?= number_format($total, 2) ?></span>
                         </div>
+                        <a href="<?= base_url('carrito') ?>" class="btn btn-outline-danger w-100 mt-3">Volver al Carrito</a>
                     <?php endif; ?>
                 </div>
             </div>

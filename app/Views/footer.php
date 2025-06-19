@@ -80,7 +80,7 @@
       <div class="col-12 col-lg-2 text-white">
         <h6 class="text-uppercase fw-bold mb-4"><?= htmlspecialchars($nombreTienda) ?></h6>
         <p>
-          <?= htmlspecialchars($configuracionTienda['mensaje_bienvenida'] ?? 'Somos una empresa dedicada al comercio electrónico con sede en Corrientes Capital, y presencia en el NEA.') ?>
+        <?= htmlspecialchars($configuracionTienda['mensaje_bienvenida']) ?>
         </p>
       </div>
 

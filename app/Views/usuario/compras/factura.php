@@ -1,6 +1,3 @@
-<?php
-// Eliminamos la extensión del layout ya que usaremos la concatenación de vistas
-?>
 <div class="container py-5">
     <div class="invoice-container">
         <div class="invoice-header">

@@ -27,7 +27,7 @@ $isUser = $isLoggedIn && !$isAdmin;
 
     <!-- Logo -->
     <a class="navbar-brand text-white mx-auto" href="<?= base_url('principal'); ?>" style="flex-grow: 1; text-align: center;">
-      <b>FOLLOW</b>
+      <b><?= htmlspecialchars($nombreTienda) ?></b>
     </a>
 
     <!-- Menú principal -->
@@ -66,7 +66,7 @@ $isUser = $isLoggedIn && !$isAdmin;
 
         <li class="nav-item">
           <a class="nav-link text-white" href="<?= base_url('admin/resenas/listar') ?>">
-            <i class="bi bi-bag-check2-square me-1"></i> Reseñas
+            <i class="bi bi-patch-check me-1"></i> Reseñas
           </a>
         </li>
         
@@ -168,7 +168,7 @@ $isUser = $isLoggedIn && !$isAdmin;
               <!-- Opciones para administrador -->
             <?php else: ?>
               <!-- Opciones para clientes -->
-              <li><a class="dropdown-item" href="<?= base_url('perfil') ?>"><i class="fas fa-user-circle me-2"></i>Mi Perfil</a></li>
+              <li><a class="dropdown-item" href="<?= base_url('perfil') ?>"> <i class="fas fa-user-circle me-2"></i>Mi Perfil</a></li>
               <li><a class="dropdown-item" href="<?= base_url('perfil/pedidos') ?>"><i class="fas fa-box-open me-2"></i>Mis Pedidos</a></li>
               <li><a class="dropdown-item" href="<?= base_url('perfil/direcciones') ?>"><i class="bi bi-house-check me-2"></i>Mis Direcciones</a></li>
               <li><a class="dropdown-item" href="<?= base_url('perfil/resenas') ?>"><i class="bi bi-patch-check me-2"></i>Mis Reseñas</a></li>
@@ -198,23 +198,33 @@ $isUser = $isLoggedIn && !$isAdmin;
       <?php if ($isAdmin): ?>
         <!-- Menú mobile para admin -->
         <li class="nav-item">
-          <a class="nav-link active" href="<?= base_url('admin/dashboard') ?>">
-            <i class="bi bi-speedometer2 me-2"></i>Principal
+          <a class="nav-link active" href="<?= base_url('admin/panel') ?>">
+            <i class="bi bi-speedometer2 me-2"></i>Panel
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="<?= base_url('admin/productos') ?>">
+          <a class="nav-link" href="<?= base_url('admin/productos/listar') ?>">
             <i class="bi bi-box me-2"></i>Productos
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="<?= base_url('admin/categorias') ?>">
+          <a class="nav-link" href="<?= base_url('admin/categorias/listar') ?>">
             <i class="bi bi-card-list me-2"></i>Categorías
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="<?= base_url('admin/ventas') ?>">
+          <a class="nav-link" href="<?= base_url('admin/ventas/listar') ?>">
             <i class="bi bi-bag-check me-2"></i>Ventas
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="<?= base_url('admin/usuarios/listar') ?>">
+            <i class="bi bi-people me-2"></i>Usuarios
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="<?= base_url('admin/resenas/listar') ?>">
+            <i class="bi bi-patch-check me-2"></i> Reseñas
           </a>
         </li>
         <li class="nav-item dropdown">
@@ -222,8 +232,9 @@ $isUser = $isLoggedIn && !$isAdmin;
             <i class="bi bi-gear me-2"></i>Configuración
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="<?= base_url('admin/config') ?>">Configuración</a></li>
-            <li><a class="dropdown-item" href="<?= base_url('admin/usuarios') ?>">Administradores</a></li>
+            <li><a class="dropdown-item" href="<?= base_url('admin/configuracion/carrusel/lista') ?>"><i class="bi bi-images me-2"></i> Carrusel</a></li>
+            <li><a class="dropdown-item" href="<?= base_url('admin/configuracion/destacados/listar') ?>"><i class="bi bi-broadcast me-2"></i>Destacados</a></li>
+            <li><a class="dropdown-item" href="<?= base_url('admin/configuracion/destacados/listar') ?>"><i class="bi bi-gear me-2"></i>Tienda</a></li>
           </ul>
         </li>
       <?php else: ?>
@@ -235,8 +246,8 @@ $isUser = $isLoggedIn && !$isAdmin;
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Productos</a>
           <ul class="dropdown-menu">
             <a href="<?= base_url('productos') ?>" class="btn btn-outline-dark w-100 text-start py-2">Todos</a>
-            <?php if(isset($categorias) && is_array($categorias)): ?>
-              <?php foreach($categorias as $categoria): ?>
+            <?php if(isset($categoriasGlobales) && is_array($categoriasGlobales)): ?>
+              <?php foreach($categoriasGlobales as $categoria): ?>
                 <a href="<?= base_url('productos/categoria/'.$categoria['id_categoria']) ?>" class="btn btn-outline-dark w-100 text-start py-2">
                   <?= htmlspecialchars($categoria['nombre']) ?>
                 </a>
@@ -253,25 +264,47 @@ $isUser = $isLoggedIn && !$isAdmin;
         <li class="nav-item">
           <a class="nav-link" href="<?= base_url('contacto'); ?>">Contacto</a>
         </li>
+        <!-- Carrito en menú mobile debajo de Contacto -->
+        <li class="nav-item">
+          <a class="nav-link" href="<?= base_url('carrito') ?>">
+            <i class="fas fa-shopping-cart me-2"></i>Carrito
+            <?php if ($isUser): ?>
+              <?php
+              $carritoModel = new \App\Models\CarritoModel();
+              $carritoItemModel = new \App\Models\CarritoItemModel();
+              $usuario_id = session()->get('id_usuario');
+              $carrito = $carritoModel->getCarritoByUsuario($usuario_id);
+              $itemCount = $carrito ? count($carritoItemModel->getItemsByCarrito($carrito['id_carrito'])) : 0;
+              ?>
+              <?php if ($itemCount > 0): ?>
+                <span class="badge bg-danger ms-2"><?= $itemCount ?></span>
+              <?php endif; ?>
+            <?php endif; ?>
+          </a>
+        </li>
       <?php endif; ?>
       
       <!-- Sección de usuario en mobile -->
       <?php if ($isLoggedIn): ?>
-        <li class="nav-item mt-3 border-top pt-2">
-          <a class="nav-link" href="<?= base_url($isAdmin ? 'admin/perfil' : 'perfil') ?>">
-            <i class="fas fa-user-circle me-2"></i>Mi Perfil
-          </a>
-        </li>
+
         <?php if ($isAdmin): ?>
+        <?php else: ?>
+          <li><a class="dropdown-item" href="<?= base_url('perfil') ?>">
+            <i class="fas fa-user-circle me-2"></i>Mi Perfil
+          </a></li>
           <li class="nav-item">
-            <a class="nav-link" href="<?= base_url('admin') ?>">
-              <i class="fas fa-cog me-2"></i>Panel Admin
+            <a class="nav-link" href="<?= base_url('perfil/pedidos') ?>">
+              <i class="fas fa-box-open me-2"></i>Mis Pedidos
             </a>
           </li>
-        <?php else: ?>
           <li class="nav-item">
-            <a class="nav-link" href="<?= base_url('mis-pedidos') ?>">
-              <i class="fas fa-box-open me-2"></i>Mis Pedidos
+            <a class="nav-link" href="<?= base_url('perfil/direcciones') ?>">
+              <i class="bi bi-house-check me-2"></i>Mis Direcciones
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="<?= base_url('perfil/resenas') ?>">
+              <i class="bi bi-patch-check me-2"></i>Mis Reseñas
             </a>
           </li>
         <?php endif; ?>

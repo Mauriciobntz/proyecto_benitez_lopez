@@ -165,7 +165,7 @@ class VentaController extends BaseController
         return redirect()->to('admin/ventas/listar')->with('message', 'Estado actualizado correctamente');
     }
 
-    public function generarFactura($venta_id)
+    public function factura($venta_id)
     {
         if (session()->get('rol') !== 'admin') {
             return redirect()->to('/')->with('error', 'No tienes permisos para realizar esta acción');
@@ -176,30 +176,24 @@ class VentaController extends BaseController
             return redirect()->to('admin/ventas/listar')->with('error', 'Venta no encontrada');
         }
 
-        // Verificar si ya existe una factura
+        $items = $this->ventaModel->getItemsVenta($venta_id);
         $factura = $this->facturaModel->where('venta_id', $venta_id)->first();
-        if (!$factura) {
-            // Obtener información del cliente
-            $usuario = $this->usuarioModel->find($venta['usuario_id']);
-            $persona = $this->usuarioModel->getPersona($venta['usuario_id']);
-            
-            $datosFiscales = $persona 
-                ? "{$persona['tipo_documento']}: {$persona['documento']}, Nombre: {$persona['nombre']} {$persona['apellido']}"
-                : "Cliente: {$usuario['username']}";
+        $configuracion = (new \App\Models\ConfiguracionModel())->find(1);
+        $usuario = $this->usuarioModel->getUsuarioCompleto($venta['usuario_id']);
+        $direccion = $this->direccionEnvioModel->where('venta_id', $venta_id)->first();
+        $pago = $this->pagoModel->where('venta_id', $venta_id)->first();
 
-            // Generar factura (simulado)
-            $facturaData = [
-                'venta_id' => $venta_id,
-                'datos_fiscales' => $datosFiscales,
-                'pdf_url' => "facturas/factura-{$venta_id}.pdf"
-            ];
-            
-            $this->facturaModel->insert($facturaData);
-            $factura = $this->facturaModel->where('venta_id', $venta_id)->first();
-        }
+        $data = [
+            'titulo' => 'Factura #' . $venta_id,
+            'venta' => $venta,
+            'items' => $items,
+            'factura' => $factura,
+            'configuracion' => $configuracion,
+            'usuario' => $usuario,
+            'direccion' => $direccion,
+            'pago' => $pago
+        ];
 
-        // Aquí iría la lógica para generar el PDF real
-        // Por ahora redirigimos a la URL simulada
-        return redirect()->to($factura['pdf_url']);
+        return view('admin/ventas/factura', $data);
     }
 }

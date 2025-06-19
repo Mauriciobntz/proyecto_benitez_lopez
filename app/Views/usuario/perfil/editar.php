@@ -10,16 +10,6 @@
                 </div>
                 <div class="card-body">
                     <form action="<?= base_url('perfil/actualizar') ?>" method="POST">
-                        <div class="row mb-4 text-center">
-                            <div class="col">
-                                <img src="https://ui-avatars.com/api/?name=<?= urlencode(($usuario['persona']['nombre'] ?? '') . ' ' . ($usuario['persona']['apellido'] ?? '')) ?>&background=0D8ABC&color=fff" 
-                                     alt="Avatar" class="profile-pic rounded-circle mb-3">
-                                <div>
-                                    <input type="file" class="form-control d-none" id="uploadPhoto" name="foto">
-                                    <label for="uploadPhoto" class="btn btn-outline-primary">Cambiar Foto</label>
-                                </div>
-                            </div>
-                        </div>
                         
                         <div class="row g-3">
                             <div class="col-md-6">

@@ -122,7 +122,7 @@
                                        class="form-control <?= session('errors.pais') ? 'is-invalid' : '' ?>" 
                                        id="pais" 
                                        name="pais" 
-                                       value="<?= old('pais', $direccion['pais'] ?? 'España') ?>" 
+                                       value="<?= old('pais', $direccion['pais'] ?? 'Argentina') ?>" 
                                        required>
                                 <?php if (session('errors.pais')): ?>
                                     <div class="invalid-feedback">

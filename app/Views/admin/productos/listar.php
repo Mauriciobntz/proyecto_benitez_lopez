@@ -105,7 +105,7 @@
                                     echo esc($categoriaNombre);
                                     ?>
                                 </td>
-                                <td>€<?= number_format($producto['precio'], 2) ?></td>
+                                <td>$<?= number_format($producto['precio'], 2) ?></td>
                                 <td><?= $producto['stock'] ?></td>
                                 <td>
                                     <span class="badge <?= $producto['activo'] ? 'bg-success' : 'bg-secondary' ?>">

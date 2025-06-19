@@ -44,9 +44,9 @@
                                                 </div>
                                             </div>
                                         </td>
-                                        <td>€<?= number_format($item['precio_unitario'], 2) ?></td>
+                                        <td>$<?= number_format($item['precio_unitario'], 2) ?></td>
                                         <td><?= $item['cantidad'] ?></td>
-                                        <td>€<?= number_format($item['precio_unitario'] * $item['cantidad'], 2) ?></td>
+                                        <td>$<?= number_format($item['precio_unitario'] * $item['cantidad'], 2) ?></td>
                                     </tr>
                                 <?php endforeach; ?>
                             </tbody>
@@ -120,7 +120,7 @@
                         <table class="table table-sm">
                             <tr class="table-active">
                                 <th>Total</th>
-                                <td class="text-end fw-bold">€<?= number_format($venta['total'], 2) ?></td>
+                                <td class="text-end fw-bold">$<?= number_format($venta['total'], 2) ?></td>
                             </tr>
                         </table>
                     </div>

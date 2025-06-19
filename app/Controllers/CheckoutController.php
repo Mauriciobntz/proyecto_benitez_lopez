@@ -317,7 +317,10 @@ class CheckoutController extends BaseController
                 'id_direccion_envio' => 0 // temporal, se actualiza luego
             ], true);
             // 2. Crear dirección_envio
+            // Obtener datos personales del usuario
             $persona = $this->personaModel->getPersonaByUsuario($usuario_id);
+
+            // Crear dirección_envio con todos los datos necesarios
             $id_direccion_envio = $this->direccionEnvioModel->insert([
                 'venta_id' => $venta_id,
                 'direccion' => $direccion['direccion'],
@@ -325,9 +328,9 @@ class CheckoutController extends BaseController
                 'provincia' => $direccion['provincia'],
                 'codigo_postal' => $direccion['codigo_postal'],
                 'pais' => $direccion['pais'],
-                'nombre_destinatario' => session()->get('nombre') ?? '',
-                'telefono_contacto' => $persona['telefono'] ?? '',
-                'instrucciones_entrega' => ''
+                'nombre_destinatario' => $persona['nombre'] . ' ' . $persona['apellido'], // Nombre completo
+                'telefono_contacto' => $persona['telefono'],
+                'instrucciones_entrega' => '' // O cualquier instrucción que se haya capturado
             ], true);
             // 3. Actualizar venta con id_direccion_envio
             $this->ventaModel->update($venta_id, ['id_direccion_envio' => $id_direccion_envio]);
@@ -343,6 +346,8 @@ class CheckoutController extends BaseController
                 // Actualizar stock
                 $nuevo_stock = $producto['stock'] - $item['cantidad'];
                 $this->productoModel->update($item['producto_id'], ['stock' => $nuevo_stock]);
+                // Actualizar ventas totales
+                $this->productoModel->incrementarVentas($item['producto_id'], $item['cantidad']);
             }
             // 5. Registrar pago
             $pago_data = [
@@ -373,6 +378,10 @@ class CheckoutController extends BaseController
             ]);
             // 8. Vaciar carrito
             $this->carritoItemModel->where('carrito_id', $carrito['id_carrito'])->delete();
+            // si es compra directa, eliminar carrito
+            if (session()->has('checkout_directo')) {
+                    session()->remove('checkout_directo');
+            }
             // 9. Confirmar transacción
             $db->transCommit();
             session()->remove('checkout_data');
@@ -410,5 +419,11 @@ class CheckoutController extends BaseController
             . view('navbar')
             . view('checkout/confirmacion', $data)
             . view('footer');
+    }
+
+    public function redirigirAgregarDireccion()
+    {
+        session()->setFlashdata('from_checkout', true);
+        return redirect()->to('perfil/direcciones/agregar');
     }
 }

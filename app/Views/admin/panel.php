@@ -94,7 +94,7 @@
                                     <td>#<?= $venta['id_venta'] ?></td>
                                     <td><?= $venta['nombre'] ?> <?= $venta['apellido'] ?></td>
                                     <td><?= date('d/m/Y', strtotime($venta['fecha_venta'])) ?></td>
-                                    <td>€<?= number_format($venta['total'], 2) ?></td>
+                                    <td>$<?= number_format($venta['total'], 2) ?></td>
                                     <td><span class="badge <?= $badgeClass ?>"><?= ucfirst($venta['estado']) ?></span></td>
                                     <td><?= isset($venta['metodo_pago']) ? ucfirst(strtolower($venta['metodo_pago'])) : 'No especificado' ?></td>
                                     <td>

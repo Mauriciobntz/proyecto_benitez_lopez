@@ -62,9 +62,12 @@ class ResenaModel extends Model
      */
     public function getPromedioCalificacion($producto_id)
     {
-        return $this->selectAvg('calificacion', 'promedio')
-                   ->where('producto_id', $producto_id)
-                   ->first();
+        $result = $this->selectAvg('calificacion', 'promedio')
+                ->where('producto_id', $producto_id)
+                ->first();
+        
+        // Si no hay reseñas, devolver 0, sino devolver el promedio
+        return $result ? (float)$result['promedio'] : 0;
     }
 
     /**
@@ -98,7 +101,7 @@ class ResenaModel extends Model
 
     /**
      * Verifica si el usuario ha comprado un producto
-     */
+        */
     public function usuarioComproProducto($usuario_id, $producto_id)
     {
         return $this->db->table('venta_items vi')

@@ -52,9 +52,9 @@
                                 <?php foreach ($items as $item): ?>
                                 <tr>
                                     <td><?= $item['producto']['nombre'] ?></td>
-                                    <td>€<?= number_format($item['producto']['precio'], 2) ?></td>
+                                    <td>$<?= number_format($item['producto']['precio'], 2) ?></td>
                                     <td><?= $item['cantidad'] ?></td>
-                                    <td>€<?= number_format($item['subtotal'], 2) ?></td>
+                                    <td>$<?= number_format($item['subtotal'], 2) ?></td>
                                 </tr>
                                 <?php endforeach; ?>
                             </tbody>
@@ -67,7 +67,7 @@
                             <table class="table table-borderless">
                                 <tr class="fw-bold">
                                     <td>Total:</td>
-                                    <td class="text-end">€<?= number_format($total, 2) ?></td>
+                                    <td class="text-end">$<?= number_format($total, 2) ?></td>
                                 </tr>
                             </table>
                         </div>
