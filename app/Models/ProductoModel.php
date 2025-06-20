@@ -119,4 +119,23 @@ class ProductoModel extends Model
             ->where('id_producto', $producto_id)
             ->update();
     }
+
+    // Método para obtener solo productos activos (para catálogo público)
+    public function getProductosActivos()
+    {
+        return $this->where('activo', 1)->findAll();
+    }
+
+    // Método para obtener un producto activo por ID (para catálogo público)
+    public function getProductoActivo($id)
+    {
+        return $this->where('activo', 1)->find($id);
+    }
+
+    // Método para verificar si un producto está activo
+    public function isProductoActivo($id)
+    {
+        $producto = $this->where('activo', 1)->find($id);
+        return $producto !== null;
+    }
 }

@@ -106,6 +106,15 @@ class CheckoutController extends BaseController
         $total = 0;
         foreach ($items as &$item) {
             $producto = $this->productoModel->find($item['producto_id']);
+            if (!$producto) {
+                return redirect()->to('carrito')->with('error', 'Uno de los productos ya no existe');
+            }
+            
+            // Verificar que el producto esté activo
+            if ($producto['activo'] != 1) {
+                return redirect()->to('carrito')->with('error', 'El producto "' . $producto['nombre'] . '" ya no está disponible');
+            }
+            
             $item['producto'] = $producto;
             $item['subtotal'] = $producto['precio'] * $item['cantidad'];
             $total += $item['subtotal'];
@@ -191,6 +200,15 @@ class CheckoutController extends BaseController
         $total = 0;
         foreach ($items as &$item) {
             $producto = $this->productoModel->find($item['producto_id']);
+            if (!$producto) {
+                return redirect()->to('carrito')->with('error', 'Uno de los productos ya no existe');
+            }
+            
+            // Verificar que el producto esté activo
+            if ($producto['activo'] != 1) {
+                return redirect()->to('carrito')->with('error', 'El producto "' . $producto['nombre'] . '" ya no está disponible');
+            }
+            
             $item['producto'] = $producto;
             $item['subtotal'] = $producto['precio'] * $item['cantidad'];
             $total += $item['subtotal'];
@@ -271,7 +289,16 @@ class CheckoutController extends BaseController
         $total = 0;
         foreach ($items as $item) {
             $producto = $this->productoModel->find($item['producto_id']);
-            if (!$producto || $producto['stock'] < $item['cantidad']) {
+            if (!$producto) {
+                return redirect()->to('carrito')->with('error', 'Uno de los productos ya no existe');
+            }
+            
+            // Verificar que el producto esté activo
+            if ($producto['activo'] != 1) {
+                return redirect()->to('carrito')->with('error', 'El producto "' . $producto['nombre'] . '" ya no está disponible');
+            }
+            
+            if ($producto['stock'] < $item['cantidad']) {
                 return redirect()->to('carrito')->with('error', 'Stock insuficiente para ' . ($producto['nombre'] ?? 'un producto'));
             }
             $total += $producto['precio'] * $item['cantidad'];

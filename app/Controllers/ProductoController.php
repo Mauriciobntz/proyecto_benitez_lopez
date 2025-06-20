@@ -25,7 +25,7 @@ class ProductoController extends BaseController
 
     public function productos()
     {
-        $productos = $this->productoModel->findAll();
+        $productos = $this->productoModel->getProductosActivos();
         
         $data = [
             'titulo' => 'Productos',
@@ -38,7 +38,7 @@ class ProductoController extends BaseController
 
     public function detalle($producto_id)
     {
-        $producto = $this->productoModel->find($producto_id);
+        $producto = $this->productoModel->getProductoActivo($producto_id);
         
         if (!$producto) {
             return redirect()->to('productos')->with('error', 'Producto no encontrado');

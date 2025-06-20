@@ -49,6 +49,15 @@ class CarritoController extends BaseController
         $total = 0;
         
         if ($carrito) {
+            // Limpiar productos desactivados automáticamente
+            $productosEliminados = $this->limpiarProductosDesactivados($carrito['id_carrito']);
+            
+            // Mostrar mensaje si se eliminaron productos
+            if (!empty($productosEliminados)) {
+                $mensaje = 'Los siguientes productos ya no están disponibles y han sido removidos del carrito: ' . implode(', ', $productosEliminados);
+                session()->setFlashdata('warning', $mensaje);
+            }
+            
             $items = $this->carritoItemModel->getItemsByCarrito($carrito['id_carrito']);
             
             foreach ($items as &$item) {
@@ -97,9 +106,9 @@ class CarritoController extends BaseController
             return redirect()->to('login')->with('error', 'Debes iniciar sesión para agregar productos al carrito');
         }
         
-        $producto = $this->productoModel->find($producto_id);
+        $producto = $this->productoModel->getProductoActivo($producto_id);
         if (!$producto) {
-            return redirect()->back()->with('error', 'El producto no existe');
+            return redirect()->back()->with('error', 'El producto no existe o no está disponible');
         }
         
         if ($producto['stock'] < $cantidad) {
@@ -174,5 +183,22 @@ class CarritoController extends BaseController
         }
         
         return redirect()->to('carrito')->with('message', 'Carrito vaciado');
+    }
+
+    // Limpiar productos desactivados del carrito
+    private function limpiarProductosDesactivados($carrito_id)
+    {
+        $items = $this->carritoItemModel->getItemsByCarrito($carrito_id);
+        $productosEliminados = [];
+        
+        foreach ($items as $item) {
+            if (!$this->productoModel->isProductoActivo($item['producto_id'])) {
+                $producto = $this->productoModel->find($item['producto_id']);
+                $productosEliminados[] = $producto['nombre'] ?? 'Producto desconocido';
+                $this->carritoItemModel->eliminarItem($item['id_item']);
+            }
+        }
+        
+        return $productosEliminados;
     }
 }
