@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 20-06-2025 a las 02:16:43
+-- Tiempo de generación: 20-06-2025 a las 03:21:56
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -46,7 +46,8 @@ INSERT INTO `carritos` (`id_carrito`, `usuario_id`, `fecha_creacion`) VALUES
 (6, 4, '2025-06-19 16:56:05'),
 (7, 4, '2025-06-19 16:56:20'),
 (8, 3, '2025-06-19 18:35:22'),
-(9, 23, '2025-06-19 18:38:01');
+(9, 23, '2025-06-19 18:38:01'),
+(10, 24, '2025-06-20 01:01:37');
 
 -- --------------------------------------------------------
 
@@ -72,7 +73,11 @@ INSERT INTO `carrito_items` (`id_item`, `carrito_id`, `producto_id`, `cantidad`)
 (57, 6, 5, 1),
 (58, 7, 26, 1),
 (61, 8, 6, 1),
-(62, 9, 34, 1);
+(62, 9, 34, 1),
+(77, 10, 5, 1),
+(78, 10, 16, 2),
+(79, 10, 34, 1),
+(80, 10, 9, 1);
 
 -- --------------------------------------------------------
 
@@ -257,7 +262,9 @@ INSERT INTO `direcciones` (`id_direccion`, `usuario_id`, `tipo`, `alias`, `direc
 (3, 3, 'particular', 'Domicilio', 'Plaza Central 789', '08001', 'Barcelona', 'Barcelona', 'España', 1, '2025-05-23 00:02:00'),
 (4, 4, 'particular', 'Casa', 'Calle Falsa 123', '28001', 'Madrid', 'Madrid', 'España', 0, '2025-06-16 15:07:34'),
 (5, 4, 'trabajo', 'Oficina', 'Avenida Real 456', '28002', 'Madrid', 'Madrid', 'España', 1, '2025-06-16 15:07:34'),
-(7, 22, 'particular', 'Casa', '9 de Julio', '3400', 'clorinda', 'Corrientes', 'Argentina', 0, '2025-06-18 23:30:32');
+(7, 22, 'particular', 'Casa', '9 de Julio', '3400', 'clorinda', 'Corrientes', 'Argentina', 0, '2025-06-18 23:30:32'),
+(11, 24, 'particular', 'Casa', 'Calle Falsa 123', '3400', 'Corrientes', 'Corrientes', 'Argentina', 1, '2025-06-20 01:01:37'),
+(12, 24, 'trabajo', 'Oficina', 'Av. Libertad 456', '3400', 'Corrientes', 'Corrientes', 'Argentina', 0, '2025-06-20 01:01:37');
 
 -- --------------------------------------------------------
 
@@ -296,7 +303,9 @@ INSERT INTO `direccion_envio` (`id_direccion_envio`, `venta_id`, `direccion`, `c
 (26, 53, 'Junin 123', 'Corrientes', 'Corrientes', '3400', 'Argentina', 'Pepe González', '611111111', ''),
 (27, 54, 'Calle Falsa 123', 'Madrid', 'Madrid', '28001', 'España', 'Pepe González', '611111111', ''),
 (28, 55, 'Calle Falsa 123', 'Madrid', 'Madrid', '28001', 'España', 'Pepe González', '611111111', ''),
-(29, 56, 'Calle Falsa 123', 'Madrid', 'Madrid', '28001', 'España', 'Pepe González', '611111111', '');
+(29, 56, 'Calle Falsa 123', 'Madrid', 'Madrid', '28001', 'España', 'Pepe González', '611111111', ''),
+(30, 57, 'Calle Falsa 123', 'Madrid', 'Madrid', '28001', 'España', 'Pepe González', '611111111', ''),
+(31, 58, 'Calle Falsa 123', 'Corrientes', 'Corrientes', '3400', 'Argentina', 'Juan Pérez', '3794123456', 'Dejar en recepción');
 
 -- --------------------------------------------------------
 
@@ -320,7 +329,8 @@ INSERT INTO `facturas` (`id_factura`, `venta_id`, `fecha_emision`, `datos_fiscal
 (1, 11, '2025-06-11 18:53:57', 'DNI: 87654321B, Nombre: Juan Pérez', 'facturas/factura-11.pdf'),
 (2, 13, '2025-06-19 02:23:44', 'DNI: 87654321B, Nombre: Juan Pérez', 'facturas/factura-13.pdf'),
 (3, 14, '2025-06-19 02:24:06', 'DNI: 35478963C, Nombre: Pepe González', 'facturas/factura-14.pdf'),
-(4, 50, '2025-06-19 02:30:54', 'DNI: 29100502B, Nombre: Enzo Benítez', 'facturas/factura-50.pdf');
+(4, 50, '2025-06-19 02:30:54', 'DNI: 29100502B, Nombre: Enzo Benítez', 'facturas/factura-50.pdf'),
+(5, NULL, '2025-06-20 01:02:44', 'DNI: 40123456, Nombre: Juan Pérez', NULL);
 
 -- --------------------------------------------------------
 
@@ -386,7 +396,9 @@ INSERT INTO `historico_ventas` (`id_historico`, `venta_id`, `estado_anterior`, `
 (72, 52, 'pagado', 'cancelado', 'Estado cambiado a cancelado', 6, '2025-06-19 11:32:22'),
 (73, 51, 'pagado', 'cancelado', 'Estado cambiado a cancelado', 6, '2025-06-19 11:32:28'),
 (74, 55, 'pendiente', 'pagado', 'Compra realizada', 4, '2025-06-19 16:00:23'),
-(75, 56, 'pendiente', 'pagado', 'Compra realizada', 4, '2025-06-19 16:24:12');
+(75, 56, 'pendiente', 'pagado', 'Compra realizada', 4, '2025-06-19 16:24:12'),
+(76, 57, 'pendiente', 'pagado', 'Compra realizada', 4, '2025-06-20 00:46:08'),
+(77, 57, 'pagado', 'entregado', 'Estado cambiado a entregado', 6, '2025-06-19 21:47:40');
 
 -- --------------------------------------------------------
 
@@ -424,7 +436,9 @@ INSERT INTO `pagos` (`id_pago`, `venta_id`, `monto`, `metodo_pago`, `estado`, `f
 (33, 53, 750.00, 'Transferencia', 'exitoso', '2025-06-19 07:21:37', NULL, '123456789101112'),
 (34, 54, 1358.00, 'Contrapago', 'exitoso', '2025-06-19 17:30:18', NULL, NULL),
 (35, 55, 679.00, 'Contrapago', 'exitoso', '2025-06-19 19:00:23', NULL, NULL),
-(36, 56, 3845.00, 'Bitcoin', 'exitoso', '2025-06-19 19:24:12', NULL, NULL);
+(36, 56, 3845.00, 'Bitcoin', 'exitoso', '2025-06-19 19:24:12', NULL, NULL),
+(37, 57, 1100.00, 'Contrapago', 'exitoso', '2025-06-20 03:46:08', NULL, NULL),
+(38, 58, 3845.00, 'Tarjeta', 'exitoso', '2025-06-20 01:01:38', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -463,7 +477,8 @@ INSERT INTO `personas` (`id_persona`, `usuario_id`, `tipo_documento`, `documento
 (10, 19, 'DNI', '31222333J', 'Baul', 'Martínez', '1991-12-24', 'H', '600444444', '2025-06-11 06:11:42', '2025-06-11 06:11:42'),
 (11, 20, 'DNI', '30201011Z', 'Jesus', 'Nazareno', '0001-01-01', 'H', '600555555', '2025-06-11 06:11:42', '2025-06-11 06:11:42'),
 (12, 21, 'DNI', '32323232Q', 'Yoyo', 'Tester', '1999-09-09', 'O', '600666666', '2025-06-11 06:11:42', '2025-06-11 06:11:42'),
-(13, 22, 'DNI', '43329300', 'Prueba', 'González', '0000-00-00', 'H', '3794000000', '2025-06-18 23:29:25', '2025-06-18 23:29:44');
+(13, 22, 'DNI', '43329300', 'Prueba', 'González', '0000-00-00', 'H', '3794000000', '2025-06-18 23:29:25', '2025-06-18 23:29:44'),
+(14, 24, 'DNI', '40123456', 'Juan', 'Pérez', '1990-05-15', 'H', '3794123456', '2025-06-20 01:01:37', '2025-06-20 01:01:37');
 
 -- --------------------------------------------------------
 
@@ -496,60 +511,60 @@ CREATE TABLE `productos` (
 
 INSERT INTO `productos` (`id_producto`, `nombre`, `descripcion`, `marca`, `modelo`, `precio`, `stock`, `imagen_url`, `categoria_id`, `fecha_alta`, `especificaciones`, `garantia_meses`, `peso_kg`, `dimensiones`, `activo`, `ventas_totales`) VALUES
 (4, 'Xiaomi 14T', '512GB RAM | Color: Black', 'Xiaomi', '14T', 750.00, 27, 'xiaomi14t.png', 4, '2025-06-10 02:26:52', '{\"Origen\":\"China\",\"Garantia\":\"Extendida\",\"Ram\":\"516GB\"}', 24, NULL, NULL, 1, 2),
-(5, 'Lenovo ThinkPad X1 Carbon', 'Intel Core i7 vPro | Teclado mecánico', 'Lenovo', 'ThinkPad X1 Carbon', 1500.00, 15, 'lenovo.png', 5, '2025-06-09 23:26:52', '{\r\n  \"Procesador\": \"Intel Core i7 vPro\",\r\n  \"RAM\": \"16GB\",\r\n  \"Almacenamiento\": \"512GB SSD\",\r\n  \"Pantalla\": \"14\" FHD\",\r\n  \"Sistema Operativo\": \"Windows 11 Pro\",\r\n  \"Peso\": \"1.13 kg\",\r\n  \"Conectividad\": \"Wi-Fi 6, Bluetooth 5.2\"\r\n}', 36, NULL, NULL, 1, 2),
-(6, 'Poco X6 Pro', '256GB RAM | Color: Yellow', 'Xiaomi', 'X6 Pro', 350.00, 41, 'pocox6pro.png', 4, '2025-06-09 23:26:52', '{\r\n  \"Procesador\": \"MediaTek Dimensity 1080\",\r\n  \"RAM\": \"8GB\",\r\n  \"Almacenamiento\": \"256GB\",\r\n  \"Pantalla\": \"6.67\" AMOLED 120Hz\",\r\n  \"Batería\": \"5000 mAh\",\r\n  \"Cámara Principal\": \"64MP\",\r\n  \"Sistema Operativo\": \"Android 13\"\r\n}', 12, NULL, NULL, 1, 3),
-(7, 'Xiaomi Pad 6', 'Snapdragon 870 | Pantalla 11 2,8K', 'Xiaomi', 'Pad 6', 369.00, 25, 'xiaomipad6.png', 8, '2025-06-09 23:26:52', '{\r\n  \"Procesador\": \"Snapdragon 870\",\r\n  \"RAM\": \"6GB/8GB\",\r\n  \"Almacenamiento\": \"128GB/256GB\",\r\n  \"Pantalla\": \"11\" 2.8K 144Hz\",\r\n  \"Batería\": \"8840 mAh\",\r\n  \"Sistema Operativo\": \"MIUI Pad 14\",\r\n  \"Peso\": \"490g\"\r\n}', 12, NULL, NULL, 1, 0),
-(8, 'Samsung A55 5G', '512GB RAM | Color: White', 'Samsung', 'A55 5G', 450.00, 29, 'a55.png', 4, '2025-06-09 23:26:52', '{\r\n  \"Procesador\": \"Exynos 1480\",\r\n  \"RAM\": \"8GB\",\r\n  \"Almacenamiento\": \"128GB/256GB\",\r\n  \"Pantalla\": \"6.6\" Super AMOLED 120Hz\",\r\n  \"Batería\": \"5000 mAh\",\r\n  \"Cámara Principal\": \"50MP\",\r\n  \"Sistema Operativo\": \"Android 14\"\r\n}', 24, NULL, NULL, 1, 1),
-(9, 'Samsung S25 Ultra', '1024GB RAM | Color: White', 'Samsung', 'S25 Ultra', 1100.00, 18, 's25ultra.png', 4, '2025-06-09 23:26:52', '{\r\n  \"Procesador\": \"Snapdragon 8 Gen 3\",\r\n  \"RAM\": \"12GB/16GB\",\r\n  \"Almacenamiento\": \"256GB/512GB/1TB\",\r\n  \"Pantalla\": \"6.8\" Dynamic AMOLED 2X 144Hz\",\r\n  \"Batería\": \"5000 mAh\",\r\n  \"Cámara Principal\": \"200MP\",\r\n  \"Sistema Operativo\": \"Android 15\"\r\n}', 36, NULL, NULL, 1, 0),
-(10, 'iPhone 16', '512GB RAM | Color: Blue', 'Apple', 'iPhone 16', 1000.00, 24, 'iphone16.png', 4, '2025-06-09 23:26:52', '{\r\n  \"Procesador\": \"A18 Bionic\",\r\n  \"RAM\": \"6GB\",\r\n  \"Almacenamiento\": \"128GB/256GB/512GB\",\r\n  \"Pantalla\": \"6.1\" Super Retina XDR\",\r\n  \"Batería\": \"3279 mAh\",\r\n  \"Cámara Principal\": \"48MP\",\r\n  \"Sistema Operativo\": \"iOS 18\"\r\n}', 12, NULL, NULL, 1, 3),
-(11, 'iPhone 16 Pro Max', '1024GB RAM | Color: White', 'Apple', 'iPhone 16 Pro Max', 1250.00, 13, 'iphone16promax.png', 4, '2025-06-09 23:26:52', '{\r\n  \"Procesador\": \"A18 Pro Bionic\",\r\n  \"RAM\": \"8GB\",\r\n  \"Almacenamiento\": \"256GB/512GB/1TB\",\r\n  \"Pantalla\": \"6.7\" Super Retina XDR ProMotion\",\r\n  \"Batería\": \"4422 mAh\",\r\n  \"Cámara Principal\": \"48MP + 12MP + 12MP\",\r\n  \"Sistema Operativo\": \"iOS 18\"\r\n}', 12, NULL, NULL, 1, 0),
-(12, 'Redmi Note 13 Pro', '512GB RAM | Color: Blue', 'Xiaomi', 'Redmi Note 13 Pro', 450.00, 30, 'redminote13pro.png', 4, '2025-06-10 06:08:43', '{\r\n  \"Procesador\": \"Snapdragon 7s Gen 2\",\r\n  \"RAM\": \"8GB/12GB\",\r\n  \"Almacenamiento\": \"128GB/256GB\",\r\n  \"Pantalla\": \"6.67\" AMOLED 120Hz\",\r\n  \"Batería\": \"5100 mAh\",\r\n  \"Cámara Principal\": \"200MP\",\r\n  \"Sistema Operativo\": \"Android 13\"\r\n}', 12, NULL, NULL, 1, 0),
-(13, 'Poco X6', '256GB RAM | Color: White', 'Xiaomi', 'Poco X6', 250.00, 40, 'pocox6.png', 4, '2025-06-10 06:08:43', '{\r\n  \"Procesador\": \"Snapdragon 7s Gen 2\",\r\n  \"RAM\": \"8GB\",\r\n  \"Almacenamiento\": \"256GB\",\r\n  \"Pantalla\": \"6.67\" AMOLED 120Hz\",\r\n  \"Batería\": \"5100 mAh\",\r\n  \"Cámara Principal\": \"64MP\",\r\n  \"Sistema Operativo\": \"Android 13\"\r\n}', 12, NULL, NULL, 1, 0),
-(14, 'Redmi Buds 4', 'in-ear | USB tipo C', 'Xiaomi', 'Redmi Buds 4', 120.00, 50, 'redmibuds4.png', 7, '2025-06-10 06:08:43', '{\r\n  \"Tipo\": \"In-ear inalámbricos\",\r\n  \"Conectividad\": \"Bluetooth 5.2\",\r\n  \"Autonomía\": \"30h (con estuche)\",\r\n  \"Cancelación de ruido\": \"No\",\r\n  \"Resistencia\": \"IP54\",\r\n  \"Peso\": \"4.5g por auricular\"\r\n}', 12, NULL, NULL, 1, 1),
+(5, 'Lenovo ThinkPad X1 Carbon', 'Intel Core i7 vPro | Teclado mecánico', 'Lenovo', 'ThinkPad X1 Carbon', 1500.00, 15, 'lenovo.png', 5, '2025-06-09 23:26:52', '{\"Procesador\":\"Intel Core i7 vPro\",\"RAM\":\"16GB\",\"Almacenamiento\":\"512GB SSD\",\"Pantalla\":\"14\\\" FHD\",\"Sistema Operativo\":\"Windows 11 Pro\",\"Peso\":\"1.13 kg\",\"Conectividad\":\"Wi-Fi 6, Bluetooth 5.2\"}', 36, NULL, NULL, 1, 2),
+(6, 'Poco X6 Pro', '256GB RAM | Color: Yellow', 'Xiaomi', 'X6 Pro', 350.00, 41, 'pocox6pro.png', 4, '2025-06-09 23:26:52', '{\"Procesador\":\"MediaTek Dimensity 1080\",\"RAM\":\"8GB\",\"Almacenamiento\":\"256GB\",\"Pantalla\":\"6.67\\\" AMOLED 120Hz\",\"Bater\\u00eda\":\"5000 mAh\",\"C\\u00e1mara Principal\":\"64MP\",\"Sistema Operativo\":\"Android 13\"}', 12, NULL, NULL, 0, 3),
+(7, 'Xiaomi Pad 6', 'Snapdragon 870 | Pantalla 11 2,8K', 'Xiaomi', 'Pad 6', 369.00, 25, 'xiaomipad6.png', 8, '2025-06-09 23:26:52', '{\"Procesador\":\"Snapdragon 870\",\"RAM\":\"6GB/8GB\",\"Almacenamiento\":\"128GB/256GB\",\"Pantalla\":\"11\\\" 2.8K 144Hz\",\"Batería\":\"8840 mAh\",\"Sistema Operativo\":\"MIUI Pad 14\",\"Peso\":\"490g\"}', 12, NULL, NULL, 1, 0),
+(8, 'Samsung A55 5G', '512GB RAM | Color: White', 'Samsung', 'A55 5G', 450.00, 29, 'a55.png', 4, '2025-06-09 23:26:52', '{\"Procesador\":\"Exynos 1480\",\"RAM\":\"8GB\",\"Almacenamiento\":\"128GB/256GB\",\"Pantalla\":\"6.6\\\" Super AMOLED 120Hz\",\"Batería\":\"5000 mAh\",\"Cámara Principal\":\"50MP\",\"Sistema Operativo\":\"Android 14\"}', 24, NULL, NULL, 1, 1),
+(9, 'Samsung S25 Ultra', '1024GB RAM | Color: White', 'Samsung', 'S25 Ultra', 1100.00, 17, 's25ultra.png', 4, '2025-06-09 23:26:52', '{\"Procesador\":\"Snapdragon 8 Gen 3\",\"RAM\":\"12GB/16GB\",\"Almacenamiento\":\"256GB/512GB/1TB\",\"Pantalla\":\"6.8\\\" Dynamic AMOLED 2X 144Hz\",\"Batería\":\"5000 mAh\",\"Cámara Principal\":\"200MP\",\"Sistema Operativo\":\"Android 15\"}', 36, NULL, NULL, 1, 1),
+(10, 'iPhone 16', '512GB RAM | Color: Blue', 'Apple', 'iPhone 16', 1000.00, 24, 'iphone16.png', 4, '2025-06-09 23:26:52', '{\"Procesador\":\"A18 Bionic\",\"RAM\":\"6GB\",\"Almacenamiento\":\"128GB/256GB/512GB\",\"Pantalla\":\"6.1\\\" Super Retina XDR\",\"Batería\":\"3279 mAh\",\"Cámara Principal\":\"48MP\",\"Sistema Operativo\":\"iOS 18\"}', 12, NULL, NULL, 1, 3),
+(11, 'iPhone 16 Pro Max', '1024GB RAM | Color: White', 'Apple', 'iPhone 16 Pro Max', 1250.00, 13, 'iphone16promax.png', 4, '2025-06-09 23:26:52', '{\"Procesador\":\"A18 Pro Bionic\",\"RAM\":\"8GB\",\"Almacenamiento\":\"256GB/512GB/1TB\",\"Pantalla\":\"6.7\\\" Super Retina XDR ProMotion\",\"Batería\":\"4422 mAh\",\"Cámara Principal\":\"48MP + 12MP + 12MP\",\"Sistema Operativo\":\"iOS 18\"}', 12, NULL, NULL, 1, 0),
+(12, 'Redmi Note 13 Pro', '512GB RAM | Color: Blue', 'Xiaomi', 'Redmi Note 13 Pro', 450.00, 30, 'redminote13pro.png', 4, '2025-06-10 06:08:43', '{\"Procesador\":\"Snapdragon 7s Gen 2\",\"RAM\":\"8GB/12GB\",\"Almacenamiento\":\"128GB/256GB\",\"Pantalla\":\"6.67\\\" AMOLED 120Hz\",\"Batería\":\"5100 mAh\",\"Cámara Principal\":\"200MP\",\"Sistema Operativo\":\"Android 13\"}', 12, NULL, NULL, 1, 0),
+(13, 'Poco X6', '256GB RAM | Color: White', 'Xiaomi', 'Poco X6', 250.00, 40, 'pocox6.png', 4, '2025-06-10 06:08:43', '{\"Procesador\":\"Snapdragon 7s Gen 2\",\"RAM\":\"8GB\",\"Almacenamiento\":\"256GB\",\"Pantalla\":\"6.67\\\" AMOLED 120Hz\",\"Batería\":\"5100 mAh\",\"Cámara Principal\":\"64MP\",\"Sistema Operativo\":\"Android 13\"}', 12, NULL, NULL, 1, 0),
+(14, 'Redmi Buds 4', 'in-ear | USB tipo C', 'Xiaomi', 'Redmi Buds 4', 120.00, 50, 'redmibuds4.png', 7, '2025-06-10 06:08:43', '{\"Tipo\":\"In-ear inalámbricos\",\"Conectividad\":\"Bluetooth 5.2\",\"Autonomía\":\"30h (con estuche)\",\"Cancelación de ruido\":\"No\",\"Resistencia\":\"IP54\",\"Peso\":\"4.5g por auricular\"}', 12, NULL, NULL, 1, 1),
 (15, 'Redmi Buds 5', 'in-ear | USB tipo C', 'Xiaomi', 'Redmi Buds 5', 140.00, 44, 'redmibuds5.png', 7, '2025-06-10 06:08:43', '{\"Tipo\":\"in-ear\",\"Conectividad\":\"USB tipo C\"}', 12, NULL, NULL, 1, 0),
-(16, 'Apple AirPods Pro 2', 'Chip H2 | Cancelación de ruido mejorada + Modo ambiente', 'Apple', 'AirPods Pro 2', 249.99, 30, 'airPods.png', 7, '2025-06-10 06:08:43', '{\r\n  \"Tipo\": \"In-ear inalámbricos\",\r\n  \"Conectividad\": \"Bluetooth 5.3\",\r\n  \"Autonomía\": \"6h (30h con estuche)\",\r\n  \"Cancelación de ruido\": \"Activa\",\r\n  \"Resistencia\": \"IP54\",\r\n  \"Chip\": \"H2\",\r\n  \"Peso\": \"5.3g por auricular\"\r\n}', 12, NULL, NULL, 1, 1),
-(17, 'Samsung Galaxy Buds 2 Pro', 'Sonido Hi-Fi de 24 bits | Cancelación activa de ruido', 'Samsung', 'Galaxy Buds 2 Pro', 142.00, 35, 'galaxybuds.png', 7, '2025-06-10 06:08:43', '{\r\n  \"Tipo\": \"In-ear inalámbricos\",\r\n  \"Conectividad\": \"Bluetooth 5.3\",\r\n  \"Autonomía\": \"5h (18h con estuche)\",\r\n  \"Cancelación de ruido\": \"Activa\",\r\n  \"Resistencia\": \"IPX7\",\r\n  \"Peso\": \"5.5g por auricular\"\r\n}', 12, NULL, NULL, 1, 0),
-(18, 'Galaxy Book 3', '16GB RAM | 152GB SSD', 'Samsung', 'Galaxy Book 3', 1200.00, 19, 'galaxybook3.png', 5, '2025-06-10 06:08:43', '{\r\n  \"Procesador\": \"Intel Core i5-1340P\",\r\n  \"RAM\": \"16GB LPDDR5\",\r\n  \"Almacenamiento\": \"512GB SSD\",\r\n  \"Pantalla\": \"15.6\" FHD AMOLED\",\r\n  \"Sistema Operativo\": \"Windows 11\",\r\n  \"Peso\": \"1.55kg\",\r\n  \"Batería\": \"76Wh\"\r\n}', 24, NULL, NULL, 1, 0),
-(19, 'Galaxy Book 3 Pro', '16GB RAM | 1TB SSD', 'Samsung', 'Galaxy Book 3 Pro', 1500.00, 15, 'galaxybook3pro.png', 5, '2025-06-10 06:08:43', '{\r\n  \"Procesador\": \"Intel Core i7-1360P\",\r\n  \"RAM\": \"16GB LPDDR5\",\r\n  \"Almacenamiento\": \"1TB SSD\",\r\n  \"Pantalla\": \"16\" AMOLED 3K\",\r\n  \"Sistema Operativo\": \"Windows 11\",\r\n  \"Peso\": \"1.56kg\",\r\n  \"Batería\": \"76Wh\"\r\n}', 24, NULL, NULL, 1, 0),
-(20, 'MacBook Air M2', 'Apple M2 | Pantalla 13,6', 'Apple', 'MacBook Air M2', 1500.00, 25, 'macbookair2.png', 5, '2025-06-10 06:08:43', '{\r\n  \"Procesador\": \"Apple M2 (8-core)\",\r\n  \"RAM\": \"8GB/16GB\",\r\n  \"Almacenamiento\": \"256GB/512GB SSD\",\r\n  \"Pantalla\": \"13.6\" Liquid Retina\",\r\n  \"Sistema Operativo\": \"macOS\",\r\n  \"Peso\": \"1.24kg\",\r\n  \"Batería\": \"52.6Wh\"\r\n}', 24, NULL, NULL, 1, 1),
-(21, 'MacBook Pro M3', 'Apple M3 | Pantalla 120Hz', 'Apple', 'MacBook Pro M3', 1700.00, 14, 'macbookpro3.png', 5, '2025-06-10 06:08:43', '{\r\n  \"Procesador\": \"Apple M3 (10-core)\",\r\n  \"RAM\": \"16GB\",\r\n  \"Almacenamiento\": \"512GB SSD\",\r\n  \"Pantalla\": \"14.2\" Liquid Retina XDR\",\r\n  \"Sistema Operativo\": \"macOS\",\r\n  \"Peso\": \"1.61kg\",\r\n  \"Batería\": \"70Wh\"\r\n}', 24, NULL, NULL, 1, 0),
-(22, 'Dell XPS 13', 'Intel Core i7 | Pantalla 4k', 'Dell', 'XPS 13', 1400.00, 20, 'dell.png', 5, '2025-06-10 06:08:43', '{\r\n  \"Procesador\": \"Intel Core i7-1360P\",\r\n  \"RAM\": \"16GB LPDDR5\",\r\n  \"Almacenamiento\": \"512GB SSD\",\r\n  \"Pantalla\": \"13.4\" 4K UHD+\",\r\n  \"Sistema Operativo\": \"Windows 11\",\r\n  \"Peso\": \"1.17kg\",\r\n  \"Batería\": \"60Wh\"\r\n}', 24, NULL, NULL, 1, 0),
-(23, 'Asus ROG Zephyrus G14', 'AMD Ryzen 9 | RTX 4060', 'Asus', 'ROG Zephyrus G14', 1700.00, 9, 'zephyrus.png', 5, '2025-06-10 06:08:43', '{\r\n  \"Procesador\": \"AMD Ryzen 9 7940HS\",\r\n  \"RAM\": \"16GB DDR5\",\r\n  \"Almacenamiento\": \"1TB SSD\",\r\n  \"Pantalla\": \"14\" QHD 165Hz\",\r\n  \"GPU\": \"NVIDIA RTX 4060\",\r\n  \"Sistema Operativo\": \"Windows 11\",\r\n  \"Peso\": \"1.72kg\"\r\n}', 24, NULL, NULL, 1, 0),
-(24, 'Logitech MX Master 3S', 'Sensor de 8K DPI | Scroll MagSpeed', 'Logitech', 'MX Master 3S', 340.00, 30, 'logitechmouse.png', 6, '2025-06-10 06:08:43', '{\r\n  \"Tipo\": \"Ratón inalámbrico\",\r\n  \"Sensor\": \"8000 DPI\",\r\n  \"Conectividad\": \"Bluetooth/Unifying\",\r\n  \"Batería\": \"70 días\",\r\n  \"Botones\": \"7 programables\",\r\n  \"Peso\": \"141g\"\r\n}', 12, NULL, NULL, 1, 0),
-(25, 'Razer DeathAdder V3', 'Sensor Focus Pro 30K DPI | Super liviano (63g)', 'Razer', 'DeathAdder V3', 161.99, 40, 'razermouse.png', 6, '2025-06-10 06:08:43', '{\r\n  \"Tipo\": \"Ratón gaming\",\r\n  \"Sensor\": \"Focus Pro 30K DPI\",\r\n  \"Conectividad\": \"Cableado\",\r\n  \"Botones\": \"5 programables\",\r\n  \"Peso\": \"63g\",\r\n  \"Iluminación\": \"Razer Chroma RGB\"\r\n}', 12, NULL, NULL, 1, 0),
-(26, 'Redragon Kumara K552', 'Teclado mecánico compacto | Switches Outemu Blue', 'Redragon', 'Kumara K552', 70.00, 50, 'KUMARA.png', 6, '2025-06-10 06:08:43', '{\r\n  \"Tipo\": \"Teclado mecánico\",\r\n  \"Switches\": \"Outemu Blue\",\r\n  \"Iluminación\": \"LED rojo\",\r\n  \"Conectividad\": \"Cableado USB\",\r\n  \"Teclas\": \"87 (TKL)\",\r\n  \"Peso\": \"900g\"\r\n}', 12, NULL, NULL, 1, 0),
-(27, 'SteelSeries Apex Pro', 'Switches OmniPoint ajustables | Pantalla OLED integrada', 'SteelSeries', 'Apex Pro', 119.00, 25, 'steel.png', 6, '2025-06-10 06:08:43', '{\r\n  \"Tipo\": \"Teclado mecánico\",\r\n  \"Switches\": \"OmniPoint ajustables\",\r\n  \"Iluminación\": \"RGB\",\r\n  \"Conectividad\": \"Cableado USB\",\r\n  \"Teclas\": \"104\",\r\n  \"Pantalla\": \"OLED integrada\",\r\n  \"Peso\": \"1.2kg\"\r\n}', 12, NULL, NULL, 1, 0),
-(28, 'Elgato Stream Deck', '15 botones LCD programables | Integración con OBS, Twitch, Spotify, etc.', 'Elgato', 'Stream Deck', 250.00, 20, 'streamdeck.png', 6, '2025-06-10 06:08:43', '{\r\n  \"Tipo\": \"Panel de control\",\r\n  \"Botones\": \"15 LCD táctiles\",\r\n  \"Conectividad\": \"USB\",\r\n  \"Software\": \"Elgato Stream Deck\",\r\n  \"Compatibilidad\": \"Windows/macOS\",\r\n  \"Peso\": \"250g\"\r\n}', 12, NULL, NULL, 1, 0),
-(29, 'HyperX QuadCast', 'Micrófono de condensador con 4 patrones polares | Filtro antipop y shock mount integrados', 'HyperX', 'QuadCast', 139.99, 15, 'microfonohyper.png', 6, '2025-06-10 06:08:43', '{\r\n  \"Tipo\": \"Micrófono de condensador\",\r\n  \"Patrones\": \"4 (Estéreo, Omnidireccional, Cardioide, Bidireccional)\",\r\n  \"Conectividad\": \"USB\",\r\n  \"Frecuencia\": \"20Hz–20kHz\",\r\n  \"Peso\": \"350g\",\r\n  \"Incluye\": \"Soporte antivibraciones\"\r\n}', 12, NULL, NULL, 1, 0),
-(30, 'Logitech C920s Pro', 'Resolución Full HD 1080p | Micrófono estéreo dual', 'Logitech', 'C920s Pro', 49.99, 30, 'camaralogi.png', 6, '2025-06-10 06:08:43', '{\r\n  \"Tipo\": \"Webcam\",\r\n  \"Resolución\": \"1080p Full HD\",\r\n  \"Enfoque\": \"Automático\",\r\n  \"Micrófono\": \"Estéreo dual\",\r\n  \"Conectividad\": \"USB\",\r\n  \"Compatibilidad\": \"Windows/macOS\",\r\n  \"Peso\": \"150g\"\r\n}', 12, NULL, NULL, 1, 0),
-(31, 'iPad Pro M2', 'Apple M2 | Pantalla XDR 120Hz', 'Apple', 'iPad Pro M2', 799.00, 20, 'ipadprom2.png', 8, '2025-06-10 06:08:43', '{\r\n  \"Procesador\": \"Apple M2\",\r\n  \"RAM\": \"8GB/16GB\",\r\n  \"Almacenamiento\": \"128GB/256GB/512GB/1TB/2TB\",\r\n  \"Pantalla\": \"12.9\" XDR 120Hz\",\r\n  \"Batería\": \"40.88Wh\",\r\n  \"Sistema Operativo\": \"iPadOS\",\r\n  \"Peso\": \"682g\"\r\n}', 12, NULL, NULL, 1, 0),
-(32, 'iPad Air M2', 'Apple M2 | Pantalla Retina 10,9', 'Apple', 'iPad Air M2', 749.00, 25, 'ipadair13.png', 8, '2025-06-10 06:08:43', '{\r\n  \"Procesador\": \"Apple M2\",\r\n  \"RAM\": \"8GB\",\r\n  \"Almacenamiento\": \"64GB/256GB\",\r\n  \"Pantalla\": \"10.9\" Retina\",\r\n  \"Batería\": \"28.6Wh\",\r\n  \"Sistema Operativo\": \"iPadOS\",\r\n  \"Peso\": \"461g\"\r\n}', 12, NULL, NULL, 1, 1),
-(33, 'iPad (10ª generación)', 'Apple A14 | Pantalla Retina 10,9', 'Apple', 'iPad 10', 579.00, 30, 'ipad10.png', 8, '2025-06-10 06:08:43', '{\r\n  \"Procesador\": \"Apple A14 Bionic\",\r\n  \"RAM\": \"4GB\",\r\n  \"Almacenamiento\": \"64GB/256GB\",\r\n  \"Pantalla\": \"10.9\" Retina\",\r\n  \"Batería\": \"28.6Wh\",\r\n  \"Sistema Operativo\": \"iPadOS\",\r\n  \"Peso\": \"477g\"\r\n}', 12, NULL, NULL, 1, 0),
-(34, 'Samsung Galaxy Tab S9 Ultra', 'Snapdragon 8 Gen 2 | Pantalla Amoled 14,6', 'Samsung', 'Galaxy Tab S9 Ultra', 679.00, 44, 'galaxytabs9ultra.png', 8, '2025-06-10 06:08:43', '{\r\n  \"Procesador\": \"Snapdragon 8 Gen 2\",\r\n  \"RAM\": \"12GB/16GB\",\r\n  \"Almacenamiento\": \"256GB/512GB/1TB\",\r\n  \"Pantalla\": \"14.6\" AMOLED 120Hz\",\r\n  \"Batería\": \"11200 mAh\",\r\n  \"Sistema Operativo\": \"Android\",\r\n  \"Peso\": \"732g\"\r\n}', 12, NULL, NULL, 1, 6),
-(35, 'Samsung Galaxy Tab S9 FE', 'Exynos 1380 | Pantalla LCD 12,4', 'Samsung', 'Galaxy Tab S9 FE', 449.00, 20, 'tabgalaxys9fe.png', 8, '2025-06-10 06:08:43', '{\r\n  \"Procesador\": \"Exynos 1380\",\r\n  \"RAM\": \"6GB/8GB\",\r\n  \"Almacenamiento\": \"128GB/256GB\",\r\n  \"Pantalla\": \"12.4\" LCD 90Hz\",\r\n  \"Batería\": \"10090 mAh\",\r\n  \"Sistema Operativo\": \"Android\",\r\n  \"Peso\": \"571g\"\r\n}', 12, NULL, NULL, 1, 0),
-(36, 'Microsoft Surface Pro 9', 'Intel Core i5/i7 | Pantalla PixelSense de 13', 'Microsoft', 'Surface Pro 9', 999.00, 15, 'surface.png', 8, '2025-06-10 06:08:43', '{\r\n  \"Procesador\": \"Intel Core i5-1235U/i7-1255U\",\r\n  \"RAM\": \"8GB/16GB/32GB\",\r\n  \"Almacenamiento\": \"128GB/256GB/512GB/1TB\",\r\n  \"Pantalla\": \"13\" PixelSense\",\r\n  \"Batería\": \"47.7Wh\",\r\n  \"Sistema Operativo\": \"Windows 11\",\r\n  \"Peso\": \"879g\"\r\n}', 12, NULL, NULL, 1, 0),
-(37, 'Amazon Fire HD 10', 'Octa-Core | Pantalla Full-HD 10,1', 'Amazon', 'Fire HD 10', 150.00, 30, 'amazon.png', 8, '2025-06-10 06:08:43', '{\r\n  \"Procesador\": \"Octa-Core 2.0 GHz\",\r\n  \"RAM\": \"3GB\",\r\n  \"Almacenamiento\": \"32GB/64GB\",\r\n  \"Pantalla\": \"10.1\" Full HD\",\r\n  \"Batería\": \"6500 mAh\",\r\n  \"Sistema Operativo\": \"Fire OS\",\r\n  \"Peso\": \"465g\"\r\n}', 12, NULL, NULL, 1, 0),
-(50, 'Smartwatch Galaxy Watch 6', 'Monitor de salud avanzado con ECG y seguimiento de sueño', 'Samsung', 'Galaxy Watch 6', 299.99, 25, '1750375509_3000b07a2f0c3fc1f3b4.jpg', 2, '2025-06-13 04:45:36', '{\r\n  \"Pantalla\": \"1.5\" Super AMOLED\",\r\n  \"Sistema Operativo\": \"Wear OS\",\r\n  \"Batería\": \"425 mAh\",\r\n  \"Resistencia\": \"IP68 / 5ATM\",\r\n  \"Conectividad\": \"Bluetooth/Wi-Fi\",\r\n  \"Sensores\": \"ECG, SpO2, HRM, acelerómetro, giroscopio\"\r\n}', 24, NULL, NULL, 1, 0),
-(51, 'Reloj Inteligente Xiaomi Band 8', 'Monitor de actividad con pantalla AMOLED y 16 días de batería', 'Xiaomi', 'Mi Band 8', 89.99, 40, '1750376010_00f40aa2d267796a25b0.png', 2, '2025-06-13 04:45:36', '{\r\n  \"Pantalla\": \"1.62\" AMOLED\",\r\n  \"Batería\": \"190 mAh (hasta 16 días)\",\r\n  \"Resistencia\": \"5ATM\",\r\n  \"Conectividad\": \"Bluetooth 5.1\",\r\n  \"Sensores\": \"HRM, acelerómetro, giroscopio\",\r\n  \"Peso\": \"26g\"\r\n}', 12, NULL, NULL, 1, 0),
+(16, 'Apple AirPods Pro 2', 'Chip H2 | Cancelación de ruido mejorada + Modo ambiente', 'Apple', 'AirPods Pro 2', 249.99, 30, 'airPods.png', 7, '2025-06-10 06:08:43', '{\"Tipo\":\"In-ear inalámbricos\",\"Conectividad\":\"Bluetooth 5.3\",\"Autonomía\":\"6h (30h con estuche)\",\"Cancelación de ruido\":\"Activa\",\"Resistencia\":\"IP54\",\"Chip\":\"H2\",\"Peso\":\"5.3g por auricular\"}', 12, NULL, NULL, 1, 1),
+(17, 'Samsung Galaxy Buds 2 Pro', 'Sonido Hi-Fi de 24 bits | Cancelación activa de ruido', 'Samsung', 'Galaxy Buds 2 Pro', 142.00, 35, 'galaxybuds.png', 7, '2025-06-10 06:08:43', '{\"Tipo\":\"In-ear inalámbricos\",\"Conectividad\":\"Bluetooth 5.3\",\"Autonomía\":\"5h (18h con estuche)\",\"Cancelación de ruido\":\"Activa\",\"Resistencia\":\"IPX7\",\"Peso\":\"5.5g por auricular\"}', 12, NULL, NULL, 1, 0),
+(18, 'Galaxy Book 3', '16GB RAM | 152GB SSD', 'Samsung', 'Galaxy Book 3', 1200.00, 19, 'galaxybook3.png', 5, '2025-06-10 06:08:43', '{\"Procesador\":\"Intel Core i5-1340P\",\"RAM\":\"16GB LPDDR5\",\"Almacenamiento\":\"512GB SSD\",\"Pantalla\":\"15.6\\\" FHD AMOLED\",\"Sistema Operativo\":\"Windows 11\",\"Peso\":\"1.55kg\",\"Batería\":\"76Wh\"}', 24, NULL, NULL, 1, 0),
+(19, 'Galaxy Book 3 Pro', '16GB RAM | 1TB SSD', 'Samsung', 'Galaxy Book 3 Pro', 1500.00, 15, 'galaxybook3pro.png', 5, '2025-06-10 06:08:43', '{\"Procesador\":\"Intel Core i7-1360P\",\"RAM\":\"16GB LPDDR5\",\"Almacenamiento\":\"1TB SSD\",\"Pantalla\":\"16\\\" AMOLED 3K\",\"Sistema Operativo\":\"Windows 11\",\"Peso\":\"1.56kg\",\"Batería\":\"76Wh\"}', 24, NULL, NULL, 1, 0),
+(20, 'MacBook Air M2', 'Apple M2 | Pantalla 13,6', 'Apple', 'MacBook Air M2', 1500.00, 25, 'macbookair2.png', 5, '2025-06-10 06:08:43', '{\"Procesador\":\"Apple M2 (8-core)\",\"RAM\":\"8GB/16GB\",\"Almacenamiento\":\"256GB/512GB SSD\",\"Pantalla\":\"13.6\\\" Liquid Retina\",\"Sistema Operativo\":\"macOS\",\"Peso\":\"1.24kg\",\"Batería\":\"52.6Wh\"}', 24, NULL, NULL, 1, 1),
+(21, 'MacBook Pro M3', 'Apple M3 | Pantalla 120Hz', 'Apple', 'MacBook Pro M3', 1700.00, 14, 'macbookpro3.png', 5, '2025-06-10 06:08:43', '{\"Procesador\":\"Apple M3 (10-core)\",\"RAM\":\"16GB\",\"Almacenamiento\":\"512GB SSD\",\"Pantalla\":\"14.2\\\" Liquid Retina XDR\",\"Sistema Operativo\":\"macOS\",\"Peso\":\"1.61kg\",\"Batería\":\"70Wh\"}', 24, NULL, NULL, 1, 0),
+(22, 'Dell XPS 13', 'Intel Core i7 | Pantalla 4k', 'Dell', 'XPS 13', 1400.00, 20, 'dell.png', 5, '2025-06-10 06:08:43', '{\"Procesador\":\"Intel Core i7-1360P\",\"RAM\":\"16GB LPDDR5\",\"Almacenamiento\":\"512GB SSD\",\"Pantalla\":\"13.4\\\" 4K UHD+\",\"Sistema Operativo\":\"Windows 11\",\"Peso\":\"1.17kg\",\"Batería\":\"60Wh\"}', 24, NULL, NULL, 1, 0),
+(23, 'Asus ROG Zephyrus G14', 'AMD Ryzen 9 | RTX 4060', 'Asus', 'ROG Zephyrus G14', 1700.00, 9, 'zephyrus.png', 5, '2025-06-10 06:08:43', '{\"Procesador\":\"AMD Ryzen 9 7940HS\",\"RAM\":\"16GB DDR5\",\"Almacenamiento\":\"1TB SSD\",\"Pantalla\":\"14\\\" QHD 165Hz\",\"GPU\":\"NVIDIA RTX 4060\",\"Sistema Operativo\":\"Windows 11\",\"Peso\":\"1.72kg\"}', 24, NULL, NULL, 1, 0),
+(24, 'Logitech MX Master 3S', 'Sensor de 8K DPI | Scroll MagSpeed', 'Logitech', 'MX Master 3S', 340.00, 30, 'logitechmouse.png', 6, '2025-06-10 06:08:43', '{\"Tipo\":\"Ratón inalámbrico\",\"Sensor\":\"8000 DPI\",\"Conectividad\":\"Bluetooth/Unifying\",\"Batería\":\"70 días\",\"Botones\":\"7 programables\",\"Peso\":\"141g\"}', 12, NULL, NULL, 1, 0),
+(25, 'Razer DeathAdder V3', 'Sensor Focus Pro 30K DPI | Super liviano (63g)', 'Razer', 'DeathAdder V3', 161.99, 40, 'razermouse.png', 6, '2025-06-10 06:08:43', '{\"Tipo\":\"Ratón gaming\",\"Sensor\":\"Focus Pro 30K DPI\",\"Conectividad\":\"Cableado\",\"Botones\":\"5 programables\",\"Peso\":\"63g\",\"Iluminación\":\"Razer Chroma RGB\"}', 12, NULL, NULL, 1, 0),
+(26, 'Redragon Kumara K552', 'Teclado mecánico compacto | Switches Outemu Blue', 'Redragon', 'Kumara K552', 70.00, 50, 'KUMARA.png', 6, '2025-06-10 06:08:43', '{\"Tipo\":\"Teclado mecánico\",\"Switches\":\"Outemu Blue\",\"Iluminación\":\"LED rojo\",\"Conectividad\":\"Cableado USB\",\"Teclas\":\"87 (TKL)\",\"Peso\":\"900g\"}', 12, NULL, NULL, 1, 0),
+(27, 'SteelSeries Apex Pro', 'Switches OmniPoint ajustables | Pantalla OLED integrada', 'SteelSeries', 'Apex Pro', 119.00, 25, 'steel.png', 6, '2025-06-10 06:08:43', '{\"Tipo\":\"Teclado mecánico\",\"Switches\":\"OmniPoint ajustables\",\"Iluminación\":\"RGB\",\"Conectividad\":\"Cableado USB\",\"Teclas\":\"104\",\"Pantalla\":\"OLED integrada\",\"Peso\":\"1.2kg\"}', 12, NULL, NULL, 1, 0),
+(28, 'Elgato Stream Deck', '15 botones LCD programables | Integración con OBS, Twitch, Spotify, etc.', 'Elgato', 'Stream Deck', 250.00, 20, 'streamdeck.png', 6, '2025-06-10 06:08:43', '{\"Tipo\":\"Panel de control\",\"Botones\":\"15 LCD táctiles\",\"Conectividad\":\"USB\",\"Software\":\"Elgato Stream Deck\",\"Compatibilidad\":\"Windows/macOS\",\"Peso\":\"250g\"}', 12, NULL, NULL, 1, 0),
+(29, 'HyperX QuadCast', 'Micrófono de condensador con 4 patrones polares | Filtro antipop y shock mount integrados', 'HyperX', 'QuadCast', 139.99, 15, 'microfonohyper.png', 6, '2025-06-10 06:08:43', '{\"Tipo\":\"Micrófono de condensador\",\"Patrones\":\"4 (Estéreo, Omnidireccional, Cardioide, Bidireccional)\",\"Conectividad\":\"USB\",\"Frecuencia\":\"20Hz–20kHz\",\"Peso\":\"350g\",\"Incluye\":\"Soporte antivibraciones\"}', 12, NULL, NULL, 1, 0),
+(30, 'Logitech C920s Pro', 'Resolución Full HD 1080p | Micrófono estéreo dual', 'Logitech', 'C920s Pro', 49.99, 30, 'camaralogi.png', 6, '2025-06-10 06:08:43', '{\"Tipo\":\"Webcam\",\"Resolución\":\"1080p Full HD\",\"Enfoque\":\"Automático\",\"Micrófono\":\"Estéreo dual\",\"Conectividad\":\"USB\",\"Compatibilidad\":\"Windows/macOS\",\"Peso\":\"150g\"}', 12, NULL, NULL, 1, 0),
+(31, 'iPad Pro M2', 'Apple M2 | Pantalla XDR 120Hz', 'Apple', 'iPad Pro M2', 799.00, 20, 'ipadprom2.png', 8, '2025-06-10 06:08:43', '{\"Procesador\":\"Apple M2\",\"RAM\":\"8GB/16GB\",\"Almacenamiento\":\"128GB/256GB/512GB/1TB/2TB\",\"Pantalla\":\"12.9\\\" XDR 120Hz\",\"Batería\":\"40.88Wh\",\"Sistema Operativo\":\"iPadOS\",\"Peso\":\"682g\"}', 12, NULL, NULL, 1, 0),
+(32, 'iPad Air M2', 'Apple M2 | Pantalla Retina 10,9', 'Apple', 'iPad Air M2', 749.00, 25, 'ipadair13.png', 8, '2025-06-10 06:08:43', '{\"Procesador\":\"Apple M2\",\"RAM\":\"8GB\",\"Almacenamiento\":\"64GB/256GB\",\"Pantalla\":\"10.9\\\" Retina\",\"Batería\":\"28.6Wh\",\"Sistema Operativo\":\"iPadOS\",\"Peso\":\"461g\"}', 12, NULL, NULL, 1, 1),
+(33, 'iPad (10ª generación)', 'Apple A14 | Pantalla Retina 10,9', 'Apple', 'iPad 10', 579.00, 30, 'ipad10.png', 8, '2025-06-10 06:08:43', '{\"Procesador\":\"Apple A14 Bionic\",\"RAM\":\"4GB\",\"Almacenamiento\":\"64GB/256GB\",\"Pantalla\":\"10.9\\\" Retina\",\"Batería\":\"28.6Wh\",\"Sistema Operativo\":\"iPadOS\",\"Peso\":\"477g\"}', 12, NULL, NULL, 1, 0),
+(34, 'Samsung Galaxy Tab S9 Ultra', 'Snapdragon 8 Gen 2 | Pantalla Amoled 14,6', 'Samsung', 'Galaxy Tab S9 Ultra', 679.00, 44, 'galaxytabs9ultra.png', 8, '2025-06-10 06:08:43', '{\"Procesador\":\"Snapdragon 8 Gen 2\",\"RAM\":\"12GB/16GB\",\"Almacenamiento\":\"256GB/512GB/1TB\",\"Pantalla\":\"14.6\\\" AMOLED 120Hz\",\"Batería\":\"11200 mAh\",\"Sistema Operativo\":\"Android\",\"Peso\":\"732g\"}', 12, NULL, NULL, 1, 6),
+(35, 'Samsung Galaxy Tab S9 FE', 'Exynos 1380 | Pantalla LCD 12,4', 'Samsung', 'Galaxy Tab S9 FE', 449.00, 20, 'tabgalaxys9fe.png', 8, '2025-06-10 06:08:43', '{\"Procesador\":\"Exynos 1380\",\"RAM\":\"6GB/8GB\",\"Almacenamiento\":\"128GB/256GB\",\"Pantalla\":\"12.4\\\" LCD 90Hz\",\"Batería\":\"10090 mAh\",\"Sistema Operativo\":\"Android\",\"Peso\":\"571g\"}', 12, NULL, NULL, 1, 0),
+(36, 'Microsoft Surface Pro 9', 'Intel Core i5/i7 | Pantalla PixelSense de 13', 'Microsoft', 'Surface Pro 9', 999.00, 15, 'surface.png', 8, '2025-06-10 06:08:43', '{\"Procesador\":\"Intel Core i5-1235U/i7-1255U\",\"RAM\":\"8GB/16GB/32GB\",\"Almacenamiento\":\"128GB/256GB/512GB/1TB\",\"Pantalla\":\"13\\\" PixelSense\",\"Batería\":\"47.7Wh\",\"Sistema Operativo\":\"Windows 11\",\"Peso\":\"879g\"}', 12, NULL, NULL, 1, 0),
+(37, 'Amazon Fire HD 10', 'Octa-Core | Pantalla Full-HD 10,1', 'Amazon', 'Fire HD 10', 150.00, 30, 'amazon.png', 8, '2025-06-10 06:08:43', '{\"Procesador\":\"Octa-Core 2.0 GHz\",\"RAM\":\"3GB\",\"Almacenamiento\":\"32GB/64GB\",\"Pantalla\":\"10.1\\\" Full HD\",\"Batería\":\"6500 mAh\",\"Sistema Operativo\":\"Fire OS\",\"Peso\":\"465g\"}', 12, NULL, NULL, 1, 0),
+(50, 'Smartwatch Galaxy Watch 6', 'Monitor de salud avanzado con ECG y seguimiento de sueño', 'Samsung', 'Galaxy Watch 6', 299.99, 25, '1750375509_3000b07a2f0c3fc1f3b4.jpg', 2, '2025-06-13 04:45:36', '{\"Pantalla\":\"1.5\\\" Super AMOLED\",\"Sistema Operativo\":\"Wear OS\",\"Batería\":\"425 mAh\",\"Resistencia\":\"IP68 / 5ATM\",\"Conectividad\":\"Bluetooth/Wi-Fi\",\"Sensores\":\"ECG, SpO2, HRM, acelerómetro, giroscopio\"}', 24, NULL, NULL, 1, 0),
+(51, 'Reloj Inteligente Xiaomi Band 8', 'Monitor de actividad con pantalla AMOLED y 16 días de batería', 'Xiaomi', 'Mi Band 8', 89.99, 40, '1750376010_00f40aa2d267796a25b0.png', 2, '2025-06-13 04:45:36', '{\"Pantalla\":\"1.62\\\" AMOLED\",\"Batería\":\"190 mAh (hasta 16 días)\",\"Resistencia\":\"5ATM\",\"Conectividad\":\"Bluetooth 5.1\",\"Sensores\":\"HRM, acelerómetro, giroscopio\",\"Peso\":\"26g\"}', 12, NULL, NULL, 1, 0),
 (52, 'Cargador Inalámbrico 15W', 'Carga rápida inalámbrica compatible con Qi', 'Belkin', 'BoostCharge 15W', 49.99, 50, '1750375759_23aa4efac6b74ff211de.webp', 2, '2025-06-13 04:45:36', '{\"Potencia\":\"15W\",\"Entrada\":\"USB-C\",\"Compatibilidad\":\"Qi\"}', 12, NULL, NULL, 1, 0),
-(53, 'Monitor Gaming 27', 'Pantalla QHD con tecnología IPS y FreeSync Premium', 'AOC', 'Q27G2U', 289.00, 15, '1750375928_72d114e62f67f2499c23.png', 2, '2025-06-13 04:45:36', '{\r\n  \"Tamaño\": \"27\"\",\r\n  \"Resolución\": \"2560x1440 (QHD)\",\r\n  \"Tipo Panel\": \"IPS\",\r\n  \"Tasa de refresco\": \"144Hz\",\r\n  \"Tiempo de respuesta\": \"1ms\",\r\n  \"Conectores\": \"HDMI, DisplayPort\"\r\n}', 24, NULL, NULL, 1, 0),
+(53, 'Monitor Gaming 27', 'Pantalla QHD con tecnología IPS y FreeSync Premium', 'AOC', 'Q27G2U', 289.00, 15, '1750375928_72d114e62f67f2499c23.png', 2, '2025-06-13 04:45:36', '{\"Tamaño\":\"27\\\"\",\"Resolución\":\"2560x1440 (QHD)\",\"Tipo Panel\":\"IPS\",\"Tasa de refresco\":\"144Hz\",\"Tiempo de respuesta\":\"1ms\",\"Conectores\":\"HDMI, DisplayPort\"}', 24, NULL, NULL, 1, 0),
 (54, 'Disco SSD NVMe 1TB', 'Velocidades de lectura hasta 3500MB/s', 'Crucial', 'P3', 89.99, 30, '1750375991_b0ec2be0d03044c0e418.jpg', 2, '2025-06-13 04:45:36', '{\"Capacidad\":\"1TB\",\"Interfaz\":\"PCIe Gen3\",\"Velocidad\":\"3500MB\\/s\"}', 36, NULL, NULL, 1, 0),
-(55, 'Router WiFi 6 AX5400', 'Doble banda con cobertura para toda la casa', 'TP-Link', 'Archer AX73', 159.99, 20, '1750376079_e4e2002baafb292afe82.webp', 2, '2025-06-13 04:45:36', '{\r\n  \"Velocidad\": \"5400 Mbps (5GHz: 4804 Mbps + 2.4GHz: 574 Mbps)\",\r\n  \"Banda\": \"Dual-band\",\r\n  \"Antenas\": \"6 externas\",\r\n  \"Puertos\": \"4x Gigabit LAN, 1x Gigabit WAN\",\r\n  \"Seguridad\": \"WPA3, SPI Firewall\"\r\n}', 24, NULL, NULL, 1, 0),
-(56, 'Motorola Edge 40', 'Pantalla pOLED 144Hz y carga rápida de 68W', 'Motorola', 'Edge 40', 599.00, 18, '1750376877_bd6385d16cf311e356a2.jpg', 4, '2025-06-13 04:45:36', '{\r\n  \"Procesador\": \"MediaTek Dimensity 8020\",\r\n  \"RAM\": \"8GB\",\r\n  \"Almacenamiento\": \"256GB\",\r\n  \"Pantalla\": \"6.55\" pOLED 144Hz\",\r\n  \"Batería\": \"4400 mAh\",\r\n  \"Carga rápida\": \"68W\",\r\n  \"Sistema Operativo\": \"Android 13\"\r\n}', 24, NULL, NULL, 1, 0),
-(57, 'Realme GT Neo 3', 'Carga ultra rápida de 150W y chipset Dimensity 8100', 'Realme', 'GT Neo 3', 499.00, 22, '1750376852_19a3e7619761eeb1cecd.jpeg', 4, '2025-06-13 04:45:36', '{\r\n  \"Procesador\": \"MediaTek Dimensity 8100\",\r\n  \"RAM\": \"8GB/12GB\",\r\n  \"Almacenamiento\": \"128GB/256GB\",\r\n  \"Pantalla\": \"6.7\" AMOLED 120Hz\",\r\n  \"Batería\": \"4500 mAh\",\r\n  \"Carga rápida\": \"150W\",\r\n  \"Sistema Operativo\": \"Android 12\"\r\n}', 24, NULL, NULL, 1, 0),
-(58, 'Nothing Phone (2)', 'Diseño transparente con Glyph Interface', 'Nothing', 'Phone (2)', 699.00, 15, '1750376817_120a607da7c3d3d15924.webp', 4, '2025-06-13 04:45:36', '{\r\n  \"Procesador\": \"Snapdragon 8+ Gen 1\",\r\n  \"RAM\": \"8GB/12GB\",\r\n  \"Almacenamiento\": \"128GB/256GB/512GB\",\r\n  \"Pantalla\": \"6.7\" OLED 120Hz\",\r\n  \"Batería\": \"4700 mAh\",\r\n  \"Carga rápida\": \"45W\",\r\n  \"Sistema Operativo\": \"Android 13\"\r\n}', 24, NULL, NULL, 1, 0),
-(59, 'HP Pavilion 15', 'Procesador AMD Ryzen 7 y gráficos Radeon', 'HP', 'Pavilion 15-eg2000', 899.00, 12, '1750020868_e4799f703abd0514740f.png', 5, '2025-06-13 04:48:02', '{\r\n  \"Procesador\": \"AMD Ryzen 7 5825U\",\r\n  \"RAM\": \"16GB DDR4\",\r\n  \"Almacenamiento\": \"512GB SSD\",\r\n  \"Pantalla\": \"15.6\" FHD IPS\",\r\n  \"GPU\": \"AMD Radeon Graphics\",\r\n  \"Sistema Operativo\": \"Windows 11\",\r\n  \"Peso\": \"1.75kg\"\r\n}', 24, NULL, NULL, 1, 0),
-(60, 'Acer Swift 3', 'Ultrabook ligero con pantalla IPS y teclado retroiluminado', 'Acer', 'Swift SF314-512', 799.00, 10, '1750376795_9c69ddd5433f659dd8be.jpg', 5, '2025-06-13 04:48:02', '{\r\n  \"Procesador\": \"Intel Core i5-1240P\",\r\n  \"RAM\": \"8GB LPDDR4X\",\r\n  \"Almacenamiento\": \"512GB SSD\",\r\n  \"Pantalla\": \"14\" FHD IPS\",\r\n  \"Sistema Operativo\": \"Windows 11\",\r\n  \"Peso\": \"1.25kg\",\r\n  \"Batería\": \"56Wh\"\r\n}', 24, NULL, NULL, 1, 0),
-(61, 'Asus Vivobook Pro 16', 'Pantalla OLED 4K y gráficos NVIDIA RTX 3050', 'Asus', 'Vivobook Pro 16X', 1299.00, 8, '1750376779_bb438291760d7731d6be.webp', 5, '2025-06-13 04:48:02', '{\r\n  \"Procesador\": \"AMD Ryzen 7 6800H\",\r\n  \"RAM\": \"16GB DDR5\",\r\n  \"Almacenamiento\": \"1TB SSD\",\r\n  \"Pantalla\": \"16\" OLED 4K\",\r\n  \"GPU\": \"NVIDIA RTX 3050\",\r\n  \"Sistema Operativo\": \"Windows 11\",\r\n  \"Peso\": \"1.95kg\"\r\n}', 24, NULL, NULL, 1, 0),
+(55, 'Router WiFi 6 AX5400', 'Doble banda con cobertura para toda la casa', 'TP-Link', 'Archer AX73', 159.99, 20, '1750376079_e4e2002baafb292afe82.webp', 2, '2025-06-13 04:45:36', '{\"Velocidad\":\"5400 Mbps (5GHz: 4804 Mbps + 2.4GHz: 574 Mbps)\",\"Banda\":\"Dual-band\",\"Antenas\":\"6 externas\",\"Puertos\":\"4x Gigabit LAN, 1x Gigabit WAN\",\"Seguridad\":\"WPA3, SPI Firewall\"}', 24, NULL, NULL, 1, 0),
+(56, 'Motorola Edge 40', 'Pantalla pOLED 144Hz y carga rápida de 68W', 'Motorola', 'Edge 40', 599.00, 18, '1750376877_bd6385d16cf311e356a2.jpg', 4, '2025-06-13 04:45:36', '{\"Procesador\":\"MediaTek Dimensity 8020\",\"RAM\":\"8GB\",\"Almacenamiento\":\"256GB\",\"Pantalla\":\"6.55\\\" pOLED 144Hz\",\"Batería\":\"4400 mAh\",\"Carga rápida\":\"68W\",\"Sistema Operativo\":\"Android 13\"}', 24, NULL, NULL, 1, 0),
+(57, 'Realme GT Neo 3', 'Carga ultra rápida de 150W y chipset Dimensity 8100', 'Realme', 'GT Neo 3', 499.00, 22, '1750376852_19a3e7619761eeb1cecd.jpeg', 4, '2025-06-13 04:45:36', '{\"Procesador\":\"MediaTek Dimensity 8100\",\"RAM\":\"8GB/12GB\",\"Almacenamiento\":\"128GB/256GB\",\"Pantalla\":\"6.7\\\" AMOLED 120Hz\",\"Batería\":\"4500 mAh\",\"Carga rápida\":\"150W\",\"Sistema Operativo\":\"Android 12\"}', 24, NULL, NULL, 1, 0),
+(58, 'Nothing Phone (2)', 'Diseño transparente con Glyph Interface', 'Nothing', 'Phone (2)', 699.00, 15, '1750376817_120a607da7c3d3d15924.webp', 4, '2025-06-13 04:45:36', '{\"Procesador\":\"Snapdragon 8+ Gen 1\",\"RAM\":\"8GB/12GB\",\"Almacenamiento\":\"128GB/256GB/512GB\",\"Pantalla\":\"6.7\\\" OLED 120Hz\",\"Batería\":\"4700 mAh\",\"Carga rápida\":\"45W\",\"Sistema Operativo\":\"Android 13\"}', 24, NULL, NULL, 1, 0),
+(59, 'HP Pavilion 15', 'Procesador AMD Ryzen 7 y gráficos Radeon', 'HP', 'Pavilion 15-eg2000', 899.00, 12, '1750020868_e4799f703abd0514740f.png', 5, '2025-06-13 04:48:02', '{\"Procesador\":\"AMD Ryzen 7 5825U\",\"RAM\":\"16GB DDR4\",\"Almacenamiento\":\"512GB SSD\",\"Pantalla\":\"15.6\\\" FHD IPS\",\"GPU\":\"AMD Radeon Graphics\",\"Sistema Operativo\":\"Windows 11\",\"Peso\":\"1.75kg\"}', 24, NULL, NULL, 1, 0),
+(60, 'Acer Swift 3', 'Ultrabook ligero con pantalla IPS y teclado retroiluminado', 'Acer', 'Swift SF314-512', 799.00, 10, '1750376795_9c69ddd5433f659dd8be.jpg', 5, '2025-06-13 04:48:02', '{\"Procesador\":\"Intel Core i5-1240P\",\"RAM\":\"8GB LPDDR4X\",\"Almacenamiento\":\"512GB SSD\",\"Pantalla\":\"14\\\" FHD IPS\",\"Sistema Operativo\":\"Windows 11\",\"Peso\":\"1.25kg\",\"Batería\":\"56Wh\"}', 24, NULL, NULL, 1, 0),
+(61, 'Asus Vivobook Pro 16', 'Pantalla OLED 4K y gráficos NVIDIA RTX 3050', 'Asus', 'Vivobook Pro 16X', 1299.00, 8, '1750376779_bb438291760d7731d6be.webp', 5, '2025-06-13 04:48:02', '{\"Procesador\":\"AMD Ryzen 7 6800H\",\"RAM\":\"16GB DDR5\",\"Almacenamiento\":\"1TB SSD\",\"Pantalla\":\"16\\\" OLED 4K\",\"GPU\":\"NVIDIA RTX 3050\",\"Sistema Operativo\":\"Windows 11\",\"Peso\":\"1.95kg\"}', 24, NULL, NULL, 1, 0),
 (62, 'Teclado Mecánico HyperX Alloy Origins', 'Switches HyperX Red con retroiluminación RGB', 'HyperX', 'Alloy Origins', 99.99, 25, '1750376481_fbe09e7a739d39d1396e.webp', 6, '2025-06-13 04:48:02', '{\r\n  \"Tipo\": \"Teclado mecánico\",\r\n  \"Switches\": \"HyperX Red\",\r\n  \"Iluminación\": \"RGB\",\r\n  \"Conectividad\": \"Cableado USB\",\r\n  \"Teclas\": \"104\",\r\n  \"Peso\": \"1.1kg\"\r\n}', 24, NULL, NULL, 1, 0),
 (63, 'Mouse Inalámbrico Logitech G Pro X', 'Sensor HERO 25K y diseño ultraligero', 'Logitech', 'G Pro X Superlight', 149.99, 20, '1750376463_044ac7adcf00d481bd83.jpg', 6, '2025-06-13 04:48:02', '{\r\n  \"Tipo\": \"Ratón gaming inalámbrico\",\r\n  \"Sensor\": \"HERO 25K\",\r\n  \"Conectividad\": \"Lightspeed Wireless\",\r\n  \"Peso\": \"63g\",\r\n  \"Botones\": \"5 programables\",\r\n  \"Batería\": \"70 horas\"\r\n}', 24, NULL, NULL, 1, 0),
 (64, 'Alfombrilla Gaming XL', 'Superficie de tela de alta precisión', 'SteelSeries', 'QcK XXL', 39.99, 30, '1750376446_4f80400d20861b4c1d15.png', 6, '2025-06-13 04:48:02', '{\r\n  \"Tamaño\": \"900x400mm\",\r\n  \"Material\": \"Tela de alta densidad\",\r\n  \"Grosor\": \"2mm\",\r\n  \"Base\": \"Antideslizante\",\r\n  \"Peso\": \"500g\"\r\n}', 12, NULL, NULL, 1, 0),
 (65, 'Auriculares Inalámbricos Sony WH-1000XM5', 'Cancelación de ruido líder y sonido Hi-Res', 'Sony', 'WH-1000XM5', 399.99, 15, '1750376430_b4aa28903333214401d2.webp', 7, '2025-06-13 04:48:02', '{\r\n  \"Tipo\": \"Over-ear inalámbricos\",\r\n  \"Conectividad\": \"Bluetooth 5.2\",\r\n  \"Autonomía\": \"30h\",\r\n  \"Cancelación de ruido\": \"ANC avanzada\",\r\n  \"Peso\": \"250g\",\r\n  \"Micrófono\": \"Integrado\"\r\n}', 24, NULL, NULL, 1, 0),
 (66, 'Auriculares Gaming Corsair Virtuoso', 'Sonido surround 7.1 y micrófono broadcast', 'Corsair', 'Virtuoso RGB Wireless', 179.99, 18, '1750376238_26fd17d6248590e270c7.webp', 7, '2025-06-13 04:48:02', '{\r\n  \"Tipo\": \"Over-ear inalámbricos\",\r\n  \"Conectividad\": \"Wireless 2.4GHz/Bluetooth/USB\",\r\n  \"Autonomía\": \"20h\",\r\n  \"Micrófono\": \"Broadcast-quality\",\r\n  \"Peso\": \"420g\",\r\n  \"Iluminación\": \"RGB\"\r\n}', 24, NULL, NULL, 1, 0),
 (67, 'Earbuds Huawei FreeBuds Pro 2', 'Cancelación de ruido inteligente y sonido Hi-Fi', 'Huawei', 'FreeBuds Pro 2', 199.99, 22, '1750376217_fb5c2f598e18b67acfdb.jpg', 7, '2025-06-13 04:48:02', '{\r\n  \"Tipo\": \"In-ear inalámbricos\",\r\n  \"Conectividad\": \"Bluetooth 5.2\",\r\n  \"Autonomía\": \"6.5h (30h con estuche)\",\r\n  \"Cancelación de ruido\": \"Inteligente\",\r\n  \"Peso\": \"5.9g por auricular\",\r\n  \"Resistencia\": \"IP54\"\r\n}', 12, NULL, NULL, 1, 0),
-(68, 'Lenovo Tab P12', 'Pantalla 2K con lápiz óptico incluido', 'Lenovo', 'Tab P12', 399.00, 12, '1750020831_75af36558bb44e1b46be.jpg', 8, '2025-06-13 04:48:03', '{\r\n  \"Procesador\": \"MediaTek Kompanio 1300T\",\r\n  \"RAM\": \"4GB/8GB\",\r\n  \"Almacenamiento\": \"128GB/256GB\",\r\n  \"Pantalla\": \"12.7\" 2K\",\r\n  \"Batería\": \"10200 mAh\",\r\n  \"Sistema Operativo\": \"Android\",\r\n  \"Incluye\": \"Lápiz óptico\"\r\n}', 24, NULL, NULL, 1, 0),
-(69, 'Xiaomi Pad 6 Pro', 'Pantalla 144Hz y procesador Snapdragon 8+ Gen1', 'Xiaomi', 'Pad 6 Pro', 599.00, 9, '1750020788_c71afdb14be1ad3e6bfc.png', 8, '2025-06-13 04:48:03', '{\r\n  \"Procesador\": \"Snapdragon 8+ Gen 1\",\r\n  \"RAM\": \"8GB/12GB\",\r\n  \"Almacenamiento\": \"128GB/256GB/512GB\",\r\n  \"Pantalla\": \"11\" 2.8K 144Hz\",\r\n  \"Batería\": \"8600 mAh\",\r\n  \"Sistema Operativo\": \"Android\",\r\n  \"Carga rápida\": \"67W\"\r\n}', 24, NULL, NULL, 1, 0),
-(70, 'Samsung Galaxy Tab A8', 'Tablet económica con pantalla FHD', 'Samsung', 'Galaxy Tab A8', 229.00, 20, '1750020774_2e94e0cb602b024c582d.webp', 8, '2025-06-13 04:48:03', '{\r\n  \"Procesador\": \"Unisoc Tiger T618\",\r\n  \"RAM\": \"3GB/4GB\",\r\n  \"Almacenamiento\": \"32GB/64GB/128GB\",\r\n  \"Pantalla\": \"10.5\" FHD\",\r\n  \"Batería\": \"7040 mAh\",\r\n  \"Sistema Operativo\": \"Android\",\r\n  \"Peso\": \"508g\"\r\n}', 12, NULL, NULL, 1, 0);
+(68, 'Lenovo Tab P12', 'Pantalla 2K con lápiz óptico incluido', 'Lenovo', 'Tab P12', 399.00, 12, '1750020831_75af36558bb44e1b46be.jpg', 8, '2025-06-13 04:48:03', '{\"Procesador\":\"MediaTek Kompanio 1300T\",\"RAM\":\"4GB/8GB\",\"Almacenamiento\":\"128GB/256GB\",\"Pantalla\":\"12.7\\\" 2K\",\"Batería\":\"10200 mAh\",\"Sistema Operativo\":\"Android\",\"Incluye\":\"Lápiz óptico\"}', 24, NULL, NULL, 1, 0),
+(69, 'Xiaomi Pad 6 Pro', 'Pantalla 144Hz y procesador Snapdragon 8+ Gen1', 'Xiaomi', 'Pad 6 Pro', 599.00, 9, '1750020788_c71afdb14be1ad3e6bfc.png', 8, '2025-06-13 04:48:03', '{\"Procesador\":\"Snapdragon 8+ Gen 1\",\"RAM\":\"8GB/12GB\",\"Almacenamiento\":\"128GB/256GB/512GB\",\"Pantalla\":\"11\\\" 2.8K 144Hz\",\"Batería\":\"8600 mAh\",\"Sistema Operativo\":\"Android\",\"Carga rápida\":\"67W\"}', 24, NULL, NULL, 1, 0),
+(70, 'Samsung Galaxy Tab A8', 'Tablet económica con pantalla FHD', 'Samsung', 'Galaxy Tab A8', 229.00, 20, '1750020774_2e94e0cb602b024c582d.webp', 8, '2025-06-13 04:48:03', '{\"Procesador\":\"Unisoc Tiger T618\",\"RAM\":\"3GB/4GB\",\"Almacenamiento\":\"32GB/64GB/128GB\",\"Pantalla\":\"10.5\\\" FHD\",\"Batería\":\"7040 mAh\",\"Sistema Operativo\":\"Android\",\"Peso\":\"508g\"}', 12, NULL, NULL, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -579,7 +594,9 @@ INSERT INTO `resenas` (`id_resena`, `producto_id`, `usuario_id`, `calificacion`,
 (7, 4, 2, 4, 'Buena calidad, pero la entrega fue lenta.', '2025-06-11 03:34:05'),
 (8, 6, 3, 5, 'Producto aceptable, pero esperaba más.', '2025-06-19 18:33:18'),
 (9, 4, 1, 1, 'No funcionó correctamente. Tuve que devolverlo.', '2025-06-11 03:34:05'),
-(16, 34, 4, 3, 'Muy Buen Producto', '2025-06-19 18:31:14');
+(16, 34, 4, 3, 'Muy Buen Producto', '2025-06-19 18:31:14'),
+(19, 5, 24, 5, 'Excelente notebook, muy rápida y ligera', '2025-06-20 01:01:37'),
+(20, 16, 24, 4, 'Buenos auriculares, pero un poco caros', '2025-06-20 01:01:37');
 
 -- --------------------------------------------------------
 
@@ -614,7 +631,8 @@ INSERT INTO `usuarios` (`id_usuario`, `email`, `password_hash`, `rol`, `fecha_re
 (20, 'jesus@gmail.com', '$2y$10$bw0OOjqcz3dzvrHNVrkak.T/VRdNF3Z14yk5Zk4lBA5jA8MoF/K0C', 'cliente', '2025-06-08 11:16:03', 'Jesus'),
 (21, 'yo@gmail.com', '$2y$10$S9iDO2pQGNtL/UHuuAuVQewC5UARRt5GT6QpVw3PHDcgf0nXeN9NO', 'cliente', '2025-06-08 11:29:17', 'yoyo'),
 (22, 'prueba@gmail.com', '$2y$10$3aY98RPrgeV1zehreOjPqOYHxM9MBtErnpeedsT7NiiV508Q0tB2e', 'cliente', '2025-06-18 22:56:39', 'Prueba'),
-(23, 'user@gmail.com', '$2y$10$76W4F5X7EPsCMl9yCHQSOeWnIo89vSfL2wOt8DnsFBeH5rQkTzgQS', 'cliente', '2025-06-19 18:37:44', 'Usuariotest');
+(23, 'user@gmail.com', '$2y$10$76W4F5X7EPsCMl9yCHQSOeWnIo89vSfL2wOt8DnsFBeH5rQkTzgQS', 'cliente', '2025-06-19 18:37:44', 'Usuariotest'),
+(24, 'juan@gmail.com', '$2y$10$76W4F5X7EPsCMl9yCHQSOeWnIo89vSfL2wOt8DnsFBeH5rQkTzgQS', 'cliente', '2025-06-20 01:01:37', 'Juan');
 
 -- --------------------------------------------------------
 
@@ -651,7 +669,9 @@ INSERT INTO `ventas` (`id_venta`, `usuario_id`, `fecha_venta`, `fecha_actualizac
 (53, 4, '2025-06-19 07:21:37', '2025-06-19 14:32:16', 'cancelado', 750.00, 26),
 (54, 4, '2025-06-19 17:30:18', '2025-06-19 14:31:21', 'entregado', 1358.00, 27),
 (55, 4, '2025-06-19 19:00:23', '2025-06-19 16:00:23', 'pagado', 679.00, 28),
-(56, 4, '2025-06-19 19:24:12', '2025-06-19 16:24:12', 'pagado', 3845.00, 29);
+(56, 4, '2025-06-19 19:24:12', '2025-06-19 16:24:12', 'pagado', 3845.00, 29),
+(57, 4, '2025-06-20 03:46:08', '2025-06-20 00:47:40', 'entregado', 1100.00, 30),
+(58, 24, '2025-06-20 01:01:37', NULL, 'entregado', 3845.00, 31);
 
 -- --------------------------------------------------------
 
@@ -697,7 +717,11 @@ INSERT INTO `venta_items` (`id_item`, `venta_id`, `producto_id`, `cantidad`, `pr
 (53, 54, 34, 2, 679.00),
 (54, 55, 34, 1, 679.00),
 (55, 56, 34, 5, 679.00),
-(56, 56, 8, 1, 450.00);
+(56, 56, 8, 1, 450.00),
+(57, 57, 9, 1, 1100.00),
+(58, 58, 5, 1, 1500.00),
+(59, 58, 16, 2, 249.99),
+(60, 58, 34, 1, 679.00);
 
 --
 -- Índices para tablas volcadas
@@ -845,13 +869,13 @@ ALTER TABLE `venta_items`
 -- AUTO_INCREMENT de la tabla `carritos`
 --
 ALTER TABLE `carritos`
-  MODIFY `id_carrito` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_carrito` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `carrito_items`
 --
 ALTER TABLE `carrito_items`
-  MODIFY `id_item` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
+  MODIFY `id_item` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=81;
 
 --
 -- AUTO_INCREMENT de la tabla `carrusel`
@@ -881,37 +905,37 @@ ALTER TABLE `destacados`
 -- AUTO_INCREMENT de la tabla `direcciones`
 --
 ALTER TABLE `direcciones`
-  MODIFY `id_direccion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_direccion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de la tabla `direccion_envio`
 --
 ALTER TABLE `direccion_envio`
-  MODIFY `id_direccion_envio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id_direccion_envio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT de la tabla `facturas`
 --
 ALTER TABLE `facturas`
-  MODIFY `id_factura` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_factura` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `historico_ventas`
 --
 ALTER TABLE `historico_ventas`
-  MODIFY `id_historico` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
+  MODIFY `id_historico` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=81;
 
 --
 -- AUTO_INCREMENT de la tabla `pagos`
 --
 ALTER TABLE `pagos`
-  MODIFY `id_pago` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id_pago` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT de la tabla `personas`
 --
 ALTER TABLE `personas`
-  MODIFY `id_persona` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id_persona` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT de la tabla `productos`
@@ -923,25 +947,25 @@ ALTER TABLE `productos`
 -- AUTO_INCREMENT de la tabla `resenas`
 --
 ALTER TABLE `resenas`
-  MODIFY `id_resena` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id_resena` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT de la tabla `ventas`
 --
 ALTER TABLE `ventas`
-  MODIFY `id_venta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
+  MODIFY `id_venta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
 
 --
 -- AUTO_INCREMENT de la tabla `venta_items`
 --
 ALTER TABLE `venta_items`
-  MODIFY `id_item` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
+  MODIFY `id_item` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
 
 --
 -- Restricciones para tablas volcadas
