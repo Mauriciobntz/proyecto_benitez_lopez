@@ -96,7 +96,12 @@ class PerfilController extends BaseController
 
         $validation->setRules([
             'username' => "required|min_length[3]|max_length[50]|is_unique[usuarios.username,id_usuario,{$usuario_id}]",
-            'email' => "required|valid_email|max_length[100]|is_unique[usuarios.email,id_usuario,{$usuario_id}]"
+            'email' => "required|valid_email|max_length[100]|is_unique[usuarios.email,id_usuario,{$usuario_id}]",
+            'nombre' => 'required|max_length[50]',
+            'apellido' => 'required|max_length[50]',
+            'tipo_documento' => 'required',
+            'documento' => 'required|max_length[20]|numeric',
+            'telefono' => 'required|max_length[20]',
         ], [
             'username' => [
                 'required' => 'El nombre de usuario es obligatorio',
@@ -109,10 +114,33 @@ class PerfilController extends BaseController
                 'valid_email' => 'Debe ser un correo válido',
                 'max_length' => 'No debe superar los 100 caracteres',
                 'is_unique' => 'Este correo ya está registrado'
+            ],
+            'nombre' => [
+                'required' => 'El nombre es obligatorio',
+                'max_length' => 'El nombre no debe exceder los 50 caracteres'
+            ],
+            'apellido' => [
+                'required' => 'El apellido es obligatorio',
+                'max_length' => 'El apellido no debe exceder los 50 caracteres'
+            ],
+            'tipo_documento' => [
+                'required' => 'El tipo de documento es obligatorio'
+            ],
+            'documento' => [
+                'required' => 'El número de documento es obligatorio',
+                'numeric'   => 'El documento debe contener solo numeros',
+                'max_length' => 'El número de documento no debe exceder los 20 caracteres'
+            ],
+            'telefono' => [
+                'required' => 'El teléfono es obligatorio',
+                'max_length' => 'El teléfono no debe exceder los 20 caracteres'
             ]
         ]);
 
         if (!$validation->withRequest($request)->run()) {
+            if (session()->getFlashdata('from_checkout')) {
+                session()->setFlashdata('from_checkout', true);
+            }
             return redirect()->back()
                 ->withInput()
                 ->with('errors', $validation->getErrors());

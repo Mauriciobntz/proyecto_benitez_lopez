@@ -66,23 +66,7 @@ class CheckoutController extends BaseController
         }
         if ($faltanDatos) {
             // Marcar que viene del checkout
-            session()->setFlashdata('from_checkout', true);
-            $data = [
-                'titulo' => 'Completa tus datos personales',
-                'usuario_id' => $usuario_id,
-                'persona' => $persona ?? []
-            ];
-            return view('header', $data)
-                . view('navbar')
-                . view('usuario/perfil/editar', [
-                    'usuario' => [
-                        'persona' => $persona ?? [],
-                        'id_usuario' => $usuario_id,
-                        'email' => session()->get('email'),
-                        'username' => session()->get('username')
-                    ]
-                ])
-                . view('footer');
+            return redirect()->to('perfil/editar')->with('from_checkout', true);
         }
         // Limpiar datos de checkout previos
         session()->remove('checkout_data');

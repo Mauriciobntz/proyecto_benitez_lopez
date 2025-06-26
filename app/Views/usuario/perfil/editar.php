@@ -1,6 +1,11 @@
 <?php
 $errors = session('errors') ?? [];
 ?>
+<?php if (session()->getFlashdata('error')): ?>
+    <div class="alert alert-warning">
+        <?= session()->getFlashdata('error') ?>
+    </div>
+<?php endif; ?>
 <div class="container py-5">
     <div class="row justify-content-center">
         <div class="col-lg-8">
