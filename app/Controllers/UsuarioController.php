@@ -13,8 +13,16 @@ class UsuarioController extends BaseController
     protected $usuarioModel;
 
 
-    public function formularioLogin(): string
+    public function formularioLogin()
     {
+        if (session('logged_in')) {
+            // Si ya está logueado, redirigir según el rol
+            if (session('rol') === 'admin') {
+                return redirect()->to('admin/panel');
+            } else {
+                return redirect()->to('principal');
+            }
+        }
         $data['titulo'] = 'Iniciar Sesión';
         return view('header', $data).view('navbar').view('autenticacion/login').view('footer');
     }
@@ -41,9 +49,7 @@ class UsuarioController extends BaseController
         ]);
 
         if (!$validation->withRequest($request)->run()) {
-            $data['titulo'] = 'Iniciar Sesión';
-            $data['validation'] = $validation->getErrors();
-            return view('header', $data).view('navbar').view('autenticacion/login').view('footer');
+            return redirect()->back()->withInput()->with('errors', $validation->getErrors());
         }
 
         $email = $request->getPost('email');
@@ -84,9 +90,19 @@ class UsuarioController extends BaseController
         return redirect()->to('login');
     }
 
-    public function formularioRegistro(): string
+    public function formularioRegistro()
     {
-        $data['titulo'] = 'Registro de Usuario';
+        if (session('logged_in')) {
+            // Si ya está logueado, redirigir según el rol
+            if (session('rol') === 'admin') {
+                return redirect()->to('admin/panel');
+            } else {
+                return redirect()->to('principal');
+            }
+        }
+        $data = [
+            'titulo' => 'Registro de Usuario'
+        ];
         return view('header', $data).view('navbar').view('autenticacion/sign').view('footer');
     }
 
@@ -123,9 +139,7 @@ class UsuarioController extends BaseController
         ]);
 
         if (!$validation->withRequest($request)->run()) {
-            $data['titulo'] = 'Registro de Usuario';
-            $data['validation'] = $validation;
-            return view('header', $data).view('navbar').view('autenticacion/sign').view('footer');
+            return redirect()->back()->withInput()->with('errors', $validation->getErrors());
         }
 
         $data = [
@@ -184,112 +198,98 @@ class UsuarioController extends BaseController
         }
 
         $data = [
-            'titulo' => 'Editar Usuario: ' . ($usuario['persona']['nombre'] ?? $usuario['username']),
+            'titulo' => 'Editar Usuario',
             'usuario' => $usuario,
-            'validation' => session()->get('validation')
+            'persona' => $usuario['persona']
         ];
 
         return view('header', $data) . view('navbar') . view('admin/usuarios/editar') . view('footer');
     }
 
     // Procesar actualización de usuario
-// Método actualizarUsuario modificado para ser consistente con VentaController
-public function actualizarUsuario($usuario_id)
-{
-    // Verificar permisos
-    if (session()->get('rol') !== 'admin') {
-        return redirect()->to('denegado')->with('error', 'No tienes permisos para esta acción');
-    }
+    public function actualizarUsuario($usuario_id)
+    {
+        // Verificar permisos
+        if (session()->get('rol') !== 'admin') {
+            return redirect()->to('denegado')->with('error', 'No tienes permisos para esta acción');
+        }
 
-    // Validar que el ID existe
-    if (!$usuario_id) {
-        return redirect()->to('admin/usuarios/listar')->with('error', 'ID de usuario no proporcionado');
-    }
+        // Validar que el ID existe
+        if (!$usuario_id) {
+            return redirect()->to('admin/usuarios/listar')->with('error', 'ID de usuario no proporcionado');
+        }
 
-    $this->usuarioModel = new \App\Models\UsuarioModel();
-    $usuario = $this->usuarioModel->find($usuario_id);
+        $this->usuarioModel = new \App\Models\UsuarioModel();
+        $usuario = $this->usuarioModel->find($usuario_id);
 
-    // Verificar que el usuario existe
-    if (!$usuario) {
-        return redirect()->to('admin/usuarios/listar')->with('error', 'Usuario no encontrado');
-    }
+        // Verificar que el usuario existe
+        if (!$usuario) {
+            return redirect()->to('admin/usuarios/listar')->with('error', 'Usuario no encontrado');
+        }
 
-    // Configurar reglas de validación
-    $validation = \Config\Services::validation();
-    $request = \Config\Services::request();
+        $validation = \Config\Services::validation();
+        $request = \Config\Services::request();
 
-    $validation->setRules([
-        'username' => [
-            'label' => 'Nombre de usuario',
-            'rules' => 'required|min_length[3]|max_length[255]',
-            'errors' => [
-                'required' => 'El nombre de usuario es obligatorio.',
-                'min_length' => 'El nombre debe tener al menos 3 caracteres.',
-                'max_length' => 'El nombre no debe exceder los 255 caracteres.',
+        $validation->setRules([
+            'username' => 'required|min_length[3]|max_length[255]',
+            'email' => "required|valid_email|max_length[255]|is_unique[usuarios.email,id_usuario,{$usuario_id}]",
+            'rol' => 'required|in_list[admin,cliente]'
+        ], [
+            'username' => [
+                'required' => 'El nombre de usuario es obligatorio',
+                'min_length' => 'El nombre debe tener al menos 3 caracteres',
+                'max_length' => 'El nombre no debe exceder los 255 caracteres'
+            ],
+            'email' => [
+                'required' => 'El correo electrónico es obligatorio',
+                'valid_email' => 'Debe ser un correo válido',
+                'max_length' => 'No debe superar los 255 caracteres',
+                'is_unique' => 'Este correo ya está registrado por otro usuario'
+            ],
+            'rol' => [
+                'required' => 'El rol es obligatorio',
+                'in_list' => 'Rol inválido'
             ]
-        ],
-        'email' => [
-            'label' => 'Correo electrónico',
-            'rules' => "required|valid_email|max_length[255]|is_unique[usuarios.email,id_usuario,{$usuario_id}]",
-            'errors' => [
-                'required' => 'El correo electrónico es obligatorio.',
-                'valid_email' => 'Debe ser un correo válido.',
-                'max_length' => 'No debe superar los 255 caracteres.',
-                'is_unique' => 'Este correo ya está registrado por otro usuario.'
-            ]
-        ],
-        'rol' => [
-            'label' => 'Rol',
-            'rules' => 'required|in_list[admin,cliente]',
-            'errors' => [
-                'required' => 'El rol es obligatorio.',
-                'in_list' => 'Rol inválido.',
-            ]
-        ],
-    ]);
+        ]);
 
-    // Ejecutar validación
-    if (!$validation->withRequest($request)->run()) {
-        return redirect()->back()
-            ->withInput()
-            ->with('validation', $validation);
-    }
+        if (!$validation->withRequest($request)->run()) {
+            return redirect()->back()->withInput()->with('errors', $validation->getErrors());
+        }
 
-    // Preparar datos para actualización
-    $datosActualizados = [
-        'username' => $request->getPost('username'),
-        'email' => $request->getPost('email'),
-        'rol' => $request->getPost('rol'),
-    ];
-
-    // Actualizar datos personales si existen
-    $db = \Config\Database::connect();
-    $persona = $db->table('personas')->where('usuario_id', $usuario_id)->get()->getRowArray();
-
-    if ($persona) {
-        $datosPersona = [
-            'nombre' => $request->getPost('nombre'),
-            'apellido' => $request->getPost('apellido'),
-            'tipo_documento' => $request->getPost('tipo_documento'),
-            'documento' => $request->getPost('documento'),
-            'telefono' => $request->getPost('telefono'),
+        // Preparar datos para actualización
+        $datosActualizados = [
+            'username' => $request->getPost('username'),
+            'email' => $request->getPost('email'),
+            'rol' => $request->getPost('rol'),
         ];
 
-        $db->table('personas')
-            ->where('usuario_id', $usuario_id)
-            ->update($datosPersona);
-    }
+        // Actualizar datos personales si existen
+        $db = \Config\Database::connect();
+        $persona = $db->table('personas')->where('usuario_id', $usuario_id)->get()->getRowArray();
 
-    // Actualizar usuario
-    if ($this->usuarioModel->update($usuario_id, $datosActualizados)) {
-        return redirect()->to('admin/usuarios/listar')->with('message', 'Usuario actualizado correctamente');
-    } else {
-        return redirect()->back()
-            ->withInput()
-            ->with('error', 'Ocurrió un error al actualizar el usuario');
-    }
-}
+        if ($persona) {
+            $datosPersona = [
+                'nombre' => $request->getPost('nombre'),
+                'apellido' => $request->getPost('apellido'),
+                'tipo_documento' => $request->getPost('tipo_documento'),
+                'documento' => $request->getPost('documento'),
+                'telefono' => $request->getPost('telefono'),
+            ];
 
+            $db->table('personas')
+                ->where('usuario_id', $usuario_id)
+                ->update($datosPersona);
+        }
+
+        // Actualizar usuario
+        if ($this->usuarioModel->update($usuario_id, $datosActualizados)) {
+            return redirect()->to('admin/usuarios/listar')->with('message', 'Usuario actualizado correctamente');
+        } else {
+            return redirect()->back()
+                ->withInput()
+                ->with('error', 'Ocurrió un error al actualizar el usuario');
+        }
+    }
 
     // Buscar usuarios (para admin)
     public function buscarUsuarios()

@@ -55,6 +55,22 @@
         <!-- Filtros adicionales -->
         <div class="mt-4">
           <h6 class="fw-bold">Filtrar por</h6>
+          
+          <!-- Filtro por marca -->
+          <div class="mb-3">
+            <label for="filtroMarca" class="form-label">Marca:</label>
+            <select id="filtroMarca" class="form-select" onchange="filtrarPorMarca(this.value)">
+              <option value="">Todas las marcas</option>
+              <?php if(isset($marcas) && is_array($marcas)): ?>
+                <?php foreach($marcas as $marca): ?>
+                  <option value="<?= htmlspecialchars($marca['marca']) ?>">
+                    <?= htmlspecialchars($marca['marca']) ?>
+                  </option>
+                <?php endforeach; ?>
+              <?php endif; ?>
+            </select>
+          </div>
+          
           <div class="form-check">
             <input class="form-check-input" type="checkbox" value="" id="filtroStock">
             <label class="form-check-label" for="filtroStock">
@@ -149,5 +165,21 @@ function ordenarProductos(criterio) {
   
   container.innerHTML = '';
   productos.forEach(producto => container.appendChild(producto));
+}
+
+function filtrarPorMarca(marca) {
+  const container = document.getElementById('productos-container');
+  if (!container) return;
+  
+  const productos = Array.from(container.children);
+  
+  productos.forEach(producto => {
+    const marcaProducto = producto.querySelector('.card-text').textContent.toLowerCase();
+    if (marca === '' || marcaProducto.includes(marca.toLowerCase())) {
+      producto.style.display = '';
+    } else {
+      producto.style.display = 'none';
+    }
+  });
 }
 </script>

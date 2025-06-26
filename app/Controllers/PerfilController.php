@@ -61,8 +61,7 @@ class PerfilController extends BaseController
             'usuario' => $usuario,
             'direcciones' => $direcciones,
             'pedidos' => $pedidos,
-            'resenas' => $resenas,
-            'validation' => session()->get('validation')
+            'resenas' => $resenas
         ];
 
         return view('header', $data) . view('navbar') . view('usuario/perfil/ver') . view('footer');
@@ -79,8 +78,7 @@ class PerfilController extends BaseController
 
         $data = [
             'titulo' => 'Editar Perfil',
-            'usuario' => $usuario,
-            'validation' => session()->get('validation')
+            'usuario' => $usuario
         ];
 
         return view('header', $data) . view('navbar') . view('usuario/perfil/editar') . view('footer');
@@ -96,34 +94,28 @@ class PerfilController extends BaseController
         $validation = \Config\Services::validation();
         $request = \Config\Services::request();
 
-        // Reglas de validación para el usuario
         $validation->setRules([
+            'username' => "required|min_length[3]|max_length[50]|is_unique[usuarios.username,id_usuario,{$usuario_id}]",
+            'email' => "required|valid_email|max_length[100]|is_unique[usuarios.email,id_usuario,{$usuario_id}]"
+        ], [
             'username' => [
-                'label' => 'Nombre de usuario',
-                'rules' => "required|min_length[3]|max_length[50]|is_unique[usuarios.username,id_usuario,{$usuario_id}]",
-                'errors' => [
-                    'required' => 'El nombre de usuario es obligatorio.',
-                    'min_length' => 'El nombre debe tener al menos 3 caracteres.',
-                    'max_length' => 'El nombre no debe exceder los 50 caracteres.',
-                    'is_unique' => 'Este nombre de usuario ya está en uso.'
-                ]
+                'required' => 'El nombre de usuario es obligatorio',
+                'min_length' => 'El nombre debe tener al menos 3 caracteres',
+                'max_length' => 'El nombre no debe exceder los 50 caracteres',
+                'is_unique' => 'Este nombre de usuario ya está en uso'
             ],
             'email' => [
-                'label' => 'Correo electrónico',
-                'rules' => "required|valid_email|max_length[100]|is_unique[usuarios.email,id_usuario,{$usuario_id}]",
-                'errors' => [
-                    'required' => 'El correo electrónico es obligatorio.',
-                    'valid_email' => 'Debe ser un correo válido.',
-                    'max_length' => 'No debe superar los 100 caracteres.',
-                    'is_unique' => 'Este correo ya está registrado.'
-                ]
+                'required' => 'El correo electrónico es obligatorio',
+                'valid_email' => 'Debe ser un correo válido',
+                'max_length' => 'No debe superar los 100 caracteres',
+                'is_unique' => 'Este correo ya está registrado'
             ]
         ]);
 
         if (!$validation->withRequest($request)->run()) {
             return redirect()->back()
                 ->withInput()
-                ->with('validation', $validation);
+                ->with('errors', $validation->getErrors());
         }
 
         // Actualizar datos del usuario
@@ -167,8 +159,7 @@ class PerfilController extends BaseController
         }
 
         $data = [
-            'titulo' => 'Cambiar Contraseña',
-            'validation' => session()->get('validation')
+            'titulo' => 'Cambiar Contraseña'
         ];
 
         return view('header', $data) . view('navbar') . view('usuario/perfil/cambiar_password') . view('footer');
@@ -185,47 +176,40 @@ class PerfilController extends BaseController
         $request = \Config\Services::request();
 
         $validation->setRules([
+            'current_password' => 'required',
+            'new_password' => 'required|min_length[8]',
+            'confirm_password' => 'required|matches[new_password]'
+        ], [
             'current_password' => [
-                'label' => 'Contraseña actual',
-                'rules' => 'required',
-                'errors' => [
-                    'required' => 'La contraseña actual es obligatoria.'
-                ]
+                'required' => 'La contraseña actual es obligatoria'
             ],
             'new_password' => [
-                'label' => 'Nueva contraseña',
-                'rules' => 'required|min_length[8]',
-                'errors' => [
-                    'required' => 'La nueva contraseña es obligatoria.',
-                    'min_length' => 'La contraseña debe tener al menos 8 caracteres.'
-                ]
+                'required' => 'La nueva contraseña es obligatoria',
+                'min_length' => 'La contraseña debe tener al menos 8 caracteres'
             ],
             'confirm_password' => [
-                'label' => 'Confirmar contraseña',
-                'rules' => 'required|matches[new_password]',
-                'errors' => [
-                    'required' => 'Debes confirmar la nueva contraseña.',
-                    'matches' => 'Las contraseñas no coinciden.'
-                ]
+                'required' => 'Debe confirmar la nueva contraseña',
+                'matches' => 'Las contraseñas no coinciden'
             ]
         ]);
 
         if (!$validation->withRequest($request)->run()) {
             return redirect()->back()
                 ->withInput()
-                ->with('validation', $validation);
+                ->with('errors', $validation->getErrors());
         }
 
+        // Verificar contraseña actual
         $usuario = $this->usuarioModel->find($usuario_id);
-        $current_password = $request->getPost('current_password');
-
-        if (!password_verify($current_password, $usuario['password_hash'])) {
+        if (!password_verify($request->getPost('current_password'), $usuario['password_hash'])) {
             return redirect()->back()
-                ->with('error', 'La contraseña actual es incorrecta.');
+                ->withInput()
+                ->with('errors', ['current_password' => 'La contraseña actual es incorrecta']);
         }
 
-        $new_password = password_hash($request->getPost('new_password'), PASSWORD_DEFAULT);
-        $this->usuarioModel->update($usuario_id, ['password_hash' => $new_password]);
+        // Actualizar contraseña
+        $nuevaPassword = password_hash($request->getPost('new_password'), PASSWORD_DEFAULT);
+        $this->usuarioModel->update($usuario_id, ['password_hash' => $nuevaPassword]);
 
         return redirect()->to('perfil')->with('message', 'Contraseña actualizada correctamente');
     }
@@ -346,8 +330,7 @@ class PerfilController extends BaseController
         }
 
         $data = [
-            'titulo' => 'Agregar Dirección',
-            'validation' => session()->get('validation')
+            'titulo' => 'Agregar Dirección'
         ];
 
         return view('header', $data) . view('navbar') . view('usuario/direcciones/agregar') . view('footer');
@@ -364,60 +347,43 @@ class PerfilController extends BaseController
         $request = \Config\Services::request();
 
         $validation->setRules([
+            'alias' => 'required|max_length[50]',
+            'tipo' => 'required|in_list[particular,fiscal,envio,trabajo]',
+            'direccion' => 'required|max_length[255]',
+            'codigo_postal' => 'required|max_length[10]',
+            'ciudad' => 'required|max_length[100]',
+            'provincia' => 'required|max_length[100]'
+        ], [
             'alias' => [
-                'label' => 'Alias',
-                'rules' => 'required|max_length[50]',
-                'errors' => [
-                    'required' => 'El alias es obligatorio.',
-                    'max_length' => 'El alias no debe exceder los 50 caracteres.'
-                ]
+                'required' => 'El alias es obligatorio',
+                'max_length' => 'El alias no debe exceder los 50 caracteres'
             ],
             'tipo' => [
-                'label' => 'Tipo',
-                'rules' => 'required|in_list[particular,fiscal,envio,trabajo]',
-                'errors' => [
-                    'required' => 'El tipo es obligatorio.',
-                    'in_list' => 'Tipo de dirección inválido.'
-                ]
+                'required' => 'El tipo es obligatorio',
+                'in_list' => 'Tipo de dirección inválido'
             ],
             'direccion' => [
-                'label' => 'Dirección',
-                'rules' => 'required|max_length[255]',
-                'errors' => [
-                    'required' => 'La dirección es obligatoria.',
-                    'max_length' => 'La dirección no debe exceder los 255 caracteres.'
-                ]
+                'required' => 'La dirección es obligatoria',
+                'max_length' => 'La dirección no debe exceder los 255 caracteres'
             ],
             'codigo_postal' => [
-                'label' => 'Código Postal',
-                'rules' => 'required|max_length[10]',
-                'errors' => [
-                    'required' => 'El código postal es obligatorio.',
-                    'max_length' => 'El código postal no debe exceder los 10 caracteres.'
-                ]
+                'required' => 'El código postal es obligatorio',
+                'max_length' => 'El código postal no debe exceder los 10 caracteres'
             ],
             'ciudad' => [
-                'label' => 'Ciudad',
-                'rules' => 'required|max_length[100]',
-                'errors' => [
-                    'required' => 'La ciudad es obligatoria.',
-                    'max_length' => 'La ciudad no debe exceder los 100 caracteres.'
-                ]
+                'required' => 'La ciudad es obligatoria',
+                'max_length' => 'La ciudad no debe exceder los 100 caracteres'
             ],
             'provincia' => [
-                'label' => 'Provincia',
-                'rules' => 'required|max_length[100]',
-                'errors' => [
-                    'required' => 'La provincia es obligatoria.',
-                    'max_length' => 'La provincia no debe exceder los 100 caracteres.'
-                ]
+                'required' => 'La provincia es obligatoria',
+                'max_length' => 'La provincia no debe exceder los 100 caracteres'
             ]
         ]);
 
         if (!$validation->withRequest($request)->run()) {
             return redirect()->back()
                 ->withInput()
-                ->with('validation', $validation);
+                ->with('errors', $validation->getErrors());
         }
 
         $es_principal = $request->getPost('es_principal') ? 1 : 0;
@@ -445,7 +411,7 @@ class PerfilController extends BaseController
         if ($request->getPost('from_checkout')) {
             $nueva_id = $this->direccionModel->getInsertID();
             session()->set('checkout_data', ['direccion_id' => $nueva_id]);
-            return redirect()->to('checkout/direccion')->with('message', 'Dirección guardada correctamente.');
+            return redirect()->to('checkout/direccion')->with('message', 'Dirección guardada correctamente');
         }
 
         return redirect()->to('perfil/direcciones')->with('message', 'Dirección agregada correctamente');
@@ -467,8 +433,7 @@ class PerfilController extends BaseController
 
         $data = [
             'titulo' => 'Editar Dirección',
-            'direccion' => $direccion,
-            'validation' => session()->get('validation')
+            'direccion' => $direccion
         ];
 
         return view('header', $data) . view('navbar') . view('usuario/direcciones/editar') . view('footer');
@@ -492,60 +457,43 @@ class PerfilController extends BaseController
         $request = \Config\Services::request();
 
         $validation->setRules([
+            'alias' => 'required|max_length[50]',
+            'tipo' => 'required|in_list[particular,fiscal,envio,trabajo]',
+            'direccion' => 'required|max_length[255]',
+            'codigo_postal' => 'required|max_length[10]',
+            'ciudad' => 'required|max_length[100]',
+            'provincia' => 'required|max_length[100]'
+        ], [
             'alias' => [
-                'label' => 'Alias',
-                'rules' => 'required|max_length[50]',
-                'errors' => [
-                    'required' => 'El alias es obligatorio.',
-                    'max_length' => 'El alias no debe exceder los 50 caracteres.'
-                ]
+                'required' => 'El alias es obligatorio',
+                'max_length' => 'El alias no debe exceder los 50 caracteres'
             ],
             'tipo' => [
-                'label' => 'Tipo',
-                'rules' => 'required|in_list[particular,fiscal,envio,trabajo]',
-                'errors' => [
-                    'required' => 'El tipo es obligatorio.',
-                    'in_list' => 'Tipo de dirección inválido.'
-                ]
+                'required' => 'El tipo es obligatorio',
+                'in_list' => 'Tipo de dirección inválido'
             ],
             'direccion' => [
-                'label' => 'Dirección',
-                'rules' => 'required|max_length[255]',
-                'errors' => [
-                    'required' => 'La dirección es obligatoria.',
-                    'max_length' => 'La dirección no debe exceder los 255 caracteres.'
-                ]
+                'required' => 'La dirección es obligatoria',
+                'max_length' => 'La dirección no debe exceder los 255 caracteres'
             ],
             'codigo_postal' => [
-                'label' => 'Código Postal',
-                'rules' => 'required|max_length[10]',
-                'errors' => [
-                    'required' => 'El código postal es obligatorio.',
-                    'max_length' => 'El código postal no debe exceder los 10 caracteres.'
-                ]
+                'required' => 'El código postal es obligatorio',
+                'max_length' => 'El código postal no debe exceder los 10 caracteres'
             ],
             'ciudad' => [
-                'label' => 'Ciudad',
-                'rules' => 'required|max_length[100]',
-                'errors' => [
-                    'required' => 'La ciudad es obligatoria.',
-                    'max_length' => 'La ciudad no debe exceder los 100 caracteres.'
-                ]
+                'required' => 'La ciudad es obligatoria',
+                'max_length' => 'La ciudad no debe exceder los 100 caracteres'
             ],
             'provincia' => [
-                'label' => 'Provincia',
-                'rules' => 'required|max_length[100]',
-                'errors' => [
-                    'required' => 'La provincia es obligatoria.',
-                    'max_length' => 'La provincia no debe exceder los 100 caracteres.'
-                ]
+                'required' => 'La provincia es obligatoria',
+                'max_length' => 'La provincia no debe exceder los 100 caracteres'
             ]
         ]);
 
         if (!$validation->withRequest($request)->run()) {
             return redirect()->back()
                 ->withInput()
-                ->with('validation', $validation);
+                ->with('errors', $validation->getErrors());
         }
 
         $es_principal = $request->getPost('es_principal') ? 1 : 0;
@@ -664,8 +612,7 @@ class PerfilController extends BaseController
 
         $data = [
             'titulo' => 'Agregar Reseña',
-            'producto' => $producto,
-            'validation' => session()->get('validation')
+            'producto' => $producto
         ];
 
         return view('header', $data) . view('navbar') . view('usuario/resenas/agregar') . view('footer');
@@ -691,8 +638,7 @@ class PerfilController extends BaseController
         $data = [
             'titulo' => 'Editar Reseña',
             'resena' => $resena,
-            'producto' => $producto,
-            'validation' => session()->get('validation')
+            'producto' => $producto
         ];
 
         return view('header', $data) . view('navbar') . view('usuario/resenas/editar') . view('footer');
@@ -716,31 +662,26 @@ class PerfilController extends BaseController
         $request = \Config\Services::request();
 
         $validation->setRules([
+            'calificacion' => 'required|integer|greater_than_equal_to[1]|less_than_equal_to[5]',
+            'comentario' => 'required|min_length[10]|max_length[500]'
+        ], [
             'calificacion' => [
-                'label' => 'Calificación',
-                'rules' => 'required|integer|greater_than_equal_to[1]|less_than_equal_to[5]',
-                'errors' => [
-                    'required' => 'La calificación es obligatoria.',
-                    'integer' => 'La calificación debe ser un número entero.',
-                    'greater_than_equal_to' => 'La calificación mínima es 1.',
-                    'less_than_equal_to' => 'La calificación máxima es 5.'
-                ]
+                'required' => 'La calificación es obligatoria.',
+                'integer' => 'La calificación debe ser un número entero.',
+                'greater_than_equal_to' => 'La calificación mínima es 1.',
+                'less_than_equal_to' => 'La calificación máxima es 5.'
             ],
             'comentario' => [
-                'label' => 'Comentario',
-                'rules' => 'required|min_length[10]|max_length[500]',
-                'errors' => [
-                    'required' => 'El comentario es obligatorio.',
-                    'min_length' => 'El comentario debe tener al menos 10 caracteres.',
-                    'max_length' => 'El comentario no debe exceder los 500 caracteres.'
-                ]
+                'required' => 'El comentario es obligatorio.',
+                'min_length' => 'El comentario debe tener al menos 10 caracteres.',
+                'max_length' => 'El comentario no debe exceder los 500 caracteres.'
             ]
         ]);
 
         if (!$validation->withRequest($request)->run()) {
             return redirect()->back()
                 ->withInput()
-                ->with('validation', $validation);
+                ->with('errors', $validation->getErrors());
         }
 
         $data = [
@@ -777,31 +718,26 @@ class PerfilController extends BaseController
         $request = \Config\Services::request();
 
         $validation->setRules([
+            'calificacion' => 'required|integer|greater_than_equal_to[1]|less_than_equal_to[5]',
+            'comentario' => 'required|min_length[10]|max_length[500]'
+        ], [
             'calificacion' => [
-                'label' => 'Calificación',
-                'rules' => 'required|integer|greater_than_equal_to[1]|less_than_equal_to[5]',
-                'errors' => [
-                    'required' => 'La calificación es obligatoria.',
-                    'integer' => 'La calificación debe ser un número entero.',
-                    'greater_than_equal_to' => 'La calificación mínima es 1.',
-                    'less_than_equal_to' => 'La calificación máxima es 5.'
-                ]
+                'required' => 'La calificación es obligatoria.',
+                'integer' => 'La calificación debe ser un número entero.',
+                'greater_than_equal_to' => 'La calificación mínima es 1.',
+                'less_than_equal_to' => 'La calificación máxima es 5.'
             ],
             'comentario' => [
-                'label' => 'Comentario',
-                'rules' => 'required|min_length[10]|max_length[500]',
-                'errors' => [
-                    'required' => 'El comentario es obligatorio.',
-                    'min_length' => 'El comentario debe tener al menos 10 caracteres.',
-                    'max_length' => 'El comentario no debe exceder los 500 caracteres.'
-                ]
+                'required' => 'El comentario es obligatorio.',
+                'min_length' => 'El comentario debe tener al menos 10 caracteres.',
+                'max_length' => 'El comentario no debe exceder los 500 caracteres.'
             ]
         ]);
 
         if (!$validation->withRequest($request)->run()) {
             return redirect()->back()
                 ->withInput()
-                ->with('validation', $validation);
+                ->with('errors', $validation->getErrors());
         }
 
         $data = [
@@ -896,34 +832,32 @@ class PerfilController extends BaseController
         $request = \Config\Services::request();
 
         $validation->setRules([
+            'productos' => 'required',
+            'motivo' => 'required|min_length[10]|max_length[500]'
+        ], [
             'productos' => [
-                'label' => 'Productos',
-                'rules' => 'required',
-                'errors' => [
-                    'required' => 'Debes seleccionar al menos un producto.'
-                ]
+                'required' => 'Debes seleccionar al menos un producto.'
             ],
             'motivo' => [
-                'label' => 'Motivo',
-                'rules' => 'required|min_length[10]|max_length[500]',
-                'errors' => [
-                    'required' => 'El motivo es obligatorio.',
-                    'min_length' => 'El motivo debe tener al menos 10 caracteres.',
-                    'max_length' => 'El motivo no debe exceder los 500 caracteres.'
-                ]
+                'required' => 'El motivo es obligatorio.',
+                'min_length' => 'El motivo debe tener al menos 10 caracteres.',
+                'max_length' => 'El motivo no debe exceder los 500 caracteres.'
             ]
         ]);
 
         if (!$validation->withRequest($request)->run()) {
             return redirect()->back()
                 ->withInput()
-                ->with('validation', $validation);
+                ->with('errors', $validation->getErrors());
         }
 
-        // En una aplicación real, aquí procesarías la solicitud de devolución
-        // y posiblemente enviarías un email de confirmación
+        // Procesar la devolución
+        $productos = $request->getPost('productos');
+        $motivo = $request->getPost('motivo');
 
-        return redirect()->to('perfil/devoluciones')->with('message', 'Solicitud de devolución enviada correctamente');
+        // Aquí iría la lógica para guardar la devolución en la base de datos
+        // Por ahora solo redirigimos con un mensaje de éxito
+        return redirect()->to('perfil/devoluciones')->with('message', 'Devolución solicitada correctamente');
     }
 
     public function detalleDevolucion($devolucion_id)

@@ -1,19 +1,16 @@
+<?php
+$errors = session('errors') ?? [];
+?>
 <div class="container mt-4">
     <?php if (session('error')): ?>
         <div class="alert alert-danger">
             <?= session('error') ?>
         </div>
     <?php endif; ?>
-    
-    <?php if (session('validation')): ?>
-        <div class="alert alert-danger">
-            <?= session('validation')->listErrors() ?>
-        </div>
-    <?php endif; ?>
 
     <div class="card mb-4">
         <div class="card-header">
-            <h4>Editar Slide</h4>
+            <h4>Editar Slide del Carrusel</h4>
         </div>
         <div class="card-body">
             <form action="<?= base_url('admin/configuracion/carrusel/actualizar/' . $slide['id']) ?>" method="post" enctype="multipart/form-data">
@@ -21,72 +18,76 @@
                 
                 <div class="mb-3">
                     <label for="titulo" class="form-label">Título *</label>
-                    <input type="text" class="form-control <?= session('validation') && session('validation')->hasError('titulo') ? 'is-invalid' : '' ?>" 
+                    <input type="text" class="form-control <?= isset($errors['titulo']) ? 'is-invalid' : '' ?>" 
                            id="titulo" name="titulo" value="<?= old('titulo', $slide['titulo']) ?>">
-                    <?php if (session('validation') && session('validation')->hasError('titulo')): ?>
+                    <?php if (isset($errors['titulo'])): ?>
                         <div class="invalid-feedback">
-                            <?= session('validation')->getError('titulo') ?>
+                            <?= $errors['titulo'] ?>
                         </div>
                     <?php endif; ?>
                 </div>
 
                 <div class="mb-3">
                     <label for="descripcion" class="form-label">Descripción</label>
-                    <textarea class="form-control <?= session('validation') && session('validation')->hasError('descripcion') ? 'is-invalid' : '' ?>" 
+                    <textarea class="form-control <?= isset($errors['descripcion']) ? 'is-invalid' : '' ?>" 
                               id="descripcion" name="descripcion" rows="3"><?= old('descripcion', $slide['descripcion']) ?></textarea>
-                    <?php if (session('validation') && session('validation')->hasError('descripcion')): ?>
+                    <?php if (isset($errors['descripcion'])): ?>
                         <div class="invalid-feedback">
-                            <?= session('validation')->getError('descripcion') ?>
+                            <?= $errors['descripcion'] ?>
                         </div>
                     <?php endif; ?>
                 </div>
 
                 <div class="mb-3">
                     <label for="enlace" class="form-label">Enlace</label>
-                    <input type="url" class="form-control <?= session('validation') && session('validation')->hasError('enlace') ? 'is-invalid' : '' ?>" 
+                    <input type="url" class="form-control <?= isset($errors['enlace']) ? 'is-invalid' : '' ?>" 
                            id="enlace" name="enlace" value="<?= old('enlace', $slide['enlace']) ?>">
-                    <?php if (session('validation') && session('validation')->hasError('enlace')): ?>
+                    <?php if (isset($errors['enlace'])): ?>
                         <div class="invalid-feedback">
-                            <?= session('validation')->getError('enlace') ?>
+                            <?= $errors['enlace'] ?>
                         </div>
                     <?php endif; ?>
                 </div>
 
                 <div class="mb-3">
-                    <label class="form-label">Imagen Actual</label>
-                    <div class="mb-2">
-                        <img src="<?= base_url('public/uploads/carrusel/'.$slide['imagen']) ?>" class="img-thumbnail" style="max-height: 150px;">
-                    </div>
-                    <label for="imagen" class="form-label">Nueva Imagen</label>
-                    <input type="file" class="form-control <?= session('validation') && session('validation')->hasError('imagen') ? 'is-invalid' : '' ?>" 
-                           id="imagen" name="imagen" accept="image/*">
-                    <?php if (session('validation') && session('validation')->hasError('imagen')): ?>
-                        <div class="invalid-feedback">
-                            <?= session('validation')->getError('imagen') ?>
+                    <label for="imagen" class="form-label">Imagen</label>
+                    <?php if (!empty($slide['imagen_url'])): ?>
+                        <div class="mb-2">
+                            <img src="<?= base_url('public/uploads/carrusel/' . $slide['imagen_url']) ?>" 
+                                 class="img-thumbnail" style="max-height: 200px;">
+                            <div class="form-check mt-2">
+                                <input class="form-check-input" type="checkbox" id="eliminar_imagen" name="eliminar_imagen" value="1">
+                                <label class="form-check-label" for="eliminar_imagen">
+                                    Eliminar imagen actual
+                                </label>
+                            </div>
                         </div>
                     <?php endif; ?>
-                    <small class="text-muted">Dejar en blanco para mantener la imagen actual. Tamaño requerido: 1200x400px a 2000x600px. Formatos: JPG, PNG, WEBP. Tamaño máximo: 2MB</small>
-                    <div id="image-preview" class="mt-2" style="display: none;">
-                        <img id="preview-img" src="#" alt="Vista previa" class="img-thumbnail" style="max-height: 150px;">
-                        <div id="image-dimensions" class="text-muted small mt-1"></div>
-                    </div>
+                    <input type="file" class="form-control <?= isset($errors['imagen']) ? 'is-invalid' : '' ?>" 
+                           id="imagen" name="imagen" accept="image/jpg,image/jpeg,image/png,image/webp">
+                    <?php if (isset($errors['imagen'])): ?>
+                        <div class="invalid-feedback">
+                            <?= $errors['imagen'] ?>
+                        </div>
+                    <?php endif; ?>
+                    <small class="text-muted">Formatos aceptados: JPG, JPEG, PNG, WEBP (máx 2MB)</small>
                 </div>
 
                 <div class="row">
                     <div class="col-md-6 mb-3">
                         <label for="orden" class="form-label">Orden *</label>
-                        <input type="number" class="form-control <?= session('validation') && session('validation')->hasError('orden') ? 'is-invalid' : '' ?>" 
+                        <input type="number" class="form-control <?= isset($errors['orden']) ? 'is-invalid' : '' ?>" 
                                id="orden" name="orden" value="<?= old('orden', $slide['orden']) ?>">
-                        <?php if (session('validation') && session('validation')->hasError('orden')): ?>
+                        <?php if (isset($errors['orden'])): ?>
                             <div class="invalid-feedback">
-                                <?= session('validation')->getError('orden') ?>
+                                <?= $errors['orden'] ?>
                             </div>
                         <?php endif; ?>
                     </div>
                     <div class="col-md-6 mb-3">
                         <label class="form-label">Estado</label>
                         <div class="form-check form-switch">
-                            <input class="form-check-input" type="checkbox" id="activo" name="activo" <?= $slide['activo'] ? 'checked' : '' ?>>
+                            <input class="form-check-input" type="checkbox" id="activo" name="activo" <?= old('activo', $slide['activo']) ? 'checked' : '' ?>>
                             <label class="form-check-label" for="activo">Activo</label>
                         </div>
                     </div>
@@ -94,7 +95,7 @@
 
                 <div class="d-flex justify-content-between">
                     <a href="<?= base_url('admin/configuracion/carrusel/listar') ?>" class="btn btn-secondary">Cancelar</a>
-                    <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                    <button type="submit" class="btn btn-primary">Actualizar Slide</button>
                 </div>
             </form>
         </div>

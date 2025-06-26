@@ -24,8 +24,9 @@
 
                     <form action="<?= base_url('perfil/resenas/actualizar/' . $resena['id_resena']) ?>" 
                           method="post" 
-                          class="needs-validation" 
-                          novalidate>
+                          class="needs-validation">
+                        
+                        <?= csrf_field() ?>
                         
                         <div class="mb-3">
                             <label class="form-label">Calificación</label>
@@ -35,8 +36,7 @@
                                            name="calificacion" 
                                            value="<?= $i ?>" 
                                            id="star<?= $i ?>" 
-                                           <?= old('calificacion', $resena['calificacion']) == $i ? 'checked' : '' ?> 
-                                           required>
+                                           <?= old('calificacion', $resena['calificacion']) == $i ? 'checked' : '' ?>>
                                     <label for="star<?= $i ?>">
                                         <i class="bi bi-star-fill"></i>
                                     </label>
@@ -54,8 +54,7 @@
                             <textarea class="form-control <?= session('errors.comentario') ? 'is-invalid' : '' ?>" 
                                       id="comentario" 
                                       name="comentario" 
-                                      rows="4" 
-                                      required><?= old('comentario', $resena['comentario']) ?></textarea>
+                                      rows="4"><?= old('comentario', $resena['comentario']) ?></textarea>
                             <?php if (session('errors.comentario')): ?>
                                 <div class="invalid-feedback">
                                     <?= session('errors.comentario') ?>

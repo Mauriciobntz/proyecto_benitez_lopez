@@ -1,3 +1,7 @@
+<?php
+$errors = session('errors') ?? [];
+$oldData = session('_ci_old_input') ?? [];
+?>
 <div class="container-fluid mt-4">
     <div class="row">
         <div class="col-md-8">
@@ -6,25 +10,25 @@
                     <h5 class="mb-0">Dirección de Envío</h5>
                 </div>
                 <div class="card-body">
-                    <?php if (session('errors')): ?>
+                    <?php if (session('error')): ?>
                         <div class="alert alert-danger">
-                            <ul class="mb-0">
-                                <?php foreach ((array)session('errors') as $error): ?>
-                                    <li><?= esc($error) ?></li>
-                                <?php endforeach; ?>
-                            </ul>
+                            <?= session('error') ?>
                         </div>
                     <?php endif; ?>
+
                     <form action="<?= base_url('checkout/guardar-direccion') ?>" method="post" id="checkoutForm">
+                        <?= csrf_field() ?>
                         <input type="hidden" name="tipo" value="envio">
                         <?php if (!empty($direcciones)): ?>
                             <?php foreach ($direcciones as $direccion): ?>
                             <div class="mb-4">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="direccion_id" 
+                                    <input class="form-check-input" 
+                                           type="radio" 
+                                           name="direccion_id" 
                                            id="direccion<?= $direccion['id_direccion'] ?>" 
                                            value="<?= $direccion['id_direccion'] ?>" 
-                                           <?= $direccion['es_principal'] ? 'checked' : '' ?> required>
+                                           <?= $direccion['es_principal'] ? 'checked' : '' ?>>
                                     <label class="form-check-label w-100" for="direccion<?= $direccion['id_direccion'] ?>">
                                         <div class="d-flex justify-content-between">
                                             <strong><?= $direccion['alias'] ?></strong>

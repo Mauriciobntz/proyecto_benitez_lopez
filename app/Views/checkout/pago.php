@@ -1,3 +1,7 @@
+<?php
+$errors = session('errors') ?? [];
+$oldData = session('_ci_old_input') ?? [];
+?>
 <div class="container-fluid mt-4">
     <div class="row">
         <div class="col-md-8">
@@ -7,18 +11,11 @@
                 </div>
                 <div class="card-body">
                     <?php if (session('error')): ?>
-                        <div class="alert alert-danger"><?= esc(session('error')) ?></div>
+                        <div class="alert alert-danger"><?= session('error') ?></div>
                     <?php endif; ?>
-                    <?php if (session('errors')): ?>
-                        <div class="alert alert-danger">
-                            <ul class="mb-0">
-                                <?php foreach ((array)session('errors') as $error): ?>
-                                    <li><?= esc($error) ?></li>
-                                <?php endforeach; ?>
-                            </ul>
-                        </div>
-                    <?php endif; ?>
+
                     <form action="<?= base_url('checkout/procesar-pago') ?>" method="post" id="paymentForm">
+                        <?= csrf_field() ?>
                         <div class="form-check mb-3">
                             <input class="form-check-input" type="radio" name="metodo_pago" id="tarjeta" value="Tarjeta" checked>
                             <label class="form-check-label" for="tarjeta">
@@ -31,25 +28,41 @@
                             <div class="row mb-3">
                                 <div class="col-md-12">
                                     <label for="numero_tarjeta" class="form-label">Número de tarjeta</label>
-                                    <input type="text" class="form-control<?= session('errors.numero_tarjeta') ? ' is-invalid' : '' ?>" id="numero_tarjeta" name="numero_tarjeta" 
+                                    <input type="text" class="form-control <?= isset($errors['numero_tarjeta']) ? 'is-invalid' : '' ?>" 
+                                           id="numero_tarjeta" name="numero_tarjeta" 
                                            placeholder="1234 5678 9012 3456" value="<?= old('numero_tarjeta') ?>">
+                                    <?php if (isset($errors['numero_tarjeta'])): ?>
+                                        <div class="invalid-feedback"><?= $errors['numero_tarjeta'] ?></div>
+                                    <?php endif; ?>
                                 </div>
                             </div>
                             <div class="row mb-3">
                                 <div class="col-md-6">
                                     <label for="nombre_tarjeta" class="form-label">Nombre en la tarjeta</label>
-                                    <input type="text" class="form-control<?= session('errors.nombre_tarjeta') ? ' is-invalid' : '' ?>" id="nombre_tarjeta" name="nombre_tarjeta" 
+                                    <input type="text" class="form-control <?= isset($errors['nombre_tarjeta']) ? 'is-invalid' : '' ?>" 
+                                           id="nombre_tarjeta" name="nombre_tarjeta" 
                                            placeholder="Juan Pérez" value="<?= old('nombre_tarjeta') ?>">
+                                    <?php if (isset($errors['nombre_tarjeta'])): ?>
+                                        <div class="invalid-feedback"><?= $errors['nombre_tarjeta'] ?></div>
+                                    <?php endif; ?>
                                 </div>
                                 <div class="col-md-3">
                                     <label for="fecha_expiracion" class="form-label">Expiración</label>
-                                    <input type="text" class="form-control<?= session('errors.fecha_expiracion') ? ' is-invalid' : '' ?>" id="fecha_expiracion" name="fecha_expiracion" 
+                                    <input type="text" class="form-control <?= isset($errors['fecha_expiracion']) ? 'is-invalid' : '' ?>" 
+                                           id="fecha_expiracion" name="fecha_expiracion" 
                                            placeholder="MM/AA" value="<?= old('fecha_expiracion') ?>">
+                                    <?php if (isset($errors['fecha_expiracion'])): ?>
+                                        <div class="invalid-feedback"><?= $errors['fecha_expiracion'] ?></div>
+                                    <?php endif; ?>
                                 </div>
                                 <div class="col-md-3">
                                     <label for="cvv" class="form-label">CVV</label>
-                                    <input type="text" class="form-control<?= session('errors.cvv') ? ' is-invalid' : '' ?>" id="cvv" name="cvv" 
+                                    <input type="text" class="form-control <?= isset($errors['cvv']) ? 'is-invalid' : '' ?>" 
+                                           id="cvv" name="cvv" 
                                            placeholder="123" value="<?= old('cvv') ?>">
+                                    <?php if (isset($errors['cvv'])): ?>
+                                        <div class="invalid-feedback"><?= $errors['cvv'] ?></div>
+                                    <?php endif; ?>
                                 </div>
                             </div>
                         </div>
@@ -72,8 +85,12 @@
                             </div>
                             <div class="mb-3">
                                 <label for="referencia_pago" class="form-label">Número de referencia de la transferencia</label>
-                                <input type="text" class="form-control<?= session('errors.referencia_pago') ? ' is-invalid' : '' ?>" id="referencia_pago" name="referencia_pago" 
+                                <input type="text" class="form-control <?= isset($errors['referencia_pago']) ? 'is-invalid' : '' ?>" 
+                                       id="referencia_pago" name="referencia_pago" 
                                        placeholder="Ingrese el número de referencia de su transferencia" value="<?= old('referencia_pago') ?>">
+                                <?php if (isset($errors['referencia_pago'])): ?>
+                                    <div class="invalid-feedback"><?= $errors['referencia_pago'] ?></div>
+                                <?php endif; ?>
                             </div>
                         </div>
 
@@ -93,10 +110,13 @@
 
                         <!-- Términos y condiciones -->
                         <div class="form-check mb-3">
-                            <input class="form-check-input" type="checkbox" name="acepto_terminos" id="aceptoTerminos" required>
+                            <input class="form-check-input" 
+                                   type="checkbox" 
+                                   name="acepto_terminos" 
+                                   id="aceptoTerminos">
                             <label class="form-check-label" for="aceptoTerminos">
                                 Acepto los <a href="<?= base_url('terminos') ?>" target="_blank">Términos y Condiciones</a> y la 
-                                <a href="<?= base_url('privacidad') ?>" target="_blank">Política de Privacidad</a>
+                                <a href="<?= base_url('terminos') ?>" target="_blank">Política de Privacidad</a>
                             </label>
                         </div>
 
@@ -165,13 +185,6 @@ document.addEventListener('DOMContentLoaded', function() {
             metodoPago === 'Tarjeta' ? 'block' : 'none';
         document.getElementById('transferenciaInfo').style.display = 
             metodoPago === 'Transferencia' ? 'block' : 'none';
-        
-        // Actualizar campos requeridos
-        document.getElementById('numero_tarjeta').required = metodoPago === 'Tarjeta';
-        document.getElementById('nombre_tarjeta').required = metodoPago === 'Tarjeta';
-        document.getElementById('fecha_expiracion').required = metodoPago === 'Tarjeta';
-        document.getElementById('cvv').required = metodoPago === 'Tarjeta';
-        document.getElementById('referencia_pago').required = metodoPago === 'Transferencia';
     }
     
     // Inicializar

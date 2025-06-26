@@ -6,6 +6,9 @@ contacto que se consideren necesario. Deberá facilitar un cuestionario para que
 el potencial cliente se comunique con miembros de la empresa.
 -->
 
+<?php
+$errors = session('errors') ?? [];
+?>
 
 <!-- Sección de Contacto -->
 <div class="container py-5">
@@ -129,7 +132,7 @@ el potencial cliente se comunique con miembros de la empresa.
                         </div>
                     <?php endif; ?>
 
-                    <form action="<?= base_url('contacto/procesar') ?>" method="post" class="needs-validation" novalidate>
+                    <form action="<?= base_url('contacto/procesar') ?>" method="post" class="needs-validation">
                         <?= csrf_field() ?>
 
                         <div class="row">
@@ -139,8 +142,12 @@ el potencial cliente se comunique con miembros de la empresa.
                                     <span class="input-group-text bg-light">
                                         <i class="fas fa-user text-dark"></i>
                                     </span>
-                                    <input type="text" class="form-control" id="nombre" name="nombre" required>
+                                    <input type="text" class="form-control <?= isset($errors['nombre']) ? 'is-invalid' : '' ?>" 
+                                           id="nombre" name="nombre" value="<?= old('nombre') ?>">
                                 </div>
+                                <?php if (isset($errors['nombre'])): ?>
+                                    <div class="invalid-feedback d-block"><?= $errors['nombre'] ?></div>
+                                <?php endif; ?>
                             </div>
 
                             <div class="col-md-6 mb-3">
@@ -149,8 +156,12 @@ el potencial cliente se comunique con miembros de la empresa.
                                     <span class="input-group-text bg-light">
                                         <i class="fas fa-building text-dark"></i>
                                     </span>
-                                    <input type="text" class="form-control" id="razon_social" name="razon_social" required>
+                                    <input type="text" class="form-control <?= isset($errors['razon_social']) ? 'is-invalid' : '' ?>" 
+                                           id="razon_social" name="razon_social" value="<?= old('razon_social') ?>">
                                 </div>
+                                <?php if (isset($errors['razon_social'])): ?>
+                                    <div class="invalid-feedback d-block"><?= $errors['razon_social'] ?></div>
+                                <?php endif; ?>
                             </div>
 
                             <div class="col-md-6 mb-3">
@@ -159,8 +170,12 @@ el potencial cliente se comunique con miembros de la empresa.
                                     <span class="input-group-text bg-light">
                                         <i class="fas fa-envelope text-dark"></i>
                                     </span>
-                                    <input type="email" class="form-control" id="correo" name="correo" required>
+                                    <input type="email" class="form-control <?= isset($errors['correo']) ? 'is-invalid' : '' ?>" 
+                                           id="correo" name="correo" value="<?= old('correo') ?>">
                                 </div>
+                                <?php if (isset($errors['correo'])): ?>
+                                    <div class="invalid-feedback d-block"><?= $errors['correo'] ?></div>
+                                <?php endif; ?>
                             </div>
                         </div>
 
@@ -171,8 +186,12 @@ el potencial cliente se comunique con miembros de la empresa.
                                     <span class="input-group-text bg-light">
                                         <i class="fas fa-phone text-dark"></i>
                                     </span>
-                                    <input type="tel" class="form-control" id="telefono" name="telefono" required>
+                                    <input type="tel" class="form-control <?= isset($errors['telefono']) ? 'is-invalid' : '' ?>" 
+                                           id="telefono" name="telefono" value="<?= old('telefono') ?>">
                                 </div>
+                                <?php if (isset($errors['telefono'])): ?>
+                                    <div class="invalid-feedback d-block"><?= $errors['telefono'] ?></div>
+                                <?php endif; ?>
                             </div>
 
                             <div class="col-md-6 mb-3">
@@ -181,16 +200,19 @@ el potencial cliente se comunique con miembros de la empresa.
                                     <span class="input-group-text bg-light">
                                         <i class="fas fa-tag text-dark"></i>
                                     </span>
-                                    <select class="form-select" id="asunto" name="asunto" required>
+                                    <select class="form-select <?= isset($errors['asunto']) ? 'is-invalid' : '' ?>" id="asunto" name="asunto">
                                         <option value="">Seleccione un asunto</option>
-                                        <option value="Solicitud de Cotizacion">Solicitud de Cotización</option>
-                                        <option value="Soporte Tecnico">Soporte Técnico</option>
-                                        <option value="Consulta Facturacion">Consulta Facturación</option>
-                                        <option value="Reclamo">Reclamo</option>
-                                        <option value="Sugerencia">Sugerencia</option>
-                                        <option value="Otros">Otros</option>
+                                        <option value="Solicitud de Cotizacion" <?= old('asunto') == 'Solicitud de Cotizacion' ? 'selected' : '' ?>>Solicitud de Cotización</option>
+                                        <option value="Soporte Tecnico" <?= old('asunto') == 'Soporte Tecnico' ? 'selected' : '' ?>>Soporte Técnico</option>
+                                        <option value="Consulta Facturacion" <?= old('asunto') == 'Consulta Facturacion' ? 'selected' : '' ?>>Consulta Facturación</option>
+                                        <option value="Reclamo" <?= old('asunto') == 'Reclamo' ? 'selected' : '' ?>>Reclamo</option>
+                                        <option value="Sugerencia" <?= old('asunto') == 'Sugerencia' ? 'selected' : '' ?>>Sugerencia</option>
+                                        <option value="Otros" <?= old('asunto') == 'Otros' ? 'selected' : '' ?>>Otros</option>
                                     </select>
                                 </div>
+                                <?php if (isset($errors['asunto'])): ?>
+                                    <div class="invalid-feedback d-block"><?= $errors['asunto'] ?></div>
+                                <?php endif; ?>
                             </div>
                         </div>
 
@@ -200,35 +222,45 @@ el potencial cliente se comunique con miembros de la empresa.
                                 <span class="input-group-text bg-light">
                                     <i class="fas fa-comment text-dark"></i>
                                 </span>
-                                <textarea class="form-control" id="mensaje" name="mensaje" rows="5" required></textarea>
+                                <textarea class="form-control <?= isset($errors['mensaje']) ? 'is-invalid' : '' ?>" 
+                                          id="mensaje" name="mensaje" rows="5"><?= old('mensaje') ?></textarea>
                             </div>
+                            <?php if (isset($errors['mensaje'])): ?>
+                                <div class="invalid-feedback d-block"><?= $errors['mensaje'] ?></div>
+                            <?php endif; ?>
                         </div>
 
                         <div class="mb-4">
                             <label class="form-label">Preferencia de Contacto *</label>
                             <div class="d-flex gap-4">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="preferencia_contacto" 
-                                           id="correo" value="correo" required>
+                                    <input class="form-check-input <?= isset($errors['preferencia_contacto']) ? 'is-invalid' : '' ?>" 
+                                           type="radio" name="preferencia_contacto" 
+                                           id="correo" value="correo" <?= old('preferencia_contacto') == 'correo' ? 'checked' : '' ?>>
                                     <label class="form-check-label" for="correo">
                                         <i class="fas fa-envelope me-2 text-dark"></i>Correo Electrónico
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="preferencia_contacto" 
-                                           id="llamada" value="llamada">
+                                    <input class="form-check-input <?= isset($errors['preferencia_contacto']) ? 'is-invalid' : '' ?>" 
+                                           type="radio" name="preferencia_contacto" 
+                                           id="llamada" value="llamada" <?= old('preferencia_contacto') == 'llamada' ? 'checked' : '' ?>>
                                     <label class="form-check-label" for="llamada">
                                         <i class="fas fa-phone me-2 text-dark"></i>Llamada Telefónica
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="preferencia_contacto" 
-                                           id="whatsapp" value="whatsapp">
+                                    <input class="form-check-input <?= isset($errors['preferencia_contacto']) ? 'is-invalid' : '' ?>" 
+                                           type="radio" name="preferencia_contacto" 
+                                           id="whatsapp" value="whatsapp" <?= old('preferencia_contacto') == 'whatsapp' ? 'checked' : '' ?>>
                                     <label class="form-check-label" for="whatsapp">
                                         <i class="fab fa-whatsapp me-2 text-dark"></i>WhatsApp
                                     </label>
                                 </div>
                             </div>
+                            <?php if (isset($errors['preferencia_contacto'])): ?>
+                                <div class="invalid-feedback d-block"><?= $errors['preferencia_contacto'] ?></div>
+                            <?php endif; ?>
                         </div>
 
                         <div class="d-grid">

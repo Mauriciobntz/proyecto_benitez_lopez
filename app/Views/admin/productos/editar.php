@@ -12,9 +12,16 @@
         </div>
     <?php endif; ?>
 
-    <?php if (isset($validation)): ?>
+    <?php 
+    $errors = session('errors') ?? [];
+    if (!empty($errors)) : ?>
         <div class="alert alert-danger">
-            <?= $validation->listErrors() ?>
+            <h5 class="alert-heading">Errores encontrados:</h5>
+            <ul>
+                <?php foreach ($errors as $error) : ?>
+                    <li><?= esc($error) ?></li>
+                <?php endforeach; ?>
+            </ul>
         </div>
     <?php endif; ?>
 
@@ -29,24 +36,24 @@
                     <div class="card-body">
                         <div class="mb-3">
                             <label for="nombre" class="form-label">Nombre del Producto</label>
-                            <input type="text" class="form-control <?= isset($validation) && $validation->hasError('nombre') ? 'is-invalid' : '' ?>" 
-                                   id="nombre" name="nombre" 
-                                   value="<?= old('nombre', $producto['nombre']) ?>" required>
-                            <?php if (isset($validation) && $validation->hasError('nombre')): ?>
-                                <div class="invalid-feedback">
-                                    <?= $validation->getError('nombre') ?>
-                                </div>
+                            <input type="text" 
+                                   class="form-control <?= isset($errors['nombre']) ? 'is-invalid' : '' ?>" 
+                                   id="nombre" 
+                                   name="nombre" 
+                                   value="<?= old('nombre', $producto['nombre']) ?>">
+                            <?php if (isset($errors['nombre'])): ?>
+                                <div class="invalid-feedback"><?= esc($errors['nombre']) ?></div>
                             <?php endif; ?>
                         </div>
 
                         <div class="mb-3">
                             <label for="descripcion" class="form-label">Descripción</label>
-                            <textarea class="form-control <?= isset($validation) && $validation->hasError('descripcion') ? 'is-invalid' : '' ?>" 
-                                      id="descripcion" name="descripcion" rows="3" required><?= old('descripcion', $producto['descripcion']) ?></textarea>
-                            <?php if (isset($validation) && $validation->hasError('descripcion')): ?>
-                                <div class="invalid-feedback">
-                                    <?= $validation->getError('descripcion') ?>
-                                </div>
+                            <textarea class="form-control <?= isset($errors['descripcion']) ? 'is-invalid' : '' ?>" 
+                                      id="descripcion" 
+                                      name="descripcion" 
+                                      rows="3"><?= old('descripcion', $producto['descripcion']) ?></textarea>
+                            <?php if (isset($errors['descripcion'])): ?>
+                                <div class="invalid-feedback"><?= esc($errors['descripcion']) ?></div>
                             <?php endif; ?>
                         </div>
 
@@ -86,7 +93,9 @@
                                                placeholder="Valor" value="<?= htmlspecialchars($value) ?>">
                                     </div>
                                     <div class="col-md-2">
-                                        <button type="button" class="btn btn-danger btn-remove-especificacion">Eliminar</button>
+                                        <button type="button" class="btn btn-danger btn-sm remove-especificacion">
+                                            <i class="bi bi-trash"></i>
+                                        </button>
                                     </div>
                                 </div>
                             <?php $i++; endforeach; ?>
@@ -102,7 +111,7 @@
                                                placeholder="Valor">
                                     </div>
                                     <div class="col-md-2">
-                                        <button type="button" class="btn btn-danger btn-remove-especificacion">
+                                        <button type="button" class="btn btn-danger btn-sm remove-especificacion">
                                             <i class="bi bi-trash"></i>
                                         </button>
                                     </div>
@@ -122,34 +131,39 @@
                     <div class="card-body">
                         <div class="mb-3">
                             <label for="precio" class="form-label">Precio ($)</label>
-                            <input type="number" step="0.01" 
-                                   class="form-control <?= isset($validation) && $validation->hasError('precio') ? 'is-invalid' : '' ?>" 
-                                   id="precio" name="precio" 
-                                   value="<?= old('precio', $producto['precio']) ?>" required>
-                            <?php if (isset($validation) && $validation->hasError('precio')): ?>
-                                <div class="invalid-feedback">
-                                    <?= $validation->getError('precio') ?>
-                                </div>
+                            <input type="number" 
+                                   step="0.01" 
+                                   class="form-control <?= isset($errors['precio']) ? 'is-invalid' : '' ?>" 
+                                   id="precio" 
+                                   name="precio" 
+                                   value="<?= old('precio', $producto['precio']) ?>">
+                            <?php if (isset($errors['precio'])): ?>
+                                <div class="invalid-feedback"><?= esc($errors['precio']) ?></div>
                             <?php endif; ?>
                         </div>
 
                         <div class="mb-3">
                             <label for="stock" class="form-label">Stock Disponible</label>
-                            <input type="number" class="form-control <?= isset($validation) && $validation->hasError('stock') ? 'is-invalid' : '' ?>" 
-                                   id="stock" name="stock" 
-                                   value="<?= old('stock', $producto['stock']) ?>" required>
-                            <?php if (isset($validation) && $validation->hasError('stock')): ?>
-                                <div class="invalid-feedback">
-                                    <?= $validation->getError('stock') ?>
-                                </div>
+                            <input type="number" 
+                                   class="form-control <?= isset($errors['stock']) ? 'is-invalid' : '' ?>" 
+                                   id="stock" 
+                                   name="stock" 
+                                   value="<?= old('stock', $producto['stock']) ?>">
+                            <?php if (isset($errors['stock'])): ?>
+                                <div class="invalid-feedback"><?= esc($errors['stock']) ?></div>
                             <?php endif; ?>
                         </div>
 
                         <div class="mb-3">
                             <label for="garantia_meses" class="form-label">Garantía (meses)</label>
-                            <input type="number" class="form-control" 
+                            <input type="number" class="form-control <?= isset($errors['garantia_meses']) ? 'is-invalid' : '' ?>" 
                                    id="garantia_meses" name="garantia_meses" 
                                    value="<?= old('garantia_meses', $producto['garantia_meses']) ?>">
+                            <?php if (isset($errors['garantia_meses'])): ?>
+                                <div class="invalid-feedback">
+                                    <?= esc($errors['garantia_meses']) ?>
+                                </div>
+                            <?php endif; ?>
                         </div>
                     </div>
                 </div>
@@ -159,8 +173,9 @@
                     <div class="card-body">
                         <div class="mb-3">
                             <label for="categoria_id" class="form-label">Categoría</label>
-                            <select class="form-select <?= isset($validation) && $validation->hasError('categoria_id') ? 'is-invalid' : '' ?>" 
-                                    id="categoria_id" name="categoria_id" required>
+                            <select class="form-select <?= isset($errors['categoria_id']) ? 'is-invalid' : '' ?>" 
+                                    id="categoria_id" 
+                                    name="categoria_id">
                                 <option value="">Seleccione una categoría</option>
                                 <?php foreach ($categorias as $categoria): ?>
                                     <option value="<?= $categoria['id_categoria'] ?>" 
@@ -169,10 +184,8 @@
                                     </option>
                                 <?php endforeach; ?>
                             </select>
-                            <?php if (isset($validation) && $validation->hasError('categoria_id')): ?>
-                                <div class="invalid-feedback">
-                                    <?= $validation->getError('categoria_id') ?>
-                                </div>
+                            <?php if (isset($errors['categoria_id'])): ?>
+                                <div class="invalid-feedback"><?= esc($errors['categoria_id']) ?></div>
                             <?php endif; ?>
                         </div>
 
@@ -207,9 +220,14 @@
                         </div>
                         <div class="mb-3">
                             <label for="imagen" class="form-label">Nueva Imagen</label>
-                            <input type="file" class="form-control" 
+                            <input type="file" class="form-control <?= isset($errors['imagen']) ? 'is-invalid' : '' ?>" 
                                    id="imagen" name="imagen" accept="image/*">
                             <small class="text-muted">Formatos: JPG, PNG, GIF. Máx. 2MB</small>
+                            <?php if (isset($errors['imagen'])): ?>
+                                <div class="invalid-feedback">
+                                    <?= esc($errors['imagen']) ?>
+                                </div>
+                            <?php endif; ?>
                         </div>
                     </div>
                 </div>
@@ -261,6 +279,11 @@ document.getElementById('add-especificacion').addEventListener('click', function
 
 document.addEventListener('click', function(e) {
     if (e.target && e.target.classList.contains('remove-especificacion')) {
+        e.target.closest('.especificacion-item').remove();
+    }
+    
+    // También manejar clicks en el ícono dentro del botón
+    if (e.target && e.target.closest('.remove-especificacion')) {
         e.target.closest('.especificacion-item').remove();
     }
 });

@@ -153,7 +153,53 @@ class DireccionController extends BaseController
     public function actualizar()
     {
         $validation = \Config\Services::validation();
-        $validation->setRules($this->validationRules, $this->validationMessages);
+        $validation->setRules([
+            'tipo' => 'required|in_list[particular,fiscal,envio,trabajo]',
+            'alias' => 'required|min_length[3]|max_length[50]',
+            'direccion' => 'required|min_length[10]|max_length[255]',
+            'codigo_postal' => 'required|numeric|min_length[4]|max_length[10]',
+            'ciudad' => 'required|min_length[3]|max_length[100]|alpha_space',
+            'provincia' => 'required|min_length[3]|max_length[100]|alpha_space',
+            'pais' => 'permit_empty|max_length[50]|alpha_space',
+            'es_principal' => 'permit_empty|in_list[0,1]'
+        ], [
+            'tipo' => [
+                'required' => 'El tipo de dirección es obligatorio',
+                'in_list' => 'Seleccione un tipo de dirección válido'
+            ],
+            'alias' => [
+                'required' => 'El alias es obligatorio',
+                'min_length' => 'El alias debe tener al menos 3 caracteres',
+                'max_length' => 'El alias no puede exceder los 50 caracteres'
+            ],
+            'direccion' => [
+                'required' => 'La dirección es obligatoria',
+                'min_length' => 'La dirección debe tener al menos 10 caracteres',
+                'max_length' => 'La dirección no puede exceder los 255 caracteres'
+            ],
+            'codigo_postal' => [
+                'required' => 'El código postal es obligatorio',
+                'numeric' => 'El código postal debe contener solo números',
+                'min_length' => 'El código postal debe tener al menos 4 dígitos',
+                'max_length' => 'El código postal no puede exceder los 10 dígitos'
+            ],
+            'ciudad' => [
+                'required' => 'La ciudad es obligatoria',
+                'min_length' => 'La ciudad debe tener al menos 3 caracteres',
+                'max_length' => 'La ciudad no puede exceder los 100 caracteres',
+                'alpha_space' => 'La ciudad solo puede contener letras y espacios'
+            ],
+            'provincia' => [
+                'required' => 'La provincia es obligatoria',
+                'min_length' => 'La provincia debe tener al menos 3 caracteres',
+                'max_length' => 'La provincia no puede exceder los 100 caracteres',
+                'alpha_space' => 'La provincia solo puede contener letras y espacios'
+            ],
+            'pais' => [
+                'max_length' => 'El país no puede exceder los 50 caracteres',
+                'alpha_space' => 'El país solo puede contener letras y espacios'
+            ]
+        ]);
 
         if (!$validation->withRequest($this->request)->run()) {
             return redirect()->back()->withInput()->with('errors', $validation->getErrors());

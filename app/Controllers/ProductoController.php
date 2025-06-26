@@ -30,7 +30,8 @@ class ProductoController extends BaseController
         $data = [
             'titulo' => 'Productos',
             'productos' => $productos,
-            'categorias' => $this->categoriaModel->findAll()
+            'categorias' => $this->categoriaModel->findAll(),
+            'marcas' => $this->productoModel->getMarcasUnicas()
         ];
 
         return view('header', $data) . view('navbar') . view('catalogo/productos') . view('footer');
@@ -77,7 +78,8 @@ class ProductoController extends BaseController
             'titulo' => 'Productos en categoría: ' . ($categoria ? $categoria['nombre'] : 'Desconocida'),
             'productos' => $productos,
             'categoria' => $categoria,
-            'categorias' => $this->categoriaModel->findAll()
+            'categorias' => $this->categoriaModel->findAll(),
+            'marcas' => $this->productoModel->getMarcasUnicas()
         ];
 
         return view('header', $data) . view('navbar') . view('catalogo/productos_categoria') . view('footer');
@@ -155,9 +157,8 @@ class ProductoController extends BaseController
         $categorias = $this->categoriaModel->findAll();
     
         $data = [
-            'titulo' => 'Agregar Nuevo Producto',
-            'categorias' => $categorias,
-            'validation' => session()->get('validation') ?? null
+            'titulo' => 'Agregar Producto',
+            'categorias' => $categorias
         ];
 
         return view('header', $data) . view('navbar') . view('admin/productos/agregar') . view('footer');
@@ -225,7 +226,7 @@ class ProductoController extends BaseController
         ]);
 
         if (!$validation->withRequest($request)->run()) {
-            return redirect()->back()->withInput()->with('validation', $validation);
+            return redirect()->back()->withInput()->with('errors', $validation->getErrors());
         }
 
         // Procesar las especificaciones
@@ -308,8 +309,7 @@ class ProductoController extends BaseController
         $data = [
             'titulo' => 'Editar Producto: ' . $producto['nombre'],
             'producto' => $producto,
-            'categorias' => $categorias,
-            'validation' => session()->get('validation') ?? null
+            'categorias' => $categorias
         ];
 
         return view('header', $data) . view('navbar') . view('admin/productos/editar') . view('footer');
@@ -351,10 +351,53 @@ public function actualizarProducto()
             'mime_in[imagen,image/jpg,image/jpeg,image/png]',
             'max_size[imagen,2048]',
         ]
+    ], [
+        'nombre' => [
+            'required' => 'El nombre del producto es obligatorio',
+            'min_length' => 'El nombre debe tener al menos 3 caracteres',
+            'max_length' => 'El nombre no puede exceder los 150 caracteres'
+        ],
+        'descripcion' => [
+            'required' => 'La descripción es obligatoria',
+            'min_length' => 'La descripción debe tener al menos 10 caracteres'
+        ],
+        'marca' => [
+            'max_length' => 'La marca no puede exceder los 100 caracteres'
+        ],
+        'modelo' => [
+            'max_length' => 'El modelo no puede exceder los 100 caracteres'
+        ],
+        'precio' => [
+            'required' => 'El precio es obligatorio',
+            'decimal' => 'El precio debe ser un número válido'
+        ],
+        'stock' => [
+            'required' => 'El stock es obligatorio',
+            'integer' => 'El stock debe ser un número entero'
+        ],
+        'categoria_id' => [
+            'required' => 'Debe seleccionar una categoría',
+            'integer' => 'La categoría debe ser un número válido'
+        ],
+        'garantia_meses' => [
+            'required' => 'Los meses de garantía son obligatorios',
+            'integer' => 'Los meses de garantía deben ser un número entero'
+        ],
+        'peso_kg' => [
+            'decimal' => 'El peso debe ser un número válido'
+        ],
+        'dimensiones' => [
+            'max_length' => 'Las dimensiones no pueden exceder los 50 caracteres'
+        ],
+        'imagen' => [
+            'uploaded' => 'Debe seleccionar un archivo para subir',
+            'mime_in' => 'El archivo debe ser una imagen JPG, JPEG o PNG',
+            'max_size' => 'El tamaño máximo permitido es 2MB'
+        ]
     ]);
 
     if (!$validation->withRequest($request)->run()) {
-        return redirect()->back()->withInput()->with('validation', $validation);
+        return redirect()->back()->withInput()->with('errors', $validation->getErrors());
     }
 
     // Procesar la imagen si se subió una nueva
@@ -435,6 +478,7 @@ public function actualizarProducto()
         $filtros = [
             'orden' => $this->request->getGet('orden'),
             'categoria_id' => $this->request->getGet('categoria'),
+            'marca' => $this->request->getGet('marca'),
             'stock_disponible' => $this->request->getGet('stock'),
             'precio_min' => $this->request->getGet('precio_min'),
             'precio_max' => $this->request->getGet('precio_max')
@@ -446,7 +490,8 @@ public function actualizarProducto()
             'titulo' => 'Resultados de búsqueda: ' . $termino,
             'productos' => $productos,
             'termino' => $termino,
-            'categorias' => $this->categoriaModel->findAll()
+            'categorias' => $this->categoriaModel->findAll(),
+            'marcas' => $this->productoModel->getMarcasUnicas()
         ];
 
         return view('header', $data)

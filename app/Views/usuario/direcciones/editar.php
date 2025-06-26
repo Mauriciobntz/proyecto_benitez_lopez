@@ -17,15 +17,15 @@
 
                     <form action="<?= base_url('perfil/direcciones/actualizar/' . $direccion['id_direccion']) ?>" 
                           method="post" 
-                          class="needs-validation" 
-                          novalidate>
+                          class="needs-validation">
+                        
+                        <?= csrf_field() ?>
                         
                         <div class="mb-3">
                             <label for="tipo" class="form-label">Tipo de Dirección</label>
                             <select class="form-select <?= session('errors.tipo') ? 'is-invalid' : '' ?>" 
                                     id="tipo" 
-                                    name="tipo" 
-                                    required>
+                                    name="tipo">
                                 <option value="particular" <?= old('tipo', $direccion['tipo'] ?? '') == 'particular' ? 'selected' : '' ?>>Particular</option>
                                 <option value="fiscal" <?= old('tipo', $direccion['tipo'] ?? '') == 'fiscal' ? 'selected' : '' ?>>Fiscal</option>
                                 <option value="envio" <?= old('tipo', $direccion['tipo'] ?? '') == 'envio' ? 'selected' : '' ?>>Envío</option>
@@ -44,8 +44,7 @@
                                    class="form-control <?= session('errors.alias') ? 'is-invalid' : '' ?>" 
                                    id="alias" 
                                    name="alias" 
-                                   value="<?= old('alias', $direccion['alias'] ?? '') ?>" 
-                                   required>
+                                   value="<?= old('alias', $direccion['alias'] ?? '') ?>">
                             <?php if (session('errors.alias')): ?>
                                 <div class="invalid-feedback">
                                     <?= session('errors.alias') ?>
@@ -59,8 +58,7 @@
                                    class="form-control <?= session('errors.direccion') ? 'is-invalid' : '' ?>" 
                                    id="direccion" 
                                    name="direccion" 
-                                   value="<?= old('direccion', $direccion['direccion'] ?? '') ?>" 
-                                   required>
+                                   value="<?= old('direccion', $direccion['direccion'] ?? '') ?>">
                             <?php if (session('errors.direccion')): ?>
                                 <div class="invalid-feedback">
                                     <?= session('errors.direccion') ?>
@@ -75,8 +73,7 @@
                                        class="form-control <?= session('errors.ciudad') ? 'is-invalid' : '' ?>" 
                                        id="ciudad" 
                                        name="ciudad" 
-                                       value="<?= old('ciudad', $direccion['ciudad'] ?? '') ?>" 
-                                       required>
+                                       value="<?= old('ciudad', $direccion['ciudad'] ?? '') ?>">
                                 <?php if (session('errors.ciudad')): ?>
                                     <div class="invalid-feedback">
                                         <?= session('errors.ciudad') ?>
@@ -90,8 +87,7 @@
                                        class="form-control <?= session('errors.provincia') ? 'is-invalid' : '' ?>" 
                                        id="provincia" 
                                        name="provincia" 
-                                       value="<?= old('provincia', $direccion['provincia'] ?? '') ?>" 
-                                       required>
+                                       value="<?= old('provincia', $direccion['provincia'] ?? '') ?>">
                                 <?php if (session('errors.provincia')): ?>
                                     <div class="invalid-feedback">
                                         <?= session('errors.provincia') ?>
@@ -107,8 +103,7 @@
                                        class="form-control <?= session('errors.codigo_postal') ? 'is-invalid' : '' ?>" 
                                        id="codigo_postal" 
                                        name="codigo_postal" 
-                                       value="<?= old('codigo_postal', $direccion['codigo_postal'] ?? '') ?>" 
-                                       required>
+                                       value="<?= old('codigo_postal', $direccion['codigo_postal'] ?? '') ?>">
                                 <?php if (session('errors.codigo_postal')): ?>
                                     <div class="invalid-feedback">
                                         <?= session('errors.codigo_postal') ?>
@@ -122,8 +117,7 @@
                                        class="form-control <?= session('errors.pais') ? 'is-invalid' : '' ?>" 
                                        id="pais" 
                                        name="pais" 
-                                       value="<?= old('pais', $direccion['pais'] ?? 'Argentina') ?>" 
-                                       required>
+                                       value="<?= old('pais', $direccion['pais'] ?? 'Argentina') ?>">
                                 <?php if (session('errors.pais')): ?>
                                     <div class="invalid-feedback">
                                         <?= session('errors.pais') ?>

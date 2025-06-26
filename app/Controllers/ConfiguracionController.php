@@ -58,161 +58,124 @@ class ConfiguracionController extends BaseController
         if (session()->get('rol') !== 'admin') {
             return redirect()->to('denegado')->with('error', 'Acceso restringido');
         }
+        
+        $validation = \Config\Services::validation();
+        $request = \Config\Services::request();
 
-        // Reglas de validación con mensajes personalizados
-        $rules = [
+        $validation->setRules([
+            'nombre_tienda' => 'required|min_length[3]|max_length[100]',
+            'razon_social' => 'required|max_length[100]',
+            'email_tienda' => 'required|valid_email|max_length[100]',
+            'telefono_tienda' => 'required|max_length[20]',
+            'whatsapp_tienda' => 'permit_empty|max_length[20]',
+            'direccion_tienda' => 'required|max_length[255]',
+            'cuit' => 'required|max_length[20]',
+            'cbu' => 'required|numeric|max_length[22]',
+            'alias_cbu' => 'required|max_length[50]',
+            'banco' => 'required|max_length[100]',
+            'titular_cuenta' => 'required|max_length[100]',
+            'tipo_cuenta' => 'required|in_list[Caja de ahorro,Cuenta corriente]',
+            'area_cobertura' => 'required|max_length[255]',
+            'facebook_url' => 'required|valid_url|max_length[255]',
+            'instagram_url' => 'required|valid_url|max_length[255]',
+            'twitter_url' => 'required|valid_url|max_length[255]',
+            'whatsapp_url' => 'required|valid_url|max_length[255]',
+            'horario_atencion' => 'required|max_length[255]',
+            'mensaje_bienvenida' => 'required',
+            'logo' => 'if_exist|uploaded[logo]|mime_in[logo,image/jpg,image/jpeg,image/png]|max_size[logo,2048]'
+        ], [
             'nombre_tienda' => [
-                'rules' => 'required|min_length[3]|max_length[100]',
-                'errors' => [
-                    'required' => 'El nombre de la tienda es obligatorio',
-                    'min_length' => 'El nombre debe tener al menos 3 caracteres',
-                    'max_length' => 'El nombre no puede exceder los 100 caracteres'
-                ]
+                'required' => 'El nombre de la tienda es obligatorio',
+                'min_length' => 'El nombre debe tener al menos 3 caracteres',
+                'max_length' => 'El nombre no puede exceder los 100 caracteres'
             ],
             'razon_social' => [
-                'rules' => 'required|max_length[100]',
-                'errors' => [
-                    'required' => 'La razón social es obligatoria',
-                    'max_length' => 'La razón social no puede exceder los 100 caracteres'
-                ]
+                'required' => 'La razón social es obligatoria',
+                'max_length' => 'La razón social no puede exceder los 100 caracteres'
             ],
             'email_tienda' => [
-                'rules' => 'required|valid_email|max_length[100]',
-                'errors' => [
-                    'required' => 'El email es obligatorio',
-                    'valid_email' => 'Debe ingresar un email válido',
-                    'max_length' => 'El email no puede exceder los 100 caracteres'
-                ]
+                'required' => 'El email es obligatorio',
+                'valid_email' => 'Debe ingresar un email válido',
+                'max_length' => 'El email no puede exceder los 100 caracteres'
             ],
             'telefono_tienda' => [
-                'rules' => 'required|max_length[20]',
-                'errors' => [
-                    'required' => 'El teléfono es obligatorio',
-                    'max_length' => 'El teléfono no puede exceder los 20 caracteres'
-                ]
+                'required' => 'El teléfono es obligatorio',
+                'max_length' => 'El teléfono no puede exceder los 20 caracteres'
             ],
             'whatsapp_tienda' => [
-                'rules' => 'permit_empty|max_length[20]',
-                'errors' => [
-                    'required' => 'El whatsapp es obligatorio',
-                    'max_length' => 'El WhatsApp no puede exceder los 20 caracteres'
-                ]
+                'max_length' => 'El WhatsApp no puede exceder los 20 caracteres'
             ],
             'direccion_tienda' => [
-                'rules' => 'required|max_length[255]',
-                'errors' => [
-                    'required' => 'La dirección es obligatoria',
-                    'max_length' => 'La dirección no puede exceder los 255 caracteres'
-                ]
+                'required' => 'La dirección es obligatoria',
+                'max_length' => 'La dirección no puede exceder los 255 caracteres'
             ],
             'cuit' => [
-                'rules' => 'required|max_length[20]',
-                'errors' => [
-                    'required' => 'El CUIT es obligatorio',
-                    'max_length' => 'El CUIT no puede exceder los 20 caracteres'
-                ]
+                'required' => 'El CUIT es obligatorio',
+                'max_length' => 'El CUIT no puede exceder los 20 caracteres'
             ],
             'cbu' => [
-                'rules' => 'required|numeric|max_length[22]',
-                'errors' => [
-                    'required' => 'El CBU es obligatorio',
-                    'numeric' => 'El CBU debe contener solo números',
-                    'max_length' => 'El CBU no puede exceder los 22 caracteres'
-                ]
+                'required' => 'El CBU es obligatorio',
+                'numeric' => 'El CBU debe contener solo números',
+                'max_length' => 'El CBU no puede exceder los 22 caracteres'
             ],
             'alias_cbu' => [
-                'rules' => 'required|max_length[50]',
-                'errors' => [
-                    'required' => 'El alias CBU es obligatorio',
-                    'max_length' => 'El alias CBU no puede exceder los 50 caracteres'
-                ]
+                'required' => 'El alias CBU es obligatorio',
+                'max_length' => 'El alias CBU no puede exceder los 50 caracteres'
             ],
             'banco' => [
-                'rules' => 'required|max_length[100]',
-                'errors' => [
-                    'required' => 'El banco es obligatorio',
-                    'max_length' => 'El banco no puede exceder los 100 caracteres'
-                ]
+                'required' => 'El banco es obligatorio',
+                'max_length' => 'El banco no puede exceder los 100 caracteres'
             ],
             'titular_cuenta' => [
-                'rules' => 'required|max_length[100]',
-                'errors' => [
-                    'required' => 'El titular de la cuenta es obligatorio',
-                    'max_length' => 'El titular no puede exceder los 100 caracteres'
-                ]
+                'required' => 'El titular de la cuenta es obligatorio',
+                'max_length' => 'El titular no puede exceder los 100 caracteres'
             ],
             'tipo_cuenta' => [
-                'rules' => 'required|in_list[Caja de ahorro,Cuenta corriente]',
-                'errors' => [
-                    'in_list' => 'El tipo de cuenta no es válido'
-                ]
+                'required' => 'El tipo de cuenta es obligatorio',
+                'in_list' => 'El tipo de cuenta no es válido'
             ],
             'area_cobertura' => [
-                'rules' => 'required|max_length[255]',
-                    'required' => 'El area de cobertura es obligatoria',
-                'errors' => [
-                    'max_length' => 'El área de cobertura no puede exceder los 255 caracteres'
-                ]
+                'required' => 'El area de cobertura es obligatoria',
+                'max_length' => 'El área de cobertura no puede exceder los 255 caracteres'
             ],
             'facebook_url' => [
-                'rules' => 'required|valid_url|max_length[255]',
-                'errors' => [
-                    'required' => 'La URL de Facebook es obligatoria',
-                    'valid_url' => 'La URL de Facebook no es válida',
-                    'max_length' => 'La URL no puede exceder los 255 caracteres'
-                ]
+                'required' => 'La URL de Facebook es obligatoria',
+                'valid_url' => 'La URL de Facebook no es válida',
+                'max_length' => 'La URL no puede exceder los 255 caracteres'
             ],
             'instagram_url' => [
-                'rules' => 'required|valid_url|max_length[255]',
-                'errors' => [
-                    'required' => 'La URL de Instagram es obligatoria',
-                    'valid_url' => 'La URL de Instagram no es válida',
-                    'max_length' => 'La URL no puede exceder los 255 caracteres'
-                ]
+                'required' => 'La URL de Instagram es obligatoria',
+                'valid_url' => 'La URL de Instagram no es válida',
+                'max_length' => 'La URL no puede exceder los 255 caracteres'
             ],
             'twitter_url' => [
-                'rules' => 'required|valid_url|max_length[255]',
-                'errors' => [
-                    'required' => 'La URL de Twitter es obligatoria',
-                    'valid_url' => 'La URL de Twitter no es válida',
-                    'max_length' => 'La URL no puede exceder los 255 caracteres'
-                ]
+                'required' => 'La URL de Twitter es obligatoria',
+                'valid_url' => 'La URL de Twitter no es válida',
+                'max_length' => 'La URL no puede exceder los 255 caracteres'
             ],
             'whatsapp_url' => [
-                'rules' => 'required|valid_url|max_length[255]',
-                'errors' => [
-                    'required' => 'La URL de WhatsApp es obligatoria',
-                    'valid_url' => 'La URL de WhatsApp no es válida',
-                    'max_length' => 'La URL no puede exceder los 255 caracteres'
-                ]
+                'required' => 'La URL de WhatsApp es obligatoria',
+                'valid_url' => 'La URL de WhatsApp no es válida',
+                'max_length' => 'La URL no puede exceder los 255 caracteres'
             ],
             'horario_atencion' => [
-                'rules' => 'required|max_length[255]',
-                'errors' => [
-                    'required' => 'El horario de atención es obligatorio',
-                    'max_length' => 'El horario no puede exceder los 255 caracteres'
-                ]
+                'required' => 'El horario de atención es obligatorio',
+                'max_length' => 'El horario no puede exceder los 255 caracteres'
             ],
             'mensaje_bienvenida' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => 'El mensaje de bienvenida es obligatorio'
-                ]
+                'required' => 'El mensaje de bienvenida es obligatorio'
             ],
             'logo' => [
-                'rules' => 'if_exist|uploaded[logo]|mime_in[logo,image/jpg,image/jpeg,image/png]|max_size[logo,2048]',
-                'errors' => [
-                    'uploaded' => 'Debe seleccionar un archivo para subir',
-                    'mime_in' => 'El archivo debe ser una imagen JPG, JPEG o PNG',
-                    'max_size' => 'El tamaño máximo permitido es 2MB'
-                ]
+                'uploaded' => 'Debe seleccionar un archivo para subir',
+                'mime_in' => 'El archivo debe ser una imagen JPG, JPEG o PNG',
+                'max_size' => 'El tamaño máximo permitido es 2MB'
             ]
-        ];
+        ]);
 
-        if (!$this->validate($rules)) {
+        if (!$validation->withRequest($request)->run()) {
             return redirect()->back()
                 ->withInput()
-                ->with('errors', $this->validator->getErrors());
+                ->with('errors', $validation->getErrors());
         }
 
         $data = $this->request->getPost();

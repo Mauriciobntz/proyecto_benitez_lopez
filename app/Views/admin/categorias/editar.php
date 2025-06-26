@@ -1,3 +1,6 @@
+<?php
+$errors = session('errors') ?? [];
+?>
 <div class="container mt-4">
     <?php if (session()->has('error')): ?>
         <div class="alert alert-danger">
@@ -11,15 +14,6 @@
         </div>
     <?php endif; ?>
 
-    <?php $validation = session()->get('validation') ?? \Config\Services::validation(); ?>
-
-    <?php if ($validation->getErrors()): ?>
-        <div class="alert alert-danger">
-            <h5 class="alert-heading">Errores encontrados:</h5>
-            <?= $validation->listErrors() ?>
-        </div>
-    <?php endif; ?>
-
     <form action="<?= base_url('admin/categorias/actualizar') ?>" method="post" enctype="multipart/form-data">
         <?= csrf_field() ?>
         <input type="hidden" name="categoria_id" value="<?= $categoria['id_categoria'] ?>">
@@ -30,23 +24,23 @@
 
                 <div class="mb-3">
                     <label for="nombre" class="form-label">Nombre *</label>
-                    <input type="text" class="form-control <?= $validation->hasError('nombre') ? 'is-invalid' : '' ?>" 
+                    <input type="text" class="form-control <?= isset($errors['nombre']) ? 'is-invalid' : '' ?>" 
                            id="nombre" name="nombre" 
                            value="<?= old('nombre', $categoria['nombre']) ?>">
-                    <?php if ($validation->hasError('nombre')): ?>
+                    <?php if (isset($errors['nombre'])): ?>
                         <div class="invalid-feedback">
-                            <?= $validation->getError('nombre') ?>
+                            <?= $errors['nombre'] ?>
                         </div>
                     <?php endif; ?>
                 </div>
 
                 <div class="mb-3">
                     <label for="descripcion" class="form-label">Descripción *</label>
-                    <textarea class="form-control <?= $validation->hasError('descripcion') ? 'is-invalid' : '' ?>" 
+                    <textarea class="form-control <?= isset($errors['descripcion']) ? 'is-invalid' : '' ?>" 
                               id="descripcion" name="descripcion" rows="3"><?= old('descripcion', $categoria['descripcion']) ?></textarea>
-                    <?php if ($validation->hasError('descripcion')): ?>
+                    <?php if (isset($errors['descripcion'])): ?>
                         <div class="invalid-feedback">
-                            <?= $validation->getError('descripcion') ?>
+                            <?= $errors['descripcion'] ?>
                         </div>
                     <?php endif; ?>
                 </div>
@@ -67,11 +61,11 @@
                         </div>
                     <?php endif; ?>
                     
-                    <input type="file" class="form-control <?= $validation->hasError('imagen') ? 'is-invalid' : '' ?>" 
+                    <input type="file" class="form-control <?= isset($errors['imagen']) ? 'is-invalid' : '' ?>" 
                            id="imagen" name="imagen" accept="image/jpg,image/jpeg,image/png,image/webp">
-                    <?php if ($validation->hasError('imagen')): ?>
+                    <?php if (isset($errors['imagen'])): ?>
                         <div class="invalid-feedback">
-                            <?= $validation->getError('imagen') ?>
+                            <?= $errors['imagen'] ?>
                         </div>
                     <?php endif; ?>
                     <div id="image-preview" class="mt-2" style="display: none;">

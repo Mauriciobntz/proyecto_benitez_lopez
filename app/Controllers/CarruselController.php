@@ -51,58 +51,50 @@ class CarruselController extends BaseController
 
     public function guardar()
     {
-        $rules = [
+        $validation = \Config\Services::validation();
+        $request = \Config\Services::request();
+
+        $validation->setRules([
+            'titulo' => 'required|max_length[100]',
+            'descripcion' => 'max_length[500]',
+            'enlace' => 'valid_url|max_length[255]',
+            'imagen' => 'uploaded[imagen]|max_size[imagen,2048]|is_image[imagen]|mime_in[imagen,image/jpg,image/jpeg,image/png,image/webp]',
+            'orden' => 'required|numeric|greater_than[0]|is_unique[carrusel.orden]'
+        ], [
             'titulo' => [
-                'rules' => 'required|max_length[100]|string',
-                'errors' => [
-                    'required' => 'El título es obligatorio',
-                    'max_length' => 'El título no puede exceder los 100 caracteres',
-                    'string' => 'El título debe ser texto válido'
-                ]
+                'required' => 'El título es obligatorio',
+                'max_length' => 'El título no puede exceder los 100 caracteres'
             ],
             'descripcion' => [
-                'rules' => 'max_length[500]|string',
-                'errors' => [
-                    'max_length' => 'La descripción no puede exceder los 500 caracteres',
-                    'string' => 'La descripción debe ser texto válido'
-                ]
+                'max_length' => 'La descripción no puede exceder los 500 caracteres'
             ],
             'enlace' => [
-                'rules' => 'valid_url|max_length[255]',
-                'errors' => [
-                    'valid_url' => 'El enlace debe ser una URL válida',
-                    'max_length' => 'El enlace no puede exceder los 255 caracteres'
-                ]
+                'valid_url' => 'El enlace debe ser una URL válida',
+                'max_length' => 'El enlace no puede exceder los 255 caracteres'
             ],
             'imagen' => [
-                'rules' => 'uploaded[imagen]|max_size[imagen,2048]|is_image[imagen]|mime_in[imagen,image/jpg,image/jpeg,image/png,image/webp]',
-                'errors' => [
-                    'uploaded' => 'La imagen es obligatoria',
-                    'max_size' => 'La imagen no puede exceder los 2MB',
-                    'is_image' => 'El archivo debe ser una imagen válida',
-                    'mime_in' => 'Formatos permitidos: JPG, JPEG, PNG, WEBP'
-                ]
+                'uploaded' => 'La imagen es obligatoria',
+                'max_size' => 'La imagen no puede exceder los 2MB',
+                'is_image' => 'El archivo debe ser una imagen válida',
+                'mime_in' => 'Formatos permitidos: JPG, JPEG, PNG, WEBP'
             ],
             'orden' => [
-                'rules' => 'required|numeric|greater_than[0]|is_unique[carrusel.orden]',
-                'errors' => [
-                    'required' => 'El orden es obligatorio',
-                    'numeric' => 'El orden debe ser un número',
-                    'greater_than' => 'El orden debe ser mayor a 0',
-                    'is_unique' => 'Este número de orden ya está en uso'
-                ]
+                'required' => 'El orden es obligatorio',
+                'numeric' => 'El orden debe ser un número',
+                'greater_than' => 'El orden debe ser mayor a 0',
+                'is_unique' => 'Este número de orden ya está en uso'
             ]
-        ];
+        ]);
 
-        if (!$this->validate($rules)) {
-            return redirect()->back()->withInput()->with('validation', $this->validator);
+        if (!$validation->withRequest($request)->run()) {
+            return redirect()->back()->withInput()->with('errors', $validation->getErrors());
         }
 
         $imagen = $this->request->getFile('imagen');
         if ($imagen->isValid() && !$imagen->hasMoved()) {
             $tempPath = $imagen->getTempName();
             if (!$this->validateImageDimensions($tempPath, 1200, 400, 2000, 600)) {
-                return redirect()->back()->withInput()->with('error', 'La imagen debe tener entre 1200x400px y 2000x600px');
+                return redirect()->back()->withInput()->with('errors', ['imagen' => 'La imagen debe tener entre 1200x400px y 2000x600px']);
             }
         }
 
@@ -153,54 +145,49 @@ class CarruselController extends BaseController
             return redirect()->to('/admin/configuracion/carrusel/listar')->with('error', 'Slide no encontrado');
         }
 
-        $rules = [
+        $validation = \Config\Services::validation();
+        $request = \Config\Services::request();
+
+        $validation->setRules([
+            'titulo' => 'required|max_length[100]',
+            'descripcion' => 'max_length[500]',
+            'enlace' => 'valid_url|max_length[255]',
+            'orden' => "required|numeric|greater_than[0]|is_unique[carrusel.orden,id,{$id}]"
+        ], [
             'titulo' => [
-                'rules' => 'required|max_length[100]|string',
-                'errors' => [
-                    'required' => 'El título es obligatorio',
-                    'max_length' => 'El título no puede exceder los 100 caracteres',
-                    'string' => 'El título debe ser texto válido'
-                ]
+                'required' => 'El título es obligatorio',
+                'max_length' => 'El título no puede exceder los 100 caracteres'
             ],
             'descripcion' => [
-                'rules' => 'max_length[500]|string',
-                'errors' => [
-                    'max_length' => 'La descripción no puede exceder los 500 caracteres',
-                    'string' => 'La descripción debe ser texto válido'
-                ]
+                'max_length' => 'La descripción no puede exceder los 500 caracteres'
             ],
             'enlace' => [
-                'rules' => 'valid_url|max_length[255]',
-                'errors' => [
-                    'valid_url' => 'El enlace debe ser una URL válida',
-                    'max_length' => 'El enlace no puede exceder los 255 caracteres'
-                ]
+                'valid_url' => 'El enlace debe ser una URL válida',
+                'max_length' => 'El enlace no puede exceder los 255 caracteres'
             ],
             'orden' => [
-                'rules' => "required|numeric|greater_than[0]|is_unique[carrusel.orden,id,{$id}]",
-                'errors' => [
-                    'required' => 'El orden es obligatorio',
-                    'numeric' => 'El orden debe ser un número',
-                    'greater_than' => 'El orden debe ser mayor a 0',
-                    'is_unique' => 'Este número de orden ya está en uso'
-                ]
+                'required' => 'El orden es obligatorio',
+                'numeric' => 'El orden debe ser un número',
+                'greater_than' => 'El orden debe ser mayor a 0',
+                'is_unique' => 'Este número de orden ya está en uso'
             ]
-        ];
+        ]);
 
         $imagen = $this->request->getFile('imagen');
         if ($imagen && $imagen->isValid()) {
-            $rules['imagen'] = [
-                'rules' => 'max_size[imagen,2048]|is_image[imagen]|mime_in[imagen,image/jpg,image/jpeg,image/png,image/webp]',
-                'errors' => [
+            $validation->setRules([
+                'imagen' => 'max_size[imagen,2048]|is_image[imagen]|mime_in[imagen,image/jpg,image/jpeg,image/png,image/webp]'
+            ], [
+                'imagen' => [
                     'max_size' => 'La imagen no puede exceder los 2MB',
                     'is_image' => 'El archivo debe ser una imagen válida',
                     'mime_in' => 'Formatos permitidos: JPG, JPEG, PNG, WEBP'
                 ]
-            ];
+            ]);
         }
 
-        if (!$this->validate($rules)) {
-            return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
+        if (!$validation->withRequest($request)->run()) {
+            return redirect()->back()->withInput()->with('errors', $validation->getErrors());
         }
 
         $data = [

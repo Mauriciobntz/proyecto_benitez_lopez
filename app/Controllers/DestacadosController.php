@@ -54,58 +54,48 @@ class DestacadosController extends BaseController
 
     public function guardar()
     {
-        $rules = [
+        $validation = \Config\Services::validation();
+        $request = \Config\Services::request();
+        
+        $validation->setRules([
+            'producto_id' => 'required|numeric',
+            'titulo' => 'required|max_length[150]',
+            'subtitulo' => 'required|max_length[255]',
+            'video_file' => 'uploaded[video_file]|max_size[video_file,10240]|ext_in[video_file,mp4,mov,avi]',
+            'url_producto' => 'valid_url|max_length[255]',
+            'orden' => 'required|numeric|greater_than[0]|is_unique[destacados.orden]'
+        ], [
             'producto_id' => [
-                'rules' => 'required|numeric',
-                'errors' => [
-                    'required' => 'El producto es obligatorio',
-                    'numeric' => 'El producto debe ser un ID válido'
-                ]
+                'required' => 'El producto es obligatorio',
+                'numeric' => 'El producto debe ser un ID válido'
             ],
             'titulo' => [
-                'rules' => 'required|max_length[150]|string',
-                'errors' => [
-                    'required' => 'El título es obligatorio',
-                    'max_length' => 'El título no puede exceder los 150 caracteres',
-                    'string' => 'El título debe ser texto válido'
-                ]
+                'required' => 'El título es obligatorio',
+                'max_length' => 'El título no puede exceder los 150 caracteres'
             ],
             'subtitulo' => [
-                'rules' => 'required|max_length[255]|string',
-                'errors' => [
-                    'required' => 'El subtítulo es obligatorio',
-                    'max_length' => 'El subtítulo no puede exceder los 255 caracteres',
-                    'string' => 'El subtítulo debe ser texto válido'
-                ]
+                'required' => 'El subtítulo es obligatorio',
+                'max_length' => 'El subtítulo no puede exceder los 255 caracteres'
             ],
             'video_file' => [
-                'rules' => 'uploaded[video_file]|max_size[video_file,10240]|ext_in[video_file,mp4,mov,avi]',
-                'errors' => [
-                    'uploaded' => 'El video es obligatorio',
-                    'max_size' => 'El video es demasiado grande (máx 10MB)',
-                    'ext_in' => 'Formatos permitidos: mp4, mov, avi'
-                ]
+                'uploaded' => 'El video es obligatorio',
+                'max_size' => 'El video es demasiado grande (máx 10MB)',
+                'ext_in' => 'Formatos permitidos: mp4, mov, avi'
             ],
             'url_producto' => [
-                'rules' => 'valid_url|max_length[255]',
-                'errors' => [
-                    'valid_url' => 'El enlace debe ser una URL válida',
-                    'max_length' => 'El enlace no puede exceder los 255 caracteres'
-                ]
+                'valid_url' => 'El enlace debe ser una URL válida',
+                'max_length' => 'El enlace no puede exceder los 255 caracteres'
             ],
             'orden' => [
-                'rules' => 'required|numeric|greater_than[0]|is_unique[destacados.orden]',
-                'errors' => [
-                    'required' => 'El orden es obligatorio',
-                    'numeric' => 'El orden debe ser un número',
-                    'greater_than' => 'El orden debe ser mayor a 0',
-                    'is_unique' => 'Este número de orden ya está en uso'
-                ]
+                'required' => 'El orden es obligatorio',
+                'numeric' => 'El orden debe ser un número',
+                'greater_than' => 'El orden debe ser mayor a 0',
+                'is_unique' => 'Este número de orden ya está en uso'
             ]
-        ];
+        ]);
 
-        if (!$this->validate($rules)) {
-            return redirect()->back()->withInput()->with('validation', $this->validator);
+        if (!$validation->withRequest($request)->run()) {
+            return redirect()->back()->withInput()->with('errors', $validation->getErrors());
         }
 
         $videoFile = $this->request->getFile('video_file');
@@ -157,57 +147,47 @@ class DestacadosController extends BaseController
             return redirect()->to('/admin/configuracion/destacados/listar')->with('error', 'Producto destacado no encontrado');
         }
 
-        $rules = [
+        $validation = \Config\Services::validation();
+        $request = \Config\Services::request();
+        
+        $validation->setRules([
+            'producto_id' => 'required|numeric',
+            'titulo' => 'required|max_length[150]',
+            'subtitulo' => 'required|max_length[255]',
+            'video_file' => 'if_exist|max_size[video_file,10240]|ext_in[video_file,mp4,mov,avi]',
+            'url_producto' => 'valid_url|max_length[255]',
+            'orden' => "required|numeric|greater_than[0]|is_unique[destacados.orden,id_destacado,{$id}]"
+        ], [
             'producto_id' => [
-                'rules' => 'required|numeric',
-                'errors' => [
-                    'required' => 'El producto es obligatorio',
-                    'numeric' => 'El producto debe ser un ID válido'
-                ]
+                'required' => 'El producto es obligatorio',
+                'numeric' => 'El producto debe ser un ID válido'
             ],
             'titulo' => [
-                'rules' => 'required|max_length[150]|string',
-                'errors' => [
-                    'required' => 'El título es obligatorio',
-                    'max_length' => 'El título no puede exceder los 150 caracteres',
-                    'string' => 'El título debe ser texto válido'
-                ]
+                'required' => 'El título es obligatorio',
+                'max_length' => 'El título no puede exceder los 150 caracteres'
             ],
             'subtitulo' => [
-                'rules' => 'required|max_length[255]|string',
-                'errors' => [
-                    'required' => 'El subtítulo es obligatorio',
-                    'max_length' => 'El subtítulo no puede exceder los 255 caracteres',
-                    'string' => 'El subtítulo debe ser texto válido'
-                ]
+                'required' => 'El subtítulo es obligatorio',
+                'max_length' => 'El subtítulo no puede exceder los 255 caracteres'
             ],
             'video_file' => [
-                'rules' => 'if_exist|max_size[video_file,10240]|ext_in[video_file,mp4,mov,avi]',
-                'errors' => [
-                    'max_size' => 'El video es demasiado grande (máx 10MB)',
-                    'ext_in' => 'Formatos permitidos: mp4, mov, avi'
-                ]
+                'max_size' => 'El video es demasiado grande (máx 10MB)',
+                'ext_in' => 'Formatos permitidos: mp4, mov, avi'
             ],
             'url_producto' => [
-                'rules' => 'valid_url|max_length[255]',
-                'errors' => [
-                    'valid_url' => 'El enlace debe ser una URL válida',
-                    'max_length' => 'El enlace no puede exceder los 255 caracteres'
-                ]
+                'valid_url' => 'El enlace debe ser una URL válida',
+                'max_length' => 'El enlace no puede exceder los 255 caracteres'
             ],
             'orden' => [
-                'rules' => "required|numeric|greater_than[0]|is_unique[destacados.orden,id_destacado,{$id}]",
-                'errors' => [
-                    'required' => 'El orden es obligatorio',
-                    'numeric' => 'El orden debe ser un número',
-                    'greater_than' => 'El orden debe ser mayor a 0',
-                    'is_unique' => 'Este número de orden ya está en uso'
-                ]
+                'required' => 'El orden es obligatorio',
+                'numeric' => 'El orden debe ser un número',
+                'greater_than' => 'El orden debe ser mayor a 0',
+                'is_unique' => 'Este número de orden ya está en uso'
             ]
-        ];
+        ]);
 
-        if (!$this->validate($rules)) {
-            return redirect()->back()->withInput()->with('validation', $this->validator);
+        if (!$validation->withRequest($request)->run()) {
+            return redirect()->back()->withInput()->with('errors', $validation->getErrors());
         }
 
         $data = [

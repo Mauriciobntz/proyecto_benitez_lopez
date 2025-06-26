@@ -42,8 +42,7 @@ class CategoriaController extends BaseController
         }
 
         $data = [
-            'titulo' => 'Agregar Nueva Categoría',
-            'validation' => session()->get('validation') ?? null
+            'titulo' => 'Agregar Nueva Categoría'
         ];
 
         return view('header', $data) . view('navbar') . view('admin/categorias/agregar') . view('footer');
@@ -86,7 +85,7 @@ class CategoriaController extends BaseController
         ]);
 
         if (!$validation->withRequest($request)->run()) {
-            return redirect()->back()->withInput()->with('validation', $validation);
+            return redirect()->back()->withInput()->with('errors', $validation->getErrors());
         }
 
         $imagen = $this->request->getFile('imagen');
@@ -134,9 +133,8 @@ class CategoriaController extends BaseController
         }
 
         $data = [
-            'titulo' => 'Editar Categoría: ' . $categoria['nombre'],
-            'categoria' => $categoria,
-            'validation' => session()->get('validation') ?? null
+            'titulo' => 'Editar Categoría',
+            'categoria' => $categoria
         ];
 
         return view('header', $data) . view('navbar') . view('admin/categorias/editar') . view('footer');
@@ -186,7 +184,7 @@ class CategoriaController extends BaseController
         ]);
 
         if (!$validation->withRequest($request)->run()) {
-            return redirect()->back()->withInput()->with('validation', $validation);
+            return redirect()->back()->withInput()->with('errors', $validation->getErrors());
         }
 
         $nombreImagen = $categoria['imagen_url'];

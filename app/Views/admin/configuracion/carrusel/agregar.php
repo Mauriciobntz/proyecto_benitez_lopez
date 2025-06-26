@@ -1,19 +1,16 @@
+<?php
+$errors = session('errors') ?? [];
+?>
 <div class="container mt-4">
     <?php if (session('error')): ?>
         <div class="alert alert-danger">
             <?= session('error') ?>
         </div>
     <?php endif; ?>
-    
-    <?php if (session('validation')): ?>
-        <div class="alert alert-danger">
-            <?= session('validation')->listErrors() ?>
-        </div>
-    <?php endif; ?>
 
     <div class="card mb-4">
         <div class="card-header">
-            <h4>Agregar Nuevo Slide</h4>
+            <h4>Agregar Slide al Carrusel</h4>
         </div>
         <div class="card-body">
             <form action="<?= base_url('admin/configuracion/carrusel/guardar') ?>" method="post" enctype="multipart/form-data">
@@ -21,63 +18,63 @@
                 
                 <div class="mb-3">
                     <label for="titulo" class="form-label">Título *</label>
-                    <input type="text" class="form-control <?= session('validation') && session('validation')->hasError('titulo') ? 'is-invalid' : '' ?>" 
+                    <input type="text" class="form-control <?= isset($errors['titulo']) ? 'is-invalid' : '' ?>" 
                            id="titulo" name="titulo" value="<?= old('titulo') ?>">
-                    <?php if (session('validation') && session('validation')->hasError('titulo')): ?>
+                    <?php if (isset($errors['titulo'])): ?>
                         <div class="invalid-feedback">
-                            <?= session('validation')->getError('titulo') ?>
+                            <?= $errors['titulo'] ?>
                         </div>
                     <?php endif; ?>
                 </div>
 
                 <div class="mb-3">
                     <label for="descripcion" class="form-label">Descripción</label>
-                    <textarea class="form-control <?= session('validation') && session('validation')->hasError('descripcion') ? 'is-invalid' : '' ?>" 
+                    <textarea class="form-control <?= isset($errors['descripcion']) ? 'is-invalid' : '' ?>" 
                               id="descripcion" name="descripcion" rows="3"><?= old('descripcion') ?></textarea>
-                    <?php if (session('validation') && session('validation')->hasError('descripcion')): ?>
+                    <?php if (isset($errors['descripcion'])): ?>
                         <div class="invalid-feedback">
-                            <?= session('validation')->getError('descripcion') ?>
+                            <?= $errors['descripcion'] ?>
                         </div>
                     <?php endif; ?>
                 </div>
 
                 <div class="mb-3">
                     <label for="enlace" class="form-label">Enlace</label>
-                    <input type="url" class="form-control <?= session('validation') && session('validation')->hasError('enlace') ? 'is-invalid' : '' ?>" 
+                    <input type="url" class="form-control <?= isset($errors['enlace']) ? 'is-invalid' : '' ?>" 
                            id="enlace" name="enlace" value="<?= old('enlace') ?>">
-                    <?php if (session('validation') && session('validation')->hasError('enlace')): ?>
+                    <?php if (isset($errors['enlace'])): ?>
                         <div class="invalid-feedback">
-                            <?= session('validation')->getError('enlace') ?>
+                            <?= $errors['enlace'] ?>
                         </div>
                     <?php endif; ?>
                 </div>
 
                 <div class="mb-3">
                     <label for="imagen" class="form-label">Imagen *</label>
-                    <input type="file" class="form-control <?= session('validation') && session('validation')->hasError('imagen') ? 'is-invalid' : '' ?>" 
-                        id="imagen" name="imagen" accept="image/*">
-                    <?php if (session('validation') && session('validation')->hasError('imagen')): ?>
+                    <input type="file" class="form-control <?= isset($errors['imagen']) ? 'is-invalid' : '' ?>" 
+                           id="imagen" name="imagen" accept="image/jpg,image/jpeg,image/png,image/webp">
+                    <?php if (isset($errors['imagen'])): ?>
                         <div class="invalid-feedback">
-                            <?= session('validation')->getError('imagen') ?>
+                            <?= $errors['imagen'] ?>
                         </div>
                     <?php endif; ?>
-                    <small class="text-muted">
-                        Tamaño requerido: 1200x400px a 2000x600px. Formatos: JPG, PNG, WEBP. Tamaño máximo: 2MB
-                    </small>
-                    <div id="image-preview" class="mt-2" style="display: none;">
-                        <img id="preview-img" src="#" alt="Vista previa" class="img-thumbnail" style="max-height: 150px;">
-                        <div id="image-dimensions" class="text-muted small mt-1"></div>
+                    <small class="text-muted">Formatos aceptados: JPG, JPEG, PNG, WEBP (máx 2MB)</small>
+                    
+                    <!-- Preview de la imagen -->
+                    <div class="mt-3" id="image-preview-container" style="display: none;">
+                        <h6>Vista Previa:</h6>
+                        <img id="image-preview" src="#" alt="Vista previa" class="img-thumbnail" style="max-height: 200px;">
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col-md-6 mb-3">
                         <label for="orden" class="form-label">Orden *</label>
-                        <input type="number" class="form-control <?= session('validation') && session('validation')->hasError('orden') ? 'is-invalid' : '' ?>" 
+                        <input type="number" class="form-control <?= isset($errors['orden']) ? 'is-invalid' : '' ?>" 
                                id="orden" name="orden" value="<?= old('orden', $orden) ?>">
-                        <?php if (session('validation') && session('validation')->hasError('orden')): ?>
+                        <?php if (isset($errors['orden'])): ?>
                             <div class="invalid-feedback">
-                                <?= session('validation')->getError('orden') ?>
+                                <?= $errors['orden'] ?>
                             </div>
                         <?php endif; ?>
                     </div>

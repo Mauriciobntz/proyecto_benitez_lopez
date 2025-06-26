@@ -14,8 +14,9 @@
 
                     <form action="<?= base_url('perfil/direcciones/guardar') ?>" 
                           method="post" 
-                          class="needs-validation" 
-                          novalidate>
+                          class="needs-validation">
+                        
+                        <?= csrf_field() ?>
                         
                         <?php if (session()->getFlashdata('from_checkout')): ?>
                             <input type="hidden" name="from_checkout" value="1">
@@ -25,8 +26,7 @@
                             <label for="tipo" class="form-label">Tipo de Dirección</label>
                             <select class="form-select <?= session('errors.tipo') ? 'is-invalid' : '' ?>" 
                                     id="tipo" 
-                                    name="tipo" 
-                                    required>
+                                    name="tipo">
                                 <option value="">Seleccione un tipo</option>
                                 <option value="particular" <?= old('tipo') == 'particular' ? 'selected' : '' ?>>Particular</option>
                                 <option value="fiscal" <?= old('tipo') == 'fiscal' ? 'selected' : '' ?>>Fiscal</option>
@@ -47,8 +47,7 @@
                                    id="alias" 
                                    name="alias" 
                                    value="<?= old('alias') ?>" 
-                                   placeholder="Ej: Casa, Trabajo, etc."
-                                   required>
+                                   placeholder="Ej: Casa, Trabajo, etc.">
                             <?php if (session('errors.alias')): ?>
                                 <div class="invalid-feedback">
                                     <?= session('errors.alias') ?>
@@ -63,8 +62,7 @@
                                    id="direccion" 
                                    name="direccion" 
                                    value="<?= old('direccion') ?>" 
-                                   placeholder="Calle, número, piso, etc."
-                                   required>
+                                   placeholder="Calle, número, piso, etc.">
                             <?php if (session('errors.direccion')): ?>
                                 <div class="invalid-feedback">
                                     <?= session('errors.direccion') ?>
@@ -79,8 +77,7 @@
                                        class="form-control <?= session('errors.ciudad') ? 'is-invalid' : '' ?>" 
                                        id="ciudad" 
                                        name="ciudad" 
-                                       value="<?= old('ciudad') ?>" 
-                                       required>
+                                       value="<?= old('ciudad') ?>">
                                 <?php if (session('errors.ciudad')): ?>
                                     <div class="invalid-feedback">
                                         <?= session('errors.ciudad') ?>
@@ -94,8 +91,7 @@
                                        class="form-control <?= session('errors.provincia') ? 'is-invalid' : '' ?>" 
                                        id="provincia" 
                                        name="provincia" 
-                                       value="<?= old('provincia') ?>" 
-                                       required>
+                                       value="<?= old('provincia') ?>">
                                 <?php if (session('errors.provincia')): ?>
                                     <div class="invalid-feedback">
                                         <?= session('errors.provincia') ?>
@@ -111,8 +107,7 @@
                                        class="form-control <?= session('errors.codigo_postal') ? 'is-invalid' : '' ?>" 
                                        id="codigo_postal" 
                                        name="codigo_postal" 
-                                       value="<?= old('codigo_postal') ?>" 
-                                       required>
+                                       value="<?= old('codigo_postal') ?>">
                                 <?php if (session('errors.codigo_postal')): ?>
                                     <div class="invalid-feedback">
                                         <?= session('errors.codigo_postal') ?>
@@ -126,8 +121,7 @@
                                        class="form-control <?= session('errors.pais') ? 'is-invalid' : '' ?>" 
                                        id="pais" 
                                        name="pais" 
-                                       value="<?= old('pais', 'Argentina') ?>" 
-                                       required>
+                                       value="<?= old('pais', 'Argentina') ?>">
                                 <?php if (session('errors.pais')): ?>
                                     <div class="invalid-feedback">
                                         <?= session('errors.pais') ?>

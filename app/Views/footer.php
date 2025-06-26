@@ -1,4 +1,12 @@
-<section>
+<?php
+$isLoggedIn = session('logged_in');
+$isAdmin = $isLoggedIn && session('rol') === 'admin';
+$isUser = $isLoggedIn && !$isAdmin;
+?>
+
+<section class="mt-3">
+
+<?php if (!$isAdmin): ?>
 
 <!--Cinta de Marcas-->
 <div class="brands-carousel">
@@ -72,8 +80,15 @@
 </div>
 <!--Fin cinta de Marcas-->
 
+<?php endif; ?>
+
+
 <!-- Footer -->
 <footer class="bg-dark mt-5">
+
+<?php if (!$isAdmin): ?>
+
+
   <div class="container-fluid d-flex justify-content-center align-items-center" style="padding: 20px 50px;">
     <div class="row w-100 justify-content-center g-4">
       <!-- Columna 1: Información -->
@@ -163,6 +178,9 @@
       </div>
     </div>
   </div>
+
+<?php endif; ?>
+
 
   <!-- Copyright -->
   <div class="text-center text-white p-3" style="background-color: rgba(0, 0, 0, 0.2);">

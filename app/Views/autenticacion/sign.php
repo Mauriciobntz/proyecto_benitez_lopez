@@ -1,3 +1,7 @@
+<?php
+$errors = session('errors') ?? [];
+$oldData = session('_ci_old_input') ?? [];
+?>
 <section class="mt-3 mb-3">
     <div class="container d-flex justify-content-center">
         <div class="card shadow" style="width: 70%;">
@@ -6,73 +10,70 @@
             </div>
             
             <!-- Mostrar mensajes de error/success -->
-            <?php if (session('error') || session('errors')): ?>
+            <?php if (session('error')): ?>
                 <div class="alert alert-danger">
                     <?= session('error') ?>
-                    <?php 
-                    if (session('errors')) {
-                        foreach (session('errors') as $error) {
-                            echo "<p>$error</p>";
-                        }
-                    }
-                    ?>
                 </div>
             <?php endif ?>
 
             <!-- Inicio del formulario de registro -->
             <form method="post" action="<?= base_url('sign') ?>">
+                <?= csrf_field() ?>
                 <div class="card-body">
                     <div class="mb-2">
                         <label for="username" class="form-label">Nombre de Usuario</label>
-                        <input name="username" type="text" 
-                               class="form-control <?= isset($validation) && $validation->hasError('username') ? 'is-invalid' : '' ?>" 
-                               placeholder="Nombre de usuario" 
-                               value="<?= old('username') ?? '' ?>" 
-                               required>
-                        <?php if (isset($validation) && $validation->hasError('username')): ?>
+                        <input type="text" 
+                               class="form-control <?= isset($errors['username']) ? 'is-invalid' : '' ?>" 
+                               id="username" 
+                               name="username" 
+                               value="<?= old('username') ?>" 
+                               placeholder="Nombre de usuario">
+                        <?php if (isset($errors['username'])): ?>
                             <div class="invalid-feedback">
-                                <?= $validation->getError('username') ?>
+                                <?= $errors['username'] ?>
                             </div>
                         <?php endif ?>
                     </div>
                     
                     <div class="mb-2">
                         <label for="email" class="form-label">Correo Electrónico</label>
-                        <input name="email" type="email" 
-                               class="form-control <?= isset($validation) && $validation->hasError('email') ? 'is-invalid' : '' ?>" 
-                               placeholder="Correo electrónico" 
-                               value="<?= old('email') ?? '' ?>" 
-                               required>
-                        <?php if (isset($validation) && $validation->hasError('email')): ?>
+                        <input type="email" 
+                               class="form-control <?= isset($errors['email']) ? 'is-invalid' : '' ?>" 
+                               id="email" 
+                               name="email" 
+                               value="<?= old('email') ?>" 
+                               placeholder="Correo electrónico">
+                        <?php if (isset($errors['email'])): ?>
                             <div class="invalid-feedback">
-                                <?= $validation->getError('email') ?>
+                                <?= $errors['email'] ?>
                             </div>
                         <?php endif ?>
                     </div>
                     
                     <div class="mb-2">
                         <label for="password" class="form-label">Contraseña</label>
-                        <input name="password" type="password" 
-                               class="form-control <?= isset($validation) && $validation->hasError('password') ? 'is-invalid' : '' ?>" 
-                               placeholder="Contraseña (mínimo 8 caracteres)" 
-                               minlength="8" 
-                               required>
-                        <?php if (isset($validation) && $validation->hasError('password')): ?>
+                        <input type="password" 
+                               class="form-control <?= isset($errors['password']) ? 'is-invalid' : '' ?>" 
+                               id="password" 
+                               name="password" 
+                               placeholder="Contraseña">
+                        <?php if (isset($errors['password'])): ?>
                             <div class="invalid-feedback">
-                                <?= $validation->getError('password') ?>
+                                <?= $errors['password'] ?>
                             </div>
                         <?php endif ?>
                     </div>
                     
                     <div class="mb-3">
                         <label for="confirm_password" class="form-label">Confirmar Contraseña</label>
-                        <input name="confirm_password" type="password" 
-                               class="form-control <?= isset($validation) && $validation->hasError('confirm_password') ? 'is-invalid' : '' ?>" 
-                               placeholder="Repetir contraseña" 
-                               required>
-                        <?php if (isset($validation) && $validation->hasError('confirm_password')): ?>
+                        <input type="password" 
+                               class="form-control <?= isset($errors['confirm_password']) ? 'is-invalid' : '' ?>" 
+                               id="confirm_password" 
+                               name="confirm_password" 
+                               placeholder="Confirmar contraseña">
+                        <?php if (isset($errors['confirm_password'])): ?>
                             <div class="invalid-feedback">
-                                <?= $validation->getError('confirm_password') ?>
+                                <?= $errors['confirm_password'] ?>
                             </div>
                         <?php endif ?>
                     </div>

@@ -152,26 +152,55 @@ class CheckoutController extends BaseController
         } else {
             // Guardar nueva dirección
             $validation = \Config\Services::validation();
+            $request = \Config\Services::request();
+
             $validation->setRules([
                 'alias' => 'required|max_length[50]',
-                'direccion' => 'required',
-                'codigo_postal' => 'required',
-                'ciudad' => 'required',
-                'provincia' => 'required',
-                'pais' => 'required',
+                'direccion' => 'required|max_length[255]',
+                'codigo_postal' => 'required|max_length[10]',
+                'ciudad' => 'required|max_length[100]',
+                'provincia' => 'required|max_length[100]',
+                'pais' => 'required|max_length[100]'
+            ], [
+                'alias' => [
+                    'required' => 'El alias es obligatorio',
+                    'max_length' => 'El alias no debe exceder los 50 caracteres'
+                ],
+                'direccion' => [
+                    'required' => 'La dirección es obligatoria',
+                    'max_length' => 'La dirección no debe exceder los 255 caracteres'
+                ],
+                'codigo_postal' => [
+                    'required' => 'El código postal es obligatorio',
+                    'max_length' => 'El código postal no debe exceder los 10 caracteres'
+                ],
+                'ciudad' => [
+                    'required' => 'La ciudad es obligatoria',
+                    'max_length' => 'La ciudad no debe exceder los 100 caracteres'
+                ],
+                'provincia' => [
+                    'required' => 'La provincia es obligatoria',
+                    'max_length' => 'La provincia no debe exceder los 100 caracteres'
+                ],
+                'pais' => [
+                    'required' => 'El país es obligatorio',
+                    'max_length' => 'El país no debe exceder los 100 caracteres'
+                ]
             ]);
-            if (!$validation->withRequest($this->request)->run()) {
+
+            if (!$validation->withRequest($request)->run()) {
                 return redirect()->back()->withInput()->with('errors', $validation->getErrors());
             }
+
             $nueva = [
                 'usuario_id' => $usuario_id,
                 'tipo' => 'envio',
-                'alias' => $this->request->getPost('alias'),
-                'direccion' => $this->request->getPost('direccion'),
-                'codigo_postal' => $this->request->getPost('codigo_postal'),
-                'ciudad' => $this->request->getPost('ciudad'),
-                'provincia' => $this->request->getPost('provincia'),
-                'pais' => $this->request->getPost('pais'),
+                'alias' => $request->getPost('alias'),
+                'direccion' => $request->getPost('direccion'),
+                'codigo_postal' => $request->getPost('codigo_postal'),
+                'ciudad' => $request->getPost('ciudad'),
+                'provincia' => $request->getPost('provincia'),
+                'pais' => $request->getPost('pais'),
                 'es_principal' => 0
             ];
             $id_nueva = $this->direccionModel->insert($nueva, true);
@@ -305,13 +334,23 @@ class CheckoutController extends BaseController
         }
         // Validar método de pago
         $validation = \Config\Services::validation();
+        $request = \Config\Services::request();
+
         $validation->setRules([
             'metodo_pago' => 'required|in_list[Tarjeta,Transferencia,Contrapago,Bitcoin]'
+        ], [
+            'metodo_pago' => [
+                'required' => 'Debe seleccionar un método de pago',
+                'in_list' => 'Método de pago inválido'
+            ]
         ]);
-        if (!$validation->withRequest($this->request)->run()) {
+
+        if (!$validation->withRequest($request)->run()) {
             return redirect()->back()->withInput()->with('errors', $validation->getErrors());
         }
-        $metodo_pago = $this->request->getPost('metodo_pago');
+
+        $metodo_pago = $request->getPost('metodo_pago');
+
         // Validaciones adicionales por método
         if ($metodo_pago === 'Tarjeta') {
             $validation->setRules([
@@ -319,15 +358,43 @@ class CheckoutController extends BaseController
                 'nombre_tarjeta' => 'required|max_length[100]',
                 'fecha_expiracion' => 'required',
                 'cvv' => 'required|numeric|min_length[3]|max_length[4]'
+            ], [
+                'numero_tarjeta' => [
+                    'required' => 'El número de tarjeta es obligatorio',
+                    'min_length' => 'El número de tarjeta debe tener al menos 15 dígitos',
+                    'max_length' => 'El número de tarjeta no puede exceder los 16 dígitos',
+                    'numeric' => 'El número de tarjeta debe contener solo números'
+                ],
+                'nombre_tarjeta' => [
+                    'required' => 'El nombre en la tarjeta es obligatorio',
+                    'max_length' => 'El nombre no puede exceder los 100 caracteres'
+                ],
+                'fecha_expiracion' => [
+                    'required' => 'La fecha de expiración es obligatoria'
+                ],
+                'cvv' => [
+                    'required' => 'El código CVV es obligatorio',
+                    'numeric' => 'El CVV debe contener solo números',
+                    'min_length' => 'El CVV debe tener al menos 3 dígitos',
+                    'max_length' => 'El CVV no puede exceder los 4 dígitos'
+                ]
             ]);
-            if (!$validation->withRequest($this->request)->run()) {
+
+            if (!$validation->withRequest($request)->run()) {
                 return redirect()->back()->withInput()->with('errors', $validation->getErrors());
             }
         } elseif ($metodo_pago === 'Transferencia') {
             $validation->setRules([
                 'referencia_pago' => 'required|min_length[5]|max_length[50]'
+            ], [
+                'referencia_pago' => [
+                    'required' => 'La referencia de pago es obligatoria',
+                    'min_length' => 'La referencia debe tener al menos 5 caracteres',
+                    'max_length' => 'La referencia no puede exceder los 50 caracteres'
+                ]
             ]);
-            if (!$validation->withRequest($this->request)->run()) {
+
+            if (!$validation->withRequest($request)->run()) {
                 return redirect()->back()->withInput()->with('errors', $validation->getErrors());
             }
         }
@@ -387,9 +454,9 @@ class CheckoutController extends BaseController
                 'referencia_pago' => null
             ];
             if ($metodo_pago === 'Tarjeta') {
-                $pago_data['comprobante'] = substr($this->request->getPost('numero_tarjeta'), -4);
+                $pago_data['comprobante'] = substr($request->getPost('numero_tarjeta'), -4);
             } elseif ($metodo_pago === 'Transferencia') {
-                $pago_data['referencia_pago'] = $this->request->getPost('referencia_pago');
+                $pago_data['referencia_pago'] = $request->getPost('referencia_pago');
             }
             $this->pagoModel->insert($pago_data);
             // 6. Actualizar estado venta

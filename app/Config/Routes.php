@@ -43,7 +43,6 @@ $routes->get('productos/(:num)', [ProductoController::class, 'detalle']);
 $routes->get('contacto', 'ConsultaController::formularioContacto');
 $routes->post('contacto/procesar', 'ConsultaController::procesarConsulta');
 
-
 //######################## Rutas de autenticación ########################
 
 

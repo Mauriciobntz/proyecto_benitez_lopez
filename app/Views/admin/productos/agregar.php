@@ -1,10 +1,8 @@
+<?php
+$errors = session('errors') ?? [];
+$oldData = session('_ci_old_input') ?? [];
+?>
 <div class="container mt-4">
-    <?php if (session()->has('validation')) : ?>
-        <div class="alert alert-danger">
-            <?= session()->get('validation')->listErrors() ?>
-        </div>
-    <?php endif; ?>
-
     <?php if (session()->has('error')) : ?>
         <div class="alert alert-danger">
             <?= session()->get('error') ?>
@@ -27,23 +25,24 @@
                     <div class="card-body">
                         <div class="mb-3">
                             <label for="nombre" class="form-label">Nombre del Producto</label>
-                            <input type="text" class="form-control <?= (session()->has('validation') && session()->get('validation')->hasError('nombre')) ? 'is-invalid' : '' ?>" 
-                                   id="nombre" name="nombre" value="<?= old('nombre') ?>" required>
-                            <?php if (session()->has('validation') && session()->get('validation')->hasError('nombre')): ?>
-                                <div class="invalid-feedback">
-                                    <?= session()->get('validation')->getError('nombre') ?>
-                                </div>
+                            <input type="text" 
+                                   class="form-control <?= isset($errors['nombre']) ? 'is-invalid' : '' ?>" 
+                                   id="nombre" 
+                                   name="nombre" 
+                                   value="<?= old('nombre') ?>">
+                            <?php if (isset($errors['nombre'])): ?>
+                                <div class="invalid-feedback"><?= esc($errors['nombre']) ?></div>
                             <?php endif; ?>
                         </div>
 
                         <div class="mb-3">
                             <label for="descripcion" class="form-label">Descripción</label>
-                            <textarea class="form-control <?= (session()->has('validation') && session()->get('validation')->hasError('descripcion')) ? 'is-invalid' : '' ?>" 
-                                      id="descripcion" name="descripcion" rows="3" required><?= old('descripcion') ?></textarea>
-                            <?php if (session()->has('validation') && session()->get('validation')->hasError('descripcion')): ?>
-                                <div class="invalid-feedback">
-                                    <?= session()->get('validation')->getError('descripcion') ?>
-                                </div>
+                            <textarea class="form-control <?= isset($errors['descripcion']) ? 'is-invalid' : '' ?>" 
+                                      id="descripcion" 
+                                      name="descripcion" 
+                                      rows="3"><?= old('descripcion') ?></textarea>
+                            <?php if (isset($errors['descripcion'])): ?>
+                                <div class="invalid-feedback"><?= esc($errors['descripcion']) ?></div>
                             <?php endif; ?>
                         </div>
 
@@ -123,38 +122,37 @@
                     <div class="card-body">
                         <div class="mb-3">
                             <label for="precio" class="form-label">Precio ($)</label>
-                            <input type="number" step="0.01" 
-                                   class="form-control <?= (session()->has('validation') && session()->get('validation')->hasError('precio')) ? 'is-invalid' : '' ?>" 
-                                   id="precio" name="precio" 
-                                   value="<?= old('precio', '0') ?>" required>
-                            <?php if (session()->has('validation') && session()->get('validation')->hasError('precio')): ?>
-                                <div class="invalid-feedback">
-                                    <?= session()->get('validation')->getError('precio') ?>
-                                </div>
+                            <input type="number" 
+                                   step="0.01" 
+                                   class="form-control <?= isset($errors['precio']) ? 'is-invalid' : '' ?>" 
+                                   id="precio" 
+                                   name="precio" 
+                                   value="<?= old('precio', '0') ?>">
+                            <?php if (isset($errors['precio'])): ?>
+                                <div class="invalid-feedback"><?= esc($errors['precio']) ?></div>
                             <?php endif; ?>
                         </div>
 
                         <div class="mb-3">
                             <label for="stock" class="form-label">Stock Disponible</label>
                             <input type="number" 
-                                   class="form-control <?= (session()->has('validation') && session()->get('validation')->hasError('stock')) ? 'is-invalid' : '' ?>" 
-                                   id="stock" name="stock" 
-                                   value="<?= old('stock', '0') ?>" required>
-                            <?php if (session()->has('validation') && session()->get('validation')->hasError('stock')): ?>
-                                <div class="invalid-feedback">
-                                    <?= session()->get('validation')->getError('stock') ?>
-                                </div>
+                                   class="form-control <?= isset($errors['stock']) ? 'is-invalid' : '' ?>" 
+                                   id="stock" 
+                                   name="stock" 
+                                   value="<?= old('stock', '0') ?>">
+                            <?php if (isset($errors['stock'])): ?>
+                                <div class="invalid-feedback"><?= esc($errors['stock']) ?></div>
                             <?php endif; ?>
                         </div>
 
                         <div class="mb-3">
                             <label for="garantia_meses" class="form-label">Garantía (meses)</label>
-                            <input type="number" class="form-control <?= (session()->has('validation') && session()->get('validation')->hasError('garantia_meses')) ? 'is-invalid' : '' ?>" 
+                            <input type="number" class="form-control <?= isset($errors['garantia_meses']) ? 'is-invalid' : '' ?>" 
                                    id="garantia_meses" name="garantia_meses" 
                                    value="<?= old('garantia_meses', '12') ?>">
-                            <?php if (session()->has('validation') && session()->get('validation')->hasError('garantia_meses')): ?>
+                            <?php if (isset($errors['garantia_meses'])): ?>
                                 <div class="invalid-feedback">
-                                    <?= session()->get('validation')->getError('garantia_meses') ?>
+                                    <?= $errors['garantia_meses'] ?>
                                 </div>
                             <?php endif; ?>
                         </div>
@@ -166,8 +164,9 @@
                     <div class="card-body">
                         <div class="mb-3">
                             <label for="categoria_id" class="form-label">Categoría</label>
-                            <select class="form-select <?= (session()->has('validation') && session()->get('validation')->hasError('categoria_id')) ? 'is-invalid' : '' ?>" 
-                                    id="categoria_id" name="categoria_id" required>
+                            <select class="form-select <?= isset($errors['categoria_id']) ? 'is-invalid' : '' ?>" 
+                                    id="categoria_id" 
+                                    name="categoria_id">
                                 <option value="">Seleccione una categoría</option>
                                 <?php foreach ($categorias as $categoria): ?>
                                     <option value="<?= $categoria['id_categoria'] ?>" 
@@ -176,10 +175,8 @@
                                     </option>
                                 <?php endforeach; ?>
                             </select>
-                            <?php if (session()->has('validation') && session()->get('validation')->hasError('categoria_id')): ?>
-                                <div class="invalid-feedback">
-                                    <?= session()->get('validation')->getError('categoria_id') ?>
-                                </div>
+                            <?php if (isset($errors['categoria_id'])): ?>
+                                <div class="invalid-feedback"><?= esc($errors['categoria_id']) ?></div>
                             <?php endif; ?>
                         </div>
                     </div>
@@ -193,12 +190,12 @@
                         </div>
                         <div class="mb-3">
                             <label for="imagen" class="form-label">Imagen del Producto</label>
-                            <input type="file" class="form-control <?= (session()->has('validation') && session()->get('validation')->hasError('imagen')) ? 'is-invalid' : '' ?>" 
+                            <input type="file" class="form-control <?= isset($errors['imagen']) ? 'is-invalid' : '' ?>" 
                                    id="imagen" name="imagen" accept="image/*">
                             <small class="text-muted">Formatos: JPG, PNG, GIF. Máx. 2MB</small>
-                            <?php if (session()->has('validation') && session()->get('validation')->hasError('imagen')): ?>
+                            <?php if (isset($errors['imagen'])): ?>
                                 <div class="invalid-feedback">
-                                    <?= session()->get('validation')->getError('imagen') ?>
+                                    <?= $errors['imagen'] ?>
                                 </div>
                             <?php endif; ?>
                         </div>
@@ -252,6 +249,11 @@ document.getElementById('add-especificacion').addEventListener('click', function
 
 document.addEventListener('click', function(e) {
     if (e.target && e.target.classList.contains('remove-especificacion')) {
+        e.target.closest('.especificacion-item').remove();
+    }
+    
+    // También manejar clicks en el ícono dentro del botón
+    if (e.target && e.target.closest('.remove-especificacion')) {
         e.target.closest('.especificacion-item').remove();
     }
 });

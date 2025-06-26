@@ -1,5 +1,5 @@
 <?php
-// Eliminamos la extensión del layout ya que usaremos la concatenación de vistas
+$errors = session('errors') ?? [];
 ?>
 <div class="container py-5">
     <div class="row justify-content-center">
@@ -14,55 +14,97 @@
                         <div class="row g-3">
                             <div class="col-md-6">
                                 <label for="nombre" class="form-label">Nombre</label>
-                                <input type="text" class="form-control" id="nombre" name="nombre" 
-                                       value="<?= esc($usuario['persona']['nombre'] ?? '') ?>" required>
+                                <input type="text" 
+                                       class="form-control <?= isset($errors['nombre']) ? 'is-invalid' : '' ?>" 
+                                       id="nombre" 
+                                       name="nombre" 
+                                       value="<?= old('nombre', $usuario['persona']['nombre'] ?? '') ?>">
+                                <?php if (isset($errors['nombre'])): ?>
+                                    <div class="invalid-feedback"><?= $errors['nombre'] ?></div>
+                                <?php endif; ?>
                             </div>
                             <div class="col-md-6">
                                 <label for="apellido" class="form-label">Apellido</label>
-                                <input type="text" class="form-control" id="apellido" name="apellido" 
-                                       value="<?= esc($usuario['persona']['apellido'] ?? '') ?>" required>
+                                <input type="text" 
+                                       class="form-control <?= isset($errors['apellido']) ? 'is-invalid' : '' ?>" 
+                                       id="apellido" 
+                                       name="apellido" 
+                                       value="<?= old('apellido', $usuario['persona']['apellido'] ?? '') ?>">
+                                <?php if (isset($errors['apellido'])): ?>
+                                    <div class="invalid-feedback"><?= $errors['apellido'] ?></div>
+                                <?php endif; ?>
                             </div>
                             <div class="col-md-6">
-                                <label for="username" class="form-label">Nombre de usuario</label>
-                                <input type="text" class="form-control" id="username" name="username" 
-                                       value="<?= esc($usuario['username'] ?? '') ?>" required>
+                                <label for="username" class="form-label">Nombre de Usuario</label>
+                                <input type="text" 
+                                       class="form-control <?= isset($errors['username']) ? 'is-invalid' : '' ?>" 
+                                       id="username" 
+                                       name="username" 
+                                       value="<?= old('username', $usuario['username'] ?? '') ?>">
+                                <?php if (isset($errors['username'])): ?>
+                                    <div class="invalid-feedback"><?= $errors['username'] ?></div>
+                                <?php endif; ?>
                             </div>
                             <div class="col-md-6">
-                                <label for="email" class="form-label">Email</label>
-                                <input type="email" class="form-control" id="email" name="email" 
-                                       value="<?= esc($usuario['email']) ?>" required>
+                                <label for="email" class="form-label">Correo Electrónico</label>
+                                <input type="email" 
+                                       class="form-control <?= isset($errors['email']) ? 'is-invalid' : '' ?>" 
+                                       id="email" 
+                                       name="email" 
+                                       value="<?= old('email', $usuario['email']) ?>">
+                                <?php if (isset($errors['email'])): ?>
+                                    <div class="invalid-feedback"><?= $errors['email'] ?></div>
+                                <?php endif; ?>
                             </div>
                             <div class="col-md-6">
                                 <label for="telefono" class="form-label">Teléfono</label>
-                                <input type="tel" class="form-control" id="telefono" name="telefono" 
-                                       value="<?= esc($usuario['persona']['telefono'] ?? '') ?>">
+                                <input type="tel" class="form-control <?= isset($errors['telefono']) ? 'is-invalid' : '' ?>" 
+                                       id="telefono" name="telefono" 
+                                       value="<?= old('telefono', $usuario['persona']['telefono'] ?? '') ?>">
+                                <?php if (isset($errors['telefono'])): ?>
+                                    <div class="invalid-feedback"><?= $errors['telefono'] ?></div>
+                                <?php endif; ?>
                             </div>
                             <div class="col-md-6">
                                 <label for="fechaNacimiento" class="form-label">Fecha de Nacimiento</label>
-                                <input type="date" class="form-control" id="fechaNacimiento" name="fecha_nacimiento" 
-                                       value="<?= esc($usuario['persona']['fecha_nacimiento'] ?? '') ?>">
+                                <input type="date" class="form-control <?= isset($errors['fecha_nacimiento']) ? 'is-invalid' : '' ?>" 
+                                       id="fechaNacimiento" name="fecha_nacimiento" 
+                                       value="<?= old('fecha_nacimiento', $usuario['persona']['fecha_nacimiento'] ?? '') ?>">
+                                <?php if (isset($errors['fecha_nacimiento'])): ?>
+                                    <div class="invalid-feedback"><?= $errors['fecha_nacimiento'] ?></div>
+                                <?php endif; ?>
                             </div>
                             <div class="col-md-6">
                                 <label for="genero" class="form-label">Género</label>
-                                <select class="form-select" id="genero" name="genero">
-                                    <option value="H" <?= ($usuario['persona']['genero'] ?? '') == 'H' ? 'selected' : '' ?>>Masculino</option>
-                                    <option value="M" <?= ($usuario['persona']['genero'] ?? '') == 'M' ? 'selected' : '' ?>>Femenino</option>
-                                    <option value="O" <?= ($usuario['persona']['genero'] ?? '') == 'O' ? 'selected' : '' ?>>Otro</option>
+                                <select class="form-select <?= isset($errors['genero']) ? 'is-invalid' : '' ?>" id="genero" name="genero">
+                                    <option value="H" <?= (old('genero', $usuario['persona']['genero'] ?? '')) == 'H' ? 'selected' : '' ?>>Masculino</option>
+                                    <option value="M" <?= (old('genero', $usuario['persona']['genero'] ?? '')) == 'M' ? 'selected' : '' ?>>Femenino</option>
+                                    <option value="O" <?= (old('genero', $usuario['persona']['genero'] ?? '')) == 'O' ? 'selected' : '' ?>>Otro</option>
                                 </select>
+                                <?php if (isset($errors['genero'])): ?>
+                                    <div class="invalid-feedback"><?= $errors['genero'] ?></div>
+                                <?php endif; ?>
                             </div>
                             <div class="col-md-6">
                                 <label for="tipoDocumento" class="form-label">Tipo de Documento</label>
-                                <select class="form-select" id="tipoDocumento" name="tipo_documento">
-                                    <option value="DNI" <?= ($usuario['persona']['tipo_documento'] ?? '') == 'DNI' ? 'selected' : '' ?>>DNI</option>
-                                    <option value="NIE" <?= ($usuario['persona']['tipo_documento'] ?? '') == 'NIE' ? 'selected' : '' ?>>NIE</option>
-                                    <option value="Pasaporte" <?= ($usuario['persona']['tipo_documento'] ?? '') == 'Pasaporte' ? 'selected' : '' ?>>Pasaporte</option>
-                                    <option value="CIF" <?= ($usuario['persona']['tipo_documento'] ?? '') == 'CIF' ? 'selected' : '' ?>>CIF</option>
+                                <select class="form-select <?= isset($errors['tipo_documento']) ? 'is-invalid' : '' ?>" id="tipoDocumento" name="tipo_documento">
+                                    <option value="DNI" <?= (old('tipo_documento', $usuario['persona']['tipo_documento'] ?? '')) == 'DNI' ? 'selected' : '' ?>>DNI</option>
+                                    <option value="NIE" <?= (old('tipo_documento', $usuario['persona']['tipo_documento'] ?? '')) == 'NIE' ? 'selected' : '' ?>>NIE</option>
+                                    <option value="Pasaporte" <?= (old('tipo_documento', $usuario['persona']['tipo_documento'] ?? '')) == 'Pasaporte' ? 'selected' : '' ?>>Pasaporte</option>
+                                    <option value="CIF" <?= (old('tipo_documento', $usuario['persona']['tipo_documento'] ?? '')) == 'CIF' ? 'selected' : '' ?>>CIF</option>
                                 </select>
+                                <?php if (isset($errors['tipo_documento'])): ?>
+                                    <div class="invalid-feedback"><?= $errors['tipo_documento'] ?></div>
+                                <?php endif; ?>
                             </div>
                             <div class="col-md-6">
                                 <label for="documento" class="form-label">Número de Documento</label>
-                                <input type="text" class="form-control" id="documento" name="documento" 
-                                       value="<?= esc($usuario['persona']['documento'] ?? '') ?>">
+                                <input type="text" class="form-control <?= isset($errors['documento']) ? 'is-invalid' : '' ?>" 
+                                       id="documento" name="documento" 
+                                       value="<?= old('documento', $usuario['persona']['documento'] ?? '') ?>">
+                                <?php if (isset($errors['documento'])): ?>
+                                    <div class="invalid-feedback"><?= $errors['documento'] ?></div>
+                                <?php endif; ?>
                             </div>
                             <div class="col-12 mt-4">
                                 <div class="d-flex justify-content-between">

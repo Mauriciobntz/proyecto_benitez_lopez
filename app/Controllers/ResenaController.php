@@ -60,8 +60,7 @@ class ResenaController extends BaseController
             'titulo' => 'Editar Reseña',
             'resena' => $resena,
             'productos' => $this->productoModel->findAll(),
-            'usuarios' => $this->usuarioModel->findAll(),
-            'validation' => session()->get('validation') ?? null
+            'usuarios' => $this->usuarioModel->findAll()
         ];
 
         return view('header', $data) . view('navbar') . view('admin/resenas/editar') . view('footer');
@@ -74,22 +73,42 @@ class ResenaController extends BaseController
         }
 
         $validation = \Config\Services::validation();
+        $request = \Config\Services::request();
+
         $validation->setRules([
             'producto_id' => 'required|integer',
             'usuario_id' => 'required|integer',
             'calificacion' => 'required|integer|greater_than[0]|less_than[6]',
             'comentario' => 'permit_empty|max_length[500]'
+        ], [
+            'producto_id' => [
+                'required' => 'El producto es obligatorio',
+                'integer' => 'El producto debe ser un número válido'
+            ],
+            'usuario_id' => [
+                'required' => 'El usuario es obligatorio',
+                'integer' => 'El usuario debe ser un número válido'
+            ],
+            'calificacion' => [
+                'required' => 'La calificación es obligatoria',
+                'integer' => 'La calificación debe ser un número entero',
+                'greater_than' => 'La calificación debe ser mayor a 0',
+                'less_than' => 'La calificación no puede ser mayor a 5'
+            ],
+            'comentario' => [
+                'max_length' => 'El comentario no puede exceder los 500 caracteres'
+            ]
         ]);
 
-        if (!$validation->withRequest($this->request)->run()) {
-            return redirect()->back()->withInput()->with('validation', $validation);
+        if (!$validation->withRequest($request)->run()) {
+            return redirect()->back()->withInput()->with('errors', $validation->getErrors());
         }
 
         $data = [
-            'producto_id' => $this->request->getPost('producto_id'),
-            'usuario_id' => $this->request->getPost('usuario_id'),
-            'calificacion' => $this->request->getPost('calificacion'),
-            'comentario' => $this->request->getPost('comentario')
+            'producto_id' => $request->getPost('producto_id'),
+            'usuario_id' => $request->getPost('usuario_id'),
+            'calificacion' => $request->getPost('calificacion'),
+            'comentario' => $request->getPost('comentario')
         ];
 
         if ($this->resenaModel->update($id, $data)) {

@@ -24,8 +24,9 @@
 
                     <form action="<?= base_url('perfil/resenas/guardar/' . $producto['id_producto']) ?>" 
                           method="post" 
-                          class="needs-validation" 
-                          novalidate>
+                          class="needs-validation">
+                        
+                        <?= csrf_field() ?>
                         
                         <div class="mb-3">
                             <label class="form-label">Calificación</label>
@@ -35,8 +36,7 @@
                                            name="calificacion" 
                                            value="<?= $i ?>" 
                                            id="star<?= $i ?>" 
-                                           <?= old('calificacion') == $i ? 'checked' : '' ?> 
-                                           required>
+                                           <?= old('calificacion') == $i ? 'checked' : '' ?>>
                                     <label for="star<?= $i ?>">
                                         <i class="bi bi-star-fill"></i>
                                     </label>
@@ -54,8 +54,7 @@
                             <textarea class="form-control <?= session('errors.comentario') ? 'is-invalid' : '' ?>" 
                                       id="comentario" 
                                       name="comentario" 
-                                      rows="4" 
-                                      required><?= old('comentario') ?></textarea>
+                                      rows="4"><?= old('comentario') ?></textarea>
                             <?php if (session('errors.comentario')): ?>
                                 <div class="invalid-feedback">
                                     <?= session('errors.comentario') ?>

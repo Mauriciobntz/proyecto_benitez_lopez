@@ -62,6 +62,21 @@
             <option value="z_a">Nombre z-a</option>
           </select>
         </div>
+
+        <!-- Filtro por marca -->
+        <div class="mt-4">
+          <label for="filtroMarca" class="form-label fw-bold">Filtrar por marca:</label>
+          <select id="filtroMarca" class="form-select" onchange="filtrarPorMarca(this.value)">
+            <option value="">Todas las marcas</option>
+            <?php if(isset($marcas) && is_array($marcas)): ?>
+              <?php foreach($marcas as $marca): ?>
+                <option value="<?= htmlspecialchars($marca['marca']) ?>">
+                  <?= htmlspecialchars($marca['marca']) ?>
+                </option>
+              <?php endforeach; ?>
+            <?php endif; ?>
+          </select>
+        </div>
       </nav>
 
       <!-- Sección principal de productos -->
@@ -144,5 +159,21 @@ function ordenarProductos(criterio) {
   // Limpiar y volver a agregar los productos ordenados
   container.innerHTML = '';
   productos.forEach(producto => container.appendChild(producto));
+}
+
+function filtrarPorMarca(marca) {
+  const container = document.getElementById('productos-container');
+  if (!container) return;
+  
+  const productos = Array.from(container.children);
+  
+  productos.forEach(producto => {
+    const marcaProducto = producto.querySelector('.card-text').textContent.toLowerCase();
+    if (marca === '' || marcaProducto.includes(marca.toLowerCase())) {
+      producto.style.display = '';
+    } else {
+      producto.style.display = 'none';
+    }
+  });
 }
 </script>

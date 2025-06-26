@@ -46,6 +46,10 @@ class ProductoModel extends Model
             $builder->where('categoria_id', $filtros['categoria_id']);
         }
         
+        if (!empty($filtros['marca'])) {
+            $builder->where('marca', $filtros['marca']);
+        }
+        
         if (!empty($filtros['stock_disponible'])) {
             $builder->where('stock >', 0);
         }
@@ -137,5 +141,17 @@ class ProductoModel extends Model
     {
         $producto = $this->where('activo', 1)->find($id);
         return $producto !== null;
+    }
+
+    // Método para obtener marcas únicas de productos activos
+    public function getMarcasUnicas()
+    {
+        return $this->select('marca')
+                   ->distinct()
+                   ->where('activo', 1)
+                   ->where('marca IS NOT NULL')
+                   ->where('marca !=', '')
+                   ->orderBy('marca', 'ASC')
+                   ->findAll();
     }
 }
